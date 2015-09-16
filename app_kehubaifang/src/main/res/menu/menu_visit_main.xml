@@ -1,0 +1,33 @@
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <item android:id="@+id/action_add"
+        android:title="添加临时拜访"
+        android:showAsAction="ifRoom|withText"
+        android:visible="true" />
+    <item android:id="@+id/action_finish"
+        android:title="结束拜访"
+        android:showAsAction="ifRoom|withText"
+        android:visible="false" />
+    <item android:id="@+id/action_submit"
+        android:title="提交"
+        android:showAsAction="never"
+        android:visible="false" />
+    <!--<item android:id="@+id/action_save"-->
+    <!--android:title="保存"-->
+    <!--android:orderInCategory="1"-->
+    <!--android:showAsAction="never"-->
+    <!--android:visible="false" />-->
+    <item android:id="@+id/action_tape"
+        android:title="录音"
+        android:showAsAction="never"
+        android:orderInCategory="2"
+        android:visible="false" />
+    <item android:id="@+id/action_play"
+        android:title="播放"
+        android:showAsAction="never"
+        android:orderInCategory="3"
+        android:visible="false" />
+</menu>

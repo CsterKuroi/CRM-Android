@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Spinel 提交"
+        android:id="@+id/createrName"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/activityName"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="差旅单"
+        android:id="@+id/activityName"
+        android:layout_alignParentStart="true"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="2015-7-7  15:00"
+        android:id="@+id/startTime"
+        android:textColor="#ff89898a"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/activityName"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="正在审核："
+        android:id="@+id/status"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/createrName"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="2015-7-7  15:00"
+        android:id="@+id/opTime"
+        android:textColor="#ff89898a"
+        android:textSize="16dp"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/startTime" />
+
+</RelativeLayout>

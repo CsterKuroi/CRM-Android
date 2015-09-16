@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:background="#106bb9" >
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/back" />
+        <TextView
+            android:id="@+id/topbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="日程详情"
+            android:textColor="#FFFF"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/richeng"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical|left"
+            android:text="日程"
+            android:textColor="#FFFF"
+            android:textSize="16sp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:text="开始:"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/time"
+                android:layout_weight="0.25"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:text="截至:"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/time2"
+                android:layout_weight="0.25"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:text="优先级:"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"/>
+            <LinearLayout
+                android:layout_weight="0.25"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <RatingBar
+                    android:id="@+id/rating"
+                    android:layout_gravity="center_vertical"
+                    style="@style/roomRatingBar"
+                    android:layout_width="211dip"
+                    android:progress="40"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:rating="3">
+                </RatingBar>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:text="参与人:"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/participant"
+                android:layout_weight="0.25"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:text="备注:"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/note"
+                android:layout_weight="0.25"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_weight="1.2"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent" />
+            <Button
+                android:id="@+id/edit"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@color/lightskyblue"
+                android:text="编辑"
+                android:textColor="@color/black"
+                android:layout_width="match_parent" />
+            <TextView
+                android:layout_weight="1.3"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent" />
+            <Button
+                android:id="@+id/delete"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@color/lightskyblue"
+                android:text="删除"
+                android:textColor="@color/black"
+                android:layout_width="match_parent" />
+            <TextView
+                android:layout_weight="1.2"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

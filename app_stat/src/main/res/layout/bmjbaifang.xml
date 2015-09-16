@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:dividerPadding="10dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/bmjbfheader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="6dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:paddingLeft="3dp"
+            android:text="客户："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bmjbfname1"
+            />
+        <TextView
+            android:paddingLeft="3dp"
+            android:text="地点："
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bmjbfplace1"
+            />
+        <TextView
+            android:paddingLeft="3dp"
+            android:text="时期："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bmjbfdate1"
+            />
+        <TextView
+            android:paddingLeft="3dp"
+            android:text="受访："
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bmjbftarget1"
+            />
+        <TextView
+            android:paddingLeft="3dp"
+            android:text="出访："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bmjbfcreater1"
+            />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:paddingLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bmjbfname"
+            />
+        <TextView
+            android:paddingLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bmjbfplace"
+           />
+        <TextView
+            android:paddingLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bmjbfdate"
+             />
+        <TextView
+            android:paddingLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bmjbftarget"
+             />
+        <TextView
+            android:paddingLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bmjbfcreater"
+            />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

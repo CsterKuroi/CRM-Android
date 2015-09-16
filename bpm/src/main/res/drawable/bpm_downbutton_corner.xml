@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+
+    <!--背景颜色渐变 -->
+    <gradient android:startColor="#c0000000" android:endColor="#c0000000" android:angle="90" />
+
+    <!--描边 -->
+    <stroke android:dashWidth="2dp" android:dashGap="2dp" android:width="2dp" android:color="#FF00ff00"></stroke>
+
+    <!--设置圆角-->
+    <corners android:bottomRightRadius="5dp" android:bottomLeftRadius="5dp" android:topLeftRadius="5dp" android:topRightRadius="5dp" />
+</shape>

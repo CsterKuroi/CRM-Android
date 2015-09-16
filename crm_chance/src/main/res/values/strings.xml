@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name_Chance">机会</string>
+    <string name="hello_world_Chance">WELCOME</string>
+    <string name="action_about_Chance">关于</string>
+    <string name="camera_Chance">照相</string>
+    <string name="title_main_activity_Chance">机会</string>
+    <string name="title_activity_add_Chance">添加机会</string>
+    <string name="number_Chance">机会编号</string>
+    <string name="snumber_Chance">编号</string>
+    <string name="name_Chance">机会标题</string>
+    <string name="sname_Chance">标题</string>
+    <string name="phone_Chance">联系方式</string>
+    <string name="customer_Chance">客户名称</string>
+    <string name="principal_Chance">负责人</string>
+    <string name="ourSigner_Chance">我方联系人</string>
+    <string name="cusSigner_Chance">客户联系人</string>
+    <string name="date_Chance">预计成交日期</string>
+    <string name="sdate_Chance">预计成交</string>
+    <string name="dateStart_Chance">发现时间</string>
+    <string name="dateEnd_Chance">终止时间</string>
+    <string name="money_Chance">预计金额</string>
+    <string name="discount_Chance">阶段</string>
+    <string name="payment_Chance">支付方式</string>
+    <string name="type_Chance">机会类型</string>
+    <string name="remark_Chance">备注</string>
+    <string name="number_hint_Chance">编号（必填）</string>
+    <string name="name_hint_Chance">标题（必填）</string>
+    <string name="phone_hint_Chance">客户联系方式（必填）</string>
+    <string name="customer_hint_Chance">客户（必填）</string>
+    <string name="date_hint_Chance">预计成交日期（必填）</string>
+    <string name="dateStart_hint_Chance">生效期</string>
+    <string name="dateEnd_hint_Chance">截止期</string>
+    <string name="money_hint_Chance">预计金额（必填）</string>
+    <string name="discount_hint_Chance">折扣</string>
+    <string name="payment_hint_Chance">支付方式</string>
+    <string name="type_hint_Chance">机会类型</string>
+    <string name="principal_hint_Chance">负责人（必填）</string>
+    <string name="ourSigner_hint_Chance">我方联系人</string>
+    <string name="cusSigner_hint_Chance">客户联系人</string>
+    <string name="remark_hint_Chance">请输入备注信息</string>
+    <string name="save_Chance">保存</string>
+    <string name="cancel_Chance">取消</string>
+    <string name="add_Chance">添加</string>
+    <string name="search_hint_Chance">请输入机会标题/编号</string>
+    <string name="male_Chance">机会</string>
+    <string name="female_Chance">暂留</string>
+    <string name="title_activity_detail_Chance">机会详情</string>
+    <string name="call_Chance">编辑</string>
+    <string name="sms_Chance">删除</string>
+    <string name="title_activity_modify_Chance">修改信息</string>
+    <string name="modify_Chance">修改</string>
+    <string name="delete_Chance">删除</string>
+    <string name="call_text_Chance">编辑</string>
+    <string name="view_text_Chance">查看详情</string>
+    <string name="sms_text_Chance">删除</string>
+    <string name="title_activity_about_Chance">关于</string>
+    <string name="about_Chance">关于</string>
+    <string name="about_text_Chance">
+        预留\n
+        </string>
+    <string name="action_settings_Chance">Settings</string>
+    <string name="title_activity_show_Chance">照片</string>
+    <string name="title_activity_chance_kl">ChanceKLActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_chance_cg">ChanceCGActivity</string>
+
+</resources>

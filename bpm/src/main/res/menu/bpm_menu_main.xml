@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/connect"
+        android:icon="@drawable/bpm_icon_favo_p"
+        app:showAsAction="ifRoom"
+        android:title="重新连接"/>
+
+    <item
+        android:id="@+id/write_p"
+        android:icon="@drawable/bpm_icon_write_p"
+        app:showAsAction="ifRoom"
+        android:title="工作"/>
+
+
+</menu>

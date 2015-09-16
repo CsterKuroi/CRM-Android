@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="geminy_white">#ffffff</color>
+    <color name="geminy_mid_blue">#01aff4</color>
+    <color name="geminy_dark_gray">#929292</color>
+    <color name="geminy_black">#000000</color>
+    <color name="geminy_light_gray">#f3f4f5</color>
+</resources>

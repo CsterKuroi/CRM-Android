@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.dt.testapp3.VisitContentFragment"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:fadingEdge="vertical">
+    <LinearLayout
+        android:id="@+id/fragment_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="end"
+        android:orientation="vertical">
+
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="日期"
+                android:id="@+id/Date_title"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="40dp"
+                android:layout_gravity="top|start|bottom"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:text="戳这里选择日期"
+                android:id="@+id/Date"
+                android:minHeight="40dp"
+                android:gravity="center"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text=">"
+                android:id="@+id/Date_right"
+                android:textSize="25dp"
+                android:textIsSelectable="false"
+                android:textColor="#44000000"
+                android:gravity="center_vertical|center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#09000000">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="地点"
+                android:id="@+id/Place_title"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="40dp"
+                android:layout_gravity="top|start|bottom"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="7"
+                android:text="无      "
+                android:id="@+id/Place"
+                android:minHeight="40dp"
+                android:gravity="center"
+                android:textColor="#ff000000"
+                android:textSize="15sp"
+                android:background="#09000000" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="拜访客户"
+                android:id="@+id/Company_title"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="40dp"
+                android:layout_gravity="top|start|bottom"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:text="北京航空航天大学"
+                android:id="@+id/Company"
+                android:minHeight="40dp"
+                android:gravity="center"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text=">"
+                android:id="@+id/Company_right"
+                android:textSize="25dp"
+                android:textIsSelectable="false"
+                android:textColor="#44000000"
+                android:gravity="center_vertical|center_horizontal" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#09000000">
+
+            <TextView
+                android:text="拜访对象"
+                android:id="@+id/Target_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="40dp"
+                android:layout_gravity="top|start|bottom"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="6"
+                android:text="点击这里选取"
+                android:id="@+id/Target"
+                android:minHeight="40dp"
+                android:gravity="center"
+                android:textColor="#ff000000"
+                android:textSize="15sp"
+                android:background="#09000000" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text=">"
+                android:id="@+id/Target_right"
+                android:textSize="25dp"
+                android:textIsSelectable="false"
+                android:textColor="#44000000"
+                android:gravity="center_vertical|center_horizontal"
+                android:background="#09000000" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="拜访状态"
+                android:id="@+id/Condition_title"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="40dp"
+                android:layout_gravity="top|start|bottom"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:text="等待拜访"
+                android:id="@+id/Condition"
+                android:minHeight="40dp"
+                android:gravity="center"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text=">"
+                android:id="@+id/Condition_right"
+                android:textSize="25dp"
+                android:textIsSelectable="false"
+                android:textColor="#44000000"
+                android:gravity="center_vertical|center_horizontal" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#09000000">
+
+            <TextView
+                android:text="发起人"
+                android:id="@+id/Submit_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="40dp"
+                android:layout_gravity="top|start|bottom"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="7"
+                android:id="@+id/Submit"
+                android:minHeight="40dp"
+                android:gravity="center"
+                android:textColor="#ff000000"
+                android:textSize="15sp"
+                android:background="#09000000" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="同行人"
+                android:id="@+id/Partner_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="40dp"
+                android:layout_gravity="top|start|bottom"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:text="无"
+                android:id="@+id/Partner"
+                android:minHeight="40dp"
+                android:gravity="center"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/visit_bg_color">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="拜访目的"
+                android:id="@+id/Todo_title"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="40dp"
+                android:textColor="#ff000000"
+                android:textSize="15sp"
+                android:layout_gravity="end" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="6"
+                android:hint="拜访目的"
+                android:id="@+id/Todo"
+                android:minHeight="40dp"
+                android:gravity="center_vertical"
+                android:textColor="#ff000000"
+                android:textIsSelectable="false"
+                android:textSize="15sp"
+                android:background="@color/visit_bg_color" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text=">"
+                android:id="@+id/Todo_right"
+                android:textSize="25dp"
+                android:textIsSelectable="false"
+                android:textColor="#44000000"
+                android:gravity="center_vertical|center_horizontal"
+                android:background="#09000000" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="拜访类型"
+                android:id="@+id/Type_title"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="40dp"
+                android:layout_gravity="top|start|bottom"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/Type"
+                android:layout_weight="7"
+                android:visibility="visible"
+                android:foregroundGravity="center"
+                android:spinnerMode="dropdown"
+                android:gravity="center"
+                android:minHeight="40dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#09000000">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="拜访记录"
+                android:id="@+id/Record_title"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="40dp"
+                android:textColor="#ff000000"
+                android:textSize="15sp"
+                android:layout_gravity="center" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:hint="在这里拜访记录"
+                android:id="@+id/Record"
+                android:minHeight="100dp"
+                android:textColor="#ff000000"
+                android:textSize="15sp"
+                android:background="#09000000"
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text=">"
+                android:id="@+id/Record_right"
+                android:textSize="25dp"
+                android:textIsSelectable="false"
+                android:textColor="#44000000"
+                android:gravity="center_vertical|center_horizontal"
+                android:background="#09000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:text="拜访结果"
+                android:id="@+id/Result_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="40dp"
+                android:layout_gravity="top|start|bottom"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/Result"
+                android:layout_weight="7"
+                android:visibility="visible"
+                android:foregroundGravity="center"
+                android:spinnerMode="dropdown"
+                android:gravity="center"
+                android:minHeight="40dp"  />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#09000000">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="备注"
+                android:id="@+id/Remark_title"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="40dp"
+                android:textColor="#ff000000"
+                android:textSize="15sp"
+                android:layout_gravity="center" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="6"
+                android:hint="在这里填写备注信息"
+                android:id="@+id/Remark"
+                android:minHeight="40dp"
+                android:textColor="#ff000000"
+                android:textSize="15sp"
+                android:background="#09000000"
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text=">"
+                android:id="@+id/Remark_right"
+                android:textSize="25dp"
+                android:textIsSelectable="false"
+                android:textColor="#44000000"
+                android:gravity="center_vertical|center_horizontal"
+                android:background="#09000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="录音"
+                android:id="@+id/Tape_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minHeight="40dp"
+                android:layout_gravity="top|start|bottom"
+                android:textColor="#ff000000"
+                android:textSize="15sp" />
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/Tape_spinner"
+                android:layout_weight="7"
+                android:visibility="visible"
+                android:foregroundGravity="center"
+                android:spinnerMode="dropdown"
+                android:gravity="center"
+                android:minHeight="40dp"  />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

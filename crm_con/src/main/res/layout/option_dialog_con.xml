@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:orientation="horizontal"
+    android:baselineAligned="false">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+        <ImageButton
+            android:id="@+id/dialog_call"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@color/yellow_700"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/call_con"
+            android:src="@drawable/ic_action_edit" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/dialog_call"
+            android:text="@string/call_text_con" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+        <ImageButton
+            android:id="@+id/dialog_view"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@color/red_400"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/view_text_con"
+            android:src="@drawable/ic_action_chat" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/dialog_view"
+            android:text="@string/view_text_con"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+        <ImageButton
+            android:id="@+id/dialog_sms"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="#9bc703"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/sms_con"
+            android:src="@drawable/ic_action_discard" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/dialog_sms"
+            android:text="@string/sms_text_con"/>
+    </RelativeLayout>
+
+</LinearLayout>

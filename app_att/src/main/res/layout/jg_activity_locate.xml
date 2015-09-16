@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jogle.attendance.JGLocateActivity">
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:clickable="true"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RelativeLayout
+        android:background="@drawable/tt_top_default_bk"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:id="@+id/linearLayout2" >
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:id="@+id/backButton2"
+            android:src="@drawable/conleft" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="更改您的位置"
+            android:id="@+id/textView3"
+            android:textColor="#FFFFFF"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/title_font_size" />
+    </RelativeLayout>
+
+    <!--<TextView-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+        <!--android:text="尚未获取到您的地址，请检查网络和GPS是否开启"-->
+        <!--android:id="@+id/pos"-->
+        <!--android:textColor="#000000"-->
+        <!--android:textSize="14dp"-->
+        <!--android:textIsSelectable="false"-->
+        <!--android:layout_below="@+id/linearLayout2"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_marginLeft="71dp"-->
+        <!--android:layout_marginTop="5dp" />-->
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/poilist"
+        android:background="@color/content_background"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bmapView" />
+
+</RelativeLayout>

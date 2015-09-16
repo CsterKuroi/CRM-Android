@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:http="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#106bb9" >
+
+        <ImageButton
+            android:id="@+id/ImageButton_back"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/back" />
+
+        <TextView
+            android:id="@+id/topbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="关爱信息填写"
+            android:textColor="#FFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/care_submit"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical|left"
+            android:text="确定"
+            android:textColor="#FFFF"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:text="关爱类型"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+        <Spinner
+            android:id="@+id/spinner_type"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"></Spinner>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/fff"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:text="时间"  android:textColor="@color/black"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/care_time"
+            android:layout_toRightOf="@+id/fff"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/care_choose_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/care_time"
+            android:layout_marginRight="25dp"
+            android:src="@drawable/tt_default_arrow"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/fff2"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:text="提醒时间"  android:textColor="@color/black"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/care_time2"
+            android:layout_toRightOf="@+id/fff2"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/care_choose_time2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/care_time2"
+            android:layout_marginRight="25dp"
+            android:src="@drawable/tt_default_arrow"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:text="提醒时间"  android:textColor="@color/black"
+            android:textSize="16sp"/>
+        <Spinner
+            android:id="@+id/spinner_remind"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"></Spinner>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="top"
+            android:gravity="top"
+            android:text="提醒语句"  android:textColor="@color/black"
+            android:textSize="16sp"/>
+       <EditText
+           android:id="@+id/care_note"
+           android:layout_width="200dp"
+           android:layout_height="wrap_content"
+           android:layout_gravity="left"
+           android:textColor="@color/black"
+           android:inputType="textMultiLine"
+           android:minLines="5"
+           android:background="@color/lightgray"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

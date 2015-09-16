@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:scrollbars="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#106bb9" >
+
+        <ImageButton
+            android:id="@+id/ImageButton_back"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/back" />
+
+        <TextView
+            android:id="@+id/topbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="日程"
+            android:textColor="#FFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/submit"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical|left"
+            android:text="确定"
+            android:textColor="#FFFF"
+            android:textSize="16sp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+        <TextView
+            android:id="@+id/networkflag"
+            android:textColor="@color/red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" 
+            android:visibility="gone"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_vertical|center"/>
+    </LinearLayout>
+    <!-- 表格布局 -->
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dip"
+        android:layout_marginTop="20dip"
+        android:paddingLeft="5dip"
+        android:paddingRight="0dip" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_4corners"
+            android:paddingBottom="5dip"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="5dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dip"
+                android:text="名称: "
+                android:textColor="@color/black"
+                android:textSize="16sp" >
+            </TextView>
+
+            <EditText
+                android:id="@+id/EditText_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                android:background="@null"
+                android:editable="false"
+                android:hint=""
+                android:singleLine="true"
+                android:textSize="13sp" >
+            </EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="2dip"
+                android:text=" "
+                android:textColor="#000000" >
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/ImageButton_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/more" />
+        </TableRow>
+
+    <!--     <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dip"
+            android:background="@drawable/shape_4corners"
+            android:paddingBottom="5dip"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="5dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dip"
+                android:text="提醒:"
+                android:textColor="#000000"
+                android:textSize="16sp" >
+            </TextView>
+
+            <EditText
+                android:id="@+id/EditText_remind"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                android:background="@null"
+                android:editable="false"
+                android:singleLine="true"
+                android:textSize="13sp" >
+            </EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="2dip"
+                android:text=" "
+                android:textColor="#000000" >
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/ImageButton_remind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/more" />
+        </TableRow> -->
+    </TableLayout>
+    <!-- 表格布局：第二行 -->
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="35dip"
+        android:layout_marginTop="10dip"
+        android:paddingLeft="5dip"
+        android:paddingRight="10dip" >
+
+        
+        
+     <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_top_corner_has_bottom_line"
+            android:padding="5dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dip"
+                android:text="参与人："
+                android:textColor="#000000"
+                android:textSize="16sp" >
+            </TextView>
+
+ 
+            
+                     <TextView
+                android:id="@+id/TextView_participant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                android:background="@null"
+                android:singleLine="true"
+                 android:inputType="textMultiLine"
+                android:minLines="1"
+                android:textColor="#000000"
+                android:textSize="10sp" >
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/ImageButton_participant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/more" />
+        
+        </TableRow>
+        <!-- 表格布局：第四行 -->
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="35dip"
+        android:paddingLeft="5dip"
+        android:paddingRight="5dip" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_bottom_corner_no_top_line"
+            android:padding="5dip" >
+
+            <TextView
+                android:id="@+id/textview_space"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="0dip"
+                android:layout_marginRight="10dip"
+                android:layout_span="1" >
+            </TextView>
+
+            <RadioButton
+                android:id="@+id/RadioButton_sendmessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radiobutton"
+                android:button="@null" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="发信息给参与人"
+                android:textColor="#000000"
+                android:textSize="13sp" >
+            </TextView>
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="35dip"
+        android:layout_marginTop="20dip"
+        android:paddingLeft="5dip"
+        android:paddingRight="5dip" >
+
+        <!-- 表格布局：第一行 -->
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_4corners"
+            android:paddingBottom="5dip"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="5dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dip"
+                android:text="开始时间："
+                android:textColor="#000000" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/TextView_starttime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                android:background="@null"
+                android:singleLine="true"
+                android:textColor="#000000"
+                android:textSize="10sp" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="2dip"
+                android:text=" "
+                android:textColor="#000000" >
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/ImageButton_starttime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/more" />
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="35dip"
+        android:layout_marginTop="10dip"
+        android:paddingLeft="5dip"
+        android:paddingRight="5dip" >
+
+        <!-- 表格布局：第一行 -->
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="35dip"
+            android:background="@drawable/shape_4corners"
+            android:paddingBottom="5dip"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="5dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dip"
+                android:text="结束时间："
+                android:textColor="#000000" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/TextView_endtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                android:background="@null"
+                android:singleLine="true"
+                android:textColor="#000000"
+                android:textSize="10sp" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="2dip"
+                android:text=" "
+                android:textColor="#000000" >
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/ImageButton_endtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/more" />
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dip"
+        android:layout_marginTop="30dip"
+        android:paddingLeft="5dip"
+        android:paddingRight="5dip" >
+
+        <!-- 表格布局：第一行 -->
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:background="@drawable/shape_4corners">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dip"
+                android:paddingBottom="5dip"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:paddingTop="5dip"
+                android:text="优先级"
+                android:textColor="#000000"
+                android:textSize="16sp" >
+            </TextView>
+
+            <RatingBar
+                android:id="@+id/rating"   android:layout_gravity="center_vertical"
+                style="@style/roomRatingBar"
+                android:layout_width="211dip"
+                android:progress="40"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:rating="3"
+                android:layout_marginLeft="10dp" >
+            </RatingBar>
+            <TextView
+                android:id="@+id/text_priority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dip"
+                android:layout_marginLeft="5dip"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="13sp" >
+            </TextView>
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_marginTop="10dip"
+        android:paddingLeft="5dip"
+        android:paddingRight="5dip" >
+
+        <!-- 表格布局：第一行 -->
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/shape_4corners"
+            android:paddingBottom="5dip"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="5dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dip"
+                android:layout_marginTop="0dip"
+                android:text="备注："
+                android:textColor="#000000"
+                android:textSize="16sp" >
+            </TextView>
+
+            <EditText
+                android:id="@+id/EditText_note"
+                android:layout_width="fill_parent"
+                android:layout_height="50dip"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.1"
+                android:background="@null"
+                android:gravity="left|center"
+                android:hint="输入备注"
+                android:textColor="@color/black"
+                android:inputType="textMultiLine"
+                android:minLines="2"
+                android:singleLine="true"
+                android:textSize="12sp" >
+            </EditText>
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="200dip"
+        android:layout_marginTop="10dip"
+        android:paddingLeft="5dip"
+        android:paddingRight="5dip" >
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="200dip"
+            android:paddingBottom="5dip"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="5dip" >
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout><!--  -->

@@ -1,0 +1,6 @@
+<resources>
+    <style name="AppThemeAppCompat" parent="Theme.AppCompat.Light" >
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="AppThemeAppCompat.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar" />
+</resources>

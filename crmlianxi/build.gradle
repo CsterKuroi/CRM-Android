@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion  22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionName "1.0"
+        versionCode 1
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs' //this way we can find the .aar file in libs folder
+        }
+    }
+
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.android.support:recyclerview-v7:22.2.0'
+    compile 'com.android.support:support-v4:22.2.0'
+    compile project(':library')
+    compile files('libs/autobahn-0.5.0.jar')
+    compile files('libs/OpenApi_v1.5_20140811.jar')
+    compile files('libs/android-vcard.jar')
+    compile project(':database')
+    compile project(':app_kehubaifang')
+    compile files('libs/afinal_0.5.1_bin.jar')
+    compile project(':zoomlibrary')
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="con_type">
+        <item>直销合同</item>
+        <item>代理合同</item>
+        <item>采购合同</item>
+        <item>服务合同</item>
+    </string-array>
+
+</resources>

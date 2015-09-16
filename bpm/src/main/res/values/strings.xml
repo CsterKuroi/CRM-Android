@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_activity_add_people">添加出差人</string>
+    <string name="title_activity_add_place">添加出发地</string>
+    <string name="title_activity_add_client">添加客户</string>
+    <string name="title_activity_add_jiekuan">借款单</string>
+    <string name="title_activity_review_process">审核进程</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_form">FormActivity</string>
+    <string name="title_activity_test">testActivity</string>
+    <string name="title_activity_client">ClientActivity</string>
+    <string name="title_activity_input">InputActivity</string>
+
+</resources>

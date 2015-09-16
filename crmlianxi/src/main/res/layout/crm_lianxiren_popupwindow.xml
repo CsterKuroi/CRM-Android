@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" 
+    android:alpha="0.8">
+ <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+    
+         <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp" >
+            <Button
+                    android:id="@+id/btn_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@null"
+                    
+                    android:text="后台识别"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" /> 
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0.2dp"
+            android:background="@color/black" />
+        
+        
+        
+        
+        
+           <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:padding="8dp" >
+            <Button
+                    android:id="@+id/text_allschedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@null"
+                  
+                    android:text="名片扫描"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" /> 
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0.2dp"
+            android:background="@color/black" />
+        
+        
+        
+
+        
+        
+        
+        
+          <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:padding="8dp" >
+            <Button
+                    android:id="@+id/text_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@null"
+               
+                    android:text="手动添加"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" /> 
+        </LinearLayout>
+
+        
+        
+        
+           
+
+        
+        
+
+        
+        
+
+        
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp" >
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

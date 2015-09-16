@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.spinel.myapplication.DateSlider.bpmSliderContainer
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dateSliderContainer"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <com.example.spinel.myapplication.DateSlider.ScrollLayout
+        style="@style/Scroller"
+        app:labelerClass="com.example.spinel.myapplication.DateSlider.labeler.bpmMonthYearLabeler"
+        app:labelerFormat="%tb %tY"
+        app:childWidth="180dp"/>
+    <com.example.spinel.myapplication.DateSlider.ScrollLayout
+        style="@style/Scroller"
+        app:labelerClass="com.example.spinel.myapplication.DateSlider.labeler.bpmWeekLabeler"
+        app:labelerFormat="第%d周"
+        app:childWidth="100dp"/>
+    <com.example.spinel.myapplication.DateSlider.ScrollLayout
+        style="@style/Scroller"
+        app:labelerClass="com.example.spinel.myapplication.DateSlider.labeler.bpmDayLabeler"
+        app:labelerFormat="%tA"
+        app:childWidth="150dp"
+        android:visibility="gone" />
+    <include layout="@layout/bpm_dialogbuttons"/>
+</com.example.spinel.myapplication.DateSlider.bpmSliderContainer>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="chance_type">
+        <item>普通机会</item>
+        <item>重要机会</item>
+        <item>特殊机会</item>
+    </string-array>
+
+    <string-array name="chance_discount">
+        <item>初期沟通（10%）</item>
+        <item>立项跟踪（30%）</item>
+        <item>呈报方案（50%）</item>
+        <item>商务谈判（80%）</item>
+        <item>赢单（100%）</item>
+        <item>输单（0%）</item>
+    </string-array>
+</resources>

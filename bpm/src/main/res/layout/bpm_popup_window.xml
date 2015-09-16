@@ -1,0 +1,43 @@
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bpm_rounded_corners_bg" >
+    <Button
+        android:id="@+id/add_approve"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="审批"
+        android:background="#00aaff94" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#999999" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="任务"
+        android:id="@+id/add_order"
+        android:layout_gravity="center_horizontal"
+        android:background="#00aaff94" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#999999" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="日志"
+        android:id="@+id/add_log"
+        android:layout_gravity="center_horizontal"
+        android:background="#00aaff94" />
+
+
+
+</LinearLayout>
+

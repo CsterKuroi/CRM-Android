@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ViewFlipper
+        android:id="@+id/chat_ctt_shift"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <fragment
+            android:id="@+id/fragment_chat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.mogujie.tt.ui.fragment.ChatFragment" />
+
+        <fragment
+            android:id="@+id/fragment_contact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.mogujie.tt.ui.fragment.ContactFragment" />
+    </ViewFlipper>
+
+    <fragment
+        android:id="@+id/fragment_work"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        class="com.mogujie.tt.ui.fragment.WorkFragment" />
+
+    <fragment
+        android:id="@+id/fragment_crm"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        class="com.mogujie.tt.ui.fragment.CRMFragment" />
+
+     <fragment
+        android:id="@+id/fragment_internal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        class="com.mogujie.tt.ui.fragment.AppFragment" />
+
+    <fragment
+        android:id="@+id/fragment_my"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        class="com.mogujie.tt.ui.fragment.MyFragment" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/tt_tab_bk"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <com.mogujie.tt.ui.widget.NaviTabButton
+            android:id="@+id/tabbutton_chat"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+
+        <com.mogujie.tt.ui.widget.NaviTabButton
+            android:id="@+id/tabbutton_work"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+
+        <com.mogujie.tt.ui.widget.NaviTabButton
+            android:id="@+id/tabbutton_crm"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+
+        <com.mogujie.tt.ui.widget.NaviTabButton
+            android:id="@+id/tabbutton_app"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+
+        <com.mogujie.tt.ui.widget.NaviTabButton
+            android:id="@+id/tabbutton_my"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</LinearLayout>

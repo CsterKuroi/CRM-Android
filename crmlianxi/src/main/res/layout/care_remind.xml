@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="#106bb9" >
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:onClick="back"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:layout_gravity="center_vertical|left"
+            android:scaleType="centerInside"
+            android:src="@drawable/cal_back"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="关爱列表"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+        <Button
+            android:id="@+id/care_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:onClick="back"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="确定"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:background="#106bb9"
+            />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:textColor="#4a92cb"
+                android:text="联系人名"/>
+            <TextView
+                android:layout_weight="0.9"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center" android:textColor="#4a92cb"
+                android:text="类型"/>
+            <TextView
+                android:layout_weight="0.9"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center" android:textColor="#4a92cb"
+                android:text="时间"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center" android:textColor="#4a92cb"
+                android:text="提醒时间SSS"/>
+        </LinearLayout>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/care_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+
+    <TextView
+        android:id="@+id/nothing"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="100dp"
+        android:textSize="30dp"
+        android:textColor="@color/lightgray"
+        android:text="您还没添加关爱信息！"/>
+
+
+</LinearLayout>

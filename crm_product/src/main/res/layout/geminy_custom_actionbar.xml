@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="45dp"
+    >
+
+    <com.geminy.productshow.GEMINY_ClearEditText
+        android:id="@+id/clearEditText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:hint="请输入产品名称"
+        android:singleLine="true"/>
+    <TextView
+        android:id="@+id/search_text"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="4.0"
+        android:gravity="center"
+        android:text="搜索"
+        android:textSize="18sp"
+        android:clickable="true"/>
+
+
+</LinearLayout>

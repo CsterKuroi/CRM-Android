@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menu_OK"
+        android:title="云尚科技公司"
+        app:showAsAction="always"
+        android:textSize="30sp"
+        />
+
+    <item android:id="@+id/menu_margin"
+        android:title="       "
+        app:showAsAction="always" />
+
+    <item android:id="@+id/menu_save"
+        android:title="       "
+        app:showAsAction="always" />
+
+    <item android:id="@+id/action_settings"
+        android:title="haode"
+        android:icon="@drawable/add"
+        android:orderInCategory="100" app:showAsAction="always" />
+</menu>

@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.spinel.myapplication.bpmLoginActivity">
+
+
+    <item
+        android:id="@+id/login_ok"
+        app:showAsAction="ifRoom"
+        android:title="确定"/>
+
+</menu>

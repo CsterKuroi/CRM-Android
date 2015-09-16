@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name_con">合同</string>
+    <string name="hello_world_con">WELCOME</string>
+    <string name="action_about_con">关于</string>
+    <string name="camera_con">照相</string>
+    <string name="title_main_activity_con">合同</string>
+    <string name="title_activity_add_con">添加合同</string>
+    <string name="number_con">合同编号</string>
+    <string name="snumber_con">编号</string>
+    <string name="name_con">合同标题</string>
+    <string name="sname_con">标题</string>
+    <string name="phone_con">联系方式</string>
+    <string name="customer_con">客户名称</string>
+    <string name="principal_con">负责人</string>
+    <string name="ourSigner_con">我方签约人</string>
+    <string name="cusSigner_con">客户签约人</string>
+    <string name="date_con">签约日期</string>
+    <string name="sdate_con">日期</string>
+    <string name="dateStart_con">生效期</string>
+    <string name="dateEnd_con">截止期</string>
+    <string name="money_con">金额</string>
+    <string name="discount_con">折扣</string>
+    <string name="payment_con">支付方式</string>
+    <string name="type_con">合同类型</string>
+    <string name="remark_con">备注</string>
+    <string name="number_hint_con">编号（必填）</string>
+    <string name="name_hint_con">标题（必填）</string>
+    <string name="phone_hint_con">客户联系方式（必填）</string>
+    <string name="customer_hint_con">客户（必填）</string>
+    <string name="date_hint_con">签约日期（必填）</string>
+    <string name="dateStart_hint_con">生效期</string>
+    <string name="dateEnd_hint_con">截止期</string>
+    <string name="money_hint_con">金额（必填）</string>
+    <string name="discount_hint_con">折扣</string>
+    <string name="payment_hint_con">支付方式</string>
+    <string name="type_hint_con">合同类型</string>
+    <string name="principal_hint_con">负责人（必填）</string>
+    <string name="ourSigner_hint_con">我方签约人</string>
+    <string name="cusSigner_hint_con">客户签约人</string>
+    <string name="remark_hint_con">请输入备注信息</string>
+    <string name="save_con">保存</string>
+    <string name="cancel_con">取消</string>
+    <string name="add_con">添加</string>
+    <string name="search_hint_con">请输入合同标题/编号</string>
+    <string name="male_con">合同</string>
+    <string name="female_con">暂留</string>
+    <string name="title_activity_detail_con">合同详情</string>
+    <string name="call_con">编辑</string>
+    <string name="sms_con">删除</string>
+    <string name="title_activity_modify_con">修改信息</string>
+    <string name="modify_con">修改</string>
+    <string name="delete_con">删除</string>
+    <string name="call_text_con">编辑</string>
+    <string name="view_text_con">查看详情</string>
+    <string name="sms_text_con">删除</string>
+    <string name="title_activity_about_con">关于</string>
+    <string name="about_con">关于</string>
+    <string name="about_text_con">
+        预留\n
+        </string>
+    <string name="action_settings_con">Settings</string>
+    <string name="title_activity_show_con">照片</string>
+    <string name="title_activity_con_kl">ConKLActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_con_cg">ConCGActivity</string>
+    <string name="title_activity_con_pic">ConPicActivity</string>
+
+</resources>

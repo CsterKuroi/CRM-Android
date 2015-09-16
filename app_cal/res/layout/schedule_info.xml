@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:background="@drawable/schedule_bk"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  
+  <com.pwp.borderText.BorderTextView
+      android:id="@+id/scheduleInfoTop"
+	  android:gravity="center"
+	  android:layout_width="fill_parent"
+	  android:layout_height="40dp"
+	  android:background="@drawable/top_day"
+	  android:textStyle="bold"
+	  android:clickable="true"
+	  android:textColor="#000000"
+	  android:text="日程"
+  />
+  <com.pwp.borderText.BorderTextView
+      android:id="@+id/scheduleInfo"
+	  android:gravity="center"
+	  android:layout_width="fill_parent"
+	  android:layout_height="40dp"
+	  android:background="@drawable/top_day"
+	  android:textStyle="bold"
+	  android:clickable="true"
+	  android:textColor="#000000"
+  />
+</LinearLayout>

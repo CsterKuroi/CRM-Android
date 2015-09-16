@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">产品展示</string>
+
+    <string name="ps_title_section0">明星产品</string>
+    <string name="ps_title_section1">北斗导航</string>
+    <string name="ps_title_section2">惯性导航</string>
+    <string name="ps_title_section3">惯性传感</string>
+    <string name="ps_title_section4">卫星通信</string>
+<!--
+这些标签名称应该从数据库加载而不是string定的！！！
+-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="ps_tab1">图文详情</string>
+    <string name="ps_tab2">产品特点</string>
+    <string name="ps_tab3">相关产品</string>
+
+    <string name="product_summary">产品概述</string>
+
+</resources>

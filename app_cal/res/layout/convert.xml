@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/schedule_bk">
+    
+<!--   <com.pwp.borderText.BorderTextView 
+      android:id="@+id/convertTop"
+	  android:gravity="center"
+	  android:layout_width="fill_parent"
+	  android:layout_height="40dp"
+	  android:background="@drawable/top_day"
+	  android:textStyle="bold"
+	  android:clickable="true"
+	  android:textColor="#000000"
+	  android:text="日期转换"
+  />
+   -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#106bb9" >
+
+        <ImageButton
+            android:id="@+id/ImageButton_back"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/back" />
+
+        <TextView
+            android:id="@+id/topbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="日期转换"
+            android:textColor="#FFFF"
+            android:textSize="20sp" />
+
+        <TextView
+
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical|left"
+
+            android:textColor="#FFFF"
+            android:textSize="16sp" />
+    </RelativeLayout>
+  <com.pwp.borderText.BorderTextView
+      android:id="@+id/convertDate"
+      android:layout_marginTop="5dp"
+	  android:gravity="center"
+	  android:layout_width="fill_parent"
+	  android:layout_height="40dp"
+	  android:background="#ffffff"
+	  android:drawableRight="@drawable/date_convert"
+	  android:paddingRight="5dp"
+	  android:textStyle="bold"
+	  android:clickable="true"
+	  android:textColor="#000000"
+	  android:paddingTop="10dp"
+  />
+  
+  <com.pwp.borderText.BorderTextView
+      android:id="@+id/convert"
+      android:layout_marginTop="5dp"
+      android:layout_gravity="center_horizontal"
+	  android:gravity="center"
+	  android:layout_width="100dp"
+	  android:layout_height="40dp"
+	  android:background="#A0FF20"
+	  android:paddingRight="5dp"
+	  android:textStyle="bold"
+	  android:clickable="true"
+	  android:textColor="#ffffff"
+	  android:text="查询"
+  />
+  
+  <TextView 
+      android:id="@+id/convertResult"
+      android:layout_marginTop="5dp"
+	  android:gravity="center"
+	  android:layout_width="fill_parent"
+	  android:layout_height="100dp"
+	  android:background="#A08080"
+	  android:textStyle="bold"
+	  android:textColor="#208080"
+	  android:textSize="20sp"
+  />
+</LinearLayout>

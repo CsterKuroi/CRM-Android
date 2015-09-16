@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:Theme.Holo.Light" />
+    <!-- spinner -->
+
+    <style name="spinner_style">
+        <item name="android:paddingLeft">5dip</item>
+    </style>
+</resources>

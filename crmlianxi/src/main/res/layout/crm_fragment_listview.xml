@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:fab="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:background="#fff" >
+
+
+        <Spinner
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:id="@+id/spinner"
+            android:textColor="#C5C5C5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Spinner
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:id="@+id/spinner2"
+            android:textColor="#C5C5C5"
+
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/spinner"
+            android:layout_toEndOf="@+id/spinner" />
+
+        <SearchView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchView"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/spinner2"
+            android:layout_toEndOf="@+id/spinner2" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:background="#fff" >
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/ic_add_white_24dp"
+        fab:fab_colorNormal="@color/accent"
+        fab:fab_colorPressed="@color/accent_pressed"
+        fab:fab_colorRipple="@color/ripple"
+        android:layout_marginRight="46dp"
+        android:layout_marginBottom="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="46dp" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:cacheColorHint="@android:color/transparent"
+        android:headerDividersEnabled="false"
+        />
+</RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp"
+    android:background="@color/geminy_light_gray"
+    >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/geminy_white"
+        >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="3.0"
+            android:text="产品名称"
+            android:gravity="center"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:id="@+id/stock_pro_name"
+            android:gravity="center"
+            android:textSize="15sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@color/geminy_white"
+        >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="3.0"
+            android:text="产品库存"
+            android:gravity="center"
+            android:textSize="18sp" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_weight="1.0">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:id="@+id/stock_pro_sub"
+                android:text="-"
+                android:textColor="@color/geminy_black"
+                android:gravity="center"
+                android:background="@color/geminy_white"
+                />
+            <EditText
+                android:layout_width="70dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/stock_pro_num"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:inputType="number"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/stock_pro_add"
+                android:text="+"
+                android:textColor="@color/geminy_black"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:background="@color/geminy_white"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/geminy_white"
+        >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="3.0"
+            android:text="备注信息"
+            android:gravity="center"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:id="@+id/stock_pro_remark"
+            android:clickable="true"
+            android:hint="请输入备注"
+            android:gravity="center"
+            android:drawableRight="@drawable/ic_next_mid"/>
+
+    </LinearLayout>
+
+</LinearLayout>

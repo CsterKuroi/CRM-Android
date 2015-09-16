@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="visit_divide_color">#11000000</color>
+    <color name="visit_button_color">#17000000</color>
+    <color name="visit_bg_color">#09000000</color>
+</resources>

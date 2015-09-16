@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+>
+<include layout="@layout/crm_study_head" android:id="@+id/head"/>
+	<jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:id="@+id/main_swipe"
+		android:layout_below="@+id/head"
+		>
+	<com.example.renxin.shujia.karl.view.MyGridView
+	    android:id="@+id/bookShelf"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_below="@id/head"
+	    android:cacheColorHint="#00000000"
+	    android:columnWidth="90.0dip"
+	    android:fadingEdge="none"
+	    android:horizontalSpacing="5dp"
+	    android:listSelector="#00000000"
+	    android:numColumns="3"
+	    android:scrollbars="vertical"
+	    android:verticalSpacing="60dp" />
+
+	</jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
+</RelativeLayout>

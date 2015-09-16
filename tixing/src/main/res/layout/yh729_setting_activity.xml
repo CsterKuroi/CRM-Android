@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/s_head"
+        layout="@layout/yh729_headcontrolpanel" />
+    <View
+        android:layout_below="@id/s_head"
+        android:id="@+id/h_bar"
+        android:background="@color/divider_color"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <RelativeLayout
+        android:layout_below="@id/h_bar"
+        android:id="@+id/setting"
+        android:layout_marginBottom="10dp"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Switch
+            android:layout_marginLeft="10dp"
+            android:textSize="15sp"
+            android:id="@+id/setting_remind"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/setting_remind"
+            android:checked="true"
+            android:enabled="true"
+            />
+
+        <Switch
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/setting_remind"
+            android:textSize="15sp"
+            android:id="@+id/sound"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:text="@string/sound"
+            android:checked="true" />
+
+        <Switch
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/sound"
+            android:textSize="15sp"
+            android:id="@+id/vibration"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:text="@string/vibration"
+            android:checked="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/setting"
+        android:id="@+id/censor"
+        android:layout_marginBottom="10dp"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Switch
+            android:layout_marginLeft="10dp"
+            android:id="@+id/censor_remind"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/check_remind"
+            android:textColor="#000000"
+            android:checked="true" />
+
+        <View
+            android:layout_below="@id/censor_remind"
+            android:id="@+id/bar1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@color/divider_color" />
+
+        <Switch
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/bar1"
+            android:textSize="15sp"
+            android:id="@+id/sound_censor"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:text="@string/sound"
+            android:checked="true" />
+
+        <Switch
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/sound_censor"
+            android:textSize="15sp"
+            android:id="@+id/vibration_censor"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:text="@string/vibration"
+            android:checked="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/censor"
+        android:textSize="15sp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/schedule"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Switch
+            android:layout_marginLeft="10dp"
+            android:id="@+id/schedule_remind"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/schedule_remind"
+            android:textColor="#000000"
+            android:checked="true" />
+
+        <View
+            android:layout_below="@id/schedule_remind"
+            android:id="@+id/bar2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@color/divider_color" />
+
+        <Switch
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/bar2"
+            android:textSize="15sp"
+            android:id="@+id/sound_schedule"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:text="@string/sound"
+            android:checked="true" />
+
+        <Switch
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/sound_schedule"
+            android:textSize="15sp"
+            android:id="@+id/vibration_schedule"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:text="@string/vibration"
+            android:checked="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_below="@id/schedule"
+        android:id="@+id/diary"
+        android:layout_marginBottom="10dp"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Switch
+            android:layout_marginLeft="10dp"
+            android:id="@+id/diary_remind"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/dairy_remind"
+            android:textColor="#000000"
+            android:checked="true" />
+
+        <View
+            android:layout_below="@id/diary_remind"
+            android:id="@+id/bar3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@color/divider_color" />
+
+        <Switch
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/bar3"
+            android:textSize="15sp"
+            android:id="@+id/sound_diary"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:text="@string/sound"
+            android:checked="true" />
+
+        <Switch
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/sound_diary"
+            android:textSize="15sp"
+            android:id="@+id/vibration_diary"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:text="@string/vibration"
+            android:checked="true" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

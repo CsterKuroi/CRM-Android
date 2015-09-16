@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.spinel.myapplication">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application>
+        <activity
+            android:name=".bpmMainActivity"
+            android:parentActivityName=".bpmLoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAppCompat" />
+        <activity
+            android:name=".Form.bpmTraceProcessActivity"
+            android:label="@string/title_activity_review_process"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAppCompat" />
+        <activity
+            android:name=".Form.bpmTraceTaskActivity"
+            android:label="发起的任务"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAppCompat" />
+        <activity
+            android:name=".SortListView.bpmSortListMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAppCompat" />
+        <activity
+            android:name=".bpmLoginActivity"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAppCompat">
+        </activity>
+        <activity
+            android:name=".Form.bpmFormActivity"
+            android:label="@string/title_activity_form"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAppCompat" />
+        <activity
+            android:name=".Form.bpmClientActivity"
+            android:label="选择客户"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAppCompat" />
+        <activity
+            android:name=".Form.bpmInputActivity"
+            android:label="@string/title_activity_input"
+            android:theme="@style/AppThemeAppCompat" />
+    </application>
+
+</manifest>

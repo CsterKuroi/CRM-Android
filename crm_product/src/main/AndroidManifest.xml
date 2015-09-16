@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.geminy.productshow">
+    <!-- 联网权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application>
+        <activity
+            android:name=".Activity.GEMINY_MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppThemeProduct" />
+
+        <activity
+            android:name=".Activity.GEMINY_ProductDetailInfosActivity"
+            android:label="产品详情"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeProduct" />
+        <activity
+            android:name=".Activity.GEMINY_StockControlActivity"
+            android:label="库存管理"
+            android:theme="@style/AppThemeProduct" />
+        <activity
+            android:name=".Activity.GEMINY_SearchActivity"
+            android:label="产品搜索"
+            android:theme="@style/AppThemeProduct" />
+        <activity
+            android:name=".Activity.GEMINY_StockRemarkEditActivity"
+            android:label=""
+            android:theme="@style/AppThemeProduct" />
+
+    </application>
+
+</manifest>

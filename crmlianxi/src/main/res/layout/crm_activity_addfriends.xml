@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:fab="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_top_bar"
+            android:background="#106bb9" >
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:onClick="back"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:layout_gravity="center_vertical|left"
+                android:scaleType="centerInside"
+                android:src="@drawable/cal_back"/>
+
+            <ImageView
+                android:id="@+id/iv_add"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:onClick="back"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:src="@drawable/add2"
+                android:background="#106bb9"/>
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Spinner01"
+                android:layout_centerVertical="true"
+                android:background="#106bb9"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="100dp"
+                android:dropDownVerticalOffset="20dp"
+                android:layout_marginStart="200dp" />
+        </RelativeLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:id="@+id/lay2">
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:id="@+id/kehu_sousuo">
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/search_icon"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:textSize="15sp"
+                        android:layout_gravity="center_vertical"
+                        android:text="搜索"/>
+                </LinearLayout>
+                <ImageView
+                    android:layout_height="2px"
+                    android:layout_width="match_parent"
+                    android:background="@color/lightgray"
+                    android:src="@color/lightgray"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="2px"
+                android:layout_gravity="right"
+                android:background="@color/lightgray" />
+
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:id="@+id/kehu_shaixuantiaojian">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|center"
+                        android:textSize="15sp"
+                        android:layout_gravity="center_vertical|center"
+                        android:text="筛选条件"/>
+                </LinearLayout>
+                <ImageView
+                    android:layout_height="2px"
+                    android:layout_width="match_parent"
+                    android:background="@color/lightgray"
+                    android:src="@color/lightgray"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="2px"
+                android:layout_gravity="right"
+                android:background="@color/lightgray" />
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/waveid"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:id="@+id/kehu_gengxinshijian">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|center"
+                        android:textSize="15sp"
+                        android:layout_gravity="center_vertical"
+                        android:text="更新时间"/>
+                </LinearLayout>
+                <ImageView
+                    android:layout_height="2px"
+                    android:layout_width="match_parent"
+                    android:background="@color/lightgray"
+                    android:src="@color/lightgray"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    <TextView
+        android:id="@+id/nothing"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="100dp"
+        android:textSize="30dp"
+        android:textColor="@color/lightgray"
+        android:text="您还没添加客户信息！"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:id="@+id/linelayout">
+            
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lv"
+                >
+                </ListView>
+
+
+        </LinearLayout>
+
+</ScrollView>
+
+    </LinearLayout>
+
+

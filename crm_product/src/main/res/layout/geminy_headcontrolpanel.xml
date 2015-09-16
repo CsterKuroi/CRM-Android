@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.geminy.productshow.GEMINY_HeadControlPanel xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/geminy_mid_blue"
+
+    android:layout_alignParentTop="true">
+
+    <LinearLayout
+        android:background="@color/geminy_mid_blue"
+        android:id="@+id/btn_head_left"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+        <View
+            android:layout_width="15dp"
+            android:layout_height="match_parent"/>
+        <ImageView
+            android:id="@+id/left_image"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp">
+        </ImageView>
+        <View
+            android:layout_width="5dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/left_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <TextView
+        android:background="@color/geminy_mid_blue"
+        android:id="@+id/middle_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:background="@color/geminy_mid_blue"
+        android:id="@+id/btn_head_right"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+        <View
+            android:layout_width="5dp"
+            android:layout_height="match_parent"/>
+        <ImageView
+            android:id="@+id/right_image"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp">
+        </ImageView>
+        <View
+            android:layout_width="5dp"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/right_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+</com.geminy.productshow.GEMINY_HeadControlPanel>

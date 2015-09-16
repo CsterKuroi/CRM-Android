@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f3f3f3">
+    <LinearLayout
+        android:id="@+id/repeat_line"
+        android:layout_margin="12dp"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@string/setrepeat"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <Spinner
+            android:id="@+id/repeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog">
+
+        </Spinner>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/repeat_line"
+        android:id="@+id/date_line"
+        android:layout_margin="12dp"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@string/setdate"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_weight="3"
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:focusable="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/date_line"
+        android:id="@+id/time_line"
+        android:layout_margin="12dp"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@string/settime"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_weight="3"
+            android:id="@+id/time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:focusable="false" />
+    </LinearLayout>
+    <View
+        android:id="@+id/setdatetime_divider"
+        android:layout_below="@id/time_line"
+        android:background="@color/divider_color"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+    </View>
+
+    <LinearLayout
+        android:layout_below="@id/setdatetime_divider"
+        android:id="@+id/button_line"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/cancel"
+
+            android:background="@drawable/btn_bg"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="15dp"
+                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                />
+        </FrameLayout>
+
+
+        <View
+            android:background="@color/divider_color"
+            android:layout_width="1dp"
+            android:layout_height="match_parent">
+        </View>
+
+        <FrameLayout
+            android:id="@+id/confirm"
+            android:background="@drawable/btn_bg"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="15dp"
+                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/confirm"
+                />
+        </FrameLayout>
+    </LinearLayout>
+
+</RelativeLayout>

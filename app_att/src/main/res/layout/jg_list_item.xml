@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/cell_height"
+    android:id="@+id/layout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cell_height">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/cell_padding_left"
+                android:paddingRight="@dimen/cell_padding_right"
+                android:layout_weight="1">
+
+                <TextView android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff000000"
+                    android:textSize="@dimen/content_font_size"
+                    android:layout_gravity="center_vertical"
+                    android:text="姓名" />
+
+                <TextView android:id="@+id/info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ff424242"
+                        android:textSize="13sp"
+                    android:layout_gravity="center_vertical"
+                    android:text="销售部门" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="已签到"
+                        android:id="@+id/textView39"
+                        android:textSize="@dimen/content_font_size"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="N/A"
+                        android:id="@+id/sdays"
+                        android:textSize="@dimen/content_font_size"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="天 "
+                        android:id="@+id/textView44"
+                        android:textSize="@dimen/content_font_size"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="未签到"
+                        android:id="@+id/textVew45"
+                        android:textSize="@dimen/content_font_size"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="N/A"
+                        android:id="@+id/usdays"
+                        android:textSize="@dimen/content_font_size"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="天 "
+                        android:id="@+id/textView47"
+                        android:textSize="@dimen/content_font_size"
+                        android:textColor="@android:color/black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="5dp"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:id="@+id/signed"
+                        android:layout_weight="1"
+                        android:background="#AB79FF56" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="5dp"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:id="@+id/unsigned"
+                        android:layout_weight="1"
+                        android:background="#B6FF5E3A" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

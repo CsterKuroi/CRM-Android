@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.spinel.myapplication.Form.bpmFormActivity">
+
+    <item
+    android:id="@+id/form_ok"
+    app:showAsAction="ifRoom"
+    android:title="提交"/>
+</menu>

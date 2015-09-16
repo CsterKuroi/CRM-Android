@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="main_msg">消息</string>
+    <string name="main_contact">通讯录</string>
+    <string name="main_app">应用</string>
+    <string name="main_work">工作</string>
+    <string name="main_crm">CRM</string>
+    <string name="page_remind">提醒</string>
+    <string name="page_chat">聊天</string>
+    <!-- main_innernet不再使用-->
+    <string name="main_innernet">发现</string>
+    <string name="main_me_tab">我的</string>
+    <string name="page_me">我</string>
+    <string name="page_setting">设置</string>
+    <string name="page_user_detail">详细资料</string>
+
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="countries">
+        <item>百度公司,mp</item>
+        <item>星网宇达,mp</item>
+        <item>杏儿公司,mp</item>
+        <item>在此公司,mp</item>
+        <item>自来也,mp</item>
+        <item>张根所,mp</item>
+        <item>王鑫,mp</item>
+        <item>王健字,mp</item>
+        <item>列明,mp</item>
+
+    </string-array>
+
+
+    <string-array name="kehu">
+        <item>所有客户</item>
+        <item>我的客户</item>
+        <item>下属客户</item>
+        <item>其他客户</item>
+
+    </string-array>
+</resources>

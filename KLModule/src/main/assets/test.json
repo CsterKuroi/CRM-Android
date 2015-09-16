@@ -1,0 +1,111 @@
+﻿{
+  "dept": [
+    {
+      "manager": "0",
+      "pri": "1,0",
+      "id": 1,
+      "name": "\u661f\u7f51\u5b87\u8fbe"
+    },
+    {
+      "manager": "0",
+      "pri": "1-1,1",
+      "id": 2,
+      "name": "\u603b\u7ecf\u7406\u529e\u516c\u5ba4"
+    },
+    {
+      "manager": "12",
+      "pri": "1-3,1",
+      "id": 20,
+      "name": "\u4eba\u529b\u8d44\u6e90"
+    },
+    {
+      "manager": "0",
+      "pri": "1-999,1",
+      "id": 22,
+      "name": "\u65e0\u90e8\u95e8\u4eba\u5458"
+    },
+    {
+      "manager": "0",
+      "pri": "1-4,1",
+      "id": 23,
+      "name": "\u8d22\u52a1\u90e8"
+    },
+    {
+      "manager": "0",
+      "pri": "1-5,1",
+      "id": 24,
+      "name": "\u5ba1\u8ba1\u90e8"
+    },
+    {
+      "manager": "0",
+      "pri": "1-6,1",
+      "id": 25,
+      "name": "\u4f9b\u5e94\u90e8"
+    },
+    {
+      "manager": "0",
+      "pri": "1-7,1",
+      "id": 26,
+      "name": "\u8d28\u91cf\u90e8"
+    },
+    {
+      "manager": "0",
+      "pri": "1-8,1",
+      "id": 27,
+      "name": "\u751f\u4ea7\u90e8"
+    },
+    {
+      "manager": "0",
+      "pri": "1-9,1",
+      "id": 28,
+      "name": "\u7814\u53d1\u4e2d\u5fc3"
+    },
+    {
+      "manager": "0",
+      "pri": "1-10,1",
+      "id": 29,
+      "name": "\u4e1a\u52a1\u53d1\u5c55\u4e2d\u5fc3"
+    },
+    {
+      "manager": "0",
+      "pri": "1-11,1",
+      "id": 30,
+      "name": "\u5bfc\u822a\u4e8b\u4e1a\u90e8"
+    },
+    {
+      "manager": "0",
+      "pri": "1-12,1",
+      "id": 31,
+      "name": "\u6d4b\u91cf\u4e8b\u4e1a\u90e8"
+    },
+    {
+      "manager": "0",
+      "pri": "1-13,1",
+      "id": 35,
+      "name": "\u9500\u552e\u90e8"
+    }
+  ],
+  "user": [
+    {
+      "udept": "2-2",
+      "touxiang": "",
+      "id": 5,
+      "name": "??",
+      "uid": "01"
+    },
+    {
+      "udept": "2-2",
+      "touxiang": "",
+      "id": 6,
+      "name": "??",
+      "uid": "02"
+    },
+    {
+      "udept": "2-2",
+      "touxiang": "",
+      "id": 7,
+      "name": "???",
+      "uid": "000003"
+    }
+  ]
+}

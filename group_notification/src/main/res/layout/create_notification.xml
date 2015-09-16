@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#106bb9">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发群通知"
+            android:id="@+id/textView_create_lable"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView_create_back"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/notification_conleft" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView_create_sendok"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/check34" />
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/choosefanwei"
+            android:layout_weight="2"
+            android:text="发送范围"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/Textview_yixuan"
+            android:layout_weight="1"
+            android:text="已选:"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3px"
+        android:background="?android:attr/listDivider"
+        />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:hint="请输入标题"
+            android:id="@+id/edittext_lable"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <EditText
+            android:hint="请输入内容
+
+            ..."
+            android:id="@+id/edittext_content"
+            android:layout_width="match_parent"
+            android:singleLine="false"
+            android:gravity="left"
+            android:layout_height="120dip" />
+        <Switch
+            android:text="是否需要确认："
+            android:id="@+id/switch_choose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textOff="不需确认"
+            android:textOn="需要确认" />
+
+    </LinearLayout>
+</LinearLayout>

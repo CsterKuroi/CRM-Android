@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_cal">日程管理</string>
+    <string name="app_study">学习大厅</string>
+    <string name="app_att3">签到统计</string>
+    <string name="app_kehubaifang">客户拜访</string>
+    <string name="app_shuju">数据统计</string>
+    <string name="app_bpm">群通知</string>
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="title_activity_shot_and_locate">ShotAndLocateActivity</string>
+    <string name="title_activity_my_camera">MyCameraActivity</string>
+    <string name="title_activity_locate">LocateActivity</string>
+    <string name="title_activity_show">ShowActivity</string>
+    <string name="title_activity_list">ListActivity</string>
+    <string name="title_activity_alarm">AlarmActivity</string>
+    <string name="title_activity_entry">考勤打卡</string>
+    <string name="title_activity_apartment">ApartmentActivity</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="title_activity_statistic">StatisticActivity</string>
+    <string name="title_activity_customer_picker">请选择联系人</string>
+</resources>

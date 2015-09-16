@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.spinel.myapplication.Form.bpmInputActivity">
+
+    <item
+        android:id="@+id/input_ok"
+        app:showAsAction="ifRoom"
+        android:title="确定"/>
+</menu>

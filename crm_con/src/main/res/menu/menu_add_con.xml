@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.kuroi.contract.activity.ConAddActivity">
+
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/conb4"
+        android:orderInCategory="100"
+        android:title="@string/save_con"
+        android:showAsAction="ifRoom" />
+
+</menu>

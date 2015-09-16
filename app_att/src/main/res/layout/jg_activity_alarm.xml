@@ -1,0 +1,205 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jogle.attendance.JGAlarmActivity"
+    android:background="#edf3f5">
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/imageButton4"
+        android:adjustViewBounds="false"
+        android:background="#106bb9"
+        android:layout_alignParentLeft="true" />
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:id="@+id/linearLayout4"
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true">
+
+        <ImageView
+            android:id="@+id/imageButton5"
+            android:src="@drawable/conleft"
+            android:layout_width="45dp"
+            android:layout_height="45dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="考勤提醒"
+            android:id="@+id/textView7"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/imageButton4"
+        android:id="@+id/linearLayout6"></LinearLayout>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout6"
+        android:paddingBottom="@dimen/cell_padding_bottom"
+        android:paddingLeft="@dimen/cell_padding_right"
+        android:paddingRight="@dimen/cell_padding_right"
+        android:paddingTop="@dimen/cell_padding_top"
+        android:id="@+id/linearLayout15"
+        android:background="#FFFFFF">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="考勤提醒"
+            android:id="@+id/textView8"
+            android:textColor="#ff000000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="15sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="开启后在设定时间点会收到提醒"
+            android:id="@+id/textView9"
+            android:textColor="#dedede"
+            android:textSize="13sp"
+            android:layout_below="@+id/textView8"
+            android:layout_alignParentLeft="true" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/switch1"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textOn="开"
+            android:textOff="关" />
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/linearLayout7"
+        android:layout_below="@+id/linearLayout15"
+        android:layout_alignParentLeft="true"></LinearLayout>
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/cell_padding_bottom"
+        android:paddingLeft="@dimen/cell_padding_right"
+        android:paddingRight="@dimen/cell_padding_right"
+        android:paddingTop="@dimen/cell_padding_top"
+        android:id="@+id/linearLayout16"
+        android:layout_below="@+id/linearLayout7"
+        android:layout_alignParentLeft="true"
+        android:background="#FFFFFF">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="上班前"
+            android:id="@+id/textView18"
+            android:textColor="#ff000000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="上班前"
+            android:id="@+id/textView25"
+            android:textColor="#ff000000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="5分钟"
+            android:id="@+id/textView32"
+            android:textColor="#dedede"
+            android:textSize="15sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/linearLayout17"
+        android:layout_below="@+id/linearLayout16"
+        android:layout_alignParentLeft="true" />
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/cell_padding_bottom"
+        android:paddingLeft="@dimen/cell_padding_right"
+        android:paddingRight="@dimen/cell_padding_right"
+        android:paddingTop="@dimen/cell_padding_top"
+        android:id="@+id/linearLayout18"
+        android:layout_below="@+id/linearLayout17"
+        android:layout_alignParentLeft="true"
+        android:background="#FFFFFF">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="下班前"
+            android:id="@+id/textView29"
+            android:textColor="#ff000000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="5分钟"
+            android:id="@+id/textView36"
+            android:textColor="#dedede"
+            android:textSize="15sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/linearLayout19"
+        android:layout_below="@+id/linearLayout18"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string-array name="client">
+        <item>高盟软件技术有限公司</item>
+        <item>东明日远洋电子贸易有限公司</item>
+    </string-array>
+
+    <string-array name="action_list">
+        <item>我提交的</item>
+        <item>提交给我的</item>
+        <item>我下属的</item>
+        <item>\@我</item>
+        <item>我参与的</item>
+        <item>草稿</item>
+    </string-array>
+
+
+</resources>

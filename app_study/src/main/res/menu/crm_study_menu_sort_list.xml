@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/sortlist_ok"
+        android:showAsAction="ifRoom"
+        android:title="确定"
+        tools:ignore="AppCompatResource" />
+
+</menu>

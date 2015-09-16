@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:background="#106bb9" >
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/back" />
+        <TextView
+            android:id="@+id/topbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="所有日程"
+            android:textColor="#FFFF"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/richeng"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical|left"
+            android:text="日程"
+            android:textColor="#FFFF"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:textColor="#4a92cb"
+                android:text="类型"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_weight="0.8"  android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center" android:textColor="#4a92cb"
+                android:text="开始"/>
+            <TextView
+                android:layout_weight="0.8"  android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center" android:textColor="#4a92cb"
+                android:text="结束"/>
+            <TextView
+                android:layout_weight="1"  android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center" android:textColor="#4a92cb"
+                android:text="优先级"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/nothing"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="100dp"
+        android:textSize="30dp"
+        android:textColor="@color/lightgray"
+        android:text="没有日程信息！"/>
+
+
+</LinearLayout>

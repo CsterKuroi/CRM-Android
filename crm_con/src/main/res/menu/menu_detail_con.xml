@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.kuroi.contract.activity.ConDetailActivity">
+
+    <item
+        android:id="@+id/action_modify"
+        android:icon="@drawable/conb3"
+        android:title="@string/modify_con"
+        android:orderInCategory="1"
+        android:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_delete"
+        android:icon="@drawable/conb5"
+        android:title="@string/delete_con"
+        android:orderInCategory="2"
+        android:showAsAction="ifRoom" />
+
+</menu>

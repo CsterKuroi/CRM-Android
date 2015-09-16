@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jogle.attendance.JGShowActivity"
+    android:background="@android:color/black">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/show_pic"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:id="@+id/imageButton2"
+        android:adjustViewBounds="false"
+        android:src="@drawable/actionbarbg2"
+        android:background="@null"
+        android:contentDescription="" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/cell_padding_top"
+        android:id="@+id/linearLayout3" >
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="16dp"
+            android:id="@+id/backButton"
+            android:src="@drawable/backwhite"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#00ffffff"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_vertical"
+            android:paddingRight="30dp"
+            android:paddingLeft="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="照片预览"
+            android:id="@+id/show_time"
+            android:textColor="#ffffffff"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/title_font_size" />
+    </LinearLayout>
+
+</RelativeLayout>

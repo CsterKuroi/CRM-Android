@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ebebeb"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_top_bar"
+        android:background="#106bb9" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:onClick="back"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/cal_back" />
+
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:onClick="back"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/add2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="联系人"
+            android:layout_centerInParent="true"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:id="@+id/textView9"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal|fill_horizontal"
+        android:background="#fff"
+        android:orientation="horizontal">
+        <Spinner
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:id="@+id/spinner"
+            android:textColor="#C5C5C5"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:spinnerMode="dropdown"/>
+
+        <ImageView
+            android:layout_height="match_parent"
+            android:layout_width="2px"
+            android:layout_marginLeft="20dp"
+            android:background="@color/lightgray"
+            android:id="@+id/imageView2" />
+
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/search_icon"
+            android:layout_centerVertical="true"
+            android:id="@+id/imageView3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:id="@+id/tv_search"
+            android:layout_gravity="center_vertical"
+            android:text=" 搜索联系人" />
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/black1"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:color="#999999"
+        android:clickable="true">
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/nothing"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="100dp"
+        android:textSize="30dp"
+        android:textColor="@color/lightgray"
+        android:text="您还没添加联系人信息！"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:orientation="vertical"
+            android:id="@+id/linelayout">
+            <com.melnykov.fab.sample.SortListView.crmSideBar
+                android:id="@+id/sidrbar"
+                android:layout_width="30.0dip"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right|center" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
+

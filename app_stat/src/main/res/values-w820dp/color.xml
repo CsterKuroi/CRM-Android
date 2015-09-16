@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="title_background">#fff3f4f5</color>
+    <color name="title_font">#ff000000</color>
+    <color name="content_background">#ffffffff</color>
+    <color name="content_font">#ff000000</color>
+    <color name="content_font_blue">#ff01aff4</color>
+    <color name="tab1">#ff01aff4</color>
+    <color name="tab2">#ff929292</color>
+    <color name="tab3">#ffffffff</color>
+    <color name="line">#ffdddddd</color>
+    <color name="divider_color">#FFE7E7</color>
+
+    <color name="focus_circle_bg">#F24949</color>
+    <color name="date_1">#F24949</color>
+    <color name="date_2">#40000000</color>
+</resources>

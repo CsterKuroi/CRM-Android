@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.code.bmj.groupnotifycation" >
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <application>
+        <activity
+            android:name=".GroupNotificationMainActivity">
+        </activity>
+        <activity
+            android:name=".CreateNotificationActivity">
+            </activity>
+        <activity
+            android:name=".GetFanweiActivity">
+        </activity>
+        <activity
+            android:name=".NotificationDetailActivity">
+        </activity>
+    </application>
+
+</manifest>
