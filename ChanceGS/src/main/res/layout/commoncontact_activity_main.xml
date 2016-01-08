@@ -6,18 +6,35 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
         android:background="#106bb9">
 
-        <ImageView
+        <RelativeLayout
             android:id="@+id/back"
             android:layout_width="wrap_content"
-            android:layout_height="18dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/tt_top_back" />
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/left_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="6dp"
+                android:scaleType="center"
+                android:src="@drawable/tt_top_back" />
+
+            <TextView
+                android:id="@+id/left_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_toRightOf="@id/left_btn"
+                android:gravity="center_vertical"
+                android:text="返回"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/textView"
@@ -25,23 +42,26 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="选择客户联系人"
+            android:text="选择部门人员"
             android:textColor="#ffffff"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/ok"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:textColor="@android:color/white"
-            android:text="确定" />
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="确定"
+            android:textColor="@android:color/white" />
     </RelativeLayout>
 
     <SearchView
         android:id="@+id/search"
+        android:queryHint="搜索姓名"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F0F0F0F0" />
@@ -49,15 +69,16 @@
     <ListView
         android:id="@+id/id_tree"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:divider="#aaa"
-        android:dividerHeight="1px" />
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:divider="#eeeeee"
+        android:dividerHeight="0.1px" />
 
     <TextView
+        android:text="已选"
         android:id="@+id/id_text"
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="8" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 </LinearLayout>

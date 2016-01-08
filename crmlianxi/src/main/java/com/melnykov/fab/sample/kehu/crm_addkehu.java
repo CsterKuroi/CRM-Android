@@ -2,13 +2,17 @@ package com.melnykov.fab.sample.kehu;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -17,11 +21,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 
+import com.melnykov.fab.sample.tools.CRMValidate;
 import com.melnykov.fab.sample.tools.IMApplication;
 import com.melnykov.fab.sample.R;
 import com.melnykov.fab.sample.tools.crmMyDatabaseHelper;
@@ -51,6 +56,8 @@ public class crm_addkehu extends ActionBarActivity {
     Button btn;
     Button btn5;
     crmMyDatabaseHelper dbHelper;
+    private ProgressDialog pd;
+
 
     private static final String[] m_leixing = {"国企", "民企", "外资"};
     private static final String[] m_xingzhi = {"线索客户", "潜在客户", "成交客户", "公海客户"};
@@ -90,6 +97,41 @@ public class crm_addkehu extends ActionBarActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+            new AlertDialog.Builder(crm_addkehu.this)
+                    .setTitle("提醒")
+                    .setMessage("                   确认退出吗")
+                    .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int id) {
+                            dialog.cancel();
+                        }
+                    })
+                    .setNegativeButton("确定",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int id) {
+                                   finish();
+                                }
+                            }).show();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -115,15 +157,27 @@ public class crm_addkehu extends ActionBarActivity {
 
 
 
-        ImageView backreturn = (ImageView) findViewById(R.id.iv_back);
+        RelativeLayout backreturn = (RelativeLayout) findViewById(R.id.iv_back);
         backreturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent();
-                intent.putExtra("data", userName.getText().toString().trim());
-                setResult(RESULT_OK, intent);
-                crm_addkehu.this.finish();
+                new AlertDialog.Builder(crm_addkehu.this)
+                        .setTitle("提醒")
+                        .setMessage("                   确认退出吗")
+                        .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                dialog.cancel();
+                            }
+                        })
+                        .setNegativeButton("确定",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int id) {
+                                        crm_addkehu.this.finish();
+                                    }
+                                }).show();
             }
         });
 
@@ -137,82 +191,69 @@ public class crm_addkehu extends ActionBarActivity {
 
         m_Spinner = (Spinner) this.findViewById(R.id.spinner1);
         //����ѡ������ArrayAdapter��������
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, m_leixing);
+        adapter = new ArrayAdapter<String>(this, R.layout.crm_spinner_style, m_leixing);
         //���������б�ķ��
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //��adapter ��ӵ�m_Spinner��
         m_Spinner.setAdapter(adapter);
         //����¼�Spinner�¼�����
-        m_Spinner.setOnItemSelectedListener(m_SpinnerListener);
+        m_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                leixing = m_leixing[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         //����Ĭ��ֵ
-        m_Spinner.setVisibility(View.VISIBLE);
 
         m_Spinner2 = (Spinner) this.findViewById(R.id.spinner2);
         //����ѡ������ArrayAdapter��������
-        adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, m_xingzhi);
+        adapter2 = new ArrayAdapter<String>(this, R.layout.crm_spinner_style, m_xingzhi);
         //���������б�ķ��
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //��adapter ��ӵ�m_Spinner��
         m_Spinner2.setAdapter(adapter2);
         //����¼�Spinner�¼�����
-        m_Spinner2.setOnItemSelectedListener(m_SpinnerListener2);
+        m_Spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                xingzhi = m_xingzhi[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         //����Ĭ��ֵ
-        m_Spinner2.setVisibility(View.VISIBLE);
 
         m_Spinner3 = (Spinner) this.findViewById(R.id.spinner3);
         //����ѡ������ArrayAdapter��������
-        adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, m_guimo);
+        adapter3 = new ArrayAdapter<String>(this,R.layout.crm_spinner_style, m_guimo);
         //���������б�ķ��
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //��adapter ��ӵ�m_Spinner��
         m_Spinner3.setAdapter(adapter3);
         //����¼�Spinner�¼�����
-        m_Spinner3.setOnItemSelectedListener(m_SpinnerListener3);
+        m_Spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                guimo = m_guimo[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         //����Ĭ��ֵ
-        m_Spinner3.setVisibility(View.VISIBLE);
     }
 
-    private Spinner.OnItemSelectedListener m_SpinnerListener = new Spinner.OnItemSelectedListener() {
-        public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-                                   long arg3) {
-            // TODO Auto-generated method stub
-            leixing = m_leixing[arg2];
 
-        }
-
-        public void onNothingSelected(AdapterView<?> arg0) {
-            // TODO Auto-generated method stub
-
-        }
-    };
-
-    private Spinner.OnItemSelectedListener m_SpinnerListener2 = new Spinner.OnItemSelectedListener() {
-        public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-                                   long arg3) {
-            // TODO Auto-generated method stub
-            xingzhi = m_xingzhi[arg2];
-
-        }
-
-        public void onNothingSelected(AdapterView<?> arg0) {
-            // TODO Auto-generated method stub
-
-        }
-    };
-
-    private Spinner.OnItemSelectedListener m_SpinnerListener3 = new Spinner.OnItemSelectedListener() {
-        public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-                                   long arg3) {
-            // TODO Auto-generated method stub
-            guimo = m_guimo[arg2];
-
-        }
-
-        public void onNothingSelected(AdapterView<?> arg0) {
-            // TODO Auto-generated method stub
-
-        }
-    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -242,7 +283,7 @@ public class crm_addkehu extends ActionBarActivity {
 
     private boolean validate() {
         final String username = userName.getText().toString().trim();
-        if (username.equals("") || username.contains("例如")) {
+        if (username.equals("") || username.contains("必填项")) {
             Dialog dialog = new AlertDialog.Builder(this).setIcon(
                     android.R.drawable.btn_star).setTitle("提示").setMessage(
                     "请输入正确的联系人名称").setNeutralButton("确定", new DialogInterface.OnClickListener() {
@@ -267,42 +308,44 @@ public class crm_addkehu extends ActionBarActivity {
             dialog.show();
             return false;
         }
-        if(usertelephone.length()!=11){
-            Dialog dialog = new AlertDialog.Builder(this).setIcon(
-                    android.R.drawable.btn_star).setTitle("提示").setMessage(
-                    "请输入11位电话！").setNeutralButton("确定", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                }
-            }).create();
-            dialog.show();
-            return false;
-        }
-        final String useraddress = userAddress.getText().toString().trim();
-        if (useraddress.equals("") || username.contains("例如")) {
-            Dialog dialog = new AlertDialog.Builder(this).setIcon(
-                    android.R.drawable.btn_star).setTitle("提示").setMessage(
-                    "请输入客户地址").setNeutralButton("确定", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-
-                }
-            }).create();
-            dialog.show();
-            return false;
-        }
-        String malReg = "\\w+@\\w+\\.com";
+//        if(usertelephone.length()!=11){
+//            Dialog dialog = new AlertDialog.Builder(this).setIcon(
+//                    android.R.drawable.btn_star).setTitle("提示").setMessage(
+//                    "请输入11位电话！").setNeutralButton("确定", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//
+//                }
+//            }).create();
+//            dialog.show();
+//            return false;
+//        }
+//        String malReg = "\\w+@\\w+\\.com";
         EditText email = (EditText) findViewById(R.id.email);
         final String useremail = email.getText().toString().trim();
-        if((useremail.matches(malReg)==false)||useremail.contains("XXX"))
+//        if((useremail.matches(malReg)==false)||useremail.contains("必填项")||useraddress.equals("") )
+        if (!useremail.equals("") && !CRMValidate.isEmail(useremail))
         {
             Dialog dialog = new AlertDialog.Builder(this).setIcon(
                     android.R.drawable.btn_star).setTitle("提示").setMessage(
                     "请输入正确的邮箱地址").setNeutralButton("确定", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+
+                }
+            }).create();
+            dialog.show();
+            return false;
+        }
+
+        final String useraddress = userAddress.getText().toString().trim();
+        if (useraddress.equals("") || useraddress.contains("必填项")) {
+            Dialog dialog = new AlertDialog.Builder(this).setIcon(
+                    android.R.drawable.btn_star).setTitle("提示").setMessage(
+                    "请输入客户地址").setNeutralButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
 
                 }
             }).create();
@@ -326,9 +369,27 @@ public class crm_addkehu extends ActionBarActivity {
 
         if(tag == true) {
             try {
+                pd = ProgressDialog.show(crm_addkehu.this, "稍等...", "正在添加客户中...", true, false);
+                pd.show();
+                new Thread(){
+                    @Override
+                    public void run() {
+                        //需要花时间的函数
+                        try {
+                            Thread.sleep(10000);
+                        } catch (InterruptedException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                        //向handler发消息
+                        handler.sendEmptyMessage(0);
+                    }}.start();
+
+
                 mConnection.connect(wsuri, new WebSocketHandler() {
                     @Override
                     public void onOpen() {
+
                         //添加客户
                         String str = "{\"cmd\":\"addCustomer\"," +
                                 "\"type\":\"2\"," +
@@ -366,6 +427,7 @@ public class crm_addkehu extends ActionBarActivity {
                                 Intent intent = new Intent();
                                 intent.putExtra("data", username);
                                 setResult(RESULT_OK, intent);
+                                pd.dismiss();
                                 crm_addkehu.this.finish();
                             }
                             else
@@ -390,6 +452,29 @@ public class crm_addkehu extends ActionBarActivity {
         }
         return true;
     }
+
+    private Handler handler = new Handler(){
+
+        @Override
+        public void handleMessage(Message msg) {
+            if (!isFinishing()) {
+                try {
+                    Dialog dialog = new AlertDialog.Builder(crm_addkehu.this).setIcon(
+                            android.R.drawable.btn_star).setTitle("提示").setMessage(
+                            "请检查网络后，再进行添加！").setNeutralButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }).create();
+                    dialog.show();
+                    if(pd==null) return;
+                    if(pd.isShowing()==true)
+                        pd.dismiss();
+                } catch (Exception e) {
+                }
+            }
+        }};
 
     private void insertData(SQLiteDatabase db, String username, String usertelephone, String useremail, String userfox, String useraddress
             , String leixing, String xingzhi, String guimo, String userbeizhu, String uid, String id, String yuliu1, String yuliu2) {

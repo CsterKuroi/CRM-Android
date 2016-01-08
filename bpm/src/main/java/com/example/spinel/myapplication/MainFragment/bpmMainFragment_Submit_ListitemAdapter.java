@@ -77,7 +77,7 @@ public class bpmMainFragment_Submit_ListitemAdapter extends BaseAdapter {
         if(statusName.equals("正在审核"))
             holder.state.setTextColor(Color.parseColor("#ffffc721"));
         else if(statusName.equals("已通过"))
-            holder.state.setTextColor(Color.parseColor("#ffa4f632"));
+            holder.state.setTextColor(Color.parseColor("#ff008B00"));
         else if(statusName.equals("未通过"))
             holder.state.setTextColor(Color.parseColor("#ffff0000"));
         else if(statusName.equals("过期") || statusName.equals("已撤销"))

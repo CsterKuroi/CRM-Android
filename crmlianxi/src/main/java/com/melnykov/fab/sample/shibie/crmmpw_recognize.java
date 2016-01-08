@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.intsig.openapilib.OpenApi;
@@ -16,7 +16,7 @@ import com.melnykov.fab.sample.R;
 
 public class crmmpw_recognize extends Activity {
 
-	OpenApi openApi = OpenApi.instance("Jg7Er8Ky9We3gaSJbL1V3d0b");
+	OpenApi openApi = OpenApi.instance("E62V5WC6LXKb3eT2TBWNYCJN");
 	OpenApiParams params = new OpenApiParams() {
 		{
 			this.setRecognizeLanguage("");
@@ -48,7 +48,7 @@ public class crmmpw_recognize extends Activity {
 			}
 		});
 
-		ImageView back = (ImageView) findViewById(R.id.iv_back);
+		RelativeLayout back = (RelativeLayout) findViewById(R.id.iv_back);
 		back.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

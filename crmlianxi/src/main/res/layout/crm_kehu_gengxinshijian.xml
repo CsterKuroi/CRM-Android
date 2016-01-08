@@ -20,7 +20,6 @@
             android:layout_gravity="center_vertical|center"
             android:gravity="center_vertical|center"
             android:textSize="16dp"
-            android:textColor="@color/gray"
             android:text="按更新时间 倒序"/>
         <ImageView
             android:layout_width="match_parent"

@@ -1,0 +1,105 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/crm_border"
+    android:orientation="horizontal"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/layout1"
+        android:layout_weight="1.5">
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="3dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:text="测试1"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+    />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@id/text1"
+        android:layout_weight="1">
+
+     <!--   <ImageView
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/blue_dot"
+            android:layout_marginStart="17dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            />-->
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="测试2"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="13sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_alignLeft="@+id/imageView"/>
+        </RelativeLayout>
+   <!--     <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/blue_dot"
+            android:paddingBottom="8dp"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:gravity="center_vertical"
+
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="50dp"
+            android:layout_alignParentEnd="false" />-->
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:paddingRight="5dp"
+        android:layout_weight="1.5">
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:id="@+id/lianxirenphone"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/phone_lianxiren_crm"/>
+
+    </RelativeLayout>
+<!--    <TextView
+        android:layout_width="2dp"
+        android:layout_height="2dp"
+        android:text="*"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_toLeftOf="@id/text2"/>-->
+</LinearLayout>

@@ -3,11 +3,16 @@ package com.melnykov.fab.sample.kehu;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+import android.database.Cursor;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 
@@ -16,6 +21,8 @@ import android.view.MenuItem;
 
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TabHost;
 
 import android.widget.TextView;
@@ -27,6 +34,7 @@ import com.melnykov.fab.sample.lianxiren.crm_addlianxiren;
 
 import com.melnykov.fab.sample.shibie.crmmpw_recognize;
 import com.melnykov.fab.sample.shibie.crmcapture;
+import com.melnykov.fab.sample.tools.TextAppearanceUtil;
 
 public class crm_detail_kehu extends ActionBarActivity {
     //获取客户名称
@@ -35,6 +43,8 @@ public class crm_detail_kehu extends ActionBarActivity {
     private ListViewFragment list;
     private ScrollViewFragment scrolls;
     private FragmentManager fragmentManager;
+    TextView jindu1,jindu2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +62,8 @@ public class crm_detail_kehu extends ActionBarActivity {
 
         list = new ListViewFragment(StringE,kehuxinxi);
         scrolls = new ScrollViewFragment(StringE);
+        jindu1 = (TextView) findViewById(R.id.jindu1);
+        jindu2 = (TextView) findViewById(R.id.jindu2);
 
         TabHost tabhost =(TabHost) findViewById(R.id.tabhost);
         //调用 TabHost.setup()
@@ -59,11 +71,16 @@ public class crm_detail_kehu extends ActionBarActivity {
         //创建Tab标签
         tabhost.addTab(tabhost.newTabSpec("one").setIndicator("客户").setContent(R.id.widget_layout_red));
         tabhost.addTab(tabhost.newTabSpec("two").setIndicator("联系人").setContent(R.id.widget_layout_yellow));
+
         android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
 
         transaction.add(R.id.tabcontent,scrolls);
         transaction.add(R.id.tabcontent,list);
+        transaction.hide(scrolls);
         transaction.commit();
+
+        TextAppearanceUtil.setTabWidgetTitle(this,tabhost.getTabWidget(), 15,R.color.gray_normal);
+
         tabhost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
@@ -84,15 +101,40 @@ public class crm_detail_kehu extends ActionBarActivity {
 
         });
 
+        final LinearLayout layout1 = (LinearLayout) findViewById(R.id.kehubutton);
+        layout1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.show(list);
+                transaction.hide(scrolls);
+                jindu1.setBackgroundColor(getResources().getColor(R.color.skyblue));
+                jindu2.setBackgroundColor(getResources().getColor(R.color.grayvrm));
+                transaction.commit();
+
+            }
+        });
+
+        LinearLayout layout2 = (LinearLayout) findViewById(R.id.lianxirenbutton);
+        layout2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.show(scrolls);
+                transaction.hide(list);
+                jindu2.setBackgroundColor(getResources().getColor(R.color.skyblue));
+                jindu1.setBackgroundColor(getResources().getColor(R.color.grayvrm));
+                transaction.commit();
+            }
+        });
+
         ImageView add = (ImageView) findViewById(R.id.addlianxi);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Dialog dialog = new AlertDialog.Builder(crm_detail_kehu.this).setIcon(
-                        android.R.drawable.btn_star).setTitle("添加"+StringE+"的联系人").setMessage(
-//                    android.R.drawable.btn_star).setTitle("添加联系人").setMessage(
-                        "请选择添加方式：").setPositiveButton("手动添加",
+                Dialog dialog = new AlertDialog.Builder(crm_detail_kehu.this).setMessage(
+                        "请选择添加"+StringE+"的联系人:").setPositiveButton("手动添加",
                         new DialogInterface.OnClickListener() {
 
                             @Override
@@ -132,7 +174,7 @@ public class crm_detail_kehu extends ActionBarActivity {
             }
         });
 
-        ImageView kehu_back = (ImageView) findViewById(R.id.iv_back);
+        RelativeLayout kehu_back = (RelativeLayout) findViewById(R.id.iv_back);
         kehu_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

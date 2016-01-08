@@ -13,9 +13,9 @@ import com.mogujie.tt.DB.entity.MessageEntity;
 import com.mogujie.tt.DB.entity.UserEntity;
 import com.mogujie.tt.R;
 import com.mogujie.tt.config.MessageConstant;
-import com.mogujie.tt.config.SysConstant;
-import com.mogujie.tt.utils.IMUIHelper;
+import com.mogujie.tt.config.UrlConstant;
 import com.mogujie.tt.ui.widget.IMBaseImageView;
+import com.mogujie.tt.utils.IMUIHelper;
 
 /**
  * @author : yingmu on 15-1-9.
@@ -83,13 +83,14 @@ public abstract class BaseMsgRenderView extends RelativeLayout{
             userEntity.setRealName("未知");
         }
 
-        String avatar = userEntity.getAvatar();
+//        String avatar = userEntity.getAvatar();
         int msgStatus = messageEntity.getStatus();
 
         //头像设置
         portrait.setDefaultImageRes(R.drawable.tt_default_user_portrait_corner);
         portrait.setCorner(5);
-        portrait.setImageUrl(avatar);
+//        portrait.setImageUrl(avatar);
+        portrait.setImageUrl(UrlConstant.TOUXIANG_ADD + userEntity.getPeerId() + "_avator.jpg");;
         // 设定姓名 应该消息都是有的
        if(!isMine){
            name.setText(userEntity.getMainName());

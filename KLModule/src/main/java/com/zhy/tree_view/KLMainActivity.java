@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
-import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
@@ -65,10 +65,11 @@ public abstract class KLMainActivity extends Activity {
 
         tx = (TextView) findViewById(R.id.id_textview);
 
-        ImageView back = (ImageView) findViewById(R.id.back);
+        RelativeLayout back = (RelativeLayout) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setResult(RESULT_CANCELED);
                 finish();
             }
         });

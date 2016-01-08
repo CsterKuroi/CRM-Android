@@ -8,17 +8,36 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:background="#106bb9" >
 
-        <ImageButton
+        <RelativeLayout
             android:id="@+id/ImageButton_back"
-            android:layout_width="35dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/back" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/left_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="6dp"
+                android:scaleType="center"
+                android:src="@drawable/tt_top_back" />
+
+            <TextView
+                android:id="@+id/left_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_toRightOf="@id/left_btn"
+                android:gravity="center_vertical"
+                android:text="返回"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/title_right_textsize" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/topbar"
@@ -27,8 +46,8 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="关爱信息填写"
-            android:textColor="#FFFF"
-            android:textSize="20sp" />
+            android:textColor="#FFFffF"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/care_submit"
@@ -38,108 +57,138 @@
             android:layout_alignParentTop="true"
             android:gravity="center_vertical|left"
             android:text="确定"
-            android:textColor="#FFFF"
-            android:textSize="16sp" />
+            android:textColor="#FFFFff"
+            android:textSize="@dimen/title_right_textsize" />
     </RelativeLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/lightgrayspace"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical">
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
+
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:text="关爱类型"
             android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/context_left_title_textsize"/>
         <Spinner
             android:id="@+id/spinner_type"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"></Spinner>
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/tv_temp_sfs"
+            android:layout_alignStart="@+id/tv_temp_sfs"
+            android:background="@color/white"
+            android:spinnerMode="dialog"/>
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgrayline"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical">
         <TextView
             android:id="@+id/fff"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
-            android:text="时间"  android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:text="时        间"
+            android:textColor="@color/black"
+            android:textSize="@dimen/context_left_title_textsize"/>
         <TextView
             android:id="@+id/care_time"
             android:layout_toRightOf="@+id/fff"
-            android:layout_width="150dp"
+            android:layout_width="230dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
+            android:hint="点击选取"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="@dimen/context_typein_textsize" />
 
         <ImageView
             android:id="@+id/care_choose_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/care_time"
-            android:layout_marginRight="25dp"
-            android:src="@drawable/tt_default_arrow"/>
+           android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/tt_default_arrow"
+            android:visibility="gone"/>
 
     </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgrayline"/>
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical">
         <TextView
             android:id="@+id/fff2"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:text="提醒时间"  android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/context_left_title_textsize"/>
         <TextView
             android:id="@+id/care_time2"
             android:layout_toRightOf="@+id/fff2"
-            android:layout_width="150dp"
+            android:layout_width="230dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
+            android:hint="点击选取"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="@dimen/context_typein_textsize" />
 
         <ImageView
             android:id="@+id/care_choose_time2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/care_time2"
-            android:layout_marginRight="25dp"
-            android:src="@drawable/tt_default_arrow"/>
-
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/tt_default_arrow"
+            android:visibility="gone"/>
     </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgrayline"/>
 
 
     <LinearLayout
@@ -153,7 +202,7 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
+
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:text="提醒时间"  android:textColor="@color/black"
@@ -164,30 +213,39 @@
             android:layout_height="match_parent"></Spinner>
 
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray"
+        android:visibility="gone"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="top"
-            android:gravity="top"
+
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
             android:text="提醒语句"  android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/context_left_title_textsize"/>
        <EditText
            android:id="@+id/care_note"
-           android:layout_width="200dp"
-           android:layout_height="wrap_content"
-           android:layout_gravity="left"
+           android:layout_width="230dp"
+           android:layout_height="match_parent"
+           android:layout_gravity="top|left"
            android:textColor="@color/black"
            android:inputType="textMultiLine"
            android:minLines="5"
-           android:background="@color/lightgray"/>
+           android:textSize="@dimen/context_typein_textsize"
+           android:background="@null"/>
     </LinearLayout>
-
-
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgrayline"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

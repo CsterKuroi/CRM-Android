@@ -16,6 +16,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.kuroi.chance.R;
@@ -50,7 +51,7 @@ public class ChanceModifyActivity extends Activity implements ChanceModifyCallBa
     private Chance chance;
     private String userID;
 	
-	    private ImageView iv11;
+	    private RelativeLayout iv11;
     private ImageView iv12;
 
     @Override
@@ -314,7 +315,7 @@ public class ChanceModifyActivity extends Activity implements ChanceModifyCallBa
         remark = (EditText)findViewById(R.id.chance_remark);
         image = (ImageView)findViewById(R.id.image_view);
 		
-		        iv11=(ImageView)findViewById(R.id.imageView11);
+		        iv11=(RelativeLayout)findViewById(R.id.back);
         iv12=(ImageView)findViewById(R.id.imageView12);
     }
     private Chance getContent(){

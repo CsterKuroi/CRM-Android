@@ -44,7 +44,7 @@ public class CRMFragment extends TTBaseFragment {
     private String tempjson2="";
     private WebSocketConnection mConnection;
     private WebSocketConnection mConnection2;
-    private String userID="186";
+    private String userID="";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -104,7 +104,7 @@ public class CRMFragment extends TTBaseFragment {
                 startActivity(intent);
             }
         });
-        RelativeLayout mBtnChance = (RelativeLayout) curView.findViewById(R.id.layoutb1);
+        RelativeLayout mBtnChance = (RelativeLayout) curView.findViewById(R.id.crm_jihui);
         mBtnChance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,7 +112,7 @@ public class CRMFragment extends TTBaseFragment {
                 startActivity(intent);
             }
         });
-        RelativeLayout mBtnContract = (RelativeLayout) curView.findViewById(R.id.layoutb2);
+        RelativeLayout mBtnContract = (RelativeLayout) curView.findViewById(R.id.crm_hetong);
         mBtnContract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,7 +120,7 @@ public class CRMFragment extends TTBaseFragment {
                 startActivity(intent);
             }
         });
-        RelativeLayout mBtnProductShow = (RelativeLayout) curView.findViewById(R.id.layoutb3);
+        RelativeLayout mBtnProductShow = (RelativeLayout) curView.findViewById(R.id.crm_chanpinzhanshi);
         mBtnProductShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,7 +129,7 @@ public class CRMFragment extends TTBaseFragment {
             }
         });
 
-        RelativeLayout mBtnKehu = (RelativeLayout) curView.findViewById(R.id.layout1);
+        RelativeLayout mBtnKehu = (RelativeLayout) curView.findViewById(R.id.crm_kehu);
         mBtnKehu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,7 +138,7 @@ public class CRMFragment extends TTBaseFragment {
 //                getActivity().overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
-        RelativeLayout mBtnLianxiren = (RelativeLayout) curView.findViewById(R.id.layout3);
+        RelativeLayout mBtnLianxiren = (RelativeLayout) curView.findViewById(R.id.crm_lianxiren);
         mBtnLianxiren.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

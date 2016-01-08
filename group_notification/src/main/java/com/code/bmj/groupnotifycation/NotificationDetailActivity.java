@@ -9,8 +9,8 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -39,7 +39,7 @@ import de.tavendo.autobahn.WebSocketHandler;
  * Created by SpongeBob_PC on 2015/8/25.
  */
 public class NotificationDetailActivity extends Activity {
-    private ImageView iv_back;
+    private RelativeLayout iv_back;
     String name = "";
     String title = "";
     String content = "";
@@ -53,7 +53,7 @@ public class NotificationDetailActivity extends Activity {
     private TextView tv_title;
     private TextView tv_content;
     private Button bt_status;
-    private Button bt_fresh;
+    private TextView bt_fresh;
     private ListView list_all;
     private SimpleAdapter simpleAdapter;
     private WebSocketConnection mmConnection = new WebSocketConnection();
@@ -310,7 +310,7 @@ public class NotificationDetailActivity extends Activity {
                         String ready_status = "";
                         for (String num : new_statuslist) {
                             if (num.equals("0")) ready_status = ready_status + "未读,";
-                            if (num.equals("1")) ready_status = ready_status + "已读,";
+                            if (num.equals("1")) ready_status = ready_status + " ,";
                             if (num.equals("2")) ready_status = ready_status + "已确认,";
 
                         }
@@ -323,13 +323,19 @@ public class NotificationDetailActivity extends Activity {
 
                             item.put("status", split_ready_status[i]);
                             item.put("time", gethowlong(new_timelist[i]));
+                            if(split_ready_status[i].equals(" "))
+                                item.put("ifread",R.drawable.notificationgreen);
+                            else if (split_ready_status[i].equals("未读"))
+                                item.put("ifread",R.drawable.notificationred);
+                            else if (split_ready_status[i].equals("已确认"))
+                                item.put("ifread",R.drawable.notificationyellow);
                             listitems.add(item);
 
                         }
 
                         simpleAdapter = new SimpleAdapter(getApplicationContext(), listitems, R.layout.member_detail_item,
-                                new String[]{"name", "status", "time"},
-                                new int[]{R.id.member_name1, R.id.member_status, R.id.member_time});
+                                new String[]{"ifread","name", "status", "time"},
+                                new int[]{R.id.bmjheader,R.id.member_name1, R.id.member_status, R.id.member_time});
                         list_all.setAdapter(simpleAdapter);
                         // Toast.makeText(getApplicationContext(),"列表加载完成", Toast.LENGTH_SHORT).show();
 
@@ -404,7 +410,7 @@ public class NotificationDetailActivity extends Activity {
         initdate();
 
         bt_status = (Button) findViewById(R.id.button_ok);
-        bt_fresh = (Button) findViewById(R.id.button_refresh);
+        bt_fresh = (TextView) findViewById(R.id.button_refresh);
         bt_status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -438,7 +444,7 @@ public class NotificationDetailActivity extends Activity {
             }
         });
 
-        iv_back = (ImageView) findViewById(R.id.imageView_detail_back);
+        iv_back = (RelativeLayout) findViewById(R.id.back);
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -36,6 +36,8 @@ import com.mogujie.tt.utils.IMUIHelper;
 import com.mogujie.tt.utils.Logger;
 import com.ricky.database.CenterDatabase;
 
+import java.io.File;
+
 import de.greenrobot.event.EventBus;
 
 
@@ -132,7 +134,7 @@ public class LoginActivity extends TTBaseActivity {
             public void run() {
                 showLoginPage();
             }
-        }, 1000);
+        }, 3000);
     }
 
     /**
@@ -231,6 +233,10 @@ public class LoginActivity extends TTBaseActivity {
             }
         });
         initAutoLogin();
+        File dir = new File(UrlConstant.TOUXIANG_ADD2);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
     }
 
     private void initAutoLogin() {

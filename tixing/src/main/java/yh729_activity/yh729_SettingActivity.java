@@ -97,14 +97,14 @@ public class yh729_SettingActivity extends Activity {
                     sound.setVisibility(View.VISIBLE);
                     vibration.setVisibility(View.VISIBLE);
                     censor.setVisibility(View.VISIBLE);
-                    diary.setVisibility(View.VISIBLE);
+//                    diary.setVisibility(View.VISIBLE);
                     schedule.setVisibility(View.VISIBLE);
                     yh729_Constant.notification=true;
                 } else {
                     sound.setVisibility(View.GONE);
                     vibration.setVisibility(View.GONE);
                     censor.setVisibility(View.GONE);
-                    diary.setVisibility(View.GONE);
+//                    diary.setVisibility(View.GONE);
                     schedule.setVisibility(View.GONE);
                     yh729_Constant.notification=false;
                 }
@@ -116,12 +116,12 @@ public class yh729_SettingActivity extends Activity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     censor_sound.setVisibility(View.VISIBLE);
-                    diary_sound.setVisibility(View.VISIBLE);
+//                    diary_sound.setVisibility(View.VISIBLE);
                     schedule_sound.setVisibility(View.VISIBLE);
                     yh729_Constant.sound=true;
                 } else {
                     censor_sound.setVisibility(View.GONE);
-                    diary_sound.setVisibility(View.GONE);
+//                    diary_sound.setVisibility(View.GONE);
                     schedule_sound.setVisibility(View.GONE);
                     yh729_Constant.sound=false;
                 }
@@ -133,12 +133,12 @@ public class yh729_SettingActivity extends Activity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     censor_vibration.setVisibility(View.VISIBLE);
-                    diary_vibration.setVisibility(View.VISIBLE);
+//                    diary_vibration.setVisibility(View.VISIBLE);
                     schedule_vibration.setVisibility(View.VISIBLE);
                     yh729_Constant.vibrate=true;
                 } else {
                     censor_vibration.setVisibility(View.GONE);
-                    diary_vibration.setVisibility(View.GONE);
+//                    diary_vibration.setVisibility(View.GONE);
                     schedule_vibration.setVisibility(View.GONE);
                     yh729_Constant.vibrate=false;
                 }

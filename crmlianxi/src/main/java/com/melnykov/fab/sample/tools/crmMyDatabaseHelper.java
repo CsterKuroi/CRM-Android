@@ -4,6 +4,7 @@
 package com.melnykov.fab.sample.tools;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -43,7 +44,7 @@ public class crmMyDatabaseHelper extends SQLiteOpenHelper
 {
 	final String wsuri = crmUrlConstant.crmIP;
 	WebSocketConnection mConnection = new WebSocketConnection();
-
+	String times = null;
 	IMApplication app;
 	String User_id;
 	private Context context;
@@ -60,7 +61,7 @@ public class crmMyDatabaseHelper extends SQLiteOpenHelper
 
 	final String  CREATE_care_sql =
 			"create table care_table(_id integer primary " +
-					"key autoincrement, uid text,type text,time text,time2 text,note text,fid text,fname text,fsex text,fphone text,state text)";
+					"key autoincrement, uid text,type text,time text,time2 text,note text,fid text,fname text,fsex text,fphone text,state text,kehu text)";
 
 	public crmMyDatabaseHelper(Context context, String name, int version)
 	{
@@ -72,6 +73,7 @@ public class crmMyDatabaseHelper extends SQLiteOpenHelper
 
 
 	private void parseJSON2(String jsonData,String Uid) {
+		String strdata = null;
 		try {
 			JSONObject jsonObject = new JSONObject(jsonData);
 			String result=jsonObject.getString("error");
@@ -102,12 +104,21 @@ public class crmMyDatabaseHelper extends SQLiteOpenHelper
 					String kehustate  =  jsonObject2.getString("kehustate");
 					String kehurank  =  jsonObject2.getString("kehurank");
 
+					Cursor cursors = db.rawQuery("select id from customer where uid  is not null", null);
+					while (cursors.moveToNext())
+					{
+						if(id.equals(cursors.getString(0)))
+							return;
+					}
+
+
 					if(jsonObject2.getString("status").equals("1"))
 					db.execSQL("insert into customer values(null, ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 							, new String[]{username, userphone, useremail, userfox, useraddress, leixing, xingzhi, guimo, userbeizhu,uid,id,kehustate,kehurank});
 					else
 						db.execSQL("delete from customer where id = ?"
 								, new String[]{id});
+					strdata = "ok";
 
 
 				}
@@ -134,6 +145,14 @@ public class crmMyDatabaseHelper extends SQLiteOpenHelper
 					String relation  =  jsonObject2.getString("relation");
 					String degree  =  jsonObject2.getString("degree");
 
+
+					Cursor cursors = db.rawQuery("select id from lianxiren where uid  is not null", null);
+					while (cursors.moveToNext())
+					{
+						if(id.equals(cursors.getString(0)))
+							return;
+					}
+
 					if (picurl.equals(""))
 						picurl = "haha.jpg";
 			/*		if(!picurl.contains("haha.jpg"))
@@ -158,8 +177,14 @@ public class crmMyDatabaseHelper extends SQLiteOpenHelper
 							, new String[]{username, strsex, workphone, yidongphone, strqq, strweixin, strinterest, strgrowth, strpaixi, uid, company, email, address, picurl,id,relation,degree});
 					else
 						db.execSQL("delete from lianxiren where id = ?",new String[]{id});
+					strdata = "ok";
 				}
 			}
+
+			Intent intent=new Intent();
+			intent.putExtra("select",strdata);
+			intent.setAction("database");
+			context.sendBroadcast(intent);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -191,6 +216,7 @@ public class crmMyDatabaseHelper extends SQLiteOpenHelper
 	}
 
 	//数据库更新
+/*
 	public String updatetime(String uid)
 	{
 		Cursor cursor = this.getReadableDatabase().rawQuery("select * from Updata_KehuLianxi where uid  is not null", null);
@@ -201,51 +227,73 @@ public class crmMyDatabaseHelper extends SQLiteOpenHelper
 		}
 		return "0";
 	}
+*/
 
 	@Override
-	public void onOpen(SQLiteDatabase db) {
+	public void onOpen(final SQLiteDatabase db) {
 		super.onOpen(db);
 		final String User_id = IMApplication.getUserid(context);
 
 		boolean user_exit = false;
 		Cursor cursor = db.rawQuery("select * from Updata_KehuLianxi where uid  is not null", null);
+
 		while (cursor.moveToNext())
 		{
 			if(User_id.equals(cursor.getString(1)))
 				user_exit = true;
 		}
 
-		if(user_exit == false)
-	    	db.execSQL("insert into Updata_KehuLianxi values(null, ? , ?, ?)"
-				, new String[]{User_id, "0", "0"});
-
-		try {
-			mConnection.connect(wsuri, new WebSocketHandler() {
-				@Override
-				public void onOpen() {
-					String time = updatetime(User_id);
-					//修改1，换成此申请，需要重新定义
-					String str = "{\"cmd\":\"updatecrm\"," +
-							"\"type\":\"2\"," +
-							"\"updatetime\":\""+time+"\","+
-							"\"uid\":\""+User_id+"\"}";
-					Log.e(time+"读取服务器时间",time);
-					mConnection.sendTextMessage(str);
-				}
-				@Override
-				public void onTextMessage(String payload) {
-					Log.e("数据开始同步。。。。。", "Got echo: " + payload);
-					parseJSON2(payload, User_id);
-					//mConnection.disconnect();
-				}
-				@Override
-				public void onClose(int code, String reason) {
-					Log.e("close", "Connection lost.");
-				}
-			});
-		} catch (WebSocketException e) {
-			Log.e("cuowu", e.toString());
+		if(user_exit == false) {
+			db.execSQL("insert into Updata_KehuLianxi values(null, ? , ?, ?)"
+					, new String[]{User_id, "0", "0"});
+			//return ;
 		}
+		Cursor cursors = db.rawQuery("select * from Updata_KehuLianxi where uid  is not null", null);
+
+		while (cursors.moveToNext())
+		{
+			if(User_id.equals(cursors.getString(1)))
+				times =  cursors.getString(2);
+		}
+
+		mConnection.disconnect();
+			try {
+				mConnection.connect(wsuri, new WebSocketHandler() {
+					@Override
+					public void onOpen() {
+							SQLiteDatabase dbs = db;
+						Cursor cursors = dbs.rawQuery("select * from Updata_KehuLianxi where uid  is not null", null);
+						while (cursors.moveToNext())
+						{
+							if(User_id.equals(cursors.getString(1)))
+								times =  cursors.getString(2);
+						}
+
+						//修改1，换成此申请，需要重新定义
+						String str = "{\"cmd\":\"updatecrm\"," +
+								"\"type\":\"2\"," +
+								"\"updatetime\":\"" + times + "\"," +
+								"\"uid\":\"" + User_id + "\"}";
+						Log.e(times + "读取服务器时间", times);
+						mConnection.sendTextMessage(str);
+					}
+
+					@Override
+					public void onTextMessage(String payload) {
+						Log.e("数据库同步开始啦", "Got echo: " + payload);
+						parseJSON2(payload, User_id);
+						mConnection.disconnect();
+					}
+
+					@Override
+					public void onClose(int code, String reason) {
+						Log.e("close", "Connection lost.");
+					}
+				});
+			} catch (WebSocketException e) {
+				Log.e("cuowu", e.toString());
+			}
+
 
 	}
 
@@ -269,6 +317,12 @@ public class crmMyDatabaseHelper extends SQLiteOpenHelper
 
 
 
+	}
+
+	@Override
+	public synchronized void close() {
+		super.close();
+		mConnection.disconnect();
 	}
 
 	public  void copyToSD(Context context) {

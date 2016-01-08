@@ -17,7 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -134,7 +134,7 @@ public class BMJStatisticsActivity extends Activity {
 
 
     private String uid;
-    private ImageView ib3;
+    private RelativeLayout ib3;
     private TextView queding;
     private String tempjson;
     private String tempjson2;
@@ -153,7 +153,7 @@ public class BMJStatisticsActivity extends Activity {
         ly_lxr = findViewById(R.id.statics_show3);
         ly_mission = findViewById(R.id.statics_show);
         ly_hetong = findViewById(R.id.linearLayout);
-        ib3=(ImageView) findViewById(R.id.imageButton3);
+        ib3=(RelativeLayout) findViewById(R.id.back);
         queding = (TextView) findViewById(R.id.queding);
 
         ib3.setOnClickListener(new View.OnClickListener() {

@@ -60,6 +60,10 @@ public class yh729_AlarmNotificationService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        notification = new yh729_Notify_Thread(this, mConnection, censorConnection);
+        alarm = new yh729_Alarm_Thread(this);
+        alarm.start();
+        notification.start();
         return START_REDELIVER_INTENT;
     }
 
@@ -76,13 +80,10 @@ public class yh729_AlarmNotificationService extends Service {
             db = (new yh729_LocalDataBase(getApplicationContext(), null)).getDataBase();
             mConnection = new WebSocketConnection();
             censorConnection = new WebSocketConnection();
-            notification = new yh729_Notify_Thread(this, mConnection, censorConnection);
+
             /*yh729Alarm_sender = new yh729_Alarm_Sender(this, db);
             resend();*/
             iniConstant();
-            alarm = new yh729_Alarm_Thread(this);
-            alarm.start();
-            notification.start();
             mService = this;
         } catch (Exception e) {
             Log.e("test", e.toString());
@@ -504,6 +505,7 @@ public class yh729_AlarmNotificationService extends Service {
     }
 
     public void stopService() {
+        Log.i("test", "stop service");
         notification.Stop();
         alarm.Stop();
         yh729_MainActivity.first = true;

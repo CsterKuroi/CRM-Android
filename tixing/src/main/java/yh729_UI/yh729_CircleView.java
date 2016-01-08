@@ -2,11 +2,10 @@ package yh729_UI;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PaintFlagsDrawFilter;
 import android.util.AttributeSet;
-import android.view.View;
+import android.view.Gravity;
 import android.widget.TextView;
 
 /**
@@ -28,6 +27,8 @@ public class yh729_CircleView extends TextView {
         // TODO Auto-generated constructor stub
         mBgPaint.setColor(0x00000000);
         mBgPaint.setAntiAlias(true);
+        setTextSize(11);
+        setGravity(Gravity.CENTER);
     }
 
     public yh729_CircleView(Context context) {

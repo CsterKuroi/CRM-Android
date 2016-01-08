@@ -10,7 +10,7 @@
     <View
         android:id="@+id/m_head_bar"
         android:layout_width="match_parent"
-        android:layout_height="1dip"
+        android:layout_height="0dip"
         android:layout_below="@id/m_head"
         android:background="#FFE7E7" />
     <LinearLayout
@@ -26,7 +26,7 @@
             android:id="@+id/title1"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="30sp"/>
+            android:layout_height="40dp"/>
         <TextView
             android:textSize="15sp"
             android:background="#FFFFFF"
@@ -34,7 +34,7 @@
             android:id="@+id/title2"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="30sp" />
+            android:layout_height="40dp" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/base_activity_subline"

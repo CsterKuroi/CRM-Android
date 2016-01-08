@@ -2,11 +2,13 @@ package com.example.spinel.myapplication.Form;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -58,9 +60,49 @@ public class bpmTraceTaskActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bpm_activity_trace_task);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initView();
+
+
+        //初始化actionbar
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
+        View customView = getLayoutInflater().inflate(R.layout.bpm_title, null);
+        actionBar.setCustomView(customView);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);
+
+        ((TextView)findViewById(R.id.title)).setText("发起的任务");
+        ((Button)findViewById(R.id.button_ok)).setText("重新发任务");
+
+
+        findViewById(R.id.button_ok).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(bpmTraceTaskActivity.this, bpmFormActivity.class);
+                intent.putExtra("datas", dealForm);
+                System.out.println("dealForm: " + dealForm);
+                intent.putExtra("title", formtitle);
+                ArrayList<Object> draft = new ArrayList<Object>();
+                draft.add(-1);
+                draft.add(getIntent().getStringExtra("dealForm"));
+                System.out.println("blankdealForm: " + getIntent().getStringExtra("dealForm"));
+                intent.putExtra("draft", draft);
+
+                intent.putExtra("state", bpmFormActivity.STATE_RESTART);
+                startActivityForResult(intent, REQUEST_RESTART);
+            }
+        });
+
+
+        findViewById(R.id.imageButton_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(RESULT_CANCELED);
+                finish();
+            }
+        });
     }
 
     private void initView(){
@@ -233,14 +275,11 @@ public class bpmTraceTaskActivity extends ActionBarActivity {
 
             //添加view
             LinearLayout linearLayout = (LinearLayout)findViewById(R.id.LinearLayout2);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(6, 7, 6, 0);
             int i;
             for(i=0; i<groupList.size(); i++){
                 String name = groupList.get(i).groupName;
                 RelativeLayout interval = (RelativeLayout)getLayoutInflater().inflate(name.isEmpty() ? R.layout.bpm_form_title_summary_thin : R.layout.bpm_form_title_summary, null);
                 ((TextView)interval.findViewById(R.id.form_title_text)).setText(name);
-                interval.setLayoutParams(lp);
 
                 linearLayout.addView(interval, i*2);
                 linearLayout.addView(groupList.get(i).getView(false, true), i*2+1);
@@ -251,9 +290,8 @@ public class bpmTraceTaskActivity extends ActionBarActivity {
             if(extra_group==null)
                 return;
 
-            RelativeLayout interval = (RelativeLayout)getLayoutInflater().inflate(R.layout.bpm_form_title_summary_thin, null);
-            ((TextView)interval.findViewById(R.id.form_title_text)).setText("");
-            interval.setLayoutParams(lp);
+            RelativeLayout interval = (RelativeLayout)getLayoutInflater().inflate(R.layout.bpm_form_title_summary, null);
+            ((TextView)interval.findViewById(R.id.form_title_text)).setText("发送目标");
             linearLayout.addView(interval, i*2);
             linearLayout.addView(extra_group.getView(false, true), i*2+1);
         } catch (JSONException e) {
@@ -262,38 +300,4 @@ public class bpmTraceTaskActivity extends ActionBarActivity {
 
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.bpm_menu_review_process, menu);
-
-        menu.findItem(R.id.traceprocess_review).setTitle("重新发任务");
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == android.R.id.home) {
-            setResult(RESULT_CANCELED);
-            bpmTraceTaskActivity.this.finish();
-        } else if (id == R.id.traceprocess_review) {
-            Intent intent = new Intent(this, bpmFormActivity.class);
-            intent.putExtra("datas", dealForm);
-            System.out.println("dealForm: " + dealForm);
-            intent.putExtra("title", formtitle);
-            ArrayList<Object> draft = new ArrayList<Object>();
-            draft.add(-1);
-            draft.add(getIntent().getStringExtra("dealForm"));
-            System.out.println("blankdealForm: " + getIntent().getStringExtra("dealForm"));
-            intent.putExtra("draft", draft);
-
-            intent.putExtra("state", bpmFormActivity.STATE_RESTART);
-            startActivityForResult(intent, REQUEST_RESTART);
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

@@ -1,6 +1,7 @@
 package com.mogujie.tt.ui.adapter;
 
 import android.content.Context;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.mogujie.tt.DB.entity.GroupEntity;
 import com.mogujie.tt.DB.entity.UserEntity;
 import com.mogujie.tt.R;
 import com.mogujie.tt.config.SysConstant;
+import com.mogujie.tt.config.UrlConstant;
 import com.mogujie.tt.imservice.service.IMService;
 import com.mogujie.tt.ui.widget.IMBaseImageView;
 import com.mogujie.tt.ui.widget.IMGroupAvatar;
@@ -294,7 +296,8 @@ public class ContactAdapter extends BaseAdapter implements
 
         userHolder.avatar.setDefaultImageRes(R.drawable.tt_default_user_portrait_corner);
         userHolder.avatar.setCorner(0);
-        userHolder.avatar.setImageUrl(userEntity.getAvatar());
+//        userHolder.avatar.setImageUrl(userEntity.getAvatar());
+        userHolder.avatar.setImageUrl(UrlConstant.TOUXIANG_ADD + userEntity.getPeerId() + "_avator.jpg");
 
         userHolder.realNameView.setText(userEntity.getRealName());
         userHolder.realNameView.setVisibility(View.GONE);
@@ -340,7 +343,8 @@ public class ContactAdapter extends BaseAdapter implements
                 //logger.d("已经离职。userId:%d", buddyId);
                 continue;
             }
-            avatarUrlList.add(entity.getAvatar());
+//            avatarUrlList.add(entity.getAvatar());
+            avatarUrlList.add("file://" + Environment.getExternalStorageDirectory() + "/" + entity.getPeerId() + "_avator.jpg");
             if (i >= 3) {
                 break;
             }

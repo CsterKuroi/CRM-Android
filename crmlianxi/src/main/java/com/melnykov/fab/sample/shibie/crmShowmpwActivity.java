@@ -9,7 +9,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.TextUtils;
@@ -17,7 +16,6 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -29,12 +27,11 @@ import android.widget.Toast;
 
 import com.intsig.openapilib.OpenApi;
 import com.melnykov.fab.sample.R;
-import com.melnykov.fab.sample.crm;
 import com.melnykov.fab.sample.kehu.crm_addkehu;
+import com.melnykov.fab.sample.tools.CRMValidate;
 import com.melnykov.fab.sample.tools.IMApplication;
 import com.melnykov.fab.sample.tools.crmMyDatabaseHelper;
 import com.melnykov.fab.sample.tools.crmUrlConstant;
-
 
 import org.json.JSONObject;
 
@@ -86,7 +83,7 @@ public class crmShowmpwActivity extends Activity {
 	EditText growth;
 	EditText paixi;
 	EditText yidongphone;
-	ImageView backimg;
+	RelativeLayout backimg;
 	TextView saveimg;
 	Switch detail;
 	String strsex="男";
@@ -123,7 +120,7 @@ public class crmShowmpwActivity extends Activity {
 
 		User_id = IMApplication.getUserid(this);
 
-		backimg = (ImageView) findViewById(R.id.iv_back);
+		backimg = (RelativeLayout) findViewById(R.id.iv_back);
 		saveimg = (TextView) findViewById(R.id.shibie_add);
 
 		detail = (Switch) findViewById(R.id.detailswitch);
@@ -166,11 +163,11 @@ public class crmShowmpwActivity extends Activity {
 
 		final RelativeLayout detail1 = (RelativeLayout) findViewById(R.id.detail1);
 		final RelativeLayout detail2 = (RelativeLayout) findViewById(R.id.detail2);
-		final RelativeLayout detail3 = (RelativeLayout) findViewById(R.id.detail3);
+	//	final RelativeLayout detail3 = (RelativeLayout) findViewById(R.id.detail3);
 
 		detail1.setVisibility(View.GONE);
 		detail2.setVisibility(View.GONE);
-		detail3.setVisibility(View.GONE);
+	//	detail3.setVisibility(View.GONE);
 
 		detail.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -179,14 +176,14 @@ public class crmShowmpwActivity extends Activity {
 				if (detail.isChecked() == false) {
 					detail1.setVisibility(View.GONE);
 					detail2.setVisibility(View.GONE);
-					detail3.setVisibility(View.GONE);
+		//			detail3.setVisibility(View.GONE);
 
 				} else {
 					{
 						detail1.setVisibility(View.VISIBLE);
 						detail2.setVisibility(View.VISIBLE);
-						detail3.setVisibility(View.VISIBLE);
-
+		//				detail3.setVisibility(View.VISIBLE);
+//
 					}
 				}
 			}
@@ -199,13 +196,13 @@ public class crmShowmpwActivity extends Activity {
 				if (detail.isChecked() == false) {
 					detail1.setVisibility(View.GONE);
 					detail2.setVisibility(View.GONE);
-					detail3.setVisibility(View.GONE);
+			//		detail3.setVisibility(View.GONE);
 
 				} else {
 					{
 						detail1.setVisibility(View.VISIBLE);
 						detail2.setVisibility(View.VISIBLE);
-						detail3.setVisibility(View.VISIBLE);
+			//			detail3.setVisibility(View.VISIBLE);
 
 					}
 				}
@@ -354,6 +351,13 @@ public class crmShowmpwActivity extends Activity {
 						return;
 					}
 
+					if (!stremail.equals("") && !CRMValidate.isEmail(stremail)) {
+						email.setError("请输入正确的邮箱地址");
+						Dialog dialog = new AlertDialog.Builder(crmShowmpwActivity.this).setTitle("请输入正确的邮箱地址").create();
+						dialog.show();
+						return;
+					}
+
 					final String str = "{\"cmd\":\"addContacter\"," +
 							"\"type\":\"2\"," +
 							"\"uid\":\"" + User_id + "\"," +
@@ -407,10 +411,16 @@ public class crmShowmpwActivity extends Activity {
 										//复制此文件改变名片
 										fileName= User_id+"-1-" + id + ".jpg";
 										uploadFile = "/mnt/sdcard/mingpian/"+User_id+"/"+fileName;
+
+										File file = new File("/mnt/sdcard/mingpian/"+User_id+"/");
+										if (file.exists() == false)
+										{
+											file.mkdir();
+										}
+
 										Log.e(uploadFile, uploadFile);
 										copyFile(pic, uploadFile);
 										uploadFile();
-
 										insertData(dbHelper.getReadableDatabase(), username, strsex, userphone, stryidongphone, strqq, strweixin, strinterest, strgrowth, strpaixi, User_id, usercompany, stremail, useraddress, uploadFile, id, "", "");
 										dbHelper.getWritableDatabase().execSQL("update Updata_KehuLianxi set uid = ?,kehu_time = ?,lianxiren_time = ? where uid=?",
 												new String[]{User_id, time, "", User_id});

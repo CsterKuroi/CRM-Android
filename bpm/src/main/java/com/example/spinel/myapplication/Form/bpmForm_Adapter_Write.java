@@ -4,10 +4,16 @@ package com.example.spinel.myapplication.Form;
  * Created by Spinel on 2015/7/26.
  */
 
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.InputType;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextWatcher;
+import android.text.style.AbsoluteSizeSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -35,6 +41,7 @@ public class bpmForm_Adapter_Write extends BaseAdapter{
     private int currentType;
 
     private int groupIndex;
+    private Integer index=-1; //现在edit的焦点
 
     public bpmForm_Adapter_Write(bpmFormActivity activity, List<bpmForm_Item> list, List<bpmForm_Item> hideList, int groupIndex){
             this.activity = activity;
@@ -94,6 +101,15 @@ public class bpmForm_Adapter_Write extends BaseAdapter{
                     holder.editText.setTag(position);
 
                     holder.editText.addTextChangedListener(new MyTextWatcher(holder));
+                    holder.editText.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View view, MotionEvent motionEvent) {
+                            if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                                index = (Integer) view.getTag();
+                            }
+                            return false;
+                        }
+                    });
 
 
                     convertView.setTag(holder);
@@ -104,7 +120,20 @@ public class bpmForm_Adapter_Write extends BaseAdapter{
                 }
 
                 holder.title.setText(item.name);
+
+                //设置hint
+                SpannableString hint = new SpannableString("输入"+item.name);
+                AbsoluteSizeSpan ahint = new AbsoluteSizeSpan(13, true);
+                hint.setSpan(ahint, 0, hint.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                holder.editText.setHint(new SpannableString(hint));
+                holder.editText.setHintTextColor(Color.parseColor("#a0a0a0"));
+
                 holder.editText.setText(item.value);
+
+                if(index!=-1 && index==position){
+                    holder.editText.requestFocus();
+                    Log.e("EditText", "request focus");
+                }
 
                 String[] rules = item.rule.split(" ");
                 if(!rule.isEmpty() && rules[0].equals("NUM"))
@@ -311,6 +340,15 @@ public class bpmForm_Adapter_Write extends BaseAdapter{
                     holder.editText.setTag(position);
 
                     holder.editText.addTextChangedListener(new MyTextWatcher(holder));
+                    holder.editText.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View view, MotionEvent motionEvent) {
+                            if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                                index = (Integer) view.getTag();
+                            }
+                            return false;
+                        }
+                    });
 
 
                     convertView.setTag(holder);
@@ -321,7 +359,20 @@ public class bpmForm_Adapter_Write extends BaseAdapter{
                 }
 
                 holder.title.setText(item.name);
+
+                //设置hint
+                SpannableString hint = new SpannableString("输入"+item.name);
+                AbsoluteSizeSpan ahint = new AbsoluteSizeSpan(13, true);
+                hint.setSpan(ahint, 0, hint.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                holder.editText.setHint(new SpannableString(hint));
+                holder.editText.setHintTextColor(Color.parseColor("#a0a0a0"));
+
                 holder.editText.setText(item.value);
+
+                if(index!=-1 && index==position){
+                    holder.editText.requestFocus();
+                    holder.editText.setSelection(item.value.length());
+                }
 
                 if(item.rule.equals("NUM"))
                     holder.editText.setInputType(InputType.TYPE_CLASS_NUMBER);

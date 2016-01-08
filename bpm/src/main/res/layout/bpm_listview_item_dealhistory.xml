@@ -11,6 +11,7 @@
         android:id="@+id/createrName"
         android:layout_alignParentBottom="false"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/activityName"
         android:layout_marginTop="5dp" />
 
@@ -21,6 +22,7 @@
         android:text="差旅单"
         android:id="@+id/activityName"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:textSize="16dp" />
 
     <TextView
@@ -31,6 +33,7 @@
         android:id="@+id/startTime"
         android:textColor="#ff89898a"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignBottom="@+id/activityName"
         android:textSize="16dp" />
 
@@ -42,6 +45,7 @@
         android:id="@+id/status"
         android:layout_alignParentBottom="false"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/createrName"
         android:layout_marginTop="10dp"
         android:textSize="16dp" />
@@ -55,6 +59,7 @@
         android:textColor="#ff89898a"
         android:textSize="16dp"
         android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/startTime"
         android:layout_alignStart="@+id/startTime" />
 
 </RelativeLayout>

@@ -1,15 +1,18 @@
 package com.pwp.myservices;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.widget.Toast;
 
 import com.pwp.activity.CalendarActivity;
 import com.pwp.constant.UrlConstant;
@@ -18,6 +21,7 @@ import com.pwp.dao.ScheduleDAO;
 import com.pwp.dao.UserDAO;
 import com.pwp.vo.ScheduleDateTag;
 import com.pwp.vo.ScheduleVO;
+import com.ricky.database.CenterDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -129,8 +133,11 @@ import de.tavendo.autobahn.WebSocketHandler;
                         cursor2.close();
                         try {
                             if (!mConnection.isConnected()) {
-                                mConnection.connect(URL, wsHandler);
+                                    mConnection.connect(URL, wsHandler);
                             }
+                            if(mConnection.isConnected()){
+
+
                             String str1 = "{\"type\":\"1\",\"cmd\":\"1-2\", \"time\":" + time2 + ",\"uid\":\"" + userid + "\"}";
                             Log.e("日程信息请求",str1);
                             mConnection.sendTextMessage(str1);
@@ -140,7 +147,8 @@ import de.tavendo.autobahn.WebSocketHandler;
                           //  Log.d("联系人请求?",str2);
                            // Toast.makeText(context,"发语句str2:"+ str2, Toast.LENGTH_SHORT).show();
                             mConnection.sendTextMessage(str2);*/
-                        } catch (WebSocketException e) {
+                        }
+                        }catch (WebSocketException e) {
                          //   Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
                           //  Log.d(TAG, e.toString());
                         }
@@ -236,16 +244,15 @@ import de.tavendo.autobahn.WebSocketHandler;
                             Cursor cursor = db.rawQuery("select scheduleID from schedule where scheduleid2=?", new String[]{sid});
                             if(cursor.moveToFirst()){
                                 dao.delete(Integer.parseInt(cursor.getString(0)));
-                                ((Activity)context).finish();
+                                //((Activity)context).finish();
                               //  context.startActivity(new Intent().setClass(context, CalendarActivity.class));
                             }
-
                         } else{
                         int type=Integer.parseInt(jsonObject2.getString("type"));
                        // int remind=Integer.parseInt(jsonObject2.getString("remind"));
                         int remind=0;
                         String joiner=jsonObject2.getString("joiner");
-                           // Toast.makeText(context,joiner,Toast.LENGTH_SHORT).show();
+                          //  Toast.makeText(context,joiner,Toast.LENGTH_SHORT).show();
                         String start=jsonObject2.getString("start");
                         String end=jsonObject2.getString("end");
                         String pri=jsonObject2.getString("pri");
@@ -278,7 +285,9 @@ import de.tavendo.autobahn.WebSocketHandler;
 
                     }
                     }
-                    context.startActivity(new Intent().setClass(context, CalendarActivity.class));
+
+                    //Toast.makeText(context,"有新日程更新！",Toast.LENGTH_SHORT).show();
+                    //context.startActivity(new Intent().setClass(context, CalendarActivity.class));
                     time2 = updatetime;
 
                 }

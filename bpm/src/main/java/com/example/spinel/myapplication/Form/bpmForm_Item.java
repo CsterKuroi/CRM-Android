@@ -1,8 +1,12 @@
 package com.example.spinel.myapplication.Form;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.example.spinel.myapplication.bpmMainActivity;
 import com.example.spinel.myapplication.bpmTools;
 
 import org.json.JSONException;
@@ -28,6 +32,7 @@ public class bpmForm_Item implements Serializable{
     int type;//意义类型
     int viewtype; //视图类型
     boolean isSummary;
+    String emptyHint;
 
     public bpmForm_Item previousItem;//每个元素前一个元素，第一个元素的前一个元素为null
     public boolean isHide;
@@ -126,6 +131,7 @@ public class bpmForm_Item implements Serializable{
             rule = item.getString("rule");
             isSummary = item.getString("isSummary").equals("true");
             isHide=false;
+            emptyHint = item.isNull("emptyHint")?"":item.getString("emptyHint");
 
             String str = item.getString("type");
             type_str = str;
@@ -222,6 +228,7 @@ public class bpmForm_Item implements Serializable{
         this.type = EXPAND;
         this.viewtype = TEXT_VIEW;
         this.isSummary = false;
+        this.emptyHint = "ignore";
     }
 
     private void getInitValue(){
@@ -316,6 +323,8 @@ public class bpmForm_Item implements Serializable{
     public boolean isFinished(){
 
         switch (viewtype){
+
+
             //edittext
             case bpmForm_Item.EDITTEXT_VIEW:
             case bpmForm_Item.TEXTAREA_VIEW:{
@@ -334,6 +343,12 @@ public class bpmForm_Item implements Serializable{
                 }
                 break;
             }
+        }
+
+
+        if(emptyHint.equals("reject") && value.isEmpty()){
+            Toast.makeText(activity, "请填写"+name, Toast.LENGTH_SHORT).show();
+            return false;
         }
 
         return true;

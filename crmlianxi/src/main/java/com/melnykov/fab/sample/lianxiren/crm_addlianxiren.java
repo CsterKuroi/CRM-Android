@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,25 +25,26 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import care.care_add;
-import com.melnykov.fab.sample.tools.IMApplication;
 import com.melnykov.fab.sample.R;
 import com.melnykov.fab.sample.SortListView.crmSortListMainActivity;
+import com.melnykov.fab.sample.kehu.crm_addkehu;
+import com.melnykov.fab.sample.tools.CRMValidate;
+import com.melnykov.fab.sample.tools.IMApplication;
 import com.melnykov.fab.sample.tools.crmMyDatabaseHelper;
 import com.melnykov.fab.sample.tools.crmUrlConstant;
-import com.melnykov.fab.sample.kehu.crm_addkehu;
 
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import care.care_main;
+import care.aa;
+import care.care_add;
 import de.tavendo.autobahn.WebSocketConnection;
 import de.tavendo.autobahn.WebSocketException;
 import de.tavendo.autobahn.WebSocketHandler;
-import care.aa;
 
 public class crm_addlianxiren extends Activity {
     EditText userName;
@@ -71,17 +73,27 @@ public class crm_addlianxiren extends Activity {
     String stremail ;
     String straddress ;
     String User_id;
+
     final String wsuri = crmUrlConstant.crmIP;
     WebSocketConnection mConnection = new WebSocketConnection();
 
-    Button btn_add_care,btn_add_care2;
-    LinearLayout detail0;
+  //  Button btn_add_care2;
+    ImageView imageview_addcare,imageview_minus;
+     TextView btn_add_care;
+   // RelativeLayout detail0;
+    LinearLayout last;
     String care[]=new String [100];
     int count=0;
 
     public crm_addlianxiren() {
-        detail0 = null;
+       // detail0 = null;
     }
+
+    protected void onDestroy() {
+        super.onDestroy();
+     //   dbHelper.close();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +104,8 @@ public class crm_addlianxiren extends Activity {
         Intent intent = getIntent();
         String kehu = intent.getStringExtra("kehu");
 
-        detail0=(LinearLayout)this.findViewById(R.id.detail0);
+        last=(LinearLayout)findViewById(R.id.last_linearlayou);
+       //detail0=(RelativeLayout)this.findViewById(R.id.detail0);
         detail = (Switch)this. findViewById(R.id.detailswitch);
         userName = (EditText)this. findViewById(R.id.tv_name);
         workPhone = (EditText)this. findViewById(R.id.tv_fxid);
@@ -106,8 +119,32 @@ public class crm_addlianxiren extends Activity {
         email = (EditText) findViewById(R.id.textemail);
         address = (EditText) findViewById(R.id.textaddress);
 
-        btn_add_care=(Button)findViewById(R.id.btn_add_care);
-        btn_add_care.setOnClickListener(new View.OnClickListener() {
+        imageview_addcare=(ImageView)findViewById(R.id.guanaidian_addimage);
+        imageview_addcare.setFocusable(true);imageview_addcare.setClickable(true);
+
+
+        btn_add_care=(TextView)findViewById(R.id.btn_add_care);
+        imageview_minus=(ImageView)findViewById(R.id.guanaidian_minus);
+        imageview_minus.setFocusable(true);imageview_minus.setClickable(true);
+        imageview_minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_add_care.setText("");
+                care=null;
+                care=new String [100];
+                count=0;
+                imageview_minus.setVisibility(View.GONE);
+            }
+        });
+        btn_add_care.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+
+                return false;
+            }
+        });
+        imageview_addcare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int requestCode = 4;
@@ -115,24 +152,24 @@ public class crm_addlianxiren extends Activity {
             }
         });
 
-        btn_add_care2=(Button)findViewById(R.id.btn_add_care2);
-        btn_add_care2.setOnClickListener(new View.OnClickListener() {
+        // btn_add_care2=(Button)findViewById(R.id.btn_add_care2);
+       /* btn_add_care2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* int requestCode = 0;
+               *//* int requestCode = 0;
                 if(count!=0){
                     int j=0;
                     for (int i=0;i<count/4;i++){
                         Toast.makeText(crm_addlianxiren.this, care[0], Toast.LENGTH_SHORT).show();
                         dbHelper.getWritableDatabase().execSQL("insert into care_table(uid,type,time,remind,note,fname,fsex,fphone) values(?,?,?,?,?,?,?,?)", new String[]{User_id, care[j++], care[j++], care[j++], care[j++],username,strsex,workphone});
-                    }*/
-              /*  ArrayList<String> mydata = new ArrayList<String>();
+                    }*//*
+              *//*  ArrayList<String> mydata = new ArrayList<String>();
                 for (int i=0;i<count;i++){
                     mydata.add(care[i]);
 
                 }
                 startActivityForResult(new Intent().setClass(crm_addlianxiren.this, care_main.class)
-                        .putStringArrayListExtra("edite", mydata).setAction("edite"), 5);*/
+                        .putStringArrayListExtra("edite", mydata).setAction("edite"), 5);*//*
                 startActivity(new Intent().setClass(crm_addlianxiren.this, care_main.class));
 
                 new aa(crm_addlianxiren.this);
@@ -141,22 +178,37 @@ public class crm_addlianxiren extends Activity {
             // startActivityForResult(new Intent().setClass(crm_addlianxiren.this,care_main.class), requestCode);
 
         });
-
+*/
         if(kehu!=null)
             company.setText(kehu);
 
-        final RelativeLayout detail1 = (RelativeLayout) findViewById(R.id.detail1);
+      /*  final RelativeLayout detail1 = (RelativeLayout) findViewById(R.id.detail1);
         final RelativeLayout detail2 = (RelativeLayout) findViewById(R.id.detail2);
         final RelativeLayout detail3 = (RelativeLayout) findViewById(R.id.detail3);
         detail1.setVisibility(View.INVISIBLE);
         detail2.setVisibility(View.INVISIBLE);
-        detail3.setVisibility(View.INVISIBLE);
+        detail3.setVisibility(View.INVISIBLE);*/
 
-        ImageView backreturn = (ImageView) findViewById(R.id.iv_back);
+        RelativeLayout backreturn = (RelativeLayout) findViewById(R.id.iv_back);
         backreturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                crm_addlianxiren.this.finish();
+                new AlertDialog.Builder(crm_addlianxiren.this)
+                        .setTitle("提醒")
+                        .setMessage("                   确认退出吗")
+                        .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                dialog.cancel();
+                            }
+                        })
+                        .setNegativeButton("确定",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int id) {
+                                        crm_addlianxiren.this.finish();
+                                    }
+                                }).show();
             }
         });
 
@@ -206,18 +258,18 @@ public class crm_addlianxiren extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (detail.isChecked() == false) {
-                    detail0.setVisibility(View.GONE);
-                    detail1.setVisibility(View.GONE);
+                    last.setVisibility(View.GONE);
+                    //detail0.setVisibility(View.GONE);
+                   /* detail1.setVisibility(View.GONE);
                     detail2.setVisibility(View.GONE);
-                    detail3.setVisibility(View.GONE);
-
+                    detail3.setVisibility(View.GONE);*/
                 } else {
                     {
-                        detail0.setVisibility(View.VISIBLE);
-                        detail1.setVisibility(View.VISIBLE);
+                        last.setVisibility(View.VISIBLE);
+                       // detail0.setVisibility(View.VISIBLE);
+                     /*   detail1.setVisibility(View.VISIBLE);
                         detail2.setVisibility(View.VISIBLE);
-                        detail3.setVisibility(View.VISIBLE);
-
+                        detail3.setVisibility(View.VISIBLE);*/
                     }
                 }
             }
@@ -275,8 +327,9 @@ public class crm_addlianxiren extends Activity {
                 break;
             case 4:
                 if(resultCode==1){
+                    imageview_minus.setVisibility(View.VISIBLE);
                     int ff=count/4+1;
-                    btn_add_care.setText("继续添加("+ff+")");
+                    btn_add_care.setText("已经添加("+ff+")");
                     care[count++]= data.getStringExtra("type");
                     care[count++]= data.getStringExtra("time");
                     care[count++]= data.getStringExtra("time2");
@@ -288,7 +341,6 @@ public class crm_addlianxiren extends Activity {
                 count=0;
                 ArrayList<String> mydata2 = new ArrayList<String>();
                 // mydata2= getIntent().getStringArrayExtra("edite").;
-
                 break;
             default:
                 break;
@@ -308,6 +360,36 @@ public class crm_addlianxiren extends Activity {
         }
         return result;
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+            new AlertDialog.Builder(crm_addlianxiren.this)
+                    .setTitle("提醒")
+                    .setMessage("                   确认退出吗")
+                    .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int id) {
+                            dialog.cancel();
+                        }
+                    })
+                    .setNegativeButton("确定",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int id) {
+                                    finish();
+                                }
+                            }).show();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -338,31 +420,18 @@ public class crm_addlianxiren extends Activity {
             dialog.show();
             return false;
         }
-        workphone = workPhone.getText().toString().trim();
-        if (workphone.equals("") ||!isNumeric(workphone)) {
-            Dialog dialog = new AlertDialog.Builder(this).setIcon(
-                    android.R.drawable.btn_star).setTitle("提示").setMessage(
-                    "请输入正确的工作电话").setNeutralButton("确定", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
 
-                }
-            }).create();
-            dialog.show();
-            return false;
-        }
-
-        if (workphone.length()!=11) {
-            Dialog dialog = new AlertDialog.Builder(this).setIcon(
-                    android.R.drawable.btn_star).setTitle("提示").setMessage(
-                    "请输入11位工作电话").setNeutralButton("确定", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                }
-            }).create();
-            dialog.show();
-            return false;
-        }
+//        if (workphone.length()!=11) {
+//            Dialog dialog = new AlertDialog.Builder(this).setIcon(
+//                    android.R.drawable.btn_star).setTitle("提示").setMessage(
+//                    "请输入11位工作电话").setNeutralButton("确定", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                }
+//            }).create();
+//            dialog.show();
+//            return false;
+//        }
         strcompany = company.getText().toString().trim();
         if(strcompany.equals(""))
         {
@@ -378,16 +447,31 @@ public class crm_addlianxiren extends Activity {
             return false;
         }
 
+        workphone = workPhone.getText().toString().trim();
+        if (workphone.equals("") ||!isNumeric(workphone)) {
+            Dialog dialog = new AlertDialog.Builder(this).setIcon(
+                    android.R.drawable.btn_star).setTitle("提示").setMessage(
+                    "请输入正确的工作电话").setNeutralButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            }).create();
+            dialog.show();
+            return false;
+        }
+
         yidongphone = yidongPhone.getText().toString();
-        strqq = qq.getText().toString()!=null?qq.getText().toString().trim():"";
-        strweixin = weixin.getText().toString().trim()!=null?weixin.getText().toString().trim():"";
-        strinterest = interest.getText().toString().trim()!=null?interest.getText().toString().trim():"";
-        strgrowth = growth.getText().toString().trim()!=null?growth.getText().toString().trim():"";
-        strpaixi = paixi.getText().toString().trim()!=null?paixi.getText().toString().trim():"";
+        strqq = qq.getText().toString().trim();
+        strweixin = weixin.getText().toString().trim();
+        strinterest = interest.getText().toString().trim();
+        strgrowth = growth.getText().toString().trim();
+        //strpaixi = paixi.getText().toString().trim();
         stremail = email.getText().toString().trim();
-        straddress =address.getText().toString().trim()!=null?address.getText().toString().trim():"";
-        String malReg = "\\w+@\\w+\\.com";
-        if(stremail==""||stremail==null&&((stremail.matches(malReg)==false)||stremail.contains("XXX")))
+        straddress =address.getText().toString().trim();
+//        String malReg = "\\w+@\\w+\\.com";
+//        if(stremail==""||stremail==null&&((stremail.matches(malReg)==false)||stremail.contains("XXX")))
+        if (!stremail.equals("") && !CRMValidate.isEmail(stremail))
         {
             Dialog dialog = new AlertDialog.Builder(this).setIcon(
                     android.R.drawable.btn_star).setTitle("提示").setMessage(
@@ -401,14 +485,9 @@ public class crm_addlianxiren extends Activity {
             return false;
         }
 
-
-
-
-
-
-
         mConnection.disconnect();
         try {
+
             mConnection.connect(wsuri, new WebSocketHandler() {
                 @Override
                 public void onOpen() {
@@ -462,18 +541,17 @@ public class crm_addlianxiren extends Activity {
     }
 
 
+
     private void parseJSON2(String jsonData,String Uid) {
         try {
             JSONObject jsonObject = new JSONObject(jsonData);
             String result=jsonObject.getString("error");
             String cmd=jsonObject.getString("cmd");
-            String time = jsonObject.getString("time");
+            String servertime = jsonObject.getString("time");
             String fid =jsonObject.getString("id");
             if(result.equals("1")&&cmd.equals("addContacter")) {
 
-                insertData(dbHelper.getReadableDatabase(), username, strsex, workphone, yidongphone, strqq, strweixin, strinterest, strgrowth, strpaixi, User_id, strcompany, stremail, straddress, "", fid, "", "");
-                dbHelper.getWritableDatabase().execSQL("update Updata_KehuLianxi set uid = ?,kehu_time = ?,lianxiren_time = ? where uid=?",
-                        new String[]{User_id, time, "", User_id});
+               insertData(dbHelper.getReadableDatabase(), username, strsex, workphone, yidongphone, strqq, strweixin, strinterest, strgrowth, strpaixi, User_id, strcompany, stremail, straddress, "", fid, "", "");
 
                 //保存关爱信息
 
@@ -481,12 +559,19 @@ public class crm_addlianxiren extends Activity {
                     int j = 0;
                     for (int i = 0; i < count / 4; i++) {
                         Toast.makeText(crm_addlianxiren.this, username, Toast.LENGTH_SHORT).show();
-                        dbHelper.getWritableDatabase().execSQL("insert into care_table(uid,type,time,time2,note,fname,fsex,fphone,fid)" +
-                                " values(?,?,?,?,?,?,?,?,?)", new String[]{User_id, care[j++], care[j++], care[j++], care[j++], username, strsex, workphone,fid});
+                        dbHelper.getWritableDatabase().execSQL("insert into care_table(uid,type,time,time2,note,fname,fsex,fphone,fid,kehu)" +
+                                " values(?,?,?,?,?,?,?,?,?,?)", new String[]{User_id, care[j++], care[j++], care[j++], care[j++], username, strsex, workphone,fid,strcompany});
                     }
                 }
+                new aa(crm_addlianxiren.this);
+
+                dbHelper.getWritableDatabase().execSQL("update Updata_KehuLianxi set uid = ?,kehu_time = ?,lianxiren_time = ? where uid=?",
+                        new String[]{User_id, servertime, "", User_id});
+
+              //  dbHelper.close();
 
                 crm_addlianxiren.this.finish();
+
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,5 +1,95 @@
 <resources>
 
+<!--    &lt;!&ndash; Base application theme. &ndash;&gt;
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        &lt;!&ndash; Customize your theme here. &ndash;&gt;
+        <item name="android:actionBarStyle">@style/actionBarStyle</item>
+
+    </style>-->
+
+    <!--主题样式-->
+    <style name="AppThemeBPM" parent="@style/Theme.AppCompat.Light">
+        <item name="actionBarStyle">@style/ActionBar.Spinel</item>
+        <item name="actionMenuTextColor">#ffffff</item>
+        <item name="actionBarTabStyle">@style/ActionBarTabStyle.Spinel</item>
+        <item name="actionBarTabTextStyle">@style/ActionBarTabStyle.Spinel.Title</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Example</item>
+
+        <item name="actionBarItemBackground">@drawable/bpm_selectable_background_example</item>
+        <item name="popupMenuStyle">@style/PopupMenu.Example</item>
+        <item name="actionDropDownStyle">@style/DropDownNav.Example</item>
+        <item name="actionModeBackground">@drawable/bpm_cab_background_top_example</item>
+        <item name="actionModeSplitBackground">@drawable/bpm_cab_background_bottom_example</item>
+        <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Example</item>
+
+
+    </style>
+
+
+
+    <style name="DropDownListView.Example" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
+        <item name="android:listSelector">@drawable/bpm_selectable_background_example</item>
+    </style>
+
+    <!--actionbar样式-->
+    <style name="ActionBar.Spinel" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="background">@drawable/bpm_ab_solid_example</item>
+        <item name="height">45dp</item>
+        <item name="backgroundStacked">@android:color/white</item>
+        <item name="backgroundSplit">@drawable/bpm_ab_bottom_solid_example</item>
+        <item name="progressBarStyle">@style/ProgressBar.Example</item>
+        <item name="titleTextStyle">@style/ActionBar.Spinel.Title</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetEnd">0dp</item>
+    </style>
+
+    <!--actionbar的title样式-->
+    <style name="ActionBar.Spinel.Title" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <!--actionbar tab 样式-->
+    <style name="ActionBarTabStyle.Spinel" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
+        <item name="android:background">@drawable/bpm_tab_indicator_ab_example</item>
+    </style>
+
+    <!--actionbar tab的title样式-->
+    <style name="ActionBarTabStyle.Spinel.Title" parent="@style/Widget.AppCompat.ActionBar.TabText">
+        <item name="android:textColor">#959595</item>
+    </style>
+
+
+
+    <style name="ActionBar.Transparent.Example" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="background">@drawable/bpm_ab_transparent_example</item>
+        <item name="progressBarStyle">@style/ProgressBar.Example</item>
+    </style>
+
+    <style name="PopupMenu.Example" parent="@style/Widget.AppCompat.Light.PopupMenu">
+        <item name="android:popupBackground">@drawable/bpm_menu_dropdown_panel_example</item>
+    </style>
+
+    <style name="DropDownNav.Example" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
+        <item name="android:background">@drawable/bpm_spinner_background_ab_example</item>
+        <item name="android:popupBackground">@drawable/bpm_menu_dropdown_panel_example</item>
+        <item name="android:dropDownSelector">@drawable/bpm_selectable_background_example</item>
+    </style>
+
+    <style name="ProgressBar.Example" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/bpm_progress_horizontal_example</item>
+    </style>
+
+    <style name="ActionButton.CloseMode.Example" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode">
+        <item name="android:background">@drawable/bpm_btn_cab_done_example</item>
+    </style>
+
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.Example.Widget" parent="@style/Theme.AppCompat">
+        <item name="popupMenuStyle">@style/PopupMenu.Example</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Example</item>
+    </style>
+
+    <!-- **********************************************************- -->
 
     <style name="AnimationFade">
 
@@ -21,7 +111,7 @@
     </style>
 
     <style name="title_bg">
-        <item name="android:background">#f3f4f5</item>
+        <item name="android:background">#00ffffff</item>
         <item name="android:height">45dp</item>
     </style>
 

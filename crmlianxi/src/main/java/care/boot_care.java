@@ -45,7 +45,7 @@ import remind_yanhao.yh729_LocalDataBase;
                 data[i][j++]=cursor.getString(7);//fname
                 data[i][j++]=cursor.getString(8);//fsex
                 data[i][j++]=cursor.getString(9);//fphone
-                remindid[i]=setRemind(data[i][1],data[i][5]+","+data[i][7]+data[5],"care_remind",0,2);
+                remindid[i]=setRemind(data[i][2],data[i][5]+","+data[i][7]+data[5],"care_remind",0,2);
                 i++;
             }
         }

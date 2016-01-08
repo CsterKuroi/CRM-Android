@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    style="@style/title_bg">
+    android:background="#eef3f5"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/form_title_text"
+        style="@style/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/form_title_text"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="7dp"
-        android:layout_gravity="center"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="false"
         android:layout_centerInParent="true"
-        style="@style/title_text"
-        android:textSize="16dp" />
+        android:layout_gravity="center"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="10dp"
+        android:text="New Text"
+        android:textColor="#217ac1"
+        android:textSize="16sp" />
 
 </RelativeLayout>

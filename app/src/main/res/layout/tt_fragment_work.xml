@@ -5,44 +5,44 @@
     android:background="@color/my_background_color"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/button1"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/my_button_selector">
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/button1"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="45dp"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:background="@drawable/my_button_selector">-->
 
-        <ImageView
-            android:id="@+id/icon1"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/work_icon1" />
+    <!--<ImageView-->
+    <!--android:id="@+id/icon1"-->
+    <!--android:layout_width="28dp"-->
+    <!--android:layout_height="28dp"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginLeft="15dp"-->
+    <!--android:layout_marginRight="12dp"-->
+    <!--android:src="@drawable/work_gongzuoquan" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/icon1"
-            android:text="工作圈"
-            android:textSize="16sp" />
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_toRightOf="@id/icon1"-->
+    <!--android:text="工作圈"-->
+    <!--android:textSize="16sp" />-->
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:src="@drawable/tt_default_arrow" />
-    </RelativeLayout>
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginRight="15dp"-->
+    <!--android:src="@drawable/tt_default_arrow" />-->
+    <!--</RelativeLayout>-->
 
     <RelativeLayout
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/my_button_selector">
 
         <ImageView
@@ -52,7 +52,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/work_icon2" />
+            android:src="@drawable/work_kaoqinqiandao" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/icon2"
             android:text="考勤签到"
-            android:textSize="16sp" />
+            android:textSize="15sp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -71,11 +71,56 @@
             android:src="@drawable/tt_default_arrow" />
     </RelativeLayout>
 
+
+    <RelativeLayout
+        android:id="@+id/button6"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/my_button_selector">
+
+        <ImageView
+            android:id="@+id/icon6"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/work_quntongzhi" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/icon6"
+            android:text="群通知"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/tt_default_arrow" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@android:color/white"
+        android:paddingLeft="10dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eeeeee" />
+    </FrameLayout>
+
     <RelativeLayout
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginTop="20dp"
         android:background="@drawable/my_button_selector">
 
         <ImageView
@@ -85,15 +130,15 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/work_icon3" />
+            android:src="@drawable/work_shenqingshenpi" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/icon3"
-            android:text="审批"
-            android:textSize="16sp" />
+            android:text="申请审批"
+            android:textSize="15sp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -129,15 +174,15 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/work_icon4" />
+            android:src="@drawable/work_rizhibaogao" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/icon4"
-            android:text="日志"
-            android:textSize="16sp" />
+            android:text="日志报告"
+            android:textSize="15sp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -173,15 +218,15 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/work_icon5" />
+            android:src="@drawable/work_renwuzhiling" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/icon5"
-            android:text="任务"
-            android:textSize="16sp" />
+            android:text="任务指令"
+            android:textSize="15sp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -191,82 +236,4 @@
             android:layout_marginRight="15dp"
             android:src="@drawable/tt_default_arrow" />
     </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/button6"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/my_button_selector">
-
-        <ImageView
-            android:id="@+id/icon6"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/work_icon6" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/icon6"
-            android:text="工作报告"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:src="@drawable/tt_default_arrow" />
-    </RelativeLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@android:color/white"
-        android:paddingLeft="10dp">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#eeeeee" />
-    </FrameLayout>
-
-    <RelativeLayout
-        android:id="@+id/button7"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/my_button_selector">
-
-        <ImageView
-            android:id="@+id/icon7"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/work_icon7" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/icon7"
-            android:text="工作指令"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:src="@drawable/tt_default_arrow" />
-    </RelativeLayout>
-
 </LinearLayout>

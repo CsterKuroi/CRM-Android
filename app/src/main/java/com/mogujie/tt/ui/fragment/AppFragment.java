@@ -7,9 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.code.bmj.groupnotifycation.GroupNotificationMainActivity;
-import com.example.bmj.statistics_all.BMJStatisticsActivity;
-import com.example.dt.testapp3.VisitMainActivity;
+import com.example.dt.testapp3.Graphics.VisitMainActivity;
 import com.example.jogle.calendar.JGCalendarActivity;
 import com.example.renxin.shujia.crmstudy;
 import com.mogujie.tt.R;
@@ -69,22 +67,22 @@ public class AppFragment extends TTBaseFragment {
                 startActivity(intent);
             }
         });
-        LinearLayout mBtnAppShuju = (LinearLayout) curView.findViewById(R.id.app_shuju);
-        mBtnAppShuju.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), BMJStatisticsActivity.class);
-                startActivity(intent);
-            }
-        });
-        LinearLayout mBtnAppGN = (LinearLayout) curView.findViewById(R.id.group);
-        mBtnAppGN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), GroupNotificationMainActivity.class);
-                startActivity(intent);
-            }
-        });
+//        LinearLayout mBtnAppShuju = (LinearLayout) curView.findViewById(R.id.app_shuju);
+//        mBtnAppShuju.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), BMJStatisticsActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//        LinearLayout mBtnAppGN = (LinearLayout) curView.findViewById(R.id.group);
+//        mBtnAppGN.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), GroupNotificationMainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         setTopTitle(getActivity().getString(R.string.main_app));
         return curView;

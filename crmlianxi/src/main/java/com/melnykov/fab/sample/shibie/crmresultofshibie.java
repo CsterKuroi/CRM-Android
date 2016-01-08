@@ -8,14 +8,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-
 import android.os.Environment;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -24,10 +21,9 @@ import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
-
 import com.melnykov.fab.sample.R;
-import com.melnykov.fab.sample.crm;
 import com.melnykov.fab.sample.kehu.crm_addkehu;
+import com.melnykov.fab.sample.tools.CRMValidate;
 import com.melnykov.fab.sample.tools.IMApplication;
 import com.melnykov.fab.sample.tools.crmMyDatabaseHelper;
 import com.melnykov.fab.sample.tools.crmUrlConstant;
@@ -74,7 +70,7 @@ public class crmresultofshibie extends Activity {
     String strsex="男";
     Switch detail;
     String id;
-    ImageView backimg;
+    RelativeLayout backimg;
     TextView saveimg;
     String picture;
     JSONArray result;
@@ -111,7 +107,7 @@ public class crmresultofshibie extends Activity {
 //        imageView.setImageBitmap(img);
 
 
-        backimg = (ImageView) findViewById(R.id.iv_back);
+        backimg = (RelativeLayout) findViewById(R.id.iv_back);
         saveimg = (TextView) findViewById(R.id.shibie_add);
 
         detail = (Switch) findViewById(R.id.detailswitch);
@@ -258,7 +254,7 @@ public class crmresultofshibie extends Activity {
                 Log.e(username, username);
                 if (username.equals("") || username.contains("联系人名称")) {
                     editName.setError("请输入联系人名称");
-                    Dialog dialog = new AlertDialog.Builder(getApplication()).setTitle("请输入联系人名称").create();
+                    Dialog dialog = new AlertDialog.Builder(crmresultofshibie.this).setTitle("请输入联系人名称").create();
                     dialog.show();
                     return;
                 }
@@ -266,17 +262,23 @@ public class crmresultofshibie extends Activity {
                 Log.e(userphone, userphone);
                 if (userphone.equals("") || !isNumeric(userphone)) {
                     telephone.setError("请输入正确的工作电话");
-                    Dialog dialog = new AlertDialog.Builder(getApplication()).setTitle("请输入正确的工作电话").create();
+                    Dialog dialog = new AlertDialog.Builder(crmresultofshibie.this).setTitle("请输入正确的工作电话").create();
                     dialog.show();
                     return;
                 }
 
                 if (usercompany.equals("")) {
                     company.setError("请输入客户");
-                    Dialog dialog = new AlertDialog.Builder(getApplication()).setTitle("请输入客户").create();
+                    Dialog dialog = new AlertDialog.Builder(crmresultofshibie.this).setTitle("请输入客户").create();
                     dialog.show();
                     return;
 
+                }
+                if (!stremail.equals("") && !CRMValidate.isEmail(stremail)) {
+                    email.setError("请输入正确的邮箱地址");
+                    Dialog dialog = new AlertDialog.Builder(crmresultofshibie.this).setTitle("请输入正确的邮箱地址").create();
+                    dialog.show();
+                    return;
                 }
 
                 detail = (Switch) findViewById(R.id.detailswitch);

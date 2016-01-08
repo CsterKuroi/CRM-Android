@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingLeft="5dip"
+    android:paddingRight="5dip">
 
     <TextView
         android:id="@+id/id_msg_item"
@@ -11,7 +13,8 @@
     <FrameLayout
         android:id="@+id/f_msg_item"
         android:layout_width="64dip"
-        android:layout_height="64dip">
+        android:layout_height="64dip"
+        android:layout_margin="2dip">
 
         <ImageView
             android:id="@+id/img_msg_item"
@@ -21,12 +24,11 @@
             android:layout_margin="12dip" />
 
         <yh729_UI.yh729_CircleView
-            android:gravity="center_vertical|center|center_horizontal"
             android:id="@+id/num_msg_item"
-            android:textColor="#ffffff"
-            android:layout_gravity="end"
             android:layout_width="16sp"
-            android:layout_height="16sp" />
+            android:layout_height="16sp"
+            android:layout_gravity="end"
+            android:textColor="#ffffff" />
 
     </FrameLayout>
 
@@ -40,27 +42,31 @@
 
         <TextView
             android:id="@+id/name_msg_item"
-            android:maxLines="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="18sp" />
+            android:maxLines="1"
+            android:textColor="#222222"
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/content_msg_item"
-            android:maxLines="2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp" />
+            android:maxLines="2"
+            android:textColor="#999999"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/time_msg_item"
-        android:maxLines="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_gravity="right|top"
-        android:textSize="13sp" />
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:maxLines="1"
+        android:textColor="#a0a0a0"
+        android:textSize="12sp" />
 
 </RelativeLayout>

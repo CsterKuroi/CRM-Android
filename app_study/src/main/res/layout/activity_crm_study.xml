@@ -11,15 +11,36 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="45dp"
-            android:background="#106bb9">
-            <ImageView
-                android:id="@+id/iv_back"
-                android:layout_width="40dp"
+            android:background="#106bb9"
+         >
+            <RelativeLayout
+                android:id="@+id/ImageButton_back"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:onClick="back"
-                android:paddingLeft="15dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/cal_back" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/left_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="6dp"
+                    android:scaleType="center"
+                    android:src="@drawable/tt_top_back" />
+
+                <TextView
+                    android:id="@+id/left_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toRightOf="@id/left_btn"
+                    android:gravity="center_vertical"
+                    android:text="返回"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -31,77 +52,220 @@
                 android:textSize="18sp" />
         </RelativeLayout>
     </LinearLayout>
-
-    <LinearLayout    android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_below="@id/tv_header"
-        android:background="@drawable/bkg_img_default"
-        >
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_below="@id/tv_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#eef3f5"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+        <RelativeLayout
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/my_button_selector">
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/icon1"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="12dp"
+                android:src="@drawable/crm_anli" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/icon1"
+                android:text="公司政策"
+                android:textSize="16sp" />
 
-                <com.example.renxin.shujia.metro.MyImageView
-                    android:id="@+id/tongzhi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:scaleType="matrix"
-                    android:src="@drawable/left_top" />
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/crm_arrow" />
+        </RelativeLayout>
 
-                <com.example.renxin.shujia.metro.MyImageView
-                    android:id="@+id/zhengce"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:scaleType="matrix"
-                    android:src="@drawable/left_bottom" />
-            </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/my_button_selector">
 
-            <com.example.renxin.shujia.metro.MyImageView
-                android:id="@+id/guize"
+            <ImageView
+                android:id="@+id/icon2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/crm_tongzhi" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/icon2"
+                android:text="公司通知"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/crm_arrow" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/my_button_selector">
+
+            <ImageView
+                android:id="@+id/icon3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/crm_guize" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/icon3"
+                android:text="公司规则"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/crm_arrow" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@android:color/white"
+            android:paddingLeft="10dp">
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:scaleType="matrix"
-                android:src="@drawable/crm_study_right" />
+                android:background="#eeeeee" />
+        </FrameLayout>
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-        <com.example.renxin.shujia.metro.MyImageView
-            android:id="@+id/anli"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:scaleType="matrix"
-            android:src="@drawable/bottom" />
-            <com.example.renxin.shujia.metro.MyImageView
-                android:id="@+id/peixun"
+        <RelativeLayout
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/my_button_selector">
+
+            <ImageView
+                android:id="@+id/icon4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/crm_anli" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:scaleType="matrix"
-                android:src="@drawable/bottom2" />
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/icon4"
+                android:text="营销案例"
+                android:textSize="16sp" />
 
-       </LinearLayout>
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/crm_arrow" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@android:color/white"
+            android:paddingLeft="10dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#eeeeee" />
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+           android:layout_marginTop="20dp"
+            android:background="@drawable/my_button_selector">
+
+            <ImageView
+                android:id="@+id/icon5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/crm_peixun" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/icon5"
+                android:text="销售培训"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/crm_arrow" />
+        </RelativeLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@android:color/white"
+            android:paddingLeft="10dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#eeeeee" />
+        </FrameLayout>
+
+
+
 
     </LinearLayout>
-</LinearLayout>
+
+
 
 </RelativeLayout>

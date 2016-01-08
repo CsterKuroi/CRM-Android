@@ -13,11 +13,33 @@
         android:layout_height="45dp"
         android:background="#106bb9" >
 
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:id="@+id/imageView11"
-            android:src="@drawable/conleft" />
+        <RelativeLayout
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/left_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="6dp"
+                android:scaleType="center"
+                android:src="@drawable/tt_top_back" />
+
+            <TextView
+                android:id="@+id/left_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_toRightOf="@id/left_btn"
+                android:gravity="center_vertical"
+                android:text="返回"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </RelativeLayout>
 
         <TextView
             android:layout_width="wrap_content"

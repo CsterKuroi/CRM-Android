@@ -44,7 +44,7 @@ public class yh729_scheduleAdapter extends SimpleCursorAdapter {
         String datetime = sdf.format(date.getTime());*/
 
 
-        imageView.setImageResource(R.drawable.schedule_remind);
+        imageView.setImageResource(R.drawable.tixing_richeng);
         nameMsg.setText(a);
         contentMsg.setText(arg2.getString(arg2.getColumnIndex("scheduleContent")));
         id.setText(arg2.getString(arg2.getColumnIndex("_id")));

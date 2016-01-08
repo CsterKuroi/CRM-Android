@@ -29,7 +29,7 @@ public class MorePopWindow extends PopupWindow {
         this.setContentView(conentView);
         // 设置SelectPicPopupWindow弹出窗体的宽
         //this.setWidth(w / 2 + 50);
-        this.setWidth(w / 2 -80);
+        this.setWidth(LayoutParams.WRAP_CONTENT);
         // 设置SelectPicPopupWindow弹出窗体的高
         this.setHeight(LayoutParams.WRAP_CONTENT);
         // 设置SelectPicPopupWindow弹出窗体可点击
@@ -54,6 +54,8 @@ public class MorePopWindow extends PopupWindow {
                 Intent intent =new Intent();
                 intent.setAction(flag);
                 context.sendBroadcast(intent);
+
+                dismiss();
             }
         });
 
@@ -65,6 +67,7 @@ public class MorePopWindow extends PopupWindow {
                 Intent intent = new Intent();
                 intent.setClass(context, ScheduleAll.class);
                 context.startActivity(intent);
+                dismiss();
             }
         });
 
@@ -81,6 +84,9 @@ public class MorePopWindow extends PopupWindow {
                 Intent intent = new Intent();
                 intent.setAction(flag);
                 context.sendBroadcast(intent);
+
+                dismiss();
+
             }
         });
 
@@ -96,6 +102,8 @@ public class MorePopWindow extends PopupWindow {
                 Intent intent = new Intent();
                 intent.setAction(flag);
                 context.sendBroadcast(intent);
+
+                dismiss();
             }
         });
         Button datechange=(Button)conentView.findViewById(R.id.btn_datechange);
@@ -110,6 +118,7 @@ public class MorePopWindow extends PopupWindow {
                 intent1.setClass(context, CalendarConvert.class);
                 intent1.putExtra("date", new int[] { 2015, 7, 29 });
                 context.startActivity(intent1);
+                dismiss();
 
             }
         });

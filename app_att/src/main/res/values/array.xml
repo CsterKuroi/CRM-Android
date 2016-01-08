@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="con_type">
+    <string-array name="att_type">
         <item>5分钟</item>
         <item>10分钟</item>
         <item>15分钟</item>

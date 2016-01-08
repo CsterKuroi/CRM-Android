@@ -21,9 +21,9 @@ dependencies {
     compile project(':database')
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile project(':app_att')
-    compile project(':app_cal')
-    compile project(':bpm')
     compile project(':crm_con')
     compile project(':group_notification')
+    compile project(':bpm')
+    compile project(':app_cal')
     compile project(':crmlianxi')
 }

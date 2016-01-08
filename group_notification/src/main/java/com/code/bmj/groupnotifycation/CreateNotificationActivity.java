@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Switch;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,13 +32,13 @@ public class CreateNotificationActivity extends Activity {
     String choose_uid = "";
     String send_title = "";
     String send_content = "";
-    private ImageView iv_back;
+    private RelativeLayout iv_back;
     private EditText et_titile;
     private EditText et_content;
-    private ImageView sendok;
-    private Button bt;
+    private Button sendok;
+   // private Button bt;
     private TextView tv_yixuan;
-    private Switch sw_needconfim;
+  //  private Switch sw_needconfim;
     public static final int REQUSETOK = 1;
     private Boolean ifneedconfirm = false;
     private WebSocketConnection mmConnection;
@@ -54,25 +52,25 @@ public class CreateNotificationActivity extends Activity {
         setContentView(R.layout.create_notification);
 
 
-        sw_needconfim = (Switch) findViewById(R.id.switch_choose);
-        sw_needconfim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//        sw_needconfim = (Switch) findViewById(R.id.switch_choose);
+//        sw_needconfim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView,
+//                                         boolean isChecked) {
+//                if (isChecked) {
+//                    ifneedconfirm = true;
+//                    Toast.makeText(getApplicationContext(), "需要确认此通知！", Toast.LENGTH_SHORT).show();
+//
+//                } else {
+//                    ifneedconfirm = false;
+//                    Toast.makeText(getApplicationContext(), "不需要确认此通知！", Toast.LENGTH_SHORT).show();
+//
+//                }
+//            }
+//        });
 
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView,
-                                         boolean isChecked) {
-                if (isChecked) {
-                    ifneedconfirm = true;
-                    Toast.makeText(getApplicationContext(), "需要确认此通知！", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    ifneedconfirm = false;
-                    Toast.makeText(getApplicationContext(), "不需要确认此通知！", Toast.LENGTH_SHORT).show();
-
-                }
-            }
-        });
-
-        iv_back = (ImageView) findViewById(R.id.imageView_create_back);
+        iv_back = (RelativeLayout) findViewById(R.id.back);
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,10 +80,10 @@ public class CreateNotificationActivity extends Activity {
 
         et_content = (EditText) findViewById(R.id.edittext_content);
         et_titile = (EditText) findViewById(R.id.edittext_lable);
-        bt = (Button) findViewById(R.id.choosefanwei);
+        //bt = (Button) findViewById(R.id.choosefanwei);
         tv_yixuan = (TextView) findViewById(R.id.Textview_yixuan);
 
-        bt.setOnClickListener(new View.OnClickListener() {
+        tv_yixuan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
@@ -94,7 +92,7 @@ public class CreateNotificationActivity extends Activity {
                 startActivityForResult(intent, REQUSETOK);
             }
         });
-        sendok = (ImageView) findViewById(R.id.imageView_create_sendok);
+        sendok = (Button) findViewById(R.id.create_sendok);
         sendok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -157,10 +155,12 @@ public class CreateNotificationActivity extends Activity {
                                     "('" + creater_id + "','" + server_id + "','" + "0" + "','" + creater_name + "','" + choose_uid + "','" + choose_name
                                     + "','" + send_title + "','" + send_content + "','" + gettime + "','" + "false" + "','" + start_status + "','send')");
                             //uid,uidname,chooseid,choosename,title,content,create_time,"send"
-                            Toast.makeText(getApplicationContext(), "收到服务器数据，插入数据库！", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), "收到服务器数据，插入数据库！", Toast.LENGTH_SHORT).show();
 
                         }
-                        else Toast.makeText(getApplicationContext(), "出了设么问题", Toast.LENGTH_SHORT).show();
+                        else {
+//                            Toast.makeText(getApplicationContext(), "出了设么问题", Toast.LENGTH_SHORT).show();
+                        }
 
                         Intent intent=new Intent();
                         setResult(RESULT_OK, intent);
@@ -182,7 +182,7 @@ public class CreateNotificationActivity extends Activity {
                 @Override
                 public void onClose(int code, String reason) {
                     isConnected = false;
-                    Toast.makeText(getApplicationContext(), "无法连接服务器", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "无法连接服务器", Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (WebSocketException e) {

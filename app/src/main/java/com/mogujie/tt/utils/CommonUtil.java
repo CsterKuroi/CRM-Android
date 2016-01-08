@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
@@ -14,9 +13,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
 
-import com.mogujie.tt.R;
 import com.mogujie.tt.config.SysConstant;
 
 import java.io.BufferedReader;
@@ -149,7 +146,7 @@ public class CommonUtil {
             return null;
         }
         Pattern p = Pattern.compile(
-                "[http]+[://]+[0-9A-Za-z:/[-]_#[?][=][.][&]]*",
+                "[file]+[://]+[0-9A-Za-z:/[-]_#[?][=][.][&]]*",
                 Pattern.CASE_INSENSITIVE);
         Matcher matcher = p.matcher(text);
         if (matcher.find()) {

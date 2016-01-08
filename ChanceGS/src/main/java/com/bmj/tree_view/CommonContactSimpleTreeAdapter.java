@@ -70,37 +70,55 @@ public class CommonContactSimpleTreeAdapter<T> extends CommonContactTreeListView
             @Override
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
-                if (isChecked) {
-                    mAllNodes.get(index).isChecked = true;
-                    mBean.get(index).isChecked = true;
-
-                    s="";int i =0;
-                    for(CommonContactNode n:mAllNodes)
-                    {
-                        if(n.isChecked&&n.getId()>10000) {i++;s=s+n.getName()+" ";}
+//                if (isChecked) {
+//                    mAllNodes.get(index).isChecked = true;
+//                    mBean.get(index).isChecked = true;
+//
+//                    s = "";
+//                    int i = 0;
+//                    for (CommonContactNode n : mAllNodes) {
+//                        if (n.isChecked && n.getId() > 10000) {
+//                            i++;
+//                            s = s + n.getName() + " ";
+//                        }
+//
+//                    }
+//                    s = "（已选" + String.valueOf(i) + "人）" + s;
+//                    tx.setText(s);
+//
+//                } else {
+//                    mAllNodes.get(index).isChecked = false;
+//                    mBean.get(index).isChecked = false;
+//                    s = "";
+//                    int i = 0;
+//                    for (CommonContactNode n : mAllNodes) {
+//                        if (n.isChecked && n.getId() > 10000) {
+//                            i++;
+//                            s = s + n.getName() + " ";
+//                        }
+//
+//                    }
+//                    s = "（已选" + String.valueOf(i) + "人）" + s;
+//                    tx.setText(s);
+//
+//                }
+//                List<CommonContactNode> fuckbug = mAllNodes.get(index).getChildren();
+//                if (fuckbug != null)
+//                    for (CommonContactNode myloly : fuckbug) {
+//                        myloly.isChecked = isChecked;
+//                    }
+                setchecktrue(mAllNodes.get(index), isChecked);
+                mBean.get(index).isChecked = isChecked;
+                int i = 0;
+                for (CommonContactNode n : mAllNodes) {
+                        if (n.isChecked && n.getId() > 10000) {
+                            i++;
+                            s = s + n.getName() + " ";
+                        }
 
                     }
-                    s="（已选"+ String.valueOf(i) + "人）"+s;
+                    s = "（已选" + String.valueOf(i) + "人）" + s;
                     tx.setText(s);
-
-                } else {
-                    mAllNodes.get(index).isChecked = false;
-                    mBean.get(index).isChecked = false;
-                    s="";int i = 0;
-                    for(CommonContactNode n:mAllNodes)
-                    {
-                        if(n.isChecked&&n.getId()>10000)  {i++;s=s+n.getName()+" ";}
-
-                    }
-                    s="（已选"+ String.valueOf(i) + "人）"+s;
-                    tx.setText(s);
-
-                }
-                List<CommonContactNode> fuckbug = mAllNodes.get(index).getChildren();
-                if (fuckbug != null)
-                    for (CommonContactNode myloly : fuckbug) {
-                        myloly.isChecked = isChecked;
-                    }
                 notifyDataSetChanged();
 
             }
@@ -113,6 +131,17 @@ public class CommonContactSimpleTreeAdapter<T> extends CommonContactTreeListView
 
         return convertView;
     }
+    public void setchecktrue(CommonContactNode node,Boolean ifchecked)
+    {
+        node.isChecked = ifchecked;
+        List<CommonContactNode> fuckbug = node.getChildren();
+        if (fuckbug != null)
+            for (CommonContactNode myloly : fuckbug) {
+                setchecktrue(myloly,ifchecked);
+            }
+        else return;
+    }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {

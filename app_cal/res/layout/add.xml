@@ -18,7 +18,7 @@
             android:layout_marginTop="5dp"
             android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/back" />
+            android:background="@drawable/cal_back" />
 
         <TextView
             android:id="@+id/topbar"
@@ -28,7 +28,7 @@
             android:layout_centerVertical="true"
             android:text="日程"
             android:textColor="#FFFF"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/submit"

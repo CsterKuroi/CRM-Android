@@ -5,6 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center_vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
@@ -27,7 +29,7 @@
             android:orientation="vertical"
             android:layout_gravity="left"
             android:layout_toRightOf="@+id/list_visited_item_date"
-            android:layout_toLeftOf="@+id/list_visited_item_result">
+            android:layout_toLeftOf="@+id/list_visited_item_condition">
             <TextView
                 android:id="@+id/list_visited_item_company"
                 android:layout_width="fill_parent"
@@ -58,7 +60,7 @@
             <!--android:textColor="#88000000"-->
         </LinearLayout>
         <TextView
-            android:id="@+id/list_visited_item_result"
+            android:id="@+id/list_visited_item_condition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"

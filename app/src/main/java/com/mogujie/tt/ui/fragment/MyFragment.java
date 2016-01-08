@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.mogujie.tt.DB.entity.UserEntity;
 import com.mogujie.tt.R;
+import com.mogujie.tt.config.UrlConstant;
 import com.mogujie.tt.imservice.event.UserInfoEvent;
 import com.mogujie.tt.imservice.manager.IMLoginManager;
 import com.mogujie.tt.imservice.service.IMService;
@@ -32,6 +33,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.io.File;
 
 import de.greenrobot.event.EventBus;
+import yh729_ServiceAndThread.yh729_AlarmNotificationService;
 
 public class MyFragment extends MainFragment {
 	private View curView = null;
@@ -152,8 +154,8 @@ public class MyFragment extends MainFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         IMLoginManager.instance().setKickout(false);
                         IMLoginManager.instance().logOut();
-//                        if(yh729_AlarmNotificationService.mService!=null)
-//                            yh729_AlarmNotificationService.mService.stopService();
+                        if(yh729_AlarmNotificationService.mService!=null)
+                            yh729_AlarmNotificationService.mService.stopService();
                         getActivity().finish();
                         dialog.dismiss();
                     }
@@ -249,7 +251,8 @@ public class MyFragment extends MainFragment {
         portraitImageView.setDefaultImageRes(R.drawable.tt_default_user_portrait_corner);
         portraitImageView.setCorner(15);
         portraitImageView.setImageResource(R.drawable.tt_default_user_portrait_corner);
-        portraitImageView.setImageUrl(loginContact.getAvatar());
+//        portraitImageView.setImageUrl(loginContact.getAvatar());
+        portraitImageView.setImageUrl(UrlConstant.TOUXIANG_ADD + loginContact.getPeerId() + "_avator.jpg");
 
         RelativeLayout userContainer = (RelativeLayout) curView.findViewById(R.id.user_container);
 		userContainer.setOnClickListener(new View.OnClickListener() {

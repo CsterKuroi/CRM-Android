@@ -1,2 +1,2 @@
-include ':mgimlibs', ':daogenerator', ':tree', ':app_cal', ':database', ':KLModule', ':app_att', ':ChanceGS', ':crm_chance', ':crm_con', ':library', ':circleprogressbarlib', ':app_study', ':library_study', ':crm_product', ':zoomlibrary', ':app_stat', ':bpm', ':tixing', ':group_notification', ':app_kehubaifang', ':crmlianxi'
+include ':mgimlibs', ':daogenerator', ':tree', ':database', ':KLModule', ':app_att', ':ChanceGS', ':crm_chance', ':crm_con', ':library', ':circleprogressbarlib', ':library_study', ':crm_product', ':zoomlibrary', ':app_stat', ':tixing', ':group_notification', ':app_kehubaifang', ':bpm', ':app_study', ':app_cal', ':crmlianxi'
 include ':app'

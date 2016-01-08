@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="grayvrm">#eef3f5</color>
+    <color name="lightgrayline">#eeeeee</color>
+    <color name="lightgrayspace">#eef3f5</color>
     <color name="primary">#f3f4f5</color>
     <color name="primary_dark">#f3f4f5</color>
     <color name="ripple">#F06292</color>

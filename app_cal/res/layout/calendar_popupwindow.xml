@@ -1,153 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pop_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:alpha="0.8"
     android:background="@color/black"
     android:gravity="center_horizontal"
-    android:orientation="vertical" 
-    android:alpha="0.8">
- <LinearLayout
-        android:id="@+id/pop_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" >
-    
-         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp" >
-            <Button
-                    android:id="@+id/btn_add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@null"
-                    
-                    android:text="添加日程"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" /> 
-        </LinearLayout>
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
-            android:background="@color/black" />
-        
-        
-        
-        
-        
-           <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:padding="8dp" >
-            <Button
-                    android:id="@+id/text_allschedule"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_marginLeft="10dp"
-                    android:background="@null"
-                  
-                    android:text="所有日程"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" /> 
-        </LinearLayout>
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
-            android:background="@color/black" />
-        
-        
-        
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp">
 
-        
-        
-        
-        
-          <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:padding="8dp" >
-            <Button
-                    android:id="@+id/text_today"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_marginLeft="10dp"
-                    android:background="@null"
-               
-                    android:text="今天"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" /> 
-        </LinearLayout>
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
-            android:background="@color/black" />
-        
-        
-        
-        
-           
-          <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:padding="8dp" >
-            <Button
-                    android:id="@+id/text_jump"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_marginLeft="10dp"
-                    android:background="@null"
-              
-                    android:text="跳转"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" /> 
-        </LinearLayout>
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
-            android:background="@color/black" />
-        
-        
-        
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="添加日程"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
-        
-        
-           <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:padding="8dp" >
-            <Button
-                    android:id="@+id/btn_datechange"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_marginLeft="10dp"
-                    android:background="@null"
-          
-                    android:text="日期转换"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" /> 
-        </LinearLayout>
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
-            android:background="@color/black" />
-        
-        
-        
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp" >
-        </LinearLayout>
-    </LinearLayout>
+    <Button
+        android:id="@+id/text_allschedule"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="所有日程"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/text_today"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="今　　天"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/text_jump"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="跳　　转"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+
+    <Button
+        android:id="@+id/btn_datechange"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="日期转换"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:visibility="gone"/>
+</LinearLayout>

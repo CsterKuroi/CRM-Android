@@ -11,8 +11,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.spinel.myapplication.R;
-
 public class bpmSideBar extends View {
     // 触摸事件
     private OnTouchingLetterChangedListener onTouchingLetterChangedListener;
@@ -91,7 +89,8 @@ public class bpmSideBar extends View {
                 break;
 
             default:
-                setBackgroundResource(R.drawable.bpm_sidebar_background);
+//                setBackgroundResource(R.drawable.bpm_sidebar_background);
+                setBackgroundDrawable(new ColorDrawable(0xA0BFBFBF));
                 if (oldChoose != c) {
                     if (c >= 0 && c < b.length) {
                         if (listener != null) {

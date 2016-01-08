@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.code.bmj.groupnotifycation.GroupNotificationMainActivity;
 import com.example.jogle.attendance.JGMain2Activity;
 import com.example.spinel.myapplication.bpmMainActivity;
 import com.mogujie.tt.R;
@@ -49,6 +50,7 @@ public class WorkFragment extends TTBaseFragment {
                 CenterDatabase cd = new CenterDatabase(getActivity(), null);
                 intent.putExtra("userId", cd.getUID());
                 cd.close();
+                intent.putExtra("activityType","review");
                 startActivity(intent);
             }
         });
@@ -61,8 +63,7 @@ public class WorkFragment extends TTBaseFragment {
                 CenterDatabase cd = new CenterDatabase(getActivity(), null);
                 intent.putExtra("userId", cd.getUID());
                 cd.close();
-                // TODO
-
+                intent.putExtra("activityType", "log");
                 startActivity(intent);
             }
         });
@@ -75,8 +76,16 @@ public class WorkFragment extends TTBaseFragment {
                 CenterDatabase cd = new CenterDatabase(getActivity(), null);
                 intent.putExtra("userId", cd.getUID());
                 cd.close();
-                // TODO
+                intent.putExtra("activityType", "order");
+                startActivity(intent);
+            }
+        });
 
+        RelativeLayout button6 = (RelativeLayout) curView.findViewById(R.id.button6);
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GroupNotificationMainActivity.class);
                 startActivity(intent);
             }
         });

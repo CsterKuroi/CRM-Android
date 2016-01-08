@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.kuroi.contract.R;
 
@@ -20,7 +21,7 @@ import java.io.IOException;
 
 public class ConShowActivity extends Activity {
     private static final String ACTIVITY_TAG="LogDemo";
-    private ImageView iv15;
+    private RelativeLayout iv15;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,7 @@ public class ConShowActivity extends Activity {
 //        actionBar.setDisplayShowHomeEnabled(false);
 //        actionBar.setDisplayHomeAsUpEnabled(true);
 //        actionBar.setTitle("      照片");
-        iv15=(ImageView)findViewById(R.id.imageView15);
+        iv15=(RelativeLayout)findViewById(R.id.back);
         iv15.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 finish();

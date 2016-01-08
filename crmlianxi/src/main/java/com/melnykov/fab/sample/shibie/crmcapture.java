@@ -5,6 +5,7 @@ package com.melnykov.fab.sample.shibie;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
@@ -58,6 +59,7 @@ public class crmcapture extends Activity
     SurfaceView sView;
     SurfaceHolder surfaceHolder;
     int screenWidth, screenHeight;
+    ProgressDialog pd;
     // 定义系统所用的照相机
     Camera camera;
     // 是否在预览中
@@ -143,8 +145,16 @@ public class crmcapture extends Activity
         {
             // 此处默认打开后置摄像头。
             // 通过传入参数可以打开前置摄像头
-            camera = Camera.open(0);  //①
-            camera.setDisplayOrientation(90);
+            try {
+                camera = Camera.open(0);  //①
+                camera.setDisplayOrientation(90);
+            }
+            catch (Exception e)
+            {
+                finish();
+                e.printStackTrace();
+            }
+
         }
         if (camera != null && !isPreview)
         {
@@ -240,6 +250,9 @@ public class crmcapture extends Activity
 //            Toast.makeText(capture.this, b.toString().trim(), Toast.LENGTH_SHORT).show();//Post成功
 
             Toast.makeText(crmcapture.this, "上传成功", Toast.LENGTH_SHORT).show();//Post成功
+
+            pd.dismiss();
+/*            pd.dismiss();*/
             crmcapture.this.finish();
 
         } catch (Exception e)
@@ -336,7 +349,9 @@ public class crmcapture extends Activity
 
                             fileName = User_id+ "-0-0.jpg";
                             uploadFile = path + "/mingpian/"+User_id+"/" +fileName;
-                            Toast.makeText(crmcapture.this, "正在上传文件。。。请等待", Toast.LENGTH_SHORT).show();//Post成功
+                  /*          pd = ProgressDialog.show(crmcapture.this, "稍等...","正在上传文件。。。请等待", true, false);
+                            pd.show();*/
+                            pd = ProgressDialog.show(crmcapture.this, "稍等...", "图片上传中", true, false);
                             uploadFile();
                         }
                     }).setNegativeButton("取消", new DialogInterface.OnClickListener() {

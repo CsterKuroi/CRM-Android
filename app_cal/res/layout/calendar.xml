@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/tvtext"
-        android:layout_width="49dp"
-        android:layout_height="45dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:gravity="center"
         android:layout_gravity="center"
         android:textColor="@android:color/white"/>

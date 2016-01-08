@@ -13,10 +13,13 @@
             android:name=".crmstudy"
             android:label="@string/title_activity_crmstudy"
             android:theme="@style/AppThemeAppCompat.NoActionBar" />
-
         <activity
-            android:name=".SortListView.crmSortListMainActivity"
+            android:name=".SortListView.StudySortListMainActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppThemeAppCompat.NoActionBar" />
+        <activity
+            android:name=".karl.downfile"
+            android:label="@string/title_activity_downfile"
             android:theme="@style/AppThemeAppCompat.NoActionBar" />
     </application>
 

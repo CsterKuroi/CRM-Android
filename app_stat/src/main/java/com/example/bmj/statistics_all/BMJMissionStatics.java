@@ -4,12 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class BMJMissionStatics extends Activity {
     private String[] missonstatus = null;
     private String[] missoncreater = null;
     private int[] header = null;
-    private ImageView ib3;
+    private RelativeLayout ib3;
 
 
     @Override
@@ -62,7 +61,7 @@ public class BMJMissionStatics extends Activity {
 
             Log.d("Test1", String.valueOf(missionname.length));
         }
-        ib3=(ImageView) findViewById(R.id.bbbba);
+        ib3=(RelativeLayout) findViewById(R.id.back);
         Log.e("ccc","ccc");
         ib3.setOnClickListener(new View.OnClickListener() {
             @Override

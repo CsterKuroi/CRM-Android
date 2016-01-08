@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pwp.activity"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0">
 
     <uses-sdk android:minSdkVersion="14" />
 
@@ -30,36 +30,24 @@
         android:smallScreens="true" />
 
     <application>
-        <activity
-            android:name=".CalendarActivity"
-            android:label="@string/app_name" />
+        <activity android:name=".CalendarActivity" />
 
         <service android:name="com.pwp.myservices.myservice" />
         <!-- <service android:name="com.pwp.myservices.alarmservice" /> -->
 
         <receiver android:name=".CalendarActivity$MyReceiver" />
 
-        <activity
-            android:name=".ScheduleTypeView"
-            android:label="@string/app_name" />
-        <activity
-            android:name=".ScheduleInfoView"
-            android:label="@string/app_name" />
-        <activity
-            android:name=".ScheduleAll"
-            android:label="@string/app_name" />
-        <activity
-            android:name=".CalendarConvert"
-            android:label="@string/app_name" />
+        <activity android:name=".ScheduleTypeView" />
+        <activity android:name=".ScheduleInfoView" />
+        <activity android:name=".ScheduleAll" />
+        <activity android:name=".CalendarConvert" />
         <activity
             android:name=".add"
-            android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".calGSActivity"
-            android:label="@string/title_activity_cal_gs" >
-        </activity>
-        <activity android:name="com.pwp.myclass.addcare"/>
+            android:label="@string/title_activity_cal_gs" />
+        <activity android:name="com.pwp.myclass.addcare" />
     </application>
 
 </manifest>

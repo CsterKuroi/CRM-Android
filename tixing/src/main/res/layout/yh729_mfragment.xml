@@ -2,8 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="5dip"
-    android:paddingRight="5dip"
     android:background="#FFFFFF">
 
     <ListView
@@ -11,15 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@color/divider_color"
-        android:dividerHeight="1dip">
-    </ListView>
+        android:dividerHeight="0.1dip" />
 
-    <ListView
-        android:visibility="gone"
-        android:layout_below="@id/listview_message"
-        android:divider="@color/divider_color"
-        android:id="@+id/listview_remind"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </ListView>
 </RelativeLayout>

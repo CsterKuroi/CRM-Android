@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,8 +19,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.dt.testapp3.VisitMainActivity;
+import com.example.dt.testapp3.Graphics.VisitMainActivity;
 import com.melnykov.fab.sample.R;
+import com.melnykov.fab.sample.tools.CRMValidate;
 import com.melnykov.fab.sample.tools.IMApplication;
 import com.melnykov.fab.sample.tools.crmMyDatabaseHelper;
 import com.melnykov.fab.sample.tools.crmUrlConstant;
@@ -63,6 +65,15 @@ public  class ListViewFragment extends Fragment {
     private String[] m_rank={"小型客户","中型客户","大型客户","Vip客户"};
     final String wsuri = crmUrlConstant.crmIP;
     WebSocketConnection mConnection = new WebSocketConnection();
+
+
+    private void insertData(SQLiteDatabase db, String username, String usertelephone, String useremail, String userfox, String useraddress
+            , String leixing, String xingzhi, String guimo, String userbeizhu, String uid, String id, String yuliu1, String yuliu2) {
+        // 执行插入语句
+        db.execSQL("insert into customer values(null, ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                , new String[]{username, usertelephone, useremail, userfox, useraddress, leixing, xingzhi, guimo, userbeizhu,uid,id,yuliu1,yuliu2});
+    }
+
 
     public ListViewFragment(String str,String  kehuxinxi)
     {
@@ -129,7 +140,7 @@ public  class ListViewFragment extends Fragment {
                     }
                     if(k>=m_guimo.length) k=0;
                     Spinner.setSelection(i);
-                    Spinner2.setSelection(j);
+                    Spinner4.setSelection(j);
                     Spinner3.setSelection(k);
                     beizhu.setText(cursor.getString(9));
                     id = cursor.getString(11);
@@ -161,38 +172,38 @@ public  class ListViewFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), VisitMainActivity.class);
                 intent.putExtra("type",1);
-                intent.putExtra("name",id);
+                intent.putExtra("name",Integer.parseInt(id));
                 startActivity(intent);
 
             }
         });
 
         Spinner=(android.widget.Spinner)root.findViewById(R.id.spinner1);
-        adapters=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,m_leixing);
+        adapters=new ArrayAdapter<String>(getActivity(),R.layout.crm_spinner_style,m_leixing);
         adapters.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner.setAdapter(adapters);
         Spinner.setOnItemSelectedListener(m_SpinnerListener);
         Spinner.setVisibility(View.VISIBLE);
         Spinner2=(android.widget.Spinner)root.findViewById(R.id.spinner2);
-        adapters2=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,m_state);
+        adapters2=new ArrayAdapter<String>(getActivity(),R.layout.crm_spinner_style,m_state);
         adapters2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner2.setAdapter(adapters2);
         Spinner2.setOnItemSelectedListener(m_SpinnerListener2);
         Spinner2.setVisibility(View.VISIBLE);
         Spinner3=(android.widget.Spinner)root.findViewById(R.id.spinner3);
-        adapters3=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,m_guimo);
+        adapters3=new ArrayAdapter<String>(getActivity(),R.layout.crm_spinner_style,m_guimo);
         adapters3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner3.setAdapter(adapters3);
         Spinner3.setOnItemSelectedListener(m_SpinnerListener3);
         Spinner3.setVisibility(View.VISIBLE);
         Spinner4=(android.widget.Spinner)root.findViewById(R.id.spinner4);
-        adapters4=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,m_xingzhi);
+        adapters4=new ArrayAdapter<String>(getActivity(),R.layout.crm_spinner_style,m_xingzhi);
         adapters4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner4.setAdapter(adapters4);
         Spinner4.setVisibility(View.VISIBLE);
 
         Spinner5=(android.widget.Spinner)root.findViewById(R.id.spinner5);
-        adapters5=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,m_rank);
+        adapters5=new ArrayAdapter<String>(getActivity(),R.layout.crm_spinner_style,m_rank);
         adapters5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner5.setAdapter(adapters5);
         Spinner5.setVisibility(View.VISIBLE);
@@ -212,7 +223,8 @@ public  class ListViewFragment extends Fragment {
         saveBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mConnection.disconnect();
+
+
                 //保存数据库
 
                 final String data1 = userName.getText().toString().trim();
@@ -250,21 +262,22 @@ public  class ListViewFragment extends Fragment {
                     dialog.show();
                     return;
                 }
-                if(data2.length()!=11){
-                    Dialog dialog = new AlertDialog.Builder(getActivity()).setIcon(
-                            android.R.drawable.btn_star).setTitle("提示").setMessage(
-                            "请输入11位电话！").setNeutralButton("确定", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+//                if(data2.length()!=11){
+//                    Dialog dialog = new AlertDialog.Builder(getActivity()).setIcon(
+//                            android.R.drawable.btn_star).setTitle("提示").setMessage(
+//                            "请输入11位电话！").setNeutralButton("确定", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//
+//                        }
+//                    }).create();
+//                    dialog.show();
+//                    return;
+//                }
 
-                        }
-                    }).create();
-                    dialog.show();
-                    return;
-                }
-
-                String malReg = "\\w+@\\w+\\.com";
-                if((data3.matches(malReg)==false)||data3.contains("XXX"))
+//                String malReg = "\\w+@\\w+\\.com";
+//                if((data3.matches(malReg)==false)||data3.contains("XXX"))
+                if (!data3.equals("") && !CRMValidate.isEmail(data3))
                 {
                     Dialog dialog = new AlertDialog.Builder(getActivity()).setIcon(
                             android.R.drawable.btn_star).setTitle("提示").setMessage(
@@ -312,6 +325,9 @@ public  class ListViewFragment extends Fragment {
                         "\"kehurank\":\"" + "kehurank" + "\"," +
                         "\"userbeizhu\":\"" + data6 + "\"}";
 
+
+                mConnection.disconnect();
+
                 try {
                     mConnection.connect(wsuri, new WebSocketHandler() {
                         @Override
@@ -327,8 +343,12 @@ public  class ListViewFragment extends Fragment {
                                 String error = jsonObject.getString("error");
                                 String time = jsonObject.getString("time");
                                 if (error.contains("1")) {
-                                    dbHelper.getReadableDatabase().execSQL("update customer set username=?,userphone=?,useremail=?,userfox=?,useraddress=?,leixing=?,xingzhi=?,guimo=?,userbeizhu=?,uid=?,id=?,kehustate=?,kehurank=? where username=?",
-                                            new String[]{data1, data2, data3, data4, data5, data7, data8, data9, data6, User_id, id, "", "", stre});
+                                    dbHelper.getReadableDatabase().execSQL("update customer set username=?,userphone=?,useremail=?,userfox=?,useraddress=?,leixing=?,xingzhi=?,guimo=?,userbeizhu=?,uid=?,id=?,kehustate=?,kehurank=? where username=? and uid = ?",
+                                            new String[]{data1, data2, data3, data4, data5, data7, data8, data9, data6, User_id, id, "", "", stre,User_id});
+
+                                    dbHelper.getReadableDatabase().execSQL("update lianxiren set company = ? where company=? and uid = ?",
+                                            new String[]{data1,stre,User_id});
+
                                     dbHelper.getWritableDatabase().execSQL("update Updata_KehuLianxi set uid = ?,kehu_time = ?,lianxiren_time = ? where uid=?",
                                             new String[]{User_id, time, "", User_id});
                                 }
@@ -336,6 +356,7 @@ public  class ListViewFragment extends Fragment {
                                 e.printStackTrace();
                             }
                             mConnection.disconnect();
+
                             Dialog dialog = new AlertDialog.Builder(getActivity()).setIcon(
                                     android.R.drawable.btn_star).setTitle("保存成功！").setMessage(
                                     "请选择跳转页面：").setPositiveButton("客户主页面",

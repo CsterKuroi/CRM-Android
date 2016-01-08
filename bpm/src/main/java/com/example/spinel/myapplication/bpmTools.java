@@ -157,16 +157,16 @@ public class bpmTools {
                 df = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
                 break;
             case DATE_POIONT_DATETIME:
-                df=new SimpleDateFormat("y年 MMMM d日  HH:mm");
+                df=new SimpleDateFormat("y年 M月 d日  HH:mm");
                 break;
             case DATE_PERIOD_DAY:
-                df = new SimpleDateFormat("y年 MMMM d日");
+                df = new SimpleDateFormat("y年 M月 d日");
                 break;
             case DATE_PERIOD_WEEK:
                 String str="";
 
                 //一周第一天
-                df = new SimpleDateFormat("y年 MMMM 第W周 （M/d~");
+                df = new SimpleDateFormat("y年 M月 第W周 （M/d~");
                 str += df.format(date);
 
                 //最后一天
@@ -176,7 +176,7 @@ public class bpmTools {
 
                 return str;
             case DATE_PERIOD_MONTH:
-                df = new SimpleDateFormat("y年 MMMM");
+                df = new SimpleDateFormat("y年 M月");
                 break;
             case DATE_PERIOD_YEAR:
                 df = new SimpleDateFormat("y年");

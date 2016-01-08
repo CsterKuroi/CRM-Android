@@ -49,7 +49,6 @@ import yh729_ServiceAndThread.yh729_AlarmNotificationService;
 
 
 public class MainActivity extends FragmentActivity {
-    private static boolean first = true;
     private Fragment[] mFragments;
     private ContactFragment cttFragment;
     private boolean ctt = false;
@@ -81,6 +80,7 @@ public class MainActivity extends FragmentActivity {
     private WebSocketHandler wsHandler;
     private WebSocketConnection mConnection;
     private CenterDatabase dbOpenHelper;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,11 +100,8 @@ public class MainActivity extends FragmentActivity {
         realLogin = getIntent().getBooleanExtra("login", true);
         imServiceConnector.connect(this);
 
-        if (first) {
-            first = false;
-            Log.i("test", "check service");
-            initRemindService();
-        }
+        //检查提醒服务
+        initRemindService();
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.tt_activity_main);
@@ -114,6 +111,7 @@ public class MainActivity extends FragmentActivity {
         setFragmentIndicator(0);
 
         dbOpenHelper = new CenterDatabase(this, null);
+        uid = dbOpenHelper.getUID();
         wsHandler = new WebSocketHandler() {
             @Override
             public void onOpen() {
@@ -140,7 +138,7 @@ public class MainActivity extends FragmentActivity {
                             try {
                                 request.put("type", "3");
                                 request.put("cmd", "changyonglianxiren");
-                                request.put("uid", dbOpenHelper.getUID());
+                                request.put("uid", uid);
                                 mConnection.sendTextMessage(request.toString());
                             } catch (JSONException e) {
                                 Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -339,7 +337,13 @@ public class MainActivity extends FragmentActivity {
      */
     public void chatDoubleListener() {
         setFragmentIndicator(0);
-        ((ChatFragment) mFragments[0]).scrollToUnreadPosition();
+//        ((ChatFragment) mFragments[0]).scrollToUnreadPosition();
+        ChatFragment tmp = (ChatFragment) mFragments[0];
+        if (tmp.myCurrentView == 0) {
+            tmp.pressChat();
+        } else if (tmp.myCurrentView == 1) {
+            tmp.pressRemind();
+        }
     }
 
     @Override
@@ -429,21 +433,25 @@ public class MainActivity extends FragmentActivity {
         startActivity(intent);
     }
 
-    /*------------------------------------------------------------------------------*/
+    /*----------------------------------检查提醒服务--------------------------------------------*/
 
     public void initRemindService() {
+        Log.i("test", "check service");
         ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningServiceInfo> serviceList = activityManager.getRunningServices(Integer.MAX_VALUE);
         for (ActivityManager.RunningServiceInfo runningServiceInfo : serviceList) {
             ComponentName serviceName = runningServiceInfo.service;
-            if ((serviceName.getPackageName().equals("com.example.yanhao.task729"))
-                    && (serviceName.getClassName().equals("com.example.yanhao.task729"
-                    + ".yh729_AlarmNotificationService")))
+            if ((serviceName.getPackageName().equals("com.mogujie.tt"))
+                    && (serviceName.getClassName().equals("yh729_ServiceAndThread"
+                    + ".yh729_AlarmNotificationService"))) {
+                Log.i("test", "service exist");
                 return;
+            }
         }
         Intent intent = new Intent(getApplicationContext(), yh729_AlarmNotificationService.class);
         intent.setAction(yh729_Constant.NOTIFY_SERVICE_FLAG);
         startService(intent);
+        Log.i("test", "start service");
     }
 
     private void sendWebSocketMessage(int count) {
@@ -477,7 +485,7 @@ public class MainActivity extends FragmentActivity {
             JSONObject request = new JSONObject();
             request.put("type", "2");
             request.put("cmd", "updatecrm");
-            request.put("uid", dbOpenHelper.getUID());
+            request.put("uid", uid);
             request.put("updatetime", time);
             mConnection.sendTextMessage(request.toString());
             cursor.close();

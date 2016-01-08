@@ -6,7 +6,7 @@
     <LinearLayout
         android:id="@+id/layout_tab"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="42dp"
         android:layout_alignParentTop="true"
         android:orientation="horizontal">
 
@@ -18,7 +18,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/page_remind"
-            android:textColor="@android:color/black"
+            android:textColor="@color/my_tab_sel_color"
             android:textSize="14sp" />
 
         <TextView
@@ -110,7 +110,7 @@
             <View
                 android:id="@+id/m_head_bar"
                 android:layout_width="match_parent"
-                android:layout_height="1dip"
+                android:layout_height="0dip"
                 android:layout_below="@id/m_head"
                 android:background="#FFE7E7" />
 
@@ -196,7 +196,7 @@
                 android:id="@+id/m_context"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/m_head_bar"></FrameLayout>
+                android:layout_below="@id/m_head_bar" />
         </RelativeLayout>
 
         <FrameLayout

@@ -1,10 +1,10 @@
 package com.bmj.tree.bean;
 
+import com.bmj.tree_view.R;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.bmj.tree_view.R;
 /**
  * http://blog.csdn.net/lmj623565791/article/details/40212367
  * @author zhy
@@ -197,7 +197,7 @@ public class CommonContactTreeHelper
 			node.setIcon(-1);
 		}
 		if(node.isLeaf()&&node.getId()>9999)
-			node.setIcon(R.drawable.comman_portrait_corner);
+			node.setIcon(R.drawable.tt_default_user_portrait_corner_small);
 		else if(node.isLeaf())
 		{
 			node.setIcon(R.drawable.tree_ex);

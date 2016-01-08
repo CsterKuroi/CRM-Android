@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,8 +12,8 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
-import android.widget.TabHost;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import java.util.Map;
 public class GroupNotificationMainActivity extends Activity {
     public static final int REQUSETOK2 = 2;
     private ImageView iv_create;
-    private ImageView iv_back;
+    private RelativeLayout iv_back;
     private   SQLiteDatabase db          = null;
     private ListView lv_receive;
     private ListView lv_my;
@@ -37,8 +38,6 @@ public class GroupNotificationMainActivity extends Activity {
         mainActivity=this;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_group_notification_main);
-        lv_receive = (ListView) findViewById(R.id.mynotification_list);
-        lv_my = (ListView) findViewById(R.id.receivenotification_list);
 
         initView();
 
@@ -51,7 +50,7 @@ public class GroupNotificationMainActivity extends Activity {
     @Override
     protected void onRestart() {
         db=(new N_LocalDataBase(getApplicationContext(),null)).getDataBase();
-        Cursor cursor = db.rawQuery("select * from group_notification where type='receive' order by cast(create_time as bigint) desc",null);
+        Cursor cursor = db.rawQuery("select * from group_notification where type='receive' order by cast(receive_time as bigint) desc",null);
         List<Map<String, Object>> listitems = new ArrayList<Map<String, Object>>();
 
         for(cursor.moveToFirst();!cursor.isAfterLast();cursor.moveToNext())
@@ -67,15 +66,19 @@ public class GroupNotificationMainActivity extends Activity {
             item.put("title", title);
             item.put("content",content);
             item.put("_id",_id);
-            if(if_read==null||if_read.equals("false"))
-                item.put("image",R.drawable.notificationfalse);
-            else item.put("image",R.drawable.notificationtrue);
+            if(if_read==null||if_read.equals("false")) {
+                item.put("image", R.drawable.notificationred);
+                item.put("status", "未读");
+            } else {
+                item.put("image",R.drawable.notificationgreen);
+                item.put("status", "");
+            }
             item.put("create_time", NotificationDetailActivity.gethowlong(old_create_time));
             listitems.add(item);
         }
         simpleAdapter =  new SimpleAdapter(this,listitems,R.layout.receivenotification,
-                new String[] {"image","_id","name","title","content","create_time"}
-                ,new int[]{R.id.notification_ifread,R.id.id_msg_item_receive,R.id.notifation_creater1,R.id.notification_name1,R.id.notification_content1,R.id.bmjnotification_time});
+                new String[] {"image","_id","name","title","content","create_time", "status"}
+                ,new int[]{R.id.notification_ifread,R.id.id_msg_item_receive,R.id.notifation_creater1,R.id.notification_name1,R.id.notification_content1,R.id.bmjnotification_time,R.id.member_status});
 //            simpleCursorAdapter = new SimpleCursorAdapter(this,R.layout.receivenotification,cursor,
 //                    new String[] {"_id","creatorName","title","content","create_time"}
 //                    ,new int[]{R.id.id_msg_item_receive,R.id.notifation_creater1,R.id.notification_name1,R.id.notification_content1,R.id.bmjnotification_time} ,0);
@@ -130,7 +133,7 @@ public class GroupNotificationMainActivity extends Activity {
             }
         });
 
-        iv_back = (ImageView) findViewById(R.id.imageView_notificationback);
+        iv_back = (RelativeLayout) findViewById(R.id.back);
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,17 +141,36 @@ public class GroupNotificationMainActivity extends Activity {
             }
         });
 
+        lv_receive = (ListView) findViewById(R.id.mynotification_list);
+        lv_my = (ListView) findViewById(R.id.receivenotification_list);
+        final TextView tabBtnReceive = (TextView) findViewById(R.id.tab_btn_receive);
+        final TextView tabBtnSend = (TextView) findViewById(R.id.tab_btn_send);
 
-        TabHost tabs = (TabHost) findViewById(R.id.overview_tabs);
-        tabs.setup();
-        tabs.addTab(tabs.newTabSpec("tab1").setIndicator("我收到的").setContent(R.id.tab1));
-        TextView tabTitle1 = (TextView) tabs.getTabWidget().getChildAt(0).findViewById(android.R.id.title);
-        tabTitle1.setTextSize(16);
-        tabs.addTab(tabs.newTabSpec("tab2").setIndicator("我发出的").setContent(R.id.tab2));
-        ((TextView) tabs.getTabWidget().getChildAt(1).findViewById(android.R.id.title)).setTextSize(16);
+        tabBtnReceive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tabBtnReceive.setBackgroundResource(R.drawable.my_tab_sel);
+                tabBtnReceive.setTextColor(getResources().getColor(R.color.my_tab_sel_color));
+                tabBtnSend.setBackgroundColor(getResources().getColor(android.R.color.white));
+                tabBtnSend.setTextColor(Color.parseColor("#313131"));
+                lv_my.setVisibility(View.VISIBLE);
+                lv_receive.setVisibility(View.GONE);
+            }
+        });
+        tabBtnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tabBtnSend.setBackgroundResource(R.drawable.my_tab_sel);
+                tabBtnSend.setTextColor(getResources().getColor(R.color.my_tab_sel_color));
+                tabBtnReceive.setBackgroundColor(getResources().getColor(android.R.color.white));
+                tabBtnReceive.setTextColor(Color.parseColor("#313131"));
+                lv_receive.setVisibility(View.VISIBLE);
+                lv_my.setVisibility(View.GONE);
+            }
+        });
 
         db=(new N_LocalDataBase(getApplicationContext(),null)).getDataBase();
-        Cursor cursor = db.rawQuery("select * from group_notification where type='receive' order by cast(create_time as bigint) desc",null);
+        Cursor cursor = db.rawQuery("select * from group_notification where type='receive' order by cast(receive_time as bigint) desc",null);
         List<Map<String, Object>> listitems = new ArrayList<Map<String, Object>>();
 
         for(cursor.moveToFirst();!cursor.isAfterLast();cursor.moveToNext())
@@ -164,15 +186,19 @@ public class GroupNotificationMainActivity extends Activity {
             item.put("title", title);
             item.put("content",content);
             item.put("_id",_id);
-            if(if_read==null||if_read.equals("false"))
-                item.put("image",R.drawable.notificationfalse);
-            else item.put("image",R.drawable.notificationtrue);
+            if(if_read==null||if_read.equals("false")) {
+                item.put("image", R.drawable.notificationred);
+                item.put("status", "未读");
+            } else {
+                item.put("image",R.drawable.notificationgreen);
+                item.put("status", "");
+            }
             item.put("create_time", NotificationDetailActivity.gethowlong(old_create_time));
             listitems.add(item);
         }
         simpleAdapter =  new SimpleAdapter(this,listitems,R.layout.receivenotification,
-                new String[] {"image","_id","name","title","content","create_time"}
-                ,new int[]{R.id.notification_ifread,R.id.id_msg_item_receive,R.id.notifation_creater1,R.id.notification_name1,R.id.notification_content1,R.id.bmjnotification_time});
+                new String[] {"image","_id","name","title","content","create_time","status"}
+                ,new int[]{R.id.notification_ifread,R.id.id_msg_item_receive,R.id.notifation_creater1,R.id.notification_name1,R.id.notification_content1,R.id.bmjnotification_time,R.id.member_status});
 //            simpleCursorAdapter = new SimpleCursorAdapter(this,R.layout.receivenotification,cursor,
 //                    new String[] {"_id","creatorName","title","content","create_time"}
 //                    ,new int[]{R.id.id_msg_item_receive,R.id.notifation_creater1,R.id.notification_name1,R.id.notification_content1,R.id.bmjnotification_time} ,0);
@@ -256,7 +282,7 @@ public class GroupNotificationMainActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GroupNotificationMainActivity.REQUSETOK2 && resultCode == RESULT_OK) {
             db=(new N_LocalDataBase(getApplicationContext(),null)).getDataBase();
-            Cursor cursor = db.rawQuery("select * from group_notification where type='receive' order by cast(create_time as bigint) desc",null);
+            Cursor cursor = db.rawQuery("select * from group_notification where type='receive' order by cast(receive_time as bigint) desc",null);
             List<Map<String, Object>> listitems = new ArrayList<Map<String, Object>>();
             for(cursor.moveToFirst();!cursor.isAfterLast();cursor.moveToNext())
             {

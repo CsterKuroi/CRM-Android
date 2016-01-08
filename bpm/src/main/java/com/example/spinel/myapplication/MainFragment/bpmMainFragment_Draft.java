@@ -6,11 +6,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -61,15 +63,24 @@ public class bpmMainFragment_Draft extends Fragment {
         spin1 = (Spinner)getView().findViewById(R.id.spinner_worktype);
         ArrayAdapter<String> aa = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, searchtypes);
         spin1.setAdapter(aa);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        aa.setDropDownViewResource(R.layout.my_spinner_dialog_item);
 
         //筛选step2
         spin2 = (Spinner)getView().findViewById(R.id.spinner_detail);
         aa_type = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, search2_type);
         aa_time = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, search2_time);
-        aa_type.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        aa_time.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        aa_type.setDropDownViewResource(R.layout.my_spinner_dialog_item);
+        aa_time.setDropDownViewResource(R.layout.my_spinner_dialog_item);
         spin2.setAdapter(aa_type);
+
+        //设置spinner宽度
+        DisplayMetrics dm = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
+        lp.width = dm.widthPixels/2;
+        getView().findViewById(R.id.rl1).setLayoutParams(lp);
+        getView().findViewById(R.id.rl2).setLayoutParams(lp);
 
         //监听1
         spin1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -164,7 +175,7 @@ public class bpmMainFragment_Draft extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.bpm_fragment_draft, container, false);
+        return inflater.inflate(R.layout.bpm_fragment_submit, container, false);
     }
 
 

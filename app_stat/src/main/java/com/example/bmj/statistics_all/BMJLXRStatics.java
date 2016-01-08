@@ -4,20 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.SimpleTimeZone;
 
 
 public class BMJLXRStatics extends Activity {
@@ -26,7 +23,7 @@ public class BMJLXRStatics extends Activity {
     private String[] lianxirencreater = null;
 
     private int[] header = null;
-    private ImageView ib3;
+    private RelativeLayout ib3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +37,7 @@ public class BMJLXRStatics extends Activity {
         lianxirentime=b.getStringArray("lxrtime");
         lianxirencreater=b.getStringArray("lxrcreater");
 
-        ib3=(ImageView) findViewById(R.id.imageView11);
+        ib3=(RelativeLayout) findViewById(R.id.back);
         ib3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

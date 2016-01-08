@@ -1,32 +1,42 @@
 package com.melnykov.fab.sample.kehu;
 //客户状态与客户分级的筛选，查找时间的筛选
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.melnykov.fab.sample.tools.IMApplication;
 import com.melnykov.fab.sample.R;
-import com.melnykov.fab.sample.SortListView.crmSortListMainActivity;
-import com.melnykov.fab.sample.tools.crmMyDatabaseHelper;
-import com.melnykov.fab.sample.tools.crmUrlConstant;
 import com.melnykov.fab.sample.popupwindow.kehu_gengxinshijianPopWindow;
 import com.melnykov.fab.sample.popupwindow.kehu_shaixuanPopWindow;
+import com.melnykov.fab.sample.tools.IMApplication;
+import com.melnykov.fab.sample.tools.crmMyDatabaseHelper;
+import com.melnykov.fab.sample.tools.crmUrlConstant;
 import com.melnykov.fab.sample.tools.sortName;
 
 import org.json.JSONArray;
@@ -49,7 +59,7 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
     LinearLayout layout1;
     LinearLayout layout2;
     LinearLayout layout3;
-    ImageView back;
+    RelativeLayout back;
     private List<String> listcustomers = new ArrayList<String>();
     private Spinner mySpinner;
     private ArrayAdapter<String> adapter;
@@ -62,11 +72,45 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
     ImageView addcus;
     TextView tip;
     List<sortName> studentlist = new ArrayList<sortName>();
+    EditText searchkehu;
+    private ProgressDialog pd;
+
+    private Handler handler = new Handler(){
+
+        @Override
+        public void handleMessage(Message msg) {
+            Cursor cursor = dbHelper.getReadableDatabase().rawQuery("select * from customer where username  is not null", null);
+            countries = converCursorToList(cursor);
+            update();
+            if (!isFinishing()) {
+                try {
+                    if(pd==null) return;
+                    if(pd.isShowing()==true)
+                        pd.dismiss();
+                } catch (Exception e) {
+                }
+            }
+
+
+
+        }};
+
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if(receiver!=null) {
+            unregisterReceiver(receiver);
+            receiver = null;
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         User_id = IMApplication.getUserid(this);
         setContentView(R.layout.crm_activity_addfriends);
@@ -75,39 +119,89 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
         IntentFilter filter = new IntentFilter();
         filter.addAction("popshaixuan");
         filter.addAction("shijian");
+        filter.addAction("database");
         this.registerReceiver(receiver, filter);
 
         list = (LinearLayout) findViewById(R.id.linelayout);
 
         dbHelper = new crmMyDatabaseHelper(this, "customer.db3", 1);
         Cursor cursor = dbHelper.getReadableDatabase().rawQuery("select * from customer where username  is not null", null);
-        countries = converCursorToList(cursor);
+//        countries = converCursorToList(cursor);
+
+        searchkehu = (EditText) findViewById(R.id.searchaction);
+
+        searchkehu.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                String str =  searchkehu.getText().toString();
+                crmMyDatabaseHelper dbHelper;
+                dbHelper = new crmMyDatabaseHelper(getApplication(), "customer.db3", 1);
+                Cursor cursor = dbHelper.getReadableDatabase().rawQuery("select * from customer where username  is not null", null);
+                countries= convertext(cursor,str);
+                update();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        pd = ProgressDialog.show(crm_kehu.this, "稍等", "数据读取中...", true, false);
+        pd.show();
+
+        new Thread(){
+            @Override
+            public void run() {
+                //需要花时间的函数
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                //向handler发消息
+                handler.sendEmptyMessage(0);
+            }}.start();
 
         tip = (TextView) findViewById(R.id.nothing);
-        back = (ImageView) this.findViewById(R.id.iv_back);
+        back = (RelativeLayout) this.findViewById(R.id.iv_back);
         addcus = (ImageView) this.findViewById(R.id.iv_add);
 
-        layout1= (LinearLayout) findViewById(R.id.kehu_sousuo);
+        ///  layout1= (LinearLayout) findViewById(R.id.kehu_sousuo);
         layout2= (LinearLayout) findViewById(R.id.kehu_shaixuantiaojian);
         layout3 = (LinearLayout) findViewById(R.id.kehu_gengxinshijian);
 
         list.setOnTouchListener(this);
         back.setOnTouchListener(this);
         addcus.setOnTouchListener(this);
-        layout1.setOnTouchListener(this);
+        //   layout1.setOnTouchListener(this);
         layout2.setOnTouchListener(this);
         layout3.setOnTouchListener(this);
 
         listcustomers.add("我的客户");
-        listcustomers.add("下属客户");
-
+        listcustomers.add("下属的客户");
 
         mySpinner = (Spinner)findViewById(R.id.Spinner01);
         //第二步：为下拉列表定义一个适配器，这里就用到里前面定义的list。
-        adapter = new ArrayAdapter<String>(this,R.layout.spinner_style, listcustomers);
+        adapter = new ArrayAdapter<String>(this,R.layout.whitespinner_style,listcustomers);
         //第三步：为适配器设置下拉列表下拉时的菜单样式。
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //第四步：将适配器添加到下拉列表上
+        ImageView img = (ImageView)findViewById(R.id.crmarrow);
+        img.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mySpinner.performClick();
+            }
+        });
+
         mySpinner.setAdapter(adapter);
 
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -118,7 +212,7 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
                     flag = true;
                     return;
                 }
-                if (mySpinner.getSelectedItem().toString() == "下属客户") {
+                if (mySpinner.getSelectedItem().toString() == "下属的客户") {
                     list.removeAllViews();
                     final String wsuri = crmUrlConstant.crmIP;
                     final WebSocketConnection mConnection = new WebSocketConnection();
@@ -129,10 +223,10 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
                             public void onOpen() {
                                 //修改1，换成此申请，需要重新定义
                                 String str = null;
-                                    str = "{\"cmd\":\"underCustomers\"," +
-                                            "\"type\":\"2\"," +
-                                            "\"uid\":\"" + User_id + "\"}";
-                                    mConnection.sendTextMessage(str);
+                                str = "{\"cmd\":\"underCustomers\"," +
+                                        "\"type\":\"2\"," +
+                                        "\"uid\":\"" + User_id + "\"}";
+                                mConnection.sendTextMessage(str);
 
                             }
 
@@ -153,7 +247,7 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
                                             TextView textView = (TextView) getLayoutInflater().inflate(R.layout.crm_list_item, null);
                                             int flagResId = getResources().getIdentifier("a_9", "drawable", getPackageName());
                                             textView.setText(username);
-                                            textView.setCompoundDrawablesWithIntrinsicBounds(flagResId, 0, 0, 0);
+//                                            textView.setCompoundDrawablesWithIntrinsicBounds(flagResId, 0, 0, 0);
                                             textView.setOnClickListener(new OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
@@ -197,8 +291,9 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
 
             }
         });
-        update();
+
     }
+
 
     /**
      * Called when the activity is first created.
@@ -207,7 +302,7 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
     {
         @Override
         public void onReceive(Context context, Intent intent) {
-             int i;
+            int i;
             String aa=intent.getAction();
             if(aa=="popshaixuan"){
                 select=intent.getStringExtra("select");
@@ -221,34 +316,52 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
                 sort= intent.getStringExtra("select");
                 //countries排序
                 //update
-                int j =0;
-                if(sort.equals("1")){
-                Collections.sort(studentlist, new SortByCreatetime());
-                for(sortName name:studentlist) {
-                    countries.set(j++, name.getData());
-                    if(j<countries.size())
-                        break;
-                }}
-                else   if(sort.equals("2")) {
 
+                if(sort.equals("1")){
+                    int j =0;
+                    Collections.sort(studentlist, new SortByCreatetime());
+                    for(sortName name:studentlist) {
+                        if(j>=countries.size())
+                            break;
+                        countries.set(j++, name.getData());
+
+                    }}
+                else   if(sort.equals("2")) {
+                    int j =0;
                     Collections.sort(studentlist, new SortByName());
                     for (sortName name : studentlist) {
-                        countries.set(j++, name.getData());
-                        if(j<countries.size())
+                        if(j>=countries.size())
                             break;
+                        countries.set(j++, name.getData());
+
                     }
                 }
                 else   if(sort.equals("3")) {
+                    int j =0;
                     Collections.sort(studentlist, new SortByUpdatetime());
                     for (sortName name : studentlist) {
-                        countries.set(j++, name.getData());
-                        if(j<countries.size())
+                        if(j>=countries.size())
                             break;
+                        countries.set(j++, name.getData());
+
                     }
                 }
                 update();
 
             }
+            else if(aa=="database"){
+                if(intent.getStringExtra("select")==null)
+                    return;
+                else if(intent.getStringExtra("select").equals("ok")) {
+                    Cursor cursor = dbHelper.getReadableDatabase().rawQuery("select * from customer where username  is not null", null);
+                    countries = converCursorToList(cursor);
+                    update();
+                    pd.dismiss();
+                }
+
+            }
+
+
 
         }
     }
@@ -298,7 +411,7 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
     public boolean onTouch(View v, MotionEvent e){
         if(e.getAction()==MotionEvent.ACTION_DOWN){
             if (v.getId() == R.id.kehu_sousuo) {
-                layout1.setBackgroundColor(Color.LTGRAY);
+                //     layout1.setBackgroundColor(Color.LTGRAY);
             } else if (v.getId() == R.id.kehu_shaixuantiaojian) {
                 layout2.setBackgroundColor(Color.LTGRAY);
             } else if (v.getId() == R.id.kehu_gengxinshijian) {
@@ -316,14 +429,14 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
             Cursor cursor = dbHelper.getReadableDatabase().rawQuery("select * from customer where username  is not null", null);
 
             if (v.getId() == R.id.kehu_sousuo) {
-                countries = converCursorToList(cursor);
+              /*  countries = converCursorToList(cursor);
                 String[] str = new String[]{"测试公司"};
                 str = countries.toArray(new String[countries.size()]);
                 Intent intent = new Intent(crm_kehu.this, crmSortListMainActivity.class);
                 intent.putExtra("title", "客户");
                 intent.putExtra("data", str);
                 startActivityForResult(intent, 1);
-                layout1.setBackgroundColor(Color.WHITE);
+                layout1.setBackgroundColor(Color.WHITE);*/
             } else if (v.getId() == R.id.kehu_shaixuantiaojian) {
                 kehu_shaixuanPopWindow mm = new kehu_shaixuanPopWindow(crm_kehu.this);
                 mm.showPopupWindow(v);
@@ -333,7 +446,44 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
                 mm2.showPopupWindow(v);
                 layout3.setBackgroundColor(Color.WHITE);
             }else if(v.getId() == R.id.iv_back){
-                crm_kehu.this.finish();
+
+            /*    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("确认退出吗")
+                        .setCancelable(false)
+                        .setPositiveButton("确认",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int id) {
+                                        crm_kehu.this.finish();
+                                    }
+                                })
+                        .setNegativeButton("取消",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+                AlertDialog alert = builder.create();
+                alert.show();*/
+                new AlertDialog.Builder(crm_kehu.this)
+                        .setTitle("提醒")
+                        .setMessage("                   确认退出吗")
+                        .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                dialog.cancel();
+                            }
+                        })
+                        .setNegativeButton("确定",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int id) {
+                                        crm_kehu.this.finish();
+                                    }
+                                }).show();
+
+
             }else if(v.getId() == R.id.iv_add){
                 Intent intent = new Intent(crm_kehu.this, crm_addkehu.class);
                 startActivityForResult(intent, 0);
@@ -341,7 +491,7 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
         }
         if(e.getAction()==MotionEvent.ACTION_CANCEL){
             if (v.getId() == R.id.kehu_sousuo) {
-                layout1.setBackgroundColor(Color.WHITE);
+                //      layout1.setBackgroundColor(Color.WHITE);
             } else if (v.getId() == R.id.kehu_shaixuantiaojian) {
                 layout2.setBackgroundColor(Color.WHITE);
             } else if (v.getId() == R.id.kehu_gengxinshijian) {
@@ -367,7 +517,7 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
                     if(cursor.getString(6).equals(aa[i])||cursor.getString(7).equals(aa[i]))
                     {
                         map = cursor.getString(1);
-                        result.add(map);
+                        result.add(map+","+cursor.getString(7)+","+cursor.getString(2)+",");
                         break;
                     }
 
@@ -385,20 +535,47 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
         ArrayList<String> result =
                 new ArrayList<String>();
         // ����Cursor�����
+        studentlist.clear();
         while (cursor.moveToNext()) {
             // ��������е����ݴ���ArrayList��
             String map = new String();
             if(User_id.equals(cursor.getString(10))){
                 //修改我的客户
                 map = cursor.getString(1);
-                result.add(map);
-                sortName  sort = new sortName(cursor.getString(1),cursor.getString(1),cursor.getString(11),cursor.getString(10));
+                result.add(map+","+cursor.getString(7)+",");
+                sortName  sort = new sortName(map+","+cursor.getString(7)+","+cursor.getString(2)+",",cursor.getString(1),cursor.getString(11),cursor.getString(10));
                 studentlist.add(sort);
             }
 
         }
         return result;
     }
+
+
+
+    protected ArrayList<String>
+    convertext(Cursor cursor,String str) {
+        ArrayList<String> result =
+                new ArrayList<String>();
+        // ����Cursor�����
+        studentlist.clear();
+        while (cursor.moveToNext()) {
+            // ��������е����ݴ���ArrayList��
+            String map = new String();
+            if(User_id.equals(cursor.getString(10))){
+                //修改我的客户
+                map = cursor.getString(1);
+                if(map.contains(str)) {
+                    result.add(map+","+cursor.getString(7)+",");
+                    sortName sort = new sortName(map+","+cursor.getString(7)+","+cursor.getString(2)+",", cursor.getString(1), cursor.getString(11), cursor.getString(10));
+                    studentlist.add(sort);
+                }
+            }
+
+        }
+        return result;
+    }
+
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -439,27 +616,82 @@ public class crm_kehu extends Activity implements View.OnTouchListener {
         }
         else
             tip.setVisibility(View.GONE);
+
         for (String country : countries) {
-            TextView textView = (TextView) getLayoutInflater().inflate(R.layout.crm_list_item, null);
+            LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.crm_list_item, null);
+
+            TextView text1 = (TextView) layout.findViewById(R.id.text1);
+            TextView text2 = (TextView) layout.findViewById(R.id.text2);
+            ImageView img = (ImageView) layout.findViewById(R.id.imageView);
+
+            Button lianxirenphone = (Button) layout.findViewById(R.id.lianxirenphone);
             final String[] values = country.split(",");
-            final String countryName = values[0].trim();
-            int flagResId = getResources().getIdentifier("a_9", "drawable", getPackageName());
-            textView.setText(countryName);
-            textView.setCompoundDrawablesWithIntrinsicBounds(flagResId, 0, 0, 0);
-            textView.setOnClickListener(new OnClickListener() {
+
+            text1.setText( values[0].trim());
+
+            if(values.length>1) {
+                if (values[1].trim() != null)
+                    text2.setText(values[1].trim());
+
+                if (values[1].trim().equals("线索客户"))
+                    img.setImageResource(R.drawable.green_dot);
+                else if (values[1].trim().equals("潜在客户"))
+                    img.setImageResource(R.drawable.red_dot);
+                else if (values[1].trim().equals("成交客户"))
+                    img.setImageResource(R.drawable.blue_dot);
+                else if (values[1].trim().equals("公海客户"))
+                    img.setImageResource(R.drawable.purple_dot);
+            }
+
+            layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent();
-                    intent.putExtra("extra", countryName);
+                    intent.putExtra("extra",  values[0].trim());
                     intent.setClass(crm_kehu.this, crm_detail_kehu.class);
                     startActivity(intent);
                 }
             });
-            list.addView(textView);
+
+            lianxirenphone.setVisibility(View.GONE);
+
+
+            list.addView(layout);
         }
+
+
     }
     public void back(View view) {
         finish();
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+            new AlertDialog.Builder(crm_kehu.this)
+                    .setTitle("提醒")
+                    .setMessage("                   确认退出吗")
+                    .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int id) {
+                            dialog.cancel();
+                        }
+                    })
+                    .setNegativeButton("确定",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int id) {
+                                    finish();
+                                }
+                            }).show();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
 
 }

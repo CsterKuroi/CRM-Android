@@ -59,7 +59,7 @@ public class yh729_alarm_recordAdapter extends SimpleCursorAdapter {
                 break;
         }
 
-        imageView.setImageResource(R.drawable.schedule_remind);
+        imageView.setImageResource(R.drawable.tixing_richeng);
         nameMsg.setText(datetime);
         contentMsg.setText(arg2.getString(arg2.getColumnIndex("content")));
         id.setText(arg2.getString(arg2.getColumnIndex("_id")));

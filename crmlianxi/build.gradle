@@ -26,9 +26,9 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.android.support:recyclerview-v7:22.2.0'
-    compile 'com.android.support:support-v4:22.2.0'
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:recyclerview-v7:22.2.1'
+    compile 'com.android.support:support-v4:22.2.1'
     compile project(':library')
     compile files('libs/autobahn-0.5.0.jar')
     compile files('libs/OpenApi_v1.5_20140811.jar')

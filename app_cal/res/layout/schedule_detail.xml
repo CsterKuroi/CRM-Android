@@ -5,18 +5,37 @@
     android:background="@color/white">
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/topbarheight"
         android:gravity="center_vertical"
         android:layout_gravity="center_vertical"
         android:background="#106bb9" >
-        <ImageButton
+        <RelativeLayout
             android:id="@+id/back"
-            android:layout_width="35dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/back" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/left_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="6dp"
+                android:scaleType="center"
+                android:src="@drawable/tt_top_back" />
+
+            <TextView
+                android:id="@+id/left_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_toRightOf="@id/left_btn"
+                android:gravity="center_vertical"
+                android:text="返回"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </RelativeLayout>
         <TextView
             android:id="@+id/topbar"
             android:layout_width="wrap_content"
@@ -25,7 +44,7 @@
             android:layout_centerVertical="true"
             android:text="日程详情"
             android:textColor="#FFFF"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
         <TextView
             android:id="@+id/richeng"
             android:layout_width="50dp"
@@ -35,23 +54,49 @@
             android:gravity="center_vertical|left"
             android:text="日程"
             android:textColor="#FFFF"
+            android:visibility="gone"
             android:textSize="16sp" />
     </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/lightgrayspace"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@color/lightgrayspace"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal"
             android:gravity="center_vertical">
             <TextView
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+
                 android:text="开始:"
                 android:textSize="16sp"
                 android:layout_gravity="center_vertical"
@@ -59,6 +104,7 @@
             <TextView
                 android:id="@+id/time"
                 android:layout_weight="0.25"
+                android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
@@ -72,7 +118,7 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+
                 android:text="截至:"
                 android:textSize="16sp"
                 android:layout_gravity="center_vertical"
@@ -87,13 +133,14 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
+            android:textSize="16sp"
             android:orientation="horizontal"
             android:gravity="center_vertical">
             <TextView
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+
                 android:text="优先级:"
                 android:textSize="16sp"
                 android:layout_gravity="center_vertical"
@@ -118,15 +165,16 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:minHeight="30dp">
             <TextView
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+
                 android:text="参与人:"
                 android:textSize="16sp"
                 android:layout_gravity="center_vertical"
@@ -134,6 +182,7 @@
             <TextView
                 android:id="@+id/participant"
                 android:layout_weight="0.25"
+                android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
@@ -141,13 +190,14 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
+            android:textSize="16sp"
             android:orientation="horizontal"
             android:gravity="center_vertical">
             <TextView
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+
                 android:text="备注:"
                 android:textSize="16sp"
                 android:layout_gravity="center_vertical"
@@ -156,46 +206,54 @@
                 android:id="@+id/note"
                 android:layout_weight="0.25"
                 android:layout_width="match_parent"
+                android:textSize="16sp"
                 android:layout_height="match_parent" />
         </LinearLayout>
 
+
+
+    </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/edit"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_height="40dp"
+                android:background="@drawable/my_button_ok"
+                android:text="编辑"
+                android:textColor="@color/white"
+                android:layout_width="match_parent" />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:gravity="center">
-            <TextView
-                android:layout_weight="1.2"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent" />
-            <Button
-                android:id="@+id/edit"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:background="@color/lightskyblue"
-                android:text="编辑"
-                android:textColor="@color/black"
-                android:layout_width="match_parent" />
-            <TextView
-                android:layout_weight="1.3"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent" />
             <Button
                 android:id="@+id/delete"
-                android:layout_weight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:layout_height="match_parent"
-                android:background="@color/lightskyblue"
+                android:background="@drawable/my_button_ok"
                 android:text="删除"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:layout_width="match_parent" />
-            <TextView
-                android:layout_weight="1.2"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent" />
-
         </LinearLayout>
 
+
+
     </LinearLayout>
+</ScrollView>
 
 </LinearLayout>

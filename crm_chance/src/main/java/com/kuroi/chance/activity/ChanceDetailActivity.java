@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.kuroi.chance.R;
@@ -47,7 +48,7 @@ public class ChanceDetailActivity extends Activity implements ChanceDeleteCallBa
     private static final String ACTIVITY_TAG="LogDemo";
     private String userID="101";
 	
-	    private ImageView iv11;
+	    private RelativeLayout iv11;
     private ImageView iv12;
     private ImageView iv14;
 
@@ -122,7 +123,7 @@ public class ChanceDetailActivity extends Activity implements ChanceDeleteCallBa
         cusSigner = (EditText)findViewById(R.id.chance_cusSigner);
         remark = (EditText)findViewById(R.id.chance_remark);
         image = (ImageView)findViewById(R.id.image_button);
-		        iv11=(ImageView)findViewById(R.id.imageView11);
+		        iv11=(RelativeLayout)findViewById(R.id.back);
         iv12=(ImageView)findViewById(R.id.imageView12);
         iv14=(ImageView)findViewById(R.id.imageView14);
     }

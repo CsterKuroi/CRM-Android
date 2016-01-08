@@ -1,11 +1,12 @@
 package com.mogujie.tt.imservice.entity;
 
-import com.mogujie.tt.config.DBConstant;
+import android.os.Environment;
+
 import com.mogujie.tt.DB.entity.GroupEntity;
 import com.mogujie.tt.DB.entity.SessionEntity;
 import com.mogujie.tt.DB.entity.UserEntity;
+import com.mogujie.tt.config.DBConstant;
 import com.mogujie.tt.imservice.manager.IMContactManager;
-import com.mogujie.tt.utils.pinyin.PinYin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,8 @@ public class RecentInfo {
         if(entity != null){
             name = entity.getMainName();
             ArrayList<String> avatarList = new ArrayList<>();
-            avatarList.add(entity.getAvatar());
+//            avatarList.add(entity.getAvatar());
+            avatarList.add("file://" + Environment.getExternalStorageDirectory() + "/" + entity.getPeerId() + "_avator.jpg");
             avatar = avatarList;
         }
     }
@@ -87,7 +89,8 @@ public class RecentInfo {
             for(Integer userId:list){
                 UserEntity entity = IMContactManager.instance().findContact(userId);
                 if(entity!=null){
-                    avatarList.add(entity.getAvatar());
+//                    avatarList.add(entity.getAvatar());
+                    avatarList.add("file://" + Environment.getExternalStorageDirectory() + "/" + entity.getPeerId() + "_avator.jpg");
                 }
                 if(avatarList.size()>=4){
                     break;
@@ -174,9 +177,9 @@ public class RecentInfo {
         return avatar;
     }
 
-    public void setAvatar(List<String> avatar) {
-        this.avatar = avatar;
-    }
+//    public void setAvatar(List<String> avatar) {
+//        this.avatar = avatar;
+//    }
 
     public boolean isTop() {
         return isTop;

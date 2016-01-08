@@ -3,47 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/my_background_color"
     android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/my_background_color"
         android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/statics"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
+            android:paddingBottom="30dp"
             android:paddingLeft="30dp"
             android:paddingRight="15dp"
-            android:paddingTop="20dp">
-
-            <!--<RelativeLayout-->
-                <!--android:layout_width="150dp"-->
-                <!--android:layout_height="150dp"-->
-                <!--android:background="@drawable/crm_circle"-->
-                <!--android:gravity="center">-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/percentage"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_centerInParent="true"-->
-                    <!--android:text="66.7%"-->
-                    <!--android:textColor="#ffce3a"-->
-                    <!--android:textSize="20sp" />-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_above="@id/percentage"-->
-                    <!--android:layout_centerHorizontal="true"-->
-                    <!--android:text="本月完成"-->
-                    <!--android:textColor="@color/crm_text_color"-->
-                    <!--android:textSize="16sp" />-->
-            <!--</RelativeLayout>-->
+            android:paddingTop="30dp">
 
             <me.tedyin.circleprogressbarlib.CircleProgressBar
                 android:id="@+id/bar3"
@@ -61,8 +36,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@id/bar3"
-                android:layout_marginLeft="10dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -145,43 +120,42 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/layout0"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@drawable/my_button_selector">
+        <!--<RelativeLayout-->
+        <!--android:id="@+id/layout0"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="45dp"-->
+        <!--android:background="@drawable/my_button_selector">-->
 
-            <ImageView
-                android:id="@+id/icona01"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/a01" />
+        <!--<ImageView-->
+        <!--android:id="@+id/icona01"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:src="@drawable/crm_crmxinxi" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/icona01"
-                android:text="CRM信息"
-                android:textSize="16sp" />
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_toRightOf="@id/icona01"-->
+        <!--android:text="CRM信息"-->
+        <!--android:textSize="16sp" />-->
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/tt_default_arrow" />
-        </RelativeLayout>
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:src="@drawable/tt_default_arrow" />-->
+        <!--</RelativeLayout>-->
 
         <RelativeLayout
             android:id="@+id/crm_att"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_marginTop="20dp"
             android:background="@drawable/my_button_selector">
 
             <ImageView
@@ -191,7 +165,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/crm_icon2" />
+                android:src="@drawable/crm_waiqinqiandao" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -199,7 +173,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/icon_att"
                 android:text="外勤签到"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -211,28 +185,28 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/layout1"
+            android:id="@+id/crm_kehu"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/my_button_selector">
 
             <ImageView
-                android:id="@+id/icona1"
+                android:id="@+id/icon_kehu"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/a1" />
+                android:src="@drawable/crm_kehu" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/icona1"
+                android:layout_toRightOf="@id/icon_kehu"
                 android:text="客户"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -256,71 +230,27 @@
         </FrameLayout>
 
         <RelativeLayout
-            android:id="@+id/layout2"
+            android:id="@+id/crm_lianxiren"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@drawable/my_button_selector">
 
             <ImageView
-                android:id="@+id/icona2"
+                android:id="@+id/icon_lianxiren"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/a2" />
+                android:src="@drawable/crm_lianxiren" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/icona2"
-                android:text="客户查重"
-                android:textSize="16sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/tt_default_arrow" />
-        </RelativeLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="@android:color/white"
-            android:paddingLeft="10dp">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#eeeeee" />
-        </FrameLayout>
-
-        <RelativeLayout
-            android:id="@+id/layout3"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@drawable/my_button_selector">
-
-            <ImageView
-                android:id="@+id/icona3"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/a3" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/icona3"
+                android:layout_toRightOf="@id/icon_lianxiren"
                 android:text="联系人"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -344,27 +274,27 @@
         </FrameLayout>
 
         <RelativeLayout
-            android:id="@+id/layout4"
+            android:id="@+id/crm_kehubaifang"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@drawable/my_button_selector">
 
             <ImageView
-                android:id="@+id/icona4"
+                android:id="@+id/icon_kehubaifang"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/a4" />
+                android:src="@drawable/crm_kehubaifang" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/icona4"
-                android:text="搜名片"
-                android:textSize="16sp" />
+                android:layout_toRightOf="@id/icon_kehubaifang"
+                android:text="客户拜访"
+                android:textSize="15sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -375,9 +305,8 @@
                 android:src="@drawable/tt_default_arrow" />
         </RelativeLayout>
 
-
         <RelativeLayout
-            android:id="@+id/layoutb1"
+            android:id="@+id/crm_jihui"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="20dp"
@@ -390,7 +319,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/b1" />
+                android:src="@drawable/crm_jihui" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -398,7 +327,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/iconb1"
                 android:text="机会"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -423,7 +352,7 @@
 
 
         <RelativeLayout
-            android:id="@+id/layoutb2"
+            android:id="@+id/crm_hetong"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@drawable/my_button_selector">
@@ -435,7 +364,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/b2" />
+                android:src="@drawable/crm_hetong" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -443,7 +372,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/iconb2"
                 android:text="合同"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -467,7 +396,7 @@
         </FrameLayout>
 
         <RelativeLayout
-            android:id="@+id/layoutb3"
+            android:id="@+id/crm_chanpinzhanshi"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@drawable/my_button_selector">
@@ -479,7 +408,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/b3" />
+                android:src="@drawable/crm_chanpinzhanshi" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -487,7 +416,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/iconb3"
                 android:text="产品展示"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -498,82 +427,82 @@
                 android:src="@drawable/tt_default_arrow" />
         </RelativeLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="@android:color/white"
-            android:paddingLeft="10dp">
+        <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0.1dp"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:paddingLeft="10dp">-->
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#eeeeee" />
-        </FrameLayout>
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="#eeeeee" />-->
+        <!--</FrameLayout>-->
 
-        <RelativeLayout
-            android:id="@+id/layoutb4"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@drawable/my_button_selector">
+        <!--<RelativeLayout-->
+        <!--android:id="@+id/crm_xiansuo"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="45dp"-->
+        <!--android:background="@drawable/my_button_selector">-->
 
-            <ImageView
-                android:id="@+id/iconb4"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/b4" />
+        <!--<ImageView-->
+        <!--android:id="@+id/iconb4"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:src="@drawable/crm_xiansuo" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/iconb4"
-                android:text="线索"
-                android:textSize="16sp" />
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_toRightOf="@id/iconb4"-->
+        <!--android:text="线索"-->
+        <!--android:textSize="16sp" />-->
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/tt_default_arrow" />
-        </RelativeLayout>
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:src="@drawable/tt_default_arrow" />-->
+        <!--</RelativeLayout>-->
 
-        <RelativeLayout
-            android:id="@+id/layoutb5"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/my_button_selector">
+        <!--<RelativeLayout-->
+        <!--android:id="@+id/crm_shezhi"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="45dp"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:background="@drawable/my_button_selector">-->
 
-            <ImageView
-                android:id="@+id/iconc1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/c1" />
+        <!--<ImageView-->
+        <!--android:id="@+id/iconc1"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:src="@drawable/crm_shezhi" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/iconc1"
-                android:text="设置"
-                android:textSize="16sp" />
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_toRightOf="@id/iconc1"-->
+        <!--android:text="设置"-->
+        <!--android:textSize="16sp" />-->
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/tt_default_arrow" />
-        </RelativeLayout>
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:src="@drawable/tt_default_arrow" />-->
+        <!--</RelativeLayout>-->
 
     </LinearLayout>
 

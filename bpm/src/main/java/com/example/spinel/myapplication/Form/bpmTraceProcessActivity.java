@@ -2,11 +2,14 @@ package com.example.spinel.myapplication.Form;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -47,6 +50,7 @@ public class bpmTraceProcessActivity extends ActionBarActivity {
             if(resultCode== RESULT_OK) {
                 Intent intent = new Intent();
                 intent.putExtra("data", data.getStringExtra("data"));
+                Log.e("trace process activity result data", data.getStringExtra("data"));
 
                 ArrayList<String> list = data.getStringArrayListExtra("voiceList");
                 if(list!=null && !list.isEmpty())
@@ -78,14 +82,80 @@ public class bpmTraceProcessActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bpm_activity_trace_process);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         formtitle = getIntent().getStringExtra("dealFormTitle");
         dealForm = getIntent().getStringExtra("dealForm");
         STATE = getIntent().getIntExtra("state", STATE_READ);
 
 
+        //初始化界面
         initView();
+
+
+        //初始化actionbar
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
+        View customView = getLayoutInflater().inflate(R.layout.bpm_title, null);
+        actionBar.setCustomView(customView);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);
+
+        ((TextView)findViewById(R.id.title)).setText("审核进程");
+
+        if(STATE == STATE_RESTART)
+            ((Button)findViewById(R.id.button_ok)).setText("重新提交");
+        else if(STATE == STATE_REVIEW || STATE == STATE_REVIEW_READONLY)
+            ((Button)findViewById(R.id.button_ok)).setText(formtitle);
+        else
+            findViewById(R.id.button_ok).setVisibility(View.INVISIBLE);
+
+
+
+        findViewById(R.id.button_ok).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(STATE == STATE_RESTART){
+
+                    Intent intent = new Intent(bpmTraceProcessActivity.this, bpmFormActivity.class);
+                    intent.putExtra("datas", dealForm);
+                    intent.putExtra("title", formtitle);
+                    ArrayList<Object> draft = new ArrayList<Object>();
+                    draft.add(-1);
+                    draft.add(getIntent().getStringExtra("dealForm"));
+                    intent.putExtra("draft", draft);
+
+                    intent.putExtra("state", bpmFormActivity.STATE_RESTART);
+                    startActivityForResult(intent, REQUEST_RESTART);
+                }
+                else if(STATE == STATE_REVIEW){
+
+                    Intent intent = new Intent(bpmTraceProcessActivity.this, bpmFormActivity.class);
+                    intent.putExtra("datas", dealForm);
+                    intent.putExtra("title", formtitle);
+
+                    intent.putExtra("state", bpmFormActivity.STATE_REVIEW);
+                    startActivityForResult(intent, REQUEST_REVIEW);
+                }
+                else if(STATE == STATE_REVIEW_READONLY){
+
+                    Intent intent = new Intent(bpmTraceProcessActivity.this, bpmFormActivity.class);
+                    intent.putExtra("datas", dealForm);
+                    intent.putExtra("title", formtitle);
+
+                    intent.putExtra("state", bpmFormActivity.STATE_REVIEW_READONLY);
+                    startActivityForResult(intent, REQUEST_REVIEW);
+                }
+            }
+        });
+
+
+        findViewById(R.id.imageButton_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(RESULT_CANCELED);
+                bpmTraceProcessActivity.this.finish();
+            }
+        });
     }
 
     private void initView(){
@@ -149,7 +219,7 @@ public class bpmTraceProcessActivity extends ActionBarActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(!processList.get(position).summary.equals("审核超时")) {
+                if(!processList.get(position).summary.equals("审核超时") && !processList.get(position).summary.equals("无人应答")) {
 
                     Intent intent = new Intent(bpmTraceProcessActivity.this, bpmFormActivity.class);
                     intent.putExtra("datas", processList.get(position).datas);
@@ -200,17 +270,18 @@ public class bpmTraceProcessActivity extends ActionBarActivity {
 
             //添加view
             LinearLayout linearLayout = (LinearLayout)findViewById(R.id.LinearLayout2);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(6, 7, 6, 0);
+
             int i;
             for(i=0; i<groupList.size(); i++){
                 String name = groupList.get(i).groupName;
                 RelativeLayout interval = (RelativeLayout)getLayoutInflater().inflate(name.isEmpty() ? R.layout.bpm_form_title_summary_thin : R.layout.bpm_form_title_summary, null);
                 ((TextView)interval.findViewById(R.id.form_title_text)).setText(name);
-                interval.setLayoutParams(lp);
+
 
                 linearLayout.addView(interval, i*2);
+
                 linearLayout.addView(groupList.get(i).getView(false, true), i*2+1);
+
             }
 
 
@@ -218,10 +289,10 @@ public class bpmTraceProcessActivity extends ActionBarActivity {
             if(extra_group==null)
                 return;
 
-            RelativeLayout interval = (RelativeLayout)getLayoutInflater().inflate(R.layout.bpm_form_title_summary_thin, null);
-            ((TextView)interval.findViewById(R.id.form_title_text)).setText("");
-            interval.setLayoutParams(lp);
+            RelativeLayout interval = (RelativeLayout)getLayoutInflater().inflate(R.layout.bpm_form_title_summary, null);
+            ((TextView)interval.findViewById(R.id.form_title_text)).setText("发送目标");
             linearLayout.addView(interval, i*2);
+
             linearLayout.addView(extra_group.getView(false, true), i*2+1);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -230,59 +301,4 @@ public class bpmTraceProcessActivity extends ActionBarActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.bpm_menu_review_process, menu);
-
-        if(STATE == STATE_RESTART)
-            menu.findItem(R.id.traceprocess_review).setTitle("重新提交");
-        else if(STATE == STATE_REVIEW || STATE == STATE_REVIEW_READONLY)
-            menu.findItem(R.id.traceprocess_review).setTitle(formtitle);
-        else
-            menu.findItem(R.id.traceprocess_review).setVisible(false);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == android.R.id.home) {
-            setResult(RESULT_CANCELED);
-            bpmTraceProcessActivity.this.finish();
-        } else if (id == R.id.traceprocess_review) {
-            if (STATE == STATE_RESTART) {
-
-                Intent intent = new Intent(bpmTraceProcessActivity.this, bpmFormActivity.class);
-                intent.putExtra("datas", dealForm);
-                intent.putExtra("title", formtitle);
-                ArrayList<Object> draft = new ArrayList<Object>();
-                draft.add(-1);
-                draft.add(getIntent().getStringExtra("dealForm"));
-                intent.putExtra("draft", draft);
-
-                intent.putExtra("state", bpmFormActivity.STATE_RESTART);
-                startActivityForResult(intent, REQUEST_RESTART);
-            } else if (STATE == STATE_REVIEW) {
-
-                Intent intent = new Intent(bpmTraceProcessActivity.this, bpmFormActivity.class);
-                intent.putExtra("datas", dealForm);
-                intent.putExtra("title", formtitle);
-
-                intent.putExtra("state", bpmFormActivity.STATE_REVIEW);
-                startActivityForResult(intent, REQUEST_REVIEW);
-            } else if (STATE == STATE_REVIEW_READONLY) {
-
-                Intent intent = new Intent(bpmTraceProcessActivity.this, bpmFormActivity.class);
-                intent.putExtra("datas", dealForm);
-                intent.putExtra("title", formtitle);
-
-                intent.putExtra("state", bpmFormActivity.STATE_REVIEW_READONLY);
-                startActivityForResult(intent, REQUEST_REVIEW);
-            }
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

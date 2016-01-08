@@ -45,12 +45,13 @@ public class aa {
             remindid[i][0]=cursor.getString(0);
             remindid[i][1]=setRemind(data[i][2],data[i][5]+","+data[i][7]+data[5],"care_remind",0,2,context);
             i++;
+            //"create table care_table(_id integer primary " +
+            //"key autoincrement, uid text,type text,time text,time2/4 text,note text,fid text,fname text,fsex text,fphone text,state text)";
         }
-        Toast.makeText(context, userid+" "+data[i-1][1]+" "+remindid[i-1], Toast.LENGTH_LONG).show();
+       // Toast.makeText(context, userid+" "+data[i-1][2]+" "+remindid[i-1][1], Toast.LENGTH_LONG).show();
         //Toast.makeText(context, "闹钟启动成功！", Toast.LENGTH_LONG).show();
 
     }
-
     public static String setRemind(String time,String content,String type,int way,int repeat,Context context){
         SQLiteDatabase db=(new yh729_LocalDataBase(context,null)).getDataBase();
         yh729_DBUtil.insert(db, "alarm_record", new String[]{"date_time", "content", "type", "way", "repeat"}

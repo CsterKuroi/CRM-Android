@@ -16,11 +16,11 @@ import android.view.Window;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
@@ -46,16 +46,18 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
     private int option;
     private Thread thread;
     private TextView time;
-    private AnimationSet animationSet;
+    //    private AnimationSet animationSet;
     private LocationClient mLocationClient = null;
     private Button b4;
     private Button b5;
     private JGRoundImageView view7;
     private JGRoundImageView view9;
-    private LinearLayout editpos;
+    private RelativeLayout editpos;
     private TextView t12;
     private TextView t35;
-    private ImageView backButton3;
+    private ImageView paizhao1;
+    private ImageView paizhao2;
+    private RelativeLayout backButton3;
     private BDLocationListener myListener = new BDLocationListener() {
         @Override
         public void onReceiveLocation(BDLocation location) {
@@ -98,16 +100,33 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
                         view7.setImageBitmap(dataSet1.getThumbnail());
                         t12.setText(dataSet1.getTime().split(" ")[1]);
                         b4.setClickable(false);
-                        b4.setBackgroundColor(0xffdddddd);
+//                        b4.setBackgroundColor(0xffdddddd);
                         b4.setText("已签到");
-                    }
-                    else if (item.getType() == 2) {
+                        view7.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(JGMain2Activity.this, JGShowActivity.class);
+                                intent.putExtra("pic_path", dataSet1.getPicPath());
+                                startActivity(intent);
+                            }
+                        });
+                        paizhao1.setVisibility(View.GONE);
+                    } else if (item.getType() == 2) {
                         dataSet2 = item;
                         view9.setImageBitmap(dataSet2.getThumbnail());
                         t35.setText(dataSet2.getTime().split(" ")[1]);
                         b5.setClickable(false);
-                        b5.setBackgroundColor(0xffdddddd);
-                        b5.setText("已签到");
+//                        b5.setBackgroundColor(0xffdddddd);
+                        b5.setText("已签退");
+                        view9.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(JGMain2Activity.this, JGShowActivity.class);
+                                intent.putExtra("pic_path", dataSet2.getPicPath());
+                                startActivity(intent);
+                            }
+                        });
+                        paizhao2.setVisibility(View.GONE);
                     }
                 }
             }
@@ -136,7 +155,7 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
                     dataSet1.generateThumbnail();
                     view7.setImageBitmap(dataSet1.getThumbnail());
                     b4.setClickable(true);
-                    b4.setBackgroundColor(0xff01aff4);
+//                    b4.setBackgroundColor(0xff01aff4);
                     view7.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -145,19 +164,19 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
                             startActivity(intent);
                         }
                     });
+                    paizhao1.setVisibility(View.GONE);
                     break;
                 case Activity.RESULT_CANCELED:
                     dataSet1.setTimeStamp(null);
                     break;
             }
-        }
-        else if (requestCode == CAPTURE_REQUEST_CODE2) {
+        } else if (requestCode == CAPTURE_REQUEST_CODE2) {
             switch (resultCode) {
                 case Activity.RESULT_OK:
                     dataSet2.generateThumbnail();
                     view9.setImageBitmap(dataSet2.getThumbnail());
                     b5.setClickable(true);
-                    b5.setBackgroundColor(0xff01aff4);
+//                    b5.setBackgroundColor(0xff01aff4);
                     view9.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -166,6 +185,7 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
                             startActivity(intent);
                         }
                     });
+                    paizhao2.setVisibility(View.GONE);
                     break;
                 case Activity.RESULT_CANCELED:
                     dataSet2.setTimeStamp(null);
@@ -213,9 +233,9 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.jg_activity_main2);
         // Set up animation
-        animationSet = new AnimationSet(true);
-        animationSet.addAnimation(scaleAnimation());
-        animationSet.addAnimation(disappearAnimation());
+//        animationSet = new AnimationSet(true);
+//        animationSet.addAnimation(scaleAnimation());
+//        animationSet.addAnimation(disappearAnimation());
 
         // find view by id
         t12 = (TextView) findViewById(R.id.textView12);
@@ -224,23 +244,61 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
         b5 = (Button) findViewById(R.id.button5);
         view7 = (JGRoundImageView) findViewById(R.id.imageView7);
         view9 = (JGRoundImageView) findViewById(R.id.imageView9);
-        backButton3 = (ImageView) findViewById(R.id.backButton3);
+        paizhao1 = (ImageView) findViewById(R.id.paizhao1);
+        paizhao2 = (ImageView) findViewById(R.id.paizhao2);
+        backButton3 = (RelativeLayout) findViewById(R.id.back);
 
+        final LinearLayout shangban1 = (LinearLayout) findViewById(R.id.shangban1);
+        final RelativeLayout shangban2 = (RelativeLayout) findViewById(R.id.shangban2);
+        final LinearLayout xiaban1 = (LinearLayout) findViewById(R.id.xiaban1);
+        final RelativeLayout xiaban2 = (RelativeLayout) findViewById(R.id.xiaban2);
+        final TextView tabShangban = (TextView) findViewById(R.id.tab_shangban);
+        final TextView tabXiaban = (TextView) findViewById(R.id.tab_xiaban);
+        tabShangban.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tabShangban.setTextColor(getResources().getColor(R.color.my_tab_sel_color));
+                tabShangban.setBackgroundResource(R.drawable.my_tab_sel);
+                tabXiaban.setTextColor(getResources().getColor(android.R.color.black));
+                tabXiaban.setBackgroundColor(getResources().getColor(android.R.color.white));
+                shangban1.setVisibility(View.VISIBLE);
+                shangban2.setVisibility(View.VISIBLE);
+                b4.setVisibility(View.VISIBLE);
+                xiaban1.setVisibility(View.GONE);
+                xiaban2.setVisibility(View.GONE);
+                b5.setVisibility(View.GONE);
+            }
+        });
+        tabXiaban.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tabXiaban.setTextColor(getResources().getColor(R.color.my_tab_sel_color));
+                tabXiaban.setBackgroundResource(R.drawable.my_tab_sel);
+                tabShangban.setTextColor(getResources().getColor(android.R.color.black));
+                tabShangban.setBackgroundColor(getResources().getColor(android.R.color.white));
+                xiaban1.setVisibility(View.VISIBLE);
+                xiaban2.setVisibility(View.VISIBLE);
+                b5.setVisibility(View.VISIBLE);
+                shangban1.setVisibility(View.GONE);
+                shangban2.setVisibility(View.GONE);
+                b4.setVisibility(View.GONE);
+            }
+        });
         // refresh dataSet
         int uid = getIntent().getIntExtra("uid", -1);
         String name = getIntent().getStringExtra("name");
 //        if (dataSet1 == null || dataSet1.getTimeStamp() == null) {
-            dataSet1 = new JGDataSet();
-            dataSet1.setType(1);
-            dataSet1.setUserID(uid);
-            dataSet1.setUserName(name);
+        dataSet1 = new JGDataSet();
+        dataSet1.setType(1);
+        dataSet1.setUserID(uid);
+        dataSet1.setUserName(name);
 //        }
 
 //        if (dataSet2 == null || dataSet2.getTimeStamp() == null) {
-            dataSet2 = new JGDataSet();
-            dataSet2.setType(2);
-            dataSet2.setUserID(uid);
-            dataSet2.setUserName(name);
+        dataSet2 = new JGDataSet();
+        dataSet2.setType(2);
+        dataSet2.setUserID(uid);
+        dataSet2.setUserName(name);
 //        }
 
         time = (TextView) findViewById(R.id.time);
@@ -274,7 +332,7 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
                 uploadToServer();
                 if (dataSet1.getTime() != null)
                     t12.setText(dataSet1.getTime().substring(dataSet1.getTime().length() - 8));
-                b4.setBackgroundColor(0xffdddddd);
+//                b4.setBackgroundColor(0xffdddddd);
                 b4.setClickable(false);
                 b4.setText("已签到");
                 //dataSet1 = new JGDataSet();
@@ -288,7 +346,7 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
                 uploadToServer();
                 if (dataSet2.getTime() != null)
                     t35.setText(dataSet2.getTime().substring(dataSet2.getTime().length() - 8));
-                b5.setBackgroundColor(0xffdddddd);
+//                b5.setBackgroundColor(0xffdddddd);
                 b5.setClickable(false);
                 b5.setText("已签退");
                 //dataSet2 = new JGDataSet();
@@ -297,11 +355,11 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
 
         if (dataSet1.getTimeStamp() == null) {
             b4.setClickable(false);
-            b4.setBackgroundColor(0xffdddddd);
-            view7.setOnClickListener(new View.OnClickListener() {
+//            b4.setBackgroundColor(0xffdddddd);
+            paizhao1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    view7.startAnimation(animationSet);
+//                    view7.startAnimation(animationSet);
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);// 调用系统相机
                     Uri fileUri = getOutputMediaFileUri(); // create a file to save the image
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
@@ -335,11 +393,11 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
 
         if (dataSet2.getTimeStamp() == null) {
             b5.setClickable(false);
-            b5.setBackgroundColor(0xffdddddd);
-            view9.setOnClickListener(new View.OnClickListener() {
+//            b5.setBackgroundColor(0xffdddddd);
+            paizhao2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    view9.startAnimation(animationSet);
+//                    view9.startAnimation(animationSet);
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);// 调用系统相机
                     Uri fileUri = getOutputMediaFileUri(); // create a file to save the image
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
@@ -377,7 +435,7 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
                 showLeaveDialog();
             }
         });
-        editpos = (LinearLayout) findViewById(R.id.didianhuoqu);
+        editpos = (RelativeLayout) findViewById(R.id.editpos);
         editpos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -385,10 +443,12 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
             }
         });
     }
+
     private void intentToLocate() {
         Intent intent = new Intent(JGMain2Activity.this, JGLocate2Activity.class);
         startActivity(intent);
     }
+
     private void uploadToServer() {
         JGUpload upload = new JGUpload(this);
         String JSONString = null;
@@ -400,8 +460,7 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
         if (option == 1) {
             JGUploadPic uploadThread = new JGUploadPic(dataSet1);
             uploadThread.start();
-        }
-        else if (option == 2) {
+        } else if (option == 2) {
             JGUploadPic uploadThread = new JGUploadPic(dataSet2);
             uploadThread.start();
         }
@@ -413,14 +472,12 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
             if (option == 1) {
                 operation.save(dataSet1);
                 successDialog();
-            }
-            else if (option == 2) {
+            } else if (option == 2) {
                 operation.save(dataSet2);
                 successDialog2();
             }
 //            successDialog();
-        }
-        else if (payload.equals("2")) {
+        } else if (payload.equals("2")) {
             failDialog();
         }
     }
@@ -472,9 +529,10 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
         }
         return false;
     }
+
     private void showLeaveDialog() {
         new AlertDialog.Builder(this).setTitle("提示")
-                .setMessage("是否离开此页面？\n您将丢失所有未保存的数据。")
+                .setMessage("是否取消考勤签到？")
                 .setPositiveButton("否", null)
                 .setNegativeButton("是", new DialogInterface.OnClickListener() {
                     @Override
@@ -508,8 +566,7 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
                 }).show();
     }
 
-    protected Animation scaleAnimation()
-    {
+    protected Animation scaleAnimation() {
         ScaleAnimation animationScale = new ScaleAnimation(1f, 2f, 1f, 2f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         animationScale.setInterpolator(new AccelerateInterpolator());
         animationScale.setDuration(500);
@@ -517,13 +574,13 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
         return animationScale;
     }
 
-    protected Animation disappearAnimation()
-    {
+    protected Animation disappearAnimation() {
         AlphaAnimation animation = new AlphaAnimation(1, 0);
         animation.setDuration(500);//设置动画持续时间
         return animation;
     }
-    private void initLocation(){
+
+    private void initLocation() {
         LocationClientOption option = new LocationClientOption();
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy
         );//可选，默认高精度，设置定位模式，高精度，低功耗，仅设备
@@ -549,5 +606,11 @@ public class JGMain2Activity extends Activity implements Runnable, JGUploadCallB
         mLocationClient.stop();
         thread.interrupt();
         super.onDestroy();
+    }
+
+    private void showRequireShotDialog() {
+        new AlertDialog.Builder(this).setTitle("提示")
+                .setMessage("请先拍照。")
+                .setPositiveButton("确定", null).show();
     }
 }

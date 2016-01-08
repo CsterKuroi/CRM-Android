@@ -39,6 +39,9 @@ public class yh729_Notify_Thread extends Thread {
         String timetype, cmd="", time="", str="", uid, type = "";
         SQLiteDatabase db=(new yh729_LocalDataBase(service,null)).getDataBase();
 
+//        CenterDatabase cdb=new CenterDatabase(service,null);
+//        uid=cdb.getUID();
+//        cdb.close();
 //        uid="101";
         boolean test = true;
         while (flag) {

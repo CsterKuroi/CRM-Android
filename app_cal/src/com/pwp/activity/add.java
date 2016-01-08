@@ -3,6 +3,7 @@ package com.pwp.activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,13 +18,17 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.pwp.application.SysApplication;
 import com.pwp.application.application;
@@ -40,6 +45,7 @@ import com.ricky.database.CenterDatabase;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -63,8 +69,8 @@ import com.mogujie.tt.config.UrlConstant;*/
  * @author song
  */
 public class add extends Activity implements OnTouchListener {
-    private ImageButton image_back;
-    private TextView submit;
+    private RelativeLayout image_back;
+    private Button submit;
     private ImageButton image_type;
     //private ImageButton image_remind;
     private ImageButton image_participant;
@@ -75,7 +81,7 @@ public class add extends Activity implements OnTouchListener {
     private ImageButton image_note;
 
     private TextView net;
-    private EditText edittext_type;
+    private TextView edittext_type;
     //private EditText edittext_remind;
     private TextView textview_participant;
 
@@ -84,7 +90,7 @@ public class add extends Activity implements OnTouchListener {
 
     private int priority_flag = 1;
     private TextView text_priority;
-    private EditText edittext_note;
+    private TextView edittext_note;
 
     private ScheduleDAO dao;
 
@@ -200,7 +206,7 @@ public class add extends Activity implements OnTouchListener {
                     Bundle bundle = data.getExtras();
                       userids= bundle.getString("re");
                     String re2 = bundle.getString("re2");
-                    textview_participant.setText(re2);
+                    textview_participant.setText(re2.substring(0,re2.length()-1));
                     text_participant=re2;
                     break;
                 case Activity.RESULT_CANCELED:
@@ -229,7 +235,7 @@ public class add extends Activity implements OnTouchListener {
         width = wm.getDefaultDisplay().getWidth();
         height = wm.getDefaultDisplay().getHeight();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        setContentView(R.layout.add);
+        setContentView(R.layout.add2);
         from = null;
         text_priority = (TextView) findViewById(R.id.text_priority);
         net = (TextView) findViewById(R.id.networkflag);
@@ -260,6 +266,11 @@ public class add extends Activity implements OnTouchListener {
             hour = date.getHours();
             minute = date.getMinutes();
         }
+
+        if(intent.getAction()=="edite"){
+            TextView topbar =(TextView)findViewById(R.id.topbar);
+            topbar.setText("编辑日程");
+        }
         if (intent.getStringArrayListExtra("rewrite") != null) {
             // 从CalendarActivity中传来的值（包含年与日信息）
             from = "calendaredit";
@@ -276,7 +287,7 @@ public class add extends Activity implements OnTouchListener {
             remindType = CalendarConstant.remind[remindID];
             text_participant = vo1.getparticipant();
             userids=text_participant;
-            //Toast.makeText(add.this,text_participant,Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(add.this,text_participant,Toast.LENGTH_SHORT).show();
             rb_flag = vo1.getissendmail();
             text_starttime = vo1.getScheduleDate();
             text_endtime = vo1.getScheduleDate2();//(vo1.getScheduleDate2()!=null)? vo1.getScheduleDate2().substring(0, vo1.getScheduleDate2().length() - 3):"";
@@ -289,17 +300,17 @@ public class add extends Activity implements OnTouchListener {
             text_starttime = getScheduleDate();
         }
 
-        TextView space = (TextView) findViewById(R.id.textview_space);
-        space.setWidth(4 * width / 7);
+      /*  TextView space = (TextView) findViewById(R.id.textview_space);
+        space.setWidth(4 * width / 7);*/
 
 
-        image_back = (ImageButton) findViewById(R.id.ImageButton_back);
-        submit = (TextView) findViewById(R.id.submit);
+        image_back = (RelativeLayout) findViewById(R.id.ImageButton_back);
+        submit = (Button) findViewById(R.id.submit);
         image_type = (ImageButton) findViewById(R.id.ImageButton_type);
         //image_remind = (ImageButton) findViewById(R.id.ImageButton_remind);
         image_participant = (ImageButton) findViewById(R.id.ImageButton_participant);
         //image_business = (ImageButton) findViewById(R.id.ImageButton_business);
-        edittext_type = (EditText) findViewById(R.id.EditText_type);
+        edittext_type = (TextView) findViewById(R.id.EditText_type);
         //edittext_remind = (EditText) findViewById(R.id.EditText_remind);
         edittext_type.setBackgroundColor(Color.WHITE);
         edittext_type.setTextColor(Color.BLACK);
@@ -401,7 +412,21 @@ public class add extends Activity implements OnTouchListener {
         image_back.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                new AlertDialog.Builder(add.this)
+                        .setTitle("提醒")
+                        .setMessage("确定退出吗？")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                add.this.finish();
+                            }
+                        }).setNegativeButton("取消 ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                        .show();
 				/*
 				 * Intent intent = new Intent(); intent.setClass(add.this,
 				 * CalendarActivity.class); startActivity(intent);
@@ -420,6 +445,17 @@ public class add extends Activity implements OnTouchListener {
                     all_ok += " 参与人";
                 final String flag;
                 if (all_ok == "") {
+
+
+                    final ProgressDialog proDia=new ProgressDialog(add.this);
+
+                    proDia.setTitle("提交中");
+
+                    proDia.setMessage("请耐心等待！");
+
+                    proDia.onStart();
+
+
                     if (from == "calendaredit") flag = "修改";
                     else flag = "提交";
                     new AlertDialog.Builder(add.this).setTitle("确定" + flag + "该日程信息吗？")
@@ -450,7 +486,8 @@ public class add extends Activity implements OnTouchListener {
                                                         @Override
                                                         public void onTextMessage(String payload) {
                                                             Log.d("删除日程服务器返回结果：", payload);
-                                                           // Toast.makeText(add.this, "删除日程服务器返回结果：" + payload, Toast.LENGTH_LONG).show();
+                                                          //
+                                                          // .makeText(add.this, "删除日程服务器返回结果：" + payload, Toast.LENGTH_LONG).show();
 
                                                             dao.delete(Integer.parseInt(scheduleid));
                                                             saveid();
@@ -488,8 +525,6 @@ public class add extends Activity implements OnTouchListener {
                                             else{
                                                 saveid();
                                             }
-
-
                                         }
                                     })
                             .setNegativeButton("取消", null).show();
@@ -882,7 +917,7 @@ public class add extends Activity implements OnTouchListener {
         StringBuffer scheduleDateStr = new StringBuffer();
         scheduleDateStr.append(scheduleYear).append("-").append(scheduleMonth)
                 .append("-").append(scheduleDay).append(" ").append(hour_c)
-                .append(":").append(minute_c).append(":00");/*.append("\n")
+                .append(":").append(minute_c);/*.append("\n")
 				.append(scheduleLunarMonth).append(scheduleLunarDay);
 		// .append(" ").append(week);
 */        // dateText.setText(scheduleDateStr);
@@ -959,16 +994,31 @@ public class add extends Activity implements OnTouchListener {
 										.append(":")
 										.append(timePicker.getCurrentMinute());*/
 
-                                textview_starttime.setText(sb);
-                                textview_starttime.setTextSize(tsize);
-                                scheduleYear = String.format("%d",
-                                        datePicker.getYear());
-                                tempMonth = String.format("%d",
-                                        datePicker.getMonth() + 1);
-                                tempDay = String.format("%d",
-                                        datePicker.getDayOfMonth());
-                                // etEndTime.requestFocus();
-                                dialog.cancel();
+                                Calendar c = Calendar.getInstance();
+                                int day = c.get(Calendar.DAY_OF_MONTH);
+                                DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                long aaa=0,aaa2=0;
+                                try {
+                                    aaa2=c.getTime().getTime() - df.parse(sb+":00".toString().trim()).getTime();
+                                } catch (Exception E) {
+                                }
+                                if (aaa2>0) {
+                                    Toast.makeText(add.this, "应选择未来的时间！", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    textview_starttime.setText(sb);
+                                    textview_starttime.setTextSize(tsize);
+
+
+                                    scheduleYear = String.format("%d",
+                                            datePicker.getYear());
+                                    tempMonth = String.format("%d",
+                                            datePicker.getMonth() + 1);
+                                    tempDay = String.format("%d",
+                                            datePicker.getDayOfMonth());
+                                    // etEndTime.requestFocus();
+                                     dialog.cancel();
+                                }
+
                             }
                         });
 
@@ -998,12 +1048,32 @@ public class add extends Activity implements OnTouchListener {
 								/*sb.append(timePicker.getCurrentHour())
 										.append(":")
 										.append(timePicker.getCurrentMinute());*/
-                                textview_endtime.setText(sb);
-                                textview_endtime.setTextSize(tsize);
+                                Calendar c = Calendar.getInstance();
+                                int day = c.get(Calendar.DAY_OF_MONTH);
+                                DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                long aaa=0,aaa2=0;
+                                try {
+                                    aaa = df.parse(textview_starttime.getText().toString().trim() + ":00").
+                                            getTime() - df.parse(sb+":00".toString().trim()).getTime();
+                                    aaa2=c.getTime().getTime() - df.parse(sb+":00".toString().trim()).getTime();
+                                } catch (Exception E) {
+                                }
+                                if (textview_starttime.getText().toString().trim().equals("")) {
+                                    Toast.makeText(add.this, "请先选择开始时间！", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    if (aaa2>0) {
+                                        Toast.makeText(add.this, "应选择未来的时间！", Toast.LENGTH_SHORT).show();
+                                    } else if (aaa > 0) {
+                                        Toast.makeText(add.this, "截止时间应该晚于开始时间！", Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        textview_endtime.setText(sb);
+                                        textview_endtime.setTextSize(tsize);
 
-                                sb.append(":00");
-                                text_endtime=sb.toString();
-                                dialog.cancel();
+                                        sb.append(":00");
+                                        text_endtime = sb.toString();
+                                        dialog.cancel();
+                                    }
+                                }
                             }
                         });
             }

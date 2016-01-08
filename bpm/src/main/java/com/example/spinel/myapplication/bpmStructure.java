@@ -62,7 +62,7 @@ public class bpmStructure implements Serializable{
         public String id, name, address;
         public Client(JSONObject data){
             try {
-                id = data.getString("uid");
+                id = ""+data.getInt("uid");
                 name = data.getString("name");
                 address = data.getString("address");
             } catch (JSONException e) {
@@ -76,7 +76,7 @@ public class bpmStructure implements Serializable{
         public String id, name, company, phone;
         public Contact(JSONObject data){
             try {
-                id = data.getString("id");
+                id = ""+data.getInt("id");
                 name = data.getString("name");
                 company = data.getString("company");
                 phone = data.getString("phone");
@@ -223,7 +223,7 @@ public class UserPinyinComparator implements Comparator<User> {
 
 //--------------------------------------WebSocket----------------------------------------------
 //    final static private String wsuri = "ws://192.168.50.11:8000/ws";
-    final static private String wsuri = "ws://101.200.189.127:8000/ws";
+    final static private String wsuri = "ws://101.200.189.127:8001/ws";
 
     private WebSocketConnection mConnection;
     private boolean isConnected=false;
@@ -237,11 +237,14 @@ public class UserPinyinComparator implements Comparator<User> {
                     isConnected = true;
                     getClient();
                     //getItem();
+                    Log.e("Client", "open");
                 }
 
                 @Override
                 public void onClose(int code, String reason) {
                     isConnected = false;
+
+                    Log.e("Client", "close");
                 }
 
                 @Override

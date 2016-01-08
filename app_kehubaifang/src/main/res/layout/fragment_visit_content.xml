@@ -2,7 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.dt.testapp3.VisitContentFragment"
+    tools:context="com.example.dt.testapp3.Graphics.VisitContentFragment"
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
     android:fadingEdge="vertical">
@@ -54,11 +54,16 @@
                 android:gravity="center_vertical|center_horizontal" />
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/visit_divide_color"/>
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#09000000">
+            >
 
             <TextView
                 android:layout_width="0dp"
@@ -85,9 +90,14 @@
                 android:gravity="center"
                 android:textColor="#ff000000"
                 android:textSize="15sp"
-                android:background="#09000000" />
+                 />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/visit_divide_color"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -133,12 +143,16 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/visit_divide_color"/>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#09000000">
+            >
 
             <TextView
                 android:text="拜访对象"
@@ -166,7 +180,7 @@
                 android:gravity="center"
                 android:textColor="#ff000000"
                 android:textSize="15sp"
-                android:background="#09000000" />
+                 />
 
             <TextView
                 android:layout_width="0dp"
@@ -178,9 +192,14 @@
                 android:textIsSelectable="false"
                 android:textColor="#44000000"
                 android:gravity="center_vertical|center_horizontal"
-                android:background="#09000000" />
+                 />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/visit_divide_color"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -225,12 +244,16 @@
                 android:gravity="center_vertical|center_horizontal" />
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/visit_divide_color"/>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#09000000">
+            >
 
             <TextView
                 android:text="发起人"
@@ -256,10 +279,14 @@
                 android:gravity="center"
                 android:textColor="#ff000000"
                 android:textSize="15sp"
-                android:background="#09000000" />
+                 />
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/visit_divide_color"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -295,11 +322,16 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/visit_divide_color"/>
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/visit_bg_color">
+            >
 
             <TextView
                 android:layout_width="0dp"
@@ -327,7 +359,7 @@
                 android:textColor="#ff000000"
                 android:textIsSelectable="false"
                 android:textSize="15sp"
-                android:background="@color/visit_bg_color" />
+                />
 
             <TextView
                 android:layout_width="0dp"
@@ -339,9 +371,14 @@
                 android:textIsSelectable="false"
                 android:textColor="#44000000"
                 android:gravity="center_vertical|center_horizontal"
-                android:background="#09000000" />
+                 />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/visit_divide_color"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -374,11 +411,16 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/visit_divide_color"/>
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#09000000">
+            >
 
             <TextView
                 android:layout_width="0dp"
@@ -399,12 +441,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
-                android:hint="在这里拜访记录"
+                android:hint="在这里填写拜访记录"
                 android:id="@+id/Record"
                 android:minHeight="100dp"
                 android:textColor="#ff000000"
                 android:textSize="15sp"
-                android:background="#09000000"
+                
                 android:gravity="center_vertical" />
 
             <TextView
@@ -417,8 +459,13 @@
                 android:textIsSelectable="false"
                 android:textColor="#44000000"
                 android:gravity="center_vertical|center_horizontal"
-                android:background="#09000000" />
+                 />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/visit_divide_color"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -452,11 +499,16 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/visit_divide_color"/>
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#09000000">
+            >
 
             <TextView
                 android:layout_width="0dp"
@@ -482,7 +534,7 @@
                 android:minHeight="40dp"
                 android:textColor="#ff000000"
                 android:textSize="15sp"
-                android:background="#09000000"
+                
                 android:gravity="center_vertical" />
 
             <TextView
@@ -494,9 +546,13 @@
                 android:textSize="25dp"
                 android:textIsSelectable="false"
                 android:textColor="#44000000"
-                android:gravity="center_vertical|center_horizontal"
-                android:background="#09000000" />
+                android:gravity="center_vertical|center_horizontal"/>
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/visit_divide_color"/>
 
         <LinearLayout
             android:orientation="horizontal"

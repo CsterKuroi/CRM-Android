@@ -1,58 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:padding="10dp">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Spinel 提交"
-        android:id="@+id/workshow_item_submit"
-        android:layout_alignParentBottom="false"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/workshow_item_type"
-        android:layout_marginTop="5dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="差旅单"
         android:id="@+id/workshow_item_type"
-        android:layout_alignParentStart="true"
-        android:textSize="16dp" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="2015-7-7  15:00"
-        android:id="@+id/workshow_item_time"
+        android:layout_marginLeft="8dp"
+        android:text="差旅单"
+        android:textColor="@android:color/black"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/workshow_item_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/workshow_item_type"
         android:layout_marginLeft="15dp"
-        android:layout_alignParentTop="false"
-        android:layout_toEndOf="@+id/workshow_item_type"
-        android:textSize="16dp" />
+        android:layout_toRightOf="@id/workshow_item_type"
+        android:text="张三"
+        android:textColor="@android:color/black"
+        android:textSize="13sp" />
+
 
     <TextView
+        android:id="@+id/workshow_item_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="正在审核"
+        android:layout_alignLeft="@id/workshow_item_type"
+        android:layout_below="@+id/workshow_item_type"
+        android:layout_marginTop="10dp"
+        android:text="2015-7-7  15:00"
+        android:textColor="@android:color/black"
+        android:textSize="12dp" />
+
+    <TextView
         android:id="@+id/workshow_item_state"
-        android:textColor="#ff89898a"
-        android:layout_alignParentEnd="true"
-        android:layout_alignBottom="@+id/workshow_item_type"
-        android:textSize="16dp" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Laigus 已审核"
-        android:id="@+id/workshow_item_shenhe"
-        android:layout_alignParentBottom="false"
         android:layout_alignParentEnd="true"
-        android:layout_alignBottom="@+id/workshow_item_submit" />
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:text="正在审核"
+        android:textColor="@android:color/black"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/workshow_item_shenhe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/workshow_item_time"
+        android:layout_alignRight="@id/workshow_item_state"
+        android:layout_below="@id/workshow_item_state"
+        android:text="Laigus 已审核"
+        android:textColor="@android:color/black"
+        android:textSize="13sp" />
 
 </RelativeLayout>

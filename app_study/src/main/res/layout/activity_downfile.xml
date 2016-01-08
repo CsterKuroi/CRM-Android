@@ -1,0 +1,133 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.renxin.shujia.karl.downfile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ebebeb"
+        android:id="@+id/tv_header"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:background="#106bb9"
+            >
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:onClick="back"
+                android:paddingLeft="15dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/cal_back" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="下载文件"
+                android:textColor="#ebebeb"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text"
+        android:text="测试"
+        android:layout_below="@+id/tv_header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="105dp" />
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dip"
+        android:layout_below="@+id/text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="58dp">
+    <LinearLayout
+        android:id="@+id/ll_login_qq"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:background="@drawable/btn_bule"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5.0dip" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30.0dip"
+            android:background="@drawable/crm_start" />
+
+        <ImageView
+            android:layout_width="1.0dip"
+            android:layout_height="19.0dip"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20.0dip"
+            android:alpha="20.0"
+            android:background="#50ffffff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15.0dip"
+            android:text="重新开始"
+            android:textColor="#ffffffff"
+            android:textSize="17.0sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_login_sina"
+        android:layout_below="@+id/ll_login_qq"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="15.0dip"
+        android:background="@drawable/btn_red"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5.0dip" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30.0dip"
+            android:background="@drawable/crm_cancels" />
+
+        <ImageView
+            android:layout_width="1.0dip"
+            android:layout_height="19.0dip"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20.0dip"
+            android:background="#60ffffff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15.0dip"
+            android:text="取消 "
+            android:textColor="#ffffffff"
+            android:textSize="17.0sp" />
+    </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

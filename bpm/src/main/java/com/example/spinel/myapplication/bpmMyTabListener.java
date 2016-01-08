@@ -3,6 +3,7 @@ package com.example.spinel.myapplication;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -22,16 +23,16 @@ public class bpmMyTabListener implements ActionBar.TabListener {
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft){
-    //    System.out.println(tag[index]+" reselected");
-        if(!fragment[index].isAdded()) {
-            ft.add(fragment[index], tag[index]);
-            ft.replace(R.id.content, fragment[index], null);
-        }
+//        Log.e("Fragment Transaction", tag[index]+" reselected");
+//        if(!fragment[index].isAdded()) {
+//            ft.add(fragment[index], tag[index]);
+//            ft.replace(R.id.content, fragment[index], null);
+//        }
     }
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft){
-    //    System.out.println(tag[index]+" selected");
+//        Log.e("Fragment Transaction", tag[index]+" selected");
         if(!fragment[index].isAdded()) {
             ft.add(fragment[index], tag[index]);
             ft.replace(R.id.content, fragment[index], null);
@@ -43,7 +44,8 @@ public class bpmMyTabListener implements ActionBar.TabListener {
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft){
 
-    //    System.out.println(tag[index]+" unselected");
+//        Log.e("Fragment Transaction", tag[index]+" unselected");
+        System.out.println(tag[index]+" unselected");
         ft.remove(fragment[index]);
 
         isSelected = false;

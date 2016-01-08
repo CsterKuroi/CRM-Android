@@ -6,4 +6,4 @@
     android:src="@drawable/ic_img_profile_bg"
     android:scaleType="centerCrop"
     android:layout_gravity="center_horizontal"
-    android:contentDescription="返回" />
+    android:contentDescription="@string/app_name" />

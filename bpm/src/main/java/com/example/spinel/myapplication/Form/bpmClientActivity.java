@@ -2,6 +2,7 @@ package com.example.spinel.myapplication.Form;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 
 import com.example.spinel.myapplication.bpmMainActivity;
 import com.example.spinel.myapplication.bpmStructure;
@@ -14,6 +15,32 @@ import java.util.List;
  * Created by Spinel on 2015/8/27.
  */
 public class bpmClientActivity extends KLMainActivity {
+    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+        //初始化actionbar
+//        final ActionBar actionBar = getActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(false);
+//        View customView = getLayoutInflater().inflate(R.layout.bpm_title, null);
+//        actionBar.setCustomView(customView);
+//        actionBar.setDisplayShowCustomEnabled(true);
+//        actionBar.setDisplayShowTitleEnabled(false);
+//        ((TextView)findViewById(R.id.title)).setText("选择客户联系人");
+//        ((Button)findViewById(R.id.button_ok)).setText("确定");
+//        findViewById(R.id.button_ok).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                getData();
+//            }
+//        });
+//        findViewById(R.id.imageButton_back).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                setResult(RESULT_CANCELED);
+//                finish();
+//            }
+//        });
+//    }
 
     public String getData() {
         //client value 格式： 公司id_公司名称 address 地址 contact 联系人id_联系人 telephone 电话 contact 联系人1id_联系人2 telephone 电话2
@@ -30,6 +57,7 @@ public class bpmClientActivity extends KLMainActivity {
             String clientId="";
             for(KLNode node: all){
                 if(node.isChecked && node.getId()<10000){
+                    clientId += node.getId();
                     data += (node.getId()+"_"+node.getName());
                     break;
                 }
@@ -92,4 +120,10 @@ public class bpmClientActivity extends KLMainActivity {
         this.finish();
         return data;
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
+
 }

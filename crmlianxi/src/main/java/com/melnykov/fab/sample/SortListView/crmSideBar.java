@@ -90,7 +90,8 @@ public class crmSideBar extends View {
                 break;
 
             default:
-                setBackgroundResource(R.drawable.sidebar_background);
+//                setBackgroundResource(R.drawable.sidebar_background);
+                setBackgroundDrawable(new ColorDrawable(0XA0BFBFBF));
                 if (oldChoose != c) {
                     if (c >= 0 && c < b.length) {
                         if (listener != null) {

@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:clickable="false"
     android:focusable="false"
     android:focusableInTouchMode="false">
 
     <TextView
+        android:id="@+id/item_form_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New "
-        android:id="@+id/item_form_title"
-        android:layout_alignParentTop="false"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:textSize="18sp" />
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="New "
+        android:textColor="@android:color/black"
+        android:textSize="15sp" />
 
     <EditText
+        android:id="@+id/item_form_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/item_form_edittext"
-        android:layout_alignParentEnd="false"
-        android:layout_marginRight="35dp"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:minWidth="200dp"
-        android:layout_toRightOf="@+id/item_form_title"
         android:layout_marginLeft="10dp"
-        android:singleLine="true"
-        android:gravity="center_vertical|right"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@+id/item_form_title"
         android:background="#00aaff94"
-        android:layout_alignTop="@+id/item_form_title"
-        android:layout_alignBottom="@+id/item_form_title"
-        android:layout_alignParentRight="true" />
-
+        android:gravity="right"
+        android:minWidth="200dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:singleLine="true"
+        android:textColor="@android:color/black"
+        android:textSize="15sp" />
 
 
 </RelativeLayout>

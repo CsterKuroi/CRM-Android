@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:left="20dp"
+        android:right="20dp">
+        <shape>
+            <solid android:color="@color/my_tab_sel_color" />
+        </shape>
+    </item>
+    <item android:bottom="2dp">
+        <shape>
+            <solid android:color="@android:color/white" />
+        </shape>
+    </item>
+</layer-list>

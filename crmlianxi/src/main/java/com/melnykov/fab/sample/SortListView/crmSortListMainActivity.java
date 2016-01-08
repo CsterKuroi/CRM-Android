@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import  com.melnykov.fab.sample.R;
@@ -72,6 +73,16 @@ public class crmSortListMainActivity extends Activity {
         final int groupIndex = intent.getIntExtra("groupIndex", 0);
         final int itemIndex = intent.getIntExtra("itemIndex", 0);
 
+
+		RelativeLayout back = (RelativeLayout) findViewById(R.id.ImageButton_back);
+		back.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				setResult(RESULT_FALSE , intent);
+				crmSortListMainActivity.this.finish();
+			}
+		});
 
 		//实例化汉字转拼音类
 		characterParser = crmCharacterParser.getInstance();

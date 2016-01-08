@@ -1,70 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:dividerPadding="10dp"
-    android:orientation="horizontal">
+    android:background="@android:color/white"
+    android:padding="15dp">
 
-    <ImageView
-        android:id="@+id/bmjheader"
+    <TextView
+        android:id="@+id/id_msg_item_send"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="6dp"
-        android:src="@drawable/notificationtrue"/>
-    <LinearLayout
+        android:layout_marginRight="15dp"
+        android:text="通知标题"
+        android:textColor="#a0a0a0"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/notification_name2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_alignBaseline="@id/tv2"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@id/tv2"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="标题"
+        android:textColor="#313131"
+        android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/id_msg_item_send"
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
-
-
-
-        <TextView
-            android:id="@+id/notification_name2"
-            android:text="标题    ："
-            android:maxLines="1"
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:paddingLeft="3dp" />
-
-        <TextView
-            android:id="@+id/notification_content"
-            android:text="通知内容："
-            android:maxLines="2"
-            android:textColor="#000"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:paddingLeft="3dp" />
-
-    </LinearLayout>
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_below="@id/tv2"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:text="通知内容"
+        android:textColor="#a0a0a0"
+        android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/bmjnotification_time2"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="时间"
-            android:paddingRight="16dp" />
+    <TextView
+        android:id="@+id/notification_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv3"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@id/tv3"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="通知内容"
+        android:textColor="#313131"
+        android:textSize="15sp" />
 
+    <TextView
+        android:id="@+id/bmjnotification_time2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv3"
+        android:layout_marginTop="15dp"
+        android:text="时间"
+        android:textColor="#959595"
+        android:textSize="12sp" />
 
-
-    </RelativeLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

@@ -1,14 +1,17 @@
 package com.example.spinel.myapplication.SortListView;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -18,10 +21,6 @@ import android.widget.TextView;
 
 import com.example.spinel.myapplication.R;
 import com.example.spinel.myapplication.SortListView.bpmSideBar.OnTouchingLetterChangedListener;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class bpmSortListMainActivity extends ActionBarActivity {
 	private ListView sortListView;
@@ -52,22 +51,57 @@ public class bpmSortListMainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bpm_sort_list_activity_main);
+
+        //得到父Activity的参数
+        Intent intent = getIntent();
+        multichoice = intent.getBooleanExtra("multichoice", false);
+        indexList = intent.getIntegerArrayListExtra("indexList");
+        TYPE = intent.getIntExtra("type", TYPE_NORMAL);
+
+        //初始化actionbar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
+        View customView = getLayoutInflater().inflate(R.layout.bpm_title, null);
+        actionBar.setCustomView(customView);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);
+
+        ((TextView)findViewById(R.id.title)).setText(intent.getStringExtra("title"));
+
+        if(multichoice) {
+            ((TextView) findViewById(R.id.button_ok)).setText("确定");
+
+            findViewById(R.id.button_ok).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent();
+                    intent.putExtra("data", getMultiChoice());
+
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
+            });
+        }
+        else
+            findViewById(R.id.button_ok).setVisibility(View.INVISIBLE);
+
+
+        findViewById(R.id.imageButton_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(RESULT_CANCELED);
+                finish();
+            }
+        });
+
 		initViews();
 	}
 
 
 	private void initViews() {
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED);
 
-        //得到父Activity的参数
-        Intent intent = getIntent();
-        setTitle(intent.getStringExtra("title"));
-        String[] data = intent.getStringArrayExtra("data");
-        multichoice = intent.getBooleanExtra("multichoice", false);
-        indexList = intent.getIntegerArrayListExtra("indexList");
-        TYPE = intent.getIntExtra("type", TYPE_NORMAL);
 
 
         //实例化汉字转拼音类
@@ -125,7 +159,7 @@ public class bpmSortListMainActivity extends ActionBarActivity {
 			}
 		});
 
-		SourceDateList = filledData(data);
+		SourceDateList = filledData(getIntent().getStringArrayExtra("data"));
 		
 		// 根据a-z进行排序源数据
 		Collections.sort(SourceDateList, pinyinComparator);
@@ -221,32 +255,6 @@ public class bpmSortListMainActivity extends ActionBarActivity {
 		adapter.updateListView(filterDateList);
 	}
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        if(multichoice)
-            getMenuInflater().inflate(R.menu.bpm_menu_sort_list, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        Intent intent = new Intent();
-
-        if (id == android.R.id.home) {
-			setResult(RESULT_CANCELED);
-			bpmSortListMainActivity.this.finish();
-		} else if (id == R.id.sortlist_ok) {
-			intent.putExtra("data", getMultiChoice());
-
-			setResult(RESULT_OK, intent);
-			finish();
-		}
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){

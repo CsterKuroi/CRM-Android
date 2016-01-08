@@ -246,11 +246,12 @@ public class GodLiuSortListMainActivity extends Activity{
 			setResult(RESULT_CANCELED);
 			GodLiuSortListMainActivity.this.finish();
 		} else if (id == R.id.sortlist_ok) {
-			intent.putExtra("data", getMultiChoice());
+                intent.putExtra("data", getMultiChoice());
 
-			setResult(RESULT_OK, intent);
-			finish();
+                setResult(RESULT_OK, intent);
+                finish();
 		}
+
         return super.onOptionsItemSelected(item);
     }
 

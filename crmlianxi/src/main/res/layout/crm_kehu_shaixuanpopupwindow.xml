@@ -30,6 +30,7 @@
                     android:gravity="center"
                     android:layout_marginLeft="20dp"
                     android:height="30dp"
+                    android:textSize="@dimen/popupwindow_textsize"
                     android:text="企业性质" />
                 <ImageView
                     android:layout_width="25dp"
@@ -51,6 +52,7 @@
                     android:gravity="center"
                     android:layout_marginLeft="20dp"
                     android:height="30dp"
+                    android:textSize="@dimen/popupwindow_textsize"
                     android:text="客户类型"/>
                 <ImageView
                     android:layout_width="25dp"
@@ -73,6 +75,7 @@
                     android:gravity="center"
                     android:layout_marginLeft="20dp"
                     android:height="30dp"
+                    android:textSize="@dimen/popupwindow_textsize"
                     android:text="客户状态"/>
                 <ImageView
                     android:layout_width="25dp"
@@ -94,6 +97,7 @@
                 android:gravity="center"
                 android:layout_marginLeft="20dp"
                 android:height="30dp"
+                android:textSize="@dimen/popupwindow_textsize"
                 android:text="客户分级"/>
             <ImageView
                 android:layout_width="25dp"
@@ -130,13 +134,13 @@
                     android:gravity="center_vertical|center"
                     android:layout_gravity="center_vertical|left"
                     android:layout_marginLeft="20dp"
-                    android:height="30dp"
+                    android:height="30dp"  android:textSize="@dimen/popupwindow_textsize"
                     android:text="所有企业" />
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|right"
-                    android:layout_marginLeft="70dp"
+                    android:layout_marginLeft="69dp"
                     android:id="@+id/scrollView_qiye_layout_suoyouqiye_checkbox"/>
             </LinearLayout>
             <LinearLayout
@@ -150,7 +154,7 @@
                     android:layout_gravity="center_vertical|left"
                     android:gravity="center_vertical|center"
                     android:layout_marginLeft="20dp"
-                    android:height="30dp"
+                    android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                     android:text="国企       "
                    />
                 <CheckBox
@@ -172,7 +176,7 @@
                     android:gravity="center_vertical|center"
                     android:layout_marginLeft="20dp"
                     android:height="30dp"
-                    android:text="私企       "
+                    android:text="私企       " android:textSize="@dimen/popupwindow_textsize"
                      />
                 <CheckBox
                     android:layout_width="wrap_content"
@@ -193,7 +197,7 @@
                     android:layout_gravity="center_vertical|left"
                     android:gravity="center_vertical|center"
                     android:layout_marginLeft="20dp"
-                    android:height="30dp"
+                    android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                     android:text="外资       "
                     />
                 <CheckBox
@@ -234,7 +238,7 @@
                     android:gravity="center_vertical|center"
                     android:layout_gravity="center_vertical|left"
                     android:layout_marginLeft="20dp"
-                    android:height="30dp"
+                    android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                     android:text="所有客户"
                     />
                 <CheckBox
@@ -255,7 +259,7 @@
                     android:layout_gravity="center_vertical|left"
                     android:gravity="center_vertical|center"
                     android:layout_marginLeft="20dp"
-                    android:height="30dp"
+                    android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                     android:text="线索客户"
                      />
                 <CheckBox
@@ -277,7 +281,7 @@
                     android:layout_gravity="center_vertical|left"
                     android:gravity="center_vertical|center"
                     android:layout_marginLeft="20dp"
-                    android:height="30dp"
+                    android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                     android:text="潜在客户"
                      />
                 <CheckBox
@@ -299,7 +303,7 @@
                     android:layout_gravity="center_vertical|left"
                     android:gravity="center_vertical|center"
                     android:layout_marginLeft="20dp"
-                    android:height="30dp"
+                    android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                     android:text="成交客户"
                      />
                 <CheckBox
@@ -321,7 +325,7 @@
                     android:layout_gravity="center_vertical|left"
                     android:gravity="center_vertical|center"
                     android:layout_marginLeft="20dp"
-                    android:height="30dp"
+                    android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                     android:text="公海客户"
                     />
                 <CheckBox
@@ -359,7 +363,7 @@
                 android:gravity="center_vertical|center"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginLeft="20dp"
-                android:height="30dp"
+                android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                 android:text="初步沟通"
                 />
             <CheckBox
@@ -378,7 +382,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:gravity="center_vertical|center"
                 android:layout_marginLeft="20dp"
-                android:height="30dp"
+                android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                 android:text="见面拜访"
                 />
             <CheckBox
@@ -398,7 +402,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:gravity="center_vertical|center"
                 android:layout_marginLeft="20dp"
-                android:height="30dp"
+                android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                 android:text="确定意向"
                  />
             <CheckBox
@@ -418,7 +422,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:gravity="center_vertical|center"
                 android:layout_marginLeft="20dp"
-                android:height="30dp"
+                android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                 android:text="正式报价"
                   />
             <CheckBox
@@ -438,7 +442,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:gravity="center_vertical|center"
                 android:layout_marginLeft="20dp"
-                android:height="30dp"
+                android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                 android:text="商务洽谈"
                   />
             <CheckBox
@@ -458,7 +462,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:gravity="center_vertical|center"
                 android:layout_marginLeft="20dp"
-                android:height="30dp"
+                android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                 android:text="签约成交"
                  />
             <CheckBox
@@ -478,7 +482,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:gravity="center_vertical|center"
                 android:layout_marginLeft="20dp"
-                android:height="30dp"
+                android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                 android:text="售后服务"
                 />
             <CheckBox
@@ -498,7 +502,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:gravity="center_vertical|center"
                 android:layout_marginLeft="20dp"
-                android:height="30dp"
+                android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                 android:text="停滞客户"
                  />
             <CheckBox
@@ -518,7 +522,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:gravity="center_vertical|center"
                 android:layout_marginLeft="20dp"
-                android:height="30dp"
+                android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                 android:text="流失客户"
                  />
             <CheckBox
@@ -554,7 +558,7 @@
                     android:gravity="center_vertical|center"
                     android:layout_gravity="center_vertical|left"
                     android:layout_marginLeft="20dp"
-                    android:height="30dp"
+                    android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                     android:text="小型客户"
                       />
                 <CheckBox
@@ -573,7 +577,7 @@
                     android:layout_gravity="center_vertical|left"
                     android:gravity="center_vertical|center"
                     android:layout_marginLeft="20dp"
-                    android:height="30dp"
+                    android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                     android:text="中型客户"
                       />
                 <CheckBox
@@ -593,7 +597,7 @@
                     android:layout_gravity="center_vertical|left"
                     android:gravity="center_vertical|center"
                     android:layout_marginLeft="20dp"
-                    android:height="30dp"
+                    android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                     android:text="大型客户"
                      />
                 <CheckBox
@@ -613,7 +617,7 @@
                     android:layout_gravity="center_vertical|left"
                     android:gravity="center_vertical|center"
                     android:layout_marginLeft="20dp"
-                    android:height="30dp"
+                    android:height="30dp" android:textSize="@dimen/popupwindow_textsize"
                     android:text="Vip客户  "
                     />
                 <CheckBox
@@ -637,8 +641,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:id="@+id/qingkong"
-            android:text="清空"
-             />
+            android:textSize="@dimen/popupwindow_textsize"
+            android:text="清空" />
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content" />
@@ -646,7 +650,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
            android:id="@+id/queding"
-            android:layout_gravity="right"
+            android:layout_gravity="right" android:textSize="@dimen/popupwindow_textsize"
             android:text="确定"/>
 
     </LinearLayout>

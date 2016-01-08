@@ -84,7 +84,7 @@ public class ChanceMainActivity extends Activity implements ChanceDeleteCallBack
     private static final int CAPTURE_REQUEST_CODE = 100;
     private String userID="101";
 	
-	    private ImageView iv9;
+	    private RelativeLayout iv9;
     private ImageView iv10;
 
     @Override
@@ -144,7 +144,7 @@ public class ChanceMainActivity extends Activity implements ChanceDeleteCallBack
         relativeLayout2=(RelativeLayout) findViewById(R.id.chance_ss);
         relativeLayout3=(RelativeLayout) findViewById(R.id.chance_search);
         button=(Button)findViewById(R.id.chance_search_button);
-		        iv9=(ImageView)findViewById(R.id.imageView9);
+		        iv9=(RelativeLayout)findViewById(R.id.back);
         iv10=(ImageView)findViewById(R.id.imageView10);
     }
     private void getContent(){

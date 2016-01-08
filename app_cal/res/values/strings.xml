@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, CalendarActivity!</string>
-    <string name="app_name">日程管理</string>
     <string name="hello_y"></string>
     <string name="green">#3C72C4</string>
     <string name="jj">ff</string>

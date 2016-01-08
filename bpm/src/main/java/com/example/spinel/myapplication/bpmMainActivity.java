@@ -1,6 +1,7 @@
 package com.example.spinel.myapplication;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,7 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,7 +48,7 @@ import de.tavendo.autobahn.WebSocketException;
 import de.tavendo.autobahn.WebSocketHandler;
 
 
-public class bpmMainActivity extends ActionBarActivity implements View.OnClickListener, Serializable {
+public class bpmMainActivity extends ActionBarActivity implements Serializable {
     public static String userId;
     public static bpmStructure.User user;
 
@@ -75,7 +76,7 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
     public static bpmStructure structure;
 
     //动态·bpmlist
-    public static ArrayList<BPMGroup> BPMGroupList;
+    public static ArrayList<BPMGroup> BPMGroupList=null;
     public static int currentBPMIndex_group, currentBPMIndex_item;
     public static String currentActivityId="";
 
@@ -93,6 +94,10 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
 
     //跳转到的页面类型wewe
     public static int reviewindex=0;
+
+    //当前点击的processId
+    public static String currentClickProcessId="";
+    public static String currentClickTaskId="";
 
     //-----------------------------------------------------------------------------------------------------
 
@@ -116,9 +121,12 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
     }
 
     @Override
-    public void onClick(View v){
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            onBackPressed();
+        }
+        return super.onKeyDown(keyCode, event);
     }
-
 
 
 
@@ -219,9 +227,6 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
         //初始化bpm
         initBPM();
 
-        //据跳转到本页面的类型，跳到对应fragment
-        skipPage();
-
         connect();
 
 
@@ -234,7 +239,7 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
         //----------动态·初始化 bpm group list----------
         initBPMGroupList();
 
-        if(BPMGroupList.isEmpty())
+        if(BPMGroupList==null)
             return;
 
         //----------动态·初始化 popupWindow_child----------
@@ -245,10 +250,15 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
 
         //----------动态·初始化 actionbar----------
         initBPMActionBar();
+
+        //据跳转到本页面的类型，跳到对应fragment
+        skipPage();
     }
 
     private void initBPMGroupList(){
         ArrayList<BPMItem> BPMList = dbManager.getBPMList();
+        if(BPMList.isEmpty())
+            return;
         BPMGroupList = new ArrayList<>();
 
         for(BPMItem item: BPMList){
@@ -305,7 +315,7 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
             strings[i] = BPMGroupList.get(i).name;
 
         ListView lv = (ListView)customView.findViewById(R.id.listView_BPMGroupList);
-        lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, strings));
+        lv.setAdapter(new ArrayAdapter<String>(this, R.layout.bpm_popupwindow_main_dropdown_item, strings));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -392,9 +402,11 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
     private void initBPMActionBar(){
         //初始化actionbar
         final ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(false);
 
-        getSupportActionBar().setCustomView(LayoutInflater.from(this).inflate(R.layout.bpm_title_main, null));
+        View customView = getLayoutInflater().inflate(R.layout.bpm_title_main, null);
+
+        actionBar.setCustomView(customView);
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
 
@@ -413,14 +425,13 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
             }
         });
 
-        findViewById(R.id.imageButton_connect).setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.imageButton_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!mConnection.isConnected() || !isConnected)
-                    connect();
+                onBackPressed();
             }
         });
-
 
 
         //添加Tab选项、fragment
@@ -466,7 +477,8 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
         String[] strings = getResources().getStringArray(R.array.action_list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, strings);
         mSpinner.setAdapter(adapter);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //adapter.setDropDownViewResource(R.layout.bpm_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.my_spinner_dialog_item);
 
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -474,6 +486,7 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
 
                 TextView tv = (TextView)view;
                 tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                tv.setTextColor(Color.parseColor("#ffffff"));
 
                 spinnerIndex = position;
 
@@ -493,9 +506,13 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
     //----------动态·初始化 end----------
 
     private void skipPage(){
-        String type, activityId;
+        if(BPMGroupList==null)
+            return;
+
+        String type, activityId, activityType;
         type = getIntent().getStringExtra("type");
         activityId = getIntent().getStringExtra("activityId");
+        activityType = getIntent().getStringExtra("activityType");
 
         int spinindex=0, tabindex=0;
 
@@ -534,11 +551,20 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
                 if(flag)
                     break;
             }
+        } else if(activityType!=null && !activityType.isEmpty()){
+
+            for(int i=0; i<BPMGroupList.size(); i++){
+                if(BPMGroupList.get(i).type.equals(activityType)){
+                    tabindex=i;
+                    break;
+                }
+            }
+
         }
 
-        if(tabindex!=0)
+        if(tabindex!=0 && getSupportActionBar()!=null)
             getSupportActionBar().selectTab(getSupportActionBar().getTabAt(tabindex));
-        if(spinindex!=0)
+        if(spinindex!=0 && mSpinner!=null)
             mSpinner.setSelection(spinindex);
 
 
@@ -553,7 +579,7 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
                 @Override
                 public void onOpen() {
 
-                    Toast.makeText(getApplicationContext(), "已连接", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "已连接", Toast.LENGTH_SHORT).show();
 
 
                     isConnected=true;
@@ -585,11 +611,9 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
                                 return;
 
                             JSONArray datas = response.getJSONArray("datas");
-                            if(dbManager.saveBPMList(datas)) {
-                                Log.e("getBPMList", "is new");
+                            if(dbManager.saveBPMList(datas) && BPMGroupList==null) {
                                 initBPM();
-                            }else
-                                Log.e("getBPMList", "is old");
+                            }
 
                         }
 
@@ -702,6 +726,12 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
                                 return;
                             }
 
+                            //判断是否为当前点击任务
+                            String processId = response.getString("processId");
+                            if(currentClickProcessId.isEmpty() || !currentClickProcessId.equals(processId))
+                                return;
+                            currentClickProcessId = "";
+
                             Intent intent = new Intent(bpmMainActivity.this, bpmTraceProcessActivity.class);
                             intent.putExtra("datas", datas.toString());
                             intent.putExtra("state", TRACE_PROCESS_STATE);
@@ -723,6 +753,12 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
                                 Toast.makeText(bpmMainActivity.this, "服务器不存在此流程数据", Toast.LENGTH_SHORT).show();
                                 return;
                             }
+
+                            //判断是否为当前点击任务
+                            String taskId = response.getString("taskId");
+                            if(currentTaskId.isEmpty() || !currentTaskId.equals(taskId))
+                                return;
+                            currentTaskId="";
 
                             Intent intent = new Intent(bpmMainActivity.this, bpmTraceTaskActivity.class);
                             intent.putExtra("datas", datas.toString());
@@ -789,7 +825,7 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
                 @Override
                 public void onClose(int code, String reason) {
                     isConnected=false;
-                    Toast.makeText(getApplicationContext(), "失去连接", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "失去连接", Toast.LENGTH_SHORT).show();
                     getFragmentData();
 
                 }
@@ -809,19 +845,15 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        switch (id){
-            case android.R.id.home:
-                finish();
-                break;
-
-        }
 
         return super.onOptionsItemSelected(item);
     }
 
 
     public void getFragmentData(){
+        if(getSupportActionBar()==null)
+            return;
+
         ActionBar.Tab tab = getSupportActionBar().getSelectedTab();
         if(tab==null){
             return;
@@ -1119,6 +1151,7 @@ public class bpmMainActivity extends ActionBarActivity implements View.OnClickLi
 
             request.put("userId", userId).put("cmd", "submit").put("processId", currentProcessId)
                     .put("datas", datas);
+            Log.e("send json", request.toString());
             mConnection.sendTextMessage(request.toString());
         } catch (JSONException e) {
             e.printStackTrace();

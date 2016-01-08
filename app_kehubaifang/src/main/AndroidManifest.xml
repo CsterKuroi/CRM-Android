@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dt.testapp3" >
+    package="com.example.dt.testapp3">
 
     <!-- 联网权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,12 +13,11 @@
 
     <application>
         <activity
-            android:name=".VisitMainActivity"
-            android:label="客户拜访" >
-        </activity>
+            android:name=".Graphics.VisitMainActivity"
+            android:label="客户拜访" />
         <activity
-            android:name=".VisitContactActivity"
-            android:label="选择联系人" >
+            android:name=".Graphics.VisitContactActivity"
+            android:label="选择联系人">
 
             <!-- android:label="@string/title_activity_contact" -->
             <intent-filter>
@@ -27,7 +26,7 @@
         </activity>
         <activity
             android:name=".GodLiuSortListView.GodLiuSortListMainActivity"
-            android:label="选择审核人" >
+            android:label="选择审核人">
 
             <!-- android:label="@string/title_activity_contact" -->
             <intent-filter>

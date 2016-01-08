@@ -30,13 +30,13 @@ public class bpmLoginActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         if (id == R.id.login_ok) {
-            TextView tv = (TextView) findViewById(R.id.editText_login);
-            if (!tv.getText().toString().isEmpty()) {
-
-                Intent intent = new Intent(bpmLoginActivity.this, bpmMainActivity.class);
-                intent.putExtra("userId", tv.getText().toString());
-                startActivity(intent);
-            }
+                TextView tv = (TextView)findViewById(R.id.editText_login);
+                if(!tv.getText().toString().isEmpty()) {
+                    Intent intent = new Intent(bpmLoginActivity.this, bpmMainActivity.class);
+                    intent.putExtra("userId", tv.getText().toString());
+                    intent.putExtra("activityType", "order");
+                    startActivity(intent);
+                }
         }
 
         return super.onOptionsItemSelected(item);

@@ -12,15 +12,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mogujie.tools.ScreenTools;
-import com.mogujie.tt.config.DBConstant;
 import com.mogujie.tt.DB.entity.GroupEntity;
 import com.mogujie.tt.R;
+import com.mogujie.tt.config.DBConstant;
 import com.mogujie.tt.config.SysConstant;
 import com.mogujie.tt.imservice.entity.RecentInfo;
-import com.mogujie.tt.utils.DateUtil;
-import com.mogujie.tt.utils.Logger;
 import com.mogujie.tt.ui.widget.IMBaseImageView;
 import com.mogujie.tt.ui.widget.IMGroupAvatar;
+import com.mogujie.tt.utils.DateUtil;
+import com.mogujie.tt.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -295,6 +295,7 @@ public class ChatAdapter extends BaseAdapter {
         contactViewHolder.avatar.setDefaultImageRes(R.drawable.tt_default_user_portrait_corner);
         contactViewHolder.avatar.setCorner(8);
         contactViewHolder.avatar.setImageUrl(avatarUrl);
+//        contactViewHolder.avatar.setImageUrl(UrlConstant.TOUXIANG_ADD + recentInfo.getPeerId() + "_avator.jpg");;
         // 设置其它信息
         contactViewHolder.uname.setText(userName);
         contactViewHolder.lastContent.setText(lastContent);

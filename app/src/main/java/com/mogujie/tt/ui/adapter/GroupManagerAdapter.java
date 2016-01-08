@@ -14,7 +14,7 @@ import com.mogujie.tt.DB.entity.PeerEntity;
 import com.mogujie.tt.DB.entity.UserEntity;
 import com.mogujie.tt.R;
 import com.mogujie.tt.config.DBConstant;
-import com.mogujie.tt.config.SysConstant;
+import com.mogujie.tt.config.UrlConstant;
 import com.mogujie.tt.imservice.manager.IMContactManager;
 import com.mogujie.tt.imservice.service.IMService;
 import com.mogujie.tt.ui.widget.IMBaseImageView;
@@ -256,8 +256,8 @@ public class GroupManagerAdapter extends BaseAdapter {
                 holder.imageView.setDefaultImageRes(R.drawable.tt_default_user_portrait_corner);
                 holder.imageView.setCorner(8);
                 holder.imageView.setImageResource(R.drawable.tt_default_user_portrait_corner);
-                holder.imageView.setImageUrl(avatarUrl);
-
+//                holder.imageView.setImageUrl(avatarUrl);
+                holder.imageView.setImageUrl(UrlConstant.TOUXIANG_ADD + contactEntity.getPeerId() + "_avator.jpg");
             } else {
 				logger.d("groupmgr#setimageresid %d", avatarResourceId);
                 holder.imageView.setImageId(0);

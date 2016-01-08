@@ -3,11 +3,13 @@ package com.example.spinel.myapplication.MainFragment;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -31,7 +33,7 @@ public class bpmMainFragment_Review extends Fragment {
     private String[] searchtypes_history = {"按类型", "按时间", "按状态"};
     private String[] search2_type = {"全部"};
     private String[] search2_time = {"全部", "今天", "一周", "一月"};
-    private String[] search2_state = {"全部", "正在审核", "未通过", "已通过", "超时作废"};
+    private String[] search2_state = {"全部", "正在审核", "未通过", "已通过", "超时作废", "过期"};
 
     private ArrayAdapter<String> aa_type, aa_time, aa_types, aa_types_history, aa_state;
     private Spinner spin0, spin1, spin2;
@@ -77,15 +79,15 @@ public class bpmMainFragment_Review extends Fragment {
         spin0 = (Spinner)getView().findViewById(R.id.spinner_deal);
         ArrayAdapter<String> aa = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, searchdeal);
         spin0.setAdapter(aa);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        aa.setDropDownViewResource(R.layout.my_spinner_dialog_item);
 
 
         //筛选step1
         spin1 = (Spinner)getView().findViewById(R.id.spinner_worktype);
         aa_types = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, searchtypes);
         aa_types_history = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, searchtypes_history);
-        aa_types.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        aa_types_history.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        aa_types.setDropDownViewResource(R.layout.my_spinner_dialog_item);
+        aa_types_history.setDropDownViewResource(R.layout.my_spinner_dialog_item);
         spin1.setAdapter(aa_types);
 
         //筛选step2
@@ -93,10 +95,19 @@ public class bpmMainFragment_Review extends Fragment {
         aa_type = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, search2_type);
         aa_time = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, search2_time);
         aa_state = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, search2_state);
-        aa_type.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        aa_time.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        aa_state.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        aa_type.setDropDownViewResource(R.layout.my_spinner_dialog_item);
+        aa_time.setDropDownViewResource(R.layout.my_spinner_dialog_item);
+        aa_state.setDropDownViewResource(R.layout.my_spinner_dialog_item);
         spin2.setAdapter(aa_type);
+
+        //设置spinner宽度
+        DisplayMetrics dm = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
+        lp.width = dm.widthPixels/3;
+        getView().findViewById(R.id.rl1).setLayoutParams(lp);
+        getView().findViewById(R.id.rl2).setLayoutParams(lp);
 
         //监听0
         spin0.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -173,6 +184,9 @@ public class bpmMainFragment_Review extends Fragment {
                     bpmMainActivity.currentFormTitle = item.stepName;
                     bpmMainActivity.currentActivityId = item.activityId;
                     bpmMainActivity.currentStepId = item.stepId;
+                    bpmMainActivity.currentClickProcessId = item.processId;
+                    bpmMainActivity.currentTaskId = "";
+
 
                     if(((bpmMainFragment_Submit_DataHolder)adapter.getItem(arg2)).status.equals("callback")) {
                         bpmMainActivity.TRACE_PROCESS_STATE = bpmTraceProcessActivity.STATE_REVIEW_READONLY;
@@ -183,8 +197,6 @@ public class bpmMainFragment_Review extends Fragment {
                         activity.getDealForm(processId);
                     }
 
-                    //已读
-                    //activity.writeIsRead(item.activityId, item.currentStep, item.submitUser, item.processId);
                 }
                 else if(spin0.getSelectedItemPosition()==1){
                     bpmMainFragment_Submit_DataHolder item = (bpmMainFragment_Submit_DataHolder)adapter_history.getItem(arg2);
@@ -194,8 +206,8 @@ public class bpmMainFragment_Review extends Fragment {
                     bpmMainActivity.currentFormTitle = item.stepName;
                     bpmMainActivity.currentActivityId = item.activityId;
                     bpmMainActivity.currentStepId = item.stepId;
-                    //已读
-                 //   activity.writeIsRead(item.activityId, item.stepId, item.submitUser, item.processId);
+                    bpmMainActivity.currentClickProcessId = item.processId;
+                    bpmMainActivity.currentTaskId = "";
                 }
                 else if(spin0.getSelectedItemPosition()==2){
                     bpmMainFragment_Submit_DataHolder item = (bpmMainFragment_Submit_DataHolder)adapter_timeout.getItem(arg2);
@@ -205,8 +217,8 @@ public class bpmMainFragment_Review extends Fragment {
                     bpmMainActivity.currentFormTitle = item.stepName;
                     bpmMainActivity.currentActivityId = item.activityId;
                     bpmMainActivity.currentStepId = item.stepId;
-                    //已读
-                    //   activity.writeIsRead(item.activityId, item.stepId, item.submitUser, item.processId);
+                    bpmMainActivity.currentClickProcessId = item.processId;
+                    bpmMainActivity.currentTaskId = "";
                 }
             }
         });

@@ -81,7 +81,7 @@ public class ChatFragment extends MainFragment
     private IMService imService;
     private TextView tabBtnRemind;
     private TextView tabBtnChat;
-    private int myCurrentView = 0;
+    public int myCurrentView = 0;
 
     //是否是手动点击重练。fasle:不显示各种弹出小气泡. true:显示小气泡直到错误出现
     private volatile boolean isManualMConnect = false;
@@ -172,7 +172,6 @@ public class ChatFragment extends MainFragment
         }
         curView = inflater.inflate(R.layout.tt_fragment_chat, topContentView);
         tabBtnRemind = (TextView) curView.findViewById(R.id.tab_btn_remind);
-        tabBtnRemind.setTextColor(getResources().getColor(R.color.default_blue_color));
         tabBtnChat = (TextView) curView.findViewById(R.id.tab_btn_chat);
         mViewFlipperMain = (ViewFlipper) curView.findViewById(R.id.view_flipper_main);
         // 多端登陆也在用这个view
@@ -661,15 +660,16 @@ public class ChatFragment extends MainFragment
         });
     }
 
-    private void pressRemind() {
+    public void pressRemind() {
         if (myCurrentView == 1) {
+            topLeftBtn.setVisibility(View.GONE);
             setTopRightText("设置");
             hideTopRightButton();
             mViewFlipperMain.setInAnimation(getActivity(), R.anim.my_leftright_in);
             mViewFlipperMain.setOutAnimation(getActivity(), R.anim.my_leftright_out);
             mViewFlipperMain.showNext();
             tabBtnRemind.setBackgroundResource(R.drawable.my_tab_sel);
-            tabBtnRemind.setTextColor(getResources().getColor(R.color.default_blue_color));
+            tabBtnRemind.setTextColor(getResources().getColor(R.color.my_tab_sel_color));
             tabBtnChat.setBackgroundColor(getResources().getColor(android.R.color.white));
             tabBtnChat.setTextColor(getResources().getColor(android.R.color.black));
             myCurrentView = 0;
@@ -677,15 +677,16 @@ public class ChatFragment extends MainFragment
         }
     }
 
-    private void pressChat() {
+    public void pressChat() {
         if (myCurrentView == 0) {
+            topLeftBtn.setVisibility(View.VISIBLE);
             setTopRightButton(R.drawable.tt_top_right_contact);
             topRightTitleTxt.setVisibility(View.GONE);
             mViewFlipperMain.setInAnimation(getActivity(), R.anim.my_rightleft_in);
             mViewFlipperMain.setOutAnimation(getActivity(), R.anim.my_rightleft_out);
             mViewFlipperMain.showNext();
             tabBtnChat.setBackgroundResource(R.drawable.my_tab_sel);
-            tabBtnChat.setTextColor(getResources().getColor(R.color.default_blue_color));
+            tabBtnChat.setTextColor(getResources().getColor(R.color.my_tab_sel_color));
             tabBtnRemind.setBackgroundColor(getResources().getColor(android.R.color.white));
             tabBtnRemind.setTextColor(getResources().getColor(android.R.color.black));
             myCurrentView = 1;

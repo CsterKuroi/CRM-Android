@@ -161,13 +161,30 @@ public class kehu_shaixuanPopWindow extends PopupWindow implements View.OnTouchL
     public void onClick(View v){
         select="";
         if(v.getId()==R.id.qingkong){
-
-            Toast.makeText(context,"ok",Toast.LENGTH_LONG).show();
+            qiye_cb1.setChecked(false);
+            qiye_flag1 = 0;
+            qiye_cb2.setChecked(false);
+            qiye_flag2 = 0;
+            qiye_cb3.setChecked(false);
+            qiye_flag3 = 0;
+            qiye_cb4.setChecked(false);
+            qiye_flag4 = 0;
+            kehuleixing_cb1.setChecked(false);
+            kehuleixing_flag1 = 0;
+            kehuleixing_cb2.setChecked(false);
+            kehuleixing_flag2 = 0;
+            kehuleixing_cb3.setChecked(false);
+            kehuleixing_flag3 = 0;
+            kehuleixing_cb4.setChecked(false);
+            kehuleixing_flag4 = 0;
+            kehuleixing_cb5.setChecked(false);
+            kehuleixing_flag5 = 0;
+           // Toast.makeText(context,"ok",Toast.LENGTH_LONG).show();
         }
          if(v.getId()==R.id.queding){
              //if(qiye_flag1==1)  select+="所有企业";
          if(qiye_cb2.isChecked())  select+="国企;";
-         if(qiye_cb3.isChecked())  select+="私企;";
+         if(qiye_cb3.isChecked())  select+="民企;";
          if(qiye_cb4.isChecked())  select+="外资;";
 
 
@@ -522,7 +539,7 @@ public class kehu_shaixuanPopWindow extends PopupWindow implements View.OnTouchL
         if (!this.isShowing()) {
             //this.showAsDropDown(parent, parent.getLayoutParams().width / 2, 18);
             //this.showAsDropDown(parent, parent.getLayoutParams().width / 2-80, -30);
-        	this.showAtLocation(parent,Gravity.NO_GRAVITY, location[0],  location[1]+parent.getHeight());
+        	this.showAtLocation(parent,Gravity.NO_GRAVITY, location[0],  location[1]+parent.getHeight()+3);
         } else {
             this.dismiss();
         }

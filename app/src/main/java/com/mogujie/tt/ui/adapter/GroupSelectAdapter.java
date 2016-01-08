@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.mogujie.tt.DB.entity.UserEntity;
 import com.mogujie.tt.R;
-import com.mogujie.tt.config.SysConstant;
+import com.mogujie.tt.config.UrlConstant;
 import com.mogujie.tt.imservice.service.IMService;
 import com.mogujie.tt.ui.widget.IMBaseImageView;
 import com.mogujie.tt.utils.IMUIHelper;
@@ -216,7 +216,8 @@ public class GroupSelectAdapter extends BaseAdapter  implements SectionIndexer,
 
         userHolder.avatar.setDefaultImageRes(R.drawable.tt_default_user_portrait_corner);
         userHolder.avatar.setCorner(0);
-        userHolder.avatar.setImageUrl(userEntity.getAvatar());
+//        userHolder.avatar.setImageUrl(userEntity.getAvatar());
+        userHolder.avatar.setImageUrl(UrlConstant.TOUXIANG_ADD + userEntity.getPeerId() + "_avator.jpg");
 
         userHolder.realNameView.setText(userEntity.getRealName());
         userHolder.realNameView.setVisibility(View.GONE);

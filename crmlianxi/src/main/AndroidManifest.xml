@@ -25,7 +25,9 @@
         </activity>
         <activity
             android:theme="@style/AppThemecrm"
-            android:name=".kehu.crm_kehu">
+            android:name=".kehu.crm_kehu"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            android:label="@string/app_name" >
 
         </activity>
         <activity
@@ -47,6 +49,7 @@
         <activity
             android:theme="@style/AppThemecrm"
             android:name=".lianxiren.crm_lianxiren"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
             android:label="@string/addLianxiren" >
         </activity>
         <activity
@@ -68,13 +71,15 @@
 
         <activity
             android:theme="@style/AppThemecrm"
-            android:name=".shibie.crmmpw_recognize">
+            android:name=".shibie.crmmpw_recognize"
+            android:label="@string/app_name" >
         </activity>
 
         <activity
             android:theme="@style/AppThemecrm"
             android:name=".shibie.crmShowmpwActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden">
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            android:label="@string/app_name" >
         </activity>
         <activity android:name="care.care_add"/>
         <activity android:name="care.care_main"></activity>

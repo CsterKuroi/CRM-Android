@@ -13,6 +13,7 @@ import com.pwp.dao.ScheduleDAO;
 import com.pwp.vo.ScheduleDateTag;
 import com.ricky.database.CenterDatabase;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -75,6 +76,7 @@ public class CalendarView extends BaseAdapter {
 	private String sch_day = "";
 
 	String userid;
+	static int currentposition;
 	public CalendarView(){
 
 		Date date = new Date();
@@ -122,11 +124,17 @@ public class CalendarView extends BaseAdapter {
 		getCalendar(Integer.parseInt(currentYear),Integer.parseInt(currentMonth));
 		Log.e("bbbbbbbbbbbbb", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
 	}
-	
+
 	public CalendarView(Context context,Resources rs,int year, int month, int day){
 		this();
 		this.context= context;
 		sc = new SpecialCalendar();
+
+
+		CenterDatabase centerDatabase = new CenterDatabase(context, null);
+		userid = centerDatabase.getUID();
+		centerDatabase.close();
+
 		lc = new LunarCalendar();
 		this.res = rs;
 		currentYear = String.valueOf(year); //得到跳转到的年份
@@ -160,12 +168,14 @@ public class CalendarView extends BaseAdapter {
 		String dv = dayNumber[position].split("\\.")[1];
 		//Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/Helvetica.ttf");
 		//textView.setTypeface(typeface);
-		SpannableString sp = new SpannableString(d+"\n"+dv);//上面阳历，下面阴历
-		sp.setSpan(new StyleSpan(Typeface.BOLD), 0, d.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-		sp.setSpan(new RelativeSizeSpan(1.06f) , 0, d.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-		if(dv != null || dv != ""){
-            sp.setSpan(new RelativeSizeSpan(0.56f), d.length()+1, dayNumber[position].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-		}
+		//SpannableString sp = new SpannableString(d+"\n"+dv);//上面阳历，下面阴历
+
+		SpannableString sp = new SpannableString(d);//上面阳历，下面阴历
+		sp.setSpan(new StyleSpan(Typeface.NORMAL), 0, d.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		sp.setSpan(new RelativeSizeSpan(1.3f) , 0, d.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		/*if(dv != null || dv != ""){
+            sp.setSpan(new RelativeSizeSpan(0.7f), d.length()+1, dayNumber[position].length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		}*/
 		//sp.setSpan(new ForegroundColorSpan(Color.MAGENTA), 14, 16, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 		textView.setText(sp);
 		textView.setTextColor(Color.GRAY);
@@ -192,7 +202,7 @@ public class CalendarView extends BaseAdapter {
 			for(int i = 0; i < schDateTagFlag.length; i++){
 				if(schDateTagFlag[i] == position && currentFlag != position){
 					//设置日程标记背景
-					textView.setBackgroundResource(R.drawable.mark2);
+					textView.setBackgroundResource(R.drawable.mark2_self);
 				}
 				/*if(schDateTagFlag[i] == position && currentFlag == position){
 					textView.setBackgroundColor(Color.GRAY);
@@ -206,10 +216,20 @@ public class CalendarView extends BaseAdapter {
 			//设置当天的背景
 			//drawable = res.getDrawable(R.drawable.current_day_bgc);
 			//textView.setBackgroundDrawable(drawable);
-			//if(schDateTagFlag[i] == position)
-			textView.setBackgroundColor(Color.GRAY);
-			textView.setTextColor(Color.WHITE);
-		}
+			currentposition = position;
+			if(schDateTagFlag!=null){
+				for(int i = 0; i < schDateTagFlag.length; i++)
+					if (schDateTagFlag[i] == position) {
+						//设置日程标记背景
+						textView.setBackgroundResource(R.drawable.mark3_self);
+					}
+				} else {
+					//if(schDateTagFlag[i] == position)
+					//textView.setBackgroundColor(Color.GRAY);
+					textView.setBackgroundResource(R.drawable.cal_back_round);
+					textView.setTextColor(Color.RED);
+				}
+			}
 		return convertView;
 	}
 	//得到某年的某月的天数且这月的第一天是星期几
@@ -326,6 +346,9 @@ public class CalendarView extends BaseAdapter {
 
 	public String getShowMonth() {
 		return showMonth;
+	}
+	public int getCurrentposition(){
+		return currentposition;
 	}
 
 	public void setShowMonth(String showMonth) {

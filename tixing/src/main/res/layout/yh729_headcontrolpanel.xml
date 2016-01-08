@@ -6,24 +6,19 @@
     android:layout_alignParentTop="true">
 
     <LinearLayout
-        android:background="@drawable/hbtn_bg"
         android:id="@+id/btn_head_left"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="match_parent">
-        <View
-            android:layout_width="5dp"
-            android:layout_height="match_parent"/>
         <ImageView
             android:layout_gravity="center"
             android:gravity="center"
-            android:src="@drawable/yh729_back"
+            android:src="@drawable/tt_top_back"
             android:layout_width="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="6dp"
             android:layout_height="25dp">
         </ImageView>
-        <View
-            android:layout_width="5dp"
-            android:layout_height="match_parent"/>
 
         <TextView
             android:id="@+id/left_text"
@@ -31,7 +26,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <TextView

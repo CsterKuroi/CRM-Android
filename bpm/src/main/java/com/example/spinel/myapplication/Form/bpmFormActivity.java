@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -29,6 +30,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.example.spinel.myapplication.BPMGroup;
 import com.example.spinel.myapplication.DateSlider.bpmDateSlider;
 import com.example.spinel.myapplication.DateSlider.bpmDateTimeSlider;
 import com.example.spinel.myapplication.DateSlider.bpmDefaultDateSlider;
@@ -219,21 +221,134 @@ public class bpmFormActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bpm_activity_form);
 
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        groupList = new ArrayList<bpmForm_Group>();
-
-        initView();
-    }
-
-    private void initView(){
         //获得参数
         Intent intent = getIntent();
 
         title = intent.getStringExtra("title");
         STATE = intent.getIntExtra("state", STATE_READ);
         draft = (ArrayList)intent.getSerializableExtra("draft");
+
+
+
+        //初始化actionbar
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
+        View customView = getLayoutInflater().inflate(R.layout.bpm_title, null);
+        actionBar.setCustomView(customView);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);
+
+        ((TextView)findViewById(R.id.title)).setText(title);
+
+
+        if(STATE == STATE_READ)
+            findViewById(R.id.button_ok).setVisibility(View.INVISIBLE);
+        else
+            findViewById(R.id.button_ok).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickSubmit();
+                }
+            });
+
+
+        findViewById(R.id.imageButton_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(RESULT_CANCELED);
+                if(STATE==STATE_START || STATE==STATE_RESTART || STATE==STATE_DRAFT)
+                    startDraftDialog();
+                else
+                    finish();
+            }
+        });
+
+        //初始化界面
+        groupList = new ArrayList<bpmForm_Group>();
+
+        initView();
+    }
+
+    private void clickSubmit(){
+
+        //判断是否有不能为空的
+        boolean state = true;
+        if(STATE!=STATE_REVIEW_READONLY)
+            for(int i=0; i<groupList.size(); i++){
+                if(!groupList.get(i).isFinished()){
+                    state = false;
+                    break;
+                }
+            }
+
+        if(!state)
+            return;
+        if(extra_group!=null && !extra_group.isFinished()){
+            state=false;
+        }
+
+        if(!state)
+            return;
+
+        //判断是否有需要提示的
+        if(!searchHint())
+            return;
+
+
+        if(STATE == STATE_DRAFT)
+            bpmMainActivity.dbManager.deleteDraft((Integer)draft.get(0));
+
+
+        submit();
+        finish();
+    }
+
+    private boolean searchHint(){
+        for(bpmForm_Group group: groupList){
+            for(final bpmForm_Item item: group.itemList)
+                if(item.emptyHint.equals("hint")){
+                    new AlertDialog.Builder(bpmFormActivity.this).setTitle("提示").setMessage("确定不填写"+item.name+"?")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    item.emptyHint="ignore";
+                                    clickSubmit();
+                                }
+                            })
+                            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                }
+                            }).show();
+                    return false;
+                }
+        }
+        if (extra_group!=null){
+            for(final bpmForm_Item item: extra_group.itemList)
+                if(item.emptyHint.equals("hint")){
+                    Log.e("search hint", item.name+" is hint");
+                    new AlertDialog.Builder(bpmFormActivity.this).setTitle("提示").setMessage("确定不填写"+item.name+"?")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    item.emptyHint="ignore";
+                                    clickSubmit();
+                                }
+                            })
+                            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                }
+                            }).show();
+                    return false;
+
+                }
+        }
+        return true;
+    }
+
+    private void initView(){
+        Intent intent = getIntent();
 
         if(STATE!=STATE_DRAFT && STATE!=STATE_RESTART)
             hasDraft=false;
@@ -245,7 +360,6 @@ public class bpmFormActivity extends ActionBarActivity{
                 e.printStackTrace();
             }
         }
-        setTitle(title);
 
         if(STATE == STATE_READ){
             findViewById(R.id.botton_relative).setVisibility(View.GONE);
@@ -299,8 +413,10 @@ public class bpmFormActivity extends ActionBarActivity{
 
         //生成extra界面
         if(extra_group!=null&& STATE ==STATE_READ) {
-            RelativeLayout interval = (RelativeLayout) getLayoutInflater().inflate(R.layout.bpm_form_title_summary_thin, null);
-            ((TextView) interval.findViewById(R.id.form_title_text)).setText("");
+            RelativeLayout interval = (RelativeLayout) getLayoutInflater().inflate(R.layout.bpm_form_title, null);
+            ((TextView) interval.findViewById(R.id.form_title_text)).setText("发送目标");
+            interval.findViewById(R.id.imageButton_sub).setVisibility(View.GONE);
+            interval.findViewById(R.id.imageButton_add).setVisibility(View.GONE);
             linearLayout.addView(interval);
             linearLayout.addView(extra_group.getView(false, false));
         }
@@ -393,41 +509,12 @@ public class bpmFormActivity extends ActionBarActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.bpm_menu_form, menu);
-        if(STATE == STATE_READ)
-            menu.removeItem(R.id.form_ok);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        if (id == R.id.form_ok) {
-
-            boolean state = true;
-            if (STATE != STATE_REVIEW_READONLY)
-                for (int i = 0; i < groupList.size(); i++) {
-                    if (!groupList.get(i).isFinished()) {
-                        state = false;
-                        break;
-                    }
-                }
-            if (state) {
-                if (STATE == STATE_DRAFT)
-                    bpmMainActivity.dbManager.deleteDraft((Integer) draft.get(0));
-
-                submit();
-                finish();
-            }
-        } else if (id == android.R.id.home) {
-            setResult(RESULT_CANCELED);
-            if (STATE == STATE_START || STATE == STATE_RESTART || STATE == STATE_DRAFT)
-                startDraftDialog();
-            else
-                finish();
-        }
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -496,29 +583,32 @@ public class bpmFormActivity extends ActionBarActivity{
             return;
         }
 
-        bpmForm_Item opUserItem = extra_group.itemList.get(0);
-        //执行人为一个
-        if(opUserItem.rule.isEmpty()) {
-            datas.put(extra_group.getJSONObject(false));
-            intent.putExtra("data", datas.toString());
-        }
-
-        //执行人为多个 （指令）
-        else{
-            JSONArray datas_multi = new JSONArray();
-            String[] opUsers = opUserItem.value.split(", ");
-
-            for(int i=0; i<opUsers.length; i++){
-                opUserItem.value=opUsers[i];
-                try {
-                    JSONArray currentData = new JSONArray(datas.toString());
-                    currentData.put(extra_group.getJSONObject(false));
-                    datas_multi.put(currentData);
-                } catch(JSONException e){
-
-                }
+        else {
+            bpmForm_Item opUserItem = extra_group.itemList.get(0);
+            //执行人为一个
+            if (opUserItem.rule.isEmpty()) {
+                datas.put(extra_group.getJSONObject(false));
+                intent.putExtra("data", datas.toString());
+                Log.e("form activity submit", datas.toString());
             }
-            intent.putExtra("data", datas_multi.toString());
+
+            //执行人为多个 （指令）
+            else {
+                JSONArray datas_multi = new JSONArray();
+                String[] opUsers = opUserItem.value.split(", ");
+
+                for (int i = 0; i < opUsers.length; i++) {
+                    opUserItem.value = opUsers[i];
+                    try {
+                        JSONArray currentData = new JSONArray(datas.toString());
+                        currentData.put(extra_group.getJSONObject(false));
+                        datas_multi.put(currentData);
+                    } catch (JSONException e) {
+
+                    }
+                }
+                intent.putExtra("data", datas_multi.toString());
+            }
         }
 
 

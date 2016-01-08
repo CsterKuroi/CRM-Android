@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.kuroi.contract.R;
@@ -46,7 +46,7 @@ public class ConPicActivity extends Activity implements ConUploadCallBack{
     private Contract cc;
     private ConService service=null;
 
-    private ImageView iv13;
+    private RelativeLayout iv13;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class ConPicActivity extends Activity implements ConUploadCallBack{
         ib3=(ImageButton)findViewById(R.id.imageView5);
         btt1=(Button)findViewById(R.id.button);
         btt2=(Button)findViewById(R.id.button2);
-        iv13=(ImageView)findViewById(R.id.imageView13);
+        iv13=(RelativeLayout)findViewById(R.id.back);
         ib1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

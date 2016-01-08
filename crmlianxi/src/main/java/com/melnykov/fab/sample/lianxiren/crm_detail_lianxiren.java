@@ -7,10 +7,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -18,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,17 +25,17 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ecloud.pulltozoomview.PullToZoomScrollViewEx;
-import com.example.dt.testapp3.VisitMainActivity;
-import com.melnykov.fab.sample.tools.IMApplication;
+import com.example.dt.testapp3.Graphics.VisitMainActivity;
 import com.melnykov.fab.sample.R;
 import com.melnykov.fab.sample.SortListView.crmSortListMainActivity;
 import com.melnykov.fab.sample.crm;
+import com.melnykov.fab.sample.kehu.crm_addkehu;
+import com.melnykov.fab.sample.tools.CRMValidate;
+import com.melnykov.fab.sample.tools.IMApplication;
 import com.melnykov.fab.sample.tools.crmMyDatabaseHelper;
 import com.melnykov.fab.sample.tools.crmUrlConstant;
-import com.melnykov.fab.sample.kehu.crm_addkehu;
 
 import net.tsz.afinal.FinalBitmap;
 
@@ -50,6 +47,8 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import care.care_add;
+import care.care_main;
 import de.tavendo.autobahn.WebSocketConnection;
 import de.tavendo.autobahn.WebSocketException;
 import de.tavendo.autobahn.WebSocketHandler;
@@ -69,7 +68,7 @@ public class crm_detail_lianxiren extends ActionBarActivity {
     EditText weixin;
     EditText interest;
     EditText growth;
-    EditText paixi;
+    EditText paixi,guanaidian;
     Button deleteBtn,editBtn,saveBtn;
     Switch sex;
     Switch detail;
@@ -80,14 +79,19 @@ public class crm_detail_lianxiren extends ActionBarActivity {
     RadioGroup group;
     ArrayList<String> countries;
     crmMyDatabaseHelper dbHelper;
+    ImageView imageview_addcare;
 
     final String wsuri = crmUrlConstant.crmIP;
     WebSocketConnection mConnection = new WebSocketConnection();
 
     String User_id;
 
-
     private PullToZoomScrollViewEx scrollView;
+
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
 
 
     protected ArrayList<String>
@@ -122,6 +126,8 @@ public class crm_detail_lianxiren extends ActionBarActivity {
                 company.setText(cursor.getString(11));
                 email.setText(cursor.getString(12));
                 address.setText(cursor.getString(13));
+                TextView name = (TextView) findViewById(R.id.tv_user_names);
+                name.setText(cursor.getString(1));
                 String pic;
                 if(cursor.getString(14).equals("")||cursor.getString(14).contains("haha.jpg"))
                     pic = "mnt/sdcard/mingpian/haha.jpg";
@@ -134,13 +140,18 @@ public class crm_detail_lianxiren extends ActionBarActivity {
                     int flagResId = getResources().getIdentifier("hi", "drawable", getPackageName());
                     img.setImageResource(flagResId);
                 }
+                else if(pic.contains( User_id+"-1-"))
+                {
+                    Bitmap b = BitmapFactory.decodeFile(pic);
+                    img.setImageBitmap(b);
+                }
                 else {
             /*    Bitmap b = BitmapFactory.decodeFile(path, options);
                 img.setImageBitmap(b);*/
                     FinalBitmap fitmap = FinalBitmap.create(crm_detail_lianxiren.this);
 /*                    fitmap.configBitmapLoadThreadSize(3);*/
                     fitmap.configLoadingImage(R.drawable.load);
-                    fitmap.display(img, crmUrlConstant.download_url+pic);
+                    fitmap.display(img, crmUrlConstant.download_url + pic);
                 }
                 picstr = pic;
                 scroll_view.setText(cursor.getString(1));
@@ -166,9 +177,15 @@ public class crm_detail_lianxiren extends ActionBarActivity {
         scrollView.setHeaderView(headView);
         scrollView.setZoomView(zoomView);
         scrollView.setScrollContentView(contentView);
-
+        scrollView.setParallax(false);
+        scrollView.setZoomEnabled(false);
     }
-
+ protected void onRestart(){
+     super.onRestart();
+     Cursor cursor2 = dbHelper.getReadableDatabase().rawQuery("select * from care_table where uid=? and fid=?", new String[]{User_id,StringE});
+     guanaidian.setText(cursor2.getCount()+"条记录，点击查看");
+     cursor2.close();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -186,9 +203,6 @@ public class crm_detail_lianxiren extends ActionBarActivity {
         int mScreenWidth = localDisplayMetrics.widthPixels;
         LinearLayout.LayoutParams localObject = new LinearLayout.LayoutParams(mScreenWidth, (int) (9.0F * (mScreenWidth / 16.0F)));
 
-        scrollView.setHeaderLayoutParams(localObject);
-        User_id = IMApplication.getUserid(this);
-
         Intent intent=getIntent();
         StringE = intent.getStringExtra("extra");
         username = intent.getStringExtra("name");
@@ -196,6 +210,34 @@ public class crm_detail_lianxiren extends ActionBarActivity {
 
         Log.e(StringE, StringE);
         Log.e("source", status);
+        scrollView.setHeaderLayoutParams(localObject);
+        User_id = IMApplication.getUserid(this);
+        dbHelper = new crmMyDatabaseHelper(this, "customer.db3", 1);
+        Cursor cursor3 = dbHelper.getReadableDatabase().rawQuery("select * from care_table where uid=? and fid=?", new String[]{User_id,StringE});
+        guanaidian=(EditText)findViewById(R.id.guanaidian);
+        guanaidian.setText(cursor3.getCount()+"条记录，点击查看");
+        cursor3.close();
+
+
+        guanaidian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent().setClass(crm_detail_lianxiren.this, care_main.class).setAction("editeofonelianxiren").putExtra("lianxirenid",StringE));
+            }
+        });
+
+
+
+
+        imageview_addcare=(ImageView)findViewById(R.id.guanaidian_addimage);
+        imageview_addcare.setFocusable(true);imageview_addcare.setClickable(true);
+        imageview_addcare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent().setClass(crm_detail_lianxiren.this, care_add.class).setAction("lianxirenadd").
+                        putExtra("lianxirenid", StringE).putExtra("username", username).putExtra("sex",strsex).putExtra("phone",workPhone.getText().toString()));
+            }
+        });
 
         dbHelper = new crmMyDatabaseHelper(this, "customer.db3", 1);
 
@@ -212,7 +254,7 @@ public class crm_detail_lianxiren extends ActionBarActivity {
         email  = (EditText)findViewById(R.id.textemail);
         address  = (EditText)findViewById(R.id.textaddress);
 
-        ImageView back = (ImageView) findViewById( R.id.iv_back);
+        RelativeLayout back = (RelativeLayout) findViewById( R.id.iv_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -239,13 +281,13 @@ public class crm_detail_lianxiren extends ActionBarActivity {
             }
         });
 
-
+        final RelativeLayout detail10 = (RelativeLayout) findViewById(R.id.detail10);
         final RelativeLayout detail1 = (RelativeLayout) findViewById(R.id.detail1);
         final RelativeLayout detail2 = (RelativeLayout) findViewById(R.id.detail2);
-        final RelativeLayout detail3 = (RelativeLayout) findViewById(R.id.detail3);
-        detail1.setVisibility(View.GONE);
+     //   final RelativeLayout detail3 = (RelativeLayout) findViewById(R.id.detail3);
+     /*   detail1.setVisibility(View.GONE);*/
         detail2.setVisibility(View.GONE);
-        detail3.setVisibility(View.GONE);
+   //     detail3.setVisibility(View.GONE);
 
         saveBtn = (Button) findViewById(R.id.button4);
         editBtn = (Button) findViewById(R.id.button);
@@ -379,23 +421,36 @@ public class crm_detail_lianxiren extends ActionBarActivity {
                     return;
                 }
 
-                if (data3.length()!=11) {
-                    Dialog dialog = new AlertDialog.Builder(crm_detail_lianxiren.this).setIcon(
-                            android.R.drawable.btn_star).setTitle("提示").setMessage(
-                            "请输入11位工作电话").setNeutralButton("确定", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    }).create();
-                    dialog.show();
-                    return;
-                }
+//                if (data3.length()!=11) {
+//                    Dialog dialog = new AlertDialog.Builder(crm_detail_lianxiren.this).setIcon(
+//                            android.R.drawable.btn_star).setTitle("提示").setMessage(
+//                            "请输入11位工作电话").setNeutralButton("确定", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                        }
+//                    }).create();
+//                    dialog.show();
+//                    return;
+//                }
 
                 if(data10.equals(""))
                 {
                     Dialog dialog = new AlertDialog.Builder(crm_detail_lianxiren.this).setIcon(
                             android.R.drawable.btn_star).setTitle("提示").setMessage(
                             "请选择客户").setNeutralButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }).create();
+                    dialog.show();
+                    return;
+                }
+                if (!data11.equals("") && !CRMValidate.isEmail(data11))
+                {
+                    Dialog dialog = new AlertDialog.Builder(crm_detail_lianxiren.this).setIcon(
+                            android.R.drawable.btn_star).setTitle("提示").setMessage(
+                            "请输入正确的邮箱地址").setNeutralButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
@@ -426,6 +481,7 @@ public class crm_detail_lianxiren extends ActionBarActivity {
                         "\"degree\":\""+"degree"+"\", " +
                         "\"strpaixi\":\""+data9+"\"}";
                 Log.e("发送json 字符串", str);
+
                 mConnection.disconnect();
                 try {
                     mConnection.connect(wsuri, new WebSocketHandler() {
@@ -443,12 +499,13 @@ public class crm_detail_lianxiren extends ActionBarActivity {
                                 String error = jsonObject.getString("error");
                                 String time = jsonObject.getString("time");
                                 if (error.contains("1")) {
+            
                                     dbHelper.getReadableDatabase().execSQL("update lianxiren set username=?,strsex=? ,workphone=?,yidongphone=?,strqq=?,strweixin=?,strinterest=?,strgrowth=?,strpaixi=?,uid = ?,company = ?,email = ?,address = ?,pic = ?,id = ?,relation = ?,degree = ? where id=?",
                                             new String[]{data1, data2, data3, data4, data5, data6, data7, data8, data9, User_id, data10, data11, data12, picstr, StringE, "", "", StringE});
 
                                 dbHelper.getWritableDatabase().execSQL("update Updata_KehuLianxi set uid = ?,kehu_time = ?,lianxiren_time = ? where uid=?",
                                         new String[]{User_id, time, "", User_id});
-                                    Toast.makeText(crm_detail_lianxiren.this, "保存成功", Toast.LENGTH_SHORT);
+                               //     Toast.makeText(crm_detail_lianxiren.this, "保存成功", Toast.LENGTH_SHORT);
                                     mConnection.disconnect();
                                     crm_detail_lianxiren.this.finish();
                                 }
@@ -473,16 +530,18 @@ public class crm_detail_lianxiren extends ActionBarActivity {
 
                 if(detail.isChecked()==false)
                 {
+                    detail10.setVisibility(View.GONE);
                     detail1.setVisibility(View.GONE);
                     detail2.setVisibility(View.GONE);
-                    detail3.setVisibility(View.GONE);
+         //           detail3.setVisibility(View.GONE);
                 }
                 else
                 {
                     {
+                        detail10.setVisibility(View.VISIBLE);
                         detail1.setVisibility(View.VISIBLE);
                         detail2.setVisibility(View.VISIBLE);
-                        detail3.setVisibility(View.VISIBLE);
+          //              detail3.setVisibility(View.VISIBLE);
                     }
                 }
 
@@ -524,14 +583,14 @@ public class crm_detail_lianxiren extends ActionBarActivity {
         });
 
 
-        Button historybtn = (Button) findViewById(R.id.history);
+        ImageView historybtn = (ImageView) findViewById(R.id.history);
         historybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(crm_detail_lianxiren.this, VisitMainActivity.class);
                 intent.putExtra("type",2);
-                intent.putExtra("name",StringE);
+                intent.putExtra("name",Integer.parseInt(StringE));
                 startActivity(intent);
 
             }

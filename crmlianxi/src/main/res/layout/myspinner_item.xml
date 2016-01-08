@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    android:id="@android:id/text1"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
+    android:singleLine="true"
+    android:layout_width="match_parent"
+    android:layout_height="20dp"
+    android:textSize="14sp"
+    android:ellipsize="marquee"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

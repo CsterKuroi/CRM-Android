@@ -1,9 +1,7 @@
 package com.example.renxin.shujia.karl.reader;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,37 +19,45 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 
 import com.example.renxin.shujia.R;
+import com.example.renxin.shujia.SortListView.StudySortListMainActivity;
 import com.example.renxin.shujia.UrlTools;
-import com.example.renxin.shujia.karl.view.LabelView;
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.HttpHandler;
+import com.example.renxin.shujia.karl.downfile;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.io.File;
+import java.util.ArrayList;
 
 import de.tavendo.autobahn.WebSocketConnection;
 import de.tavendo.autobahn.WebSocketException;
 import de.tavendo.autobahn.WebSocketHandler;
 import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
+
+
 //界面布局bug
 //bug之json通讯
 public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRefreshLayout.OnRefreshListener{
 	private GridView bookShelf;
 	ArrayList<String> name;
 	ArrayList<String> data;
+	ArrayList<String> url;
+
+	private ProgressDialog pd;
+
 	ShlefAdapter adapter=new ShlefAdapter();
 	private WaveSwipeRefreshLayout mWaveSwipeRefreshLayout;
 	Button search;
-	Button back;
+	RelativeLayout back;
 
 	private String packageName = "cn.wps.moffice_eng";
 	private String className = "cn.wps.moffice.documentmanager.PreStartActivity2";
@@ -62,7 +68,7 @@ public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRef
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.crm_study_main);
+		setContentView(R.layout.study_main);
 		bookShelf = (GridView) findViewById(R.id.bookShelf);
 		Intent intent = getIntent();
 		module = intent.getStringExtra("module");
@@ -70,6 +76,7 @@ public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRef
 		head.setText(module);
 		name = new ArrayList<String>();
 		data = new ArrayList<String>();
+		url = new ArrayList<String>();
 		initView();
 		mWaveSwipeRefreshLayout.setRefreshing(true);
 		studyjson();
@@ -83,7 +90,7 @@ public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRef
 			public void onClick(View v) {
 				String[] str = new String[]{"测试公司"};
 				str = name.toArray(new String[name.size()]);
-				Intent intent = new Intent(BookShelfActivity.this, com.example.renxin.shujia.SortListView.crmSortListMainActivity.class);
+				Intent intent = new Intent(BookShelfActivity.this, StudySortListMainActivity.class);
 				intent.putExtra("title", "客户");
 				intent.putExtra("data", str);
 				startActivityForResult(intent, 1);
@@ -91,7 +98,7 @@ public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRef
 		});
 
 
-		back = (Button) findViewById(R.id.btn_leftTop);
+		back = (RelativeLayout) findViewById(R.id.ImageButton_back);
 		back.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -106,7 +113,7 @@ public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRef
 		mWaveSwipeRefreshLayout = (WaveSwipeRefreshLayout) findViewById(R.id.main_swipe);
 		mWaveSwipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
 		mWaveSwipeRefreshLayout.setOnRefreshListener(this);
-		mWaveSwipeRefreshLayout.setWaveColor(0x00000000);
+		mWaveSwipeRefreshLayout.setWaveColor(0x0000ff00);
 	}
 
 	public void studyjson()
@@ -131,6 +138,7 @@ public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRef
 				}
 				@Override
 				public void onTextMessage(String payload) {
+					Log.e(payload,payload);
 					Toast.makeText(BookShelfActivity.this, "正在与服务器同步。。。  ", Toast.LENGTH_SHORT);
 					try {
 						JSONObject jsonObject = new JSONObject(payload);
@@ -139,14 +147,15 @@ public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRef
 							JSONArray content = jsonObject.getJSONArray("filelist");
 							for (int i = 0; i < content.length(); i++) {
 								JSONObject jsonObject2 = content.getJSONObject(i);
-								String url = jsonObject2.getString("url");
+								String strurl = jsonObject2.getString("url");
 								String dstname = jsonObject2.getString("name");
 								String changetime = jsonObject2.getString("changetime");
 								String createtime = jsonObject2.getString("createtime");
 								//data每增加一个文件就开始下载
 								data.add(dstname);
 								name.add(dstname);
-								downFile(url, dstname);
+								url.add(strurl);
+							//	downFile(url, dstname);
 							}
 							refresh();
 						}
@@ -179,14 +188,16 @@ public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRef
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 									long arg3) {
 				// TODO Auto-generated method stub
-				if(arg2>=name.size()){
+				if (arg2 >= name.size()) {
 
-				}else{
-					openFile("/mnt/sdcard/crmstudy/"+name.get(arg2));
+				} else {
+					openFile("/mnt/sdcard/crmstudy/" + name.get(arg2), url.get(arg2));
 				}
 			}
 		});
 	}
+
+
 
 	private boolean isAppInstalled(Context context,String packagename)
 	{
@@ -204,7 +215,7 @@ public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRef
 		}
 	}
 
-	public boolean openFile(String path)
+	public boolean openFile(String path,String url)
 	{
 		if(isAppInstalled(getBaseContext(),packageName))
 		{
@@ -218,9 +229,19 @@ public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRef
 			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			intent.setAction(android.content.Intent.ACTION_VIEW);
 			intent.setClassName(packageName, className);
-			File file = new File(path);
+			File file = new File("/mnt/sdcard/crmstudy/"+path);
 			if (file == null || !file.exists())
-			{                        return false;
+			{
+				//downFile(url,path);
+
+	/*			pd = ProgressDialog.show(BookShelfActivity.this, "提示", "下载文件中，请稍后……");
+
+				downFile(url,path);*/
+				Intent intents = new Intent(BookShelfActivity.this,downfile.class);
+				intents.putExtra("url",url);
+				intents.putExtra("path",path);
+				startActivity(intents);
+				return false;
 			}
 
 			Uri uri = Uri.fromFile(file);
@@ -263,31 +284,6 @@ public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRef
 		return true;
 	}
 
-	public void downFile(String filename,String destfile)
-	{
-		String savefile =  "/mnt/sdcard/crmstudy/";
-		File destDir = new File(savefile);
-
-		if (!destDir.exists()) {
-			destDir.mkdirs();
-		}
-
-		FinalHttp fh = new FinalHttp();
-		final HttpHandler handler = fh.download(UrlTools.download_url+filename, //这里是下载的路径
-				savefile + destfile, //这是保存到本地的路径
-				new AjaxCallBack<File>() {
-					@Override
-					public void onLoading(long count, long current) {
-
-					}
-
-					@Override
-					public void onSuccess(File t) {
-
-					}
-
-				});
-	}
 
 
 	class ShlefAdapter extends BaseAdapter{
@@ -313,14 +309,13 @@ public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRef
 		@Override
 		public View getView(int position, View contentView, ViewGroup arg2) {
 			// TODO Auto-generated method stub
-			contentView=LayoutInflater.from(getApplicationContext()).inflate(R.layout.crm_study_item1, null);
+			contentView=LayoutInflater.from(getApplicationContext()).inflate(R.layout.study_item1, null);
 			TextView view=(TextView) contentView.findViewById(R.id.imageView1);
-			LabelView label = new LabelView(getApplicationContext());
+		/*	LabelView label = new LabelView(getApplicationContext());
 			label.setText("New!");
 			label.setBackgroundColor(0xff03a9f4);
-			label.setTargetView(view,10, LabelView.Gravity.RIGHT_TOP);
+			label.setTargetView(view,10, LabelView.Gravity.RIGHT_TOP);*/
 			view.setText(name.get(position));
-			view.setBackgroundResource(R.drawable.cover_txt);
 			return contentView;
 		}
 
@@ -341,7 +336,7 @@ public class BookShelfActivity extends AppCompatActivity implements WaveSwipeRef
 						if(arg2>=name.size()){
 
 						}else{
-							openFile("/mnt/sdcard/crmstudy/"+name.get(arg2));
+							openFile(name.get(arg2),url.get(arg2));
 						}
 					}
 				});

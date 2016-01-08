@@ -30,7 +30,7 @@ public class WeatherAdaptor {
 
 	public static String getWeather(String city){
 		String bufferStr = null;
-		try{ 
+		try{
 				WeatherAdaptor.getWeatherData(city);
 				bufferStr = Weather.getSmsMsg();
 				//bufferStr = wu.readXML(xml,city);
@@ -81,9 +81,9 @@ public class WeatherAdaptor {
 //		connection.connect();
 		String result = request("POST",requestUrl);
 		InputStream streamTemp = new ByteArrayInputStream(result.getBytes());
-		
+
 //		System.out.println(result+"111111111111111111111111111111");
-		
+
 		XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 		factory.setNamespaceAware(true);
 		XmlPullParser parser = factory.newPullParser();
@@ -138,7 +138,7 @@ public class WeatherAdaptor {
             }
         }
 	}
-	
+
 	 private static String request(String method, String url) {
 
 	        HttpResponse httpResponse = null;

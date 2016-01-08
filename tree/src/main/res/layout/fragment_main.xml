@@ -6,8 +6,8 @@
         android:id="@+id/id_tree"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:divider="#aaa"
-        android:dividerHeight="1px" >
+        android:divider="#eeeeee"
+        android:dividerHeight="0.11px" >
     </ListView>
 
 </RelativeLayout>

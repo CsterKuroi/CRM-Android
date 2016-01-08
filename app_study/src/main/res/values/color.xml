@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#FFFFFF</color><!--白色 -->
-
+    <color name="button_pressed_color">#E5E5E5</color>
+    <color name="my_background_color">#eef3f5</color>
     <color name="ivory">#FFFFF0</color><!--象牙色 -->
 
     <color name="lightyellow">#FFFFE0</color><!--亮黄色 -->

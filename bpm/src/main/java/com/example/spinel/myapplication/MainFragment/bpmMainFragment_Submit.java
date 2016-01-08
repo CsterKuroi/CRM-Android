@@ -5,19 +5,21 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.example.spinel.myapplication.BPMGroup;
 import com.example.spinel.myapplication.BPMItem;
 import com.example.spinel.myapplication.Form.bpmTraceProcessActivity;
-import com.example.spinel.myapplication.bpmMainActivity;
 import com.example.spinel.myapplication.R;
+import com.example.spinel.myapplication.bpmMainActivity;
 import com.example.spinel.myapplication.bpmTools;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class bpmMainFragment_Submit extends Fragment {
     private String[] searchtypes = {"按类型", "按时间",  "按状态"};
     private String[] search2_type = {"全部"};
     private String[] search2_time = {"全部", "今天", "一周", "一月"};
-    private String[] search2_state = {"全部", "正在审核", "未通过", "已通过", "已撤销", "超时作废"};
+    private String[] search2_state = {"全部", "正在审核", "未通过", "已通过", "已撤销", "超时作废", "过期"};
 
     private ArrayAdapter<String> aa_type, aa_time, aa_state;
     private Spinner spin1, spin2;
@@ -68,17 +70,26 @@ public class bpmMainFragment_Submit extends Fragment {
         spin1 = (Spinner)getView().findViewById(R.id.spinner_worktype);
         ArrayAdapter<String> aa = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, searchtypes);
         spin1.setAdapter(aa);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        aa.setDropDownViewResource(R.layout.my_spinner_dialog_item);
 
         //筛选step2
         spin2 = (Spinner)getView().findViewById(R.id.spinner_detail);
         aa_type = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, search2_type);
         aa_time = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, search2_time);
         aa_state = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, search2_state);
-        aa_type.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        aa_time.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        aa_state.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        aa_type.setDropDownViewResource(R.layout.my_spinner_dialog_item);
+        aa_time.setDropDownViewResource(R.layout.my_spinner_dialog_item);
+        aa_state.setDropDownViewResource(R.layout.my_spinner_dialog_item);
         spin2.setAdapter(aa_type);
+
+        //设置spinner宽度
+        DisplayMetrics dm = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
+        lp.width = dm.widthPixels/2;
+        getView().findViewById(R.id.rl1).setLayoutParams(lp);
+        getView().findViewById(R.id.rl2).setLayoutParams(lp);
 
         //监听1
         spin1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -129,6 +140,8 @@ public class bpmMainFragment_Submit extends Fragment {
                 bpmMainFragment_Submit_DataHolder item = (bpmMainFragment_Submit_DataHolder)adapter.getItem(arg2);
                 String processId = item.processId;
                 bpmMainActivity.currentActivityId = item.activityId;
+                bpmMainActivity.currentClickProcessId = item.processId;
+                bpmMainActivity.currentClickTaskId = "";
 
                 if(spinnerindex==0 && (item.status.equals("cancelled") || item.status.equals("callback") || item.status.equals("abort") || item.status.equals("backToStart"))) {
                     bpmMainActivity.TRACE_PROCESS_STATE = bpmTraceProcessActivity.STATE_RESTART;

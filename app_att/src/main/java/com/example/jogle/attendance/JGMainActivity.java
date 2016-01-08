@@ -18,12 +18,11 @@ import android.view.Window;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
@@ -46,12 +45,12 @@ public class JGMainActivity extends Activity implements Runnable, JGUploadCallBa
     private TextView time;
     private JGRoundImageView picshow;
     private TextView customer;
-    private LinearLayout shotButton;
-    private LinearLayout editcustomer;
-    private LinearLayout editpos;
+    private ImageView shotButton;
+    private RelativeLayout editcustomer;
+    private RelativeLayout editpos;
     private Button finishButton;
-    private ImageView cancelButton;
-    private AnimationSet animationSet;
+    private RelativeLayout cancelButton;
+//    private AnimationSet animationSet;
     private LocationClient mLocationClient = null;
     private BDLocationListener myListener = new BDLocationListener() {
         @Override
@@ -92,7 +91,7 @@ public class JGMainActivity extends Activity implements Runnable, JGUploadCallBa
                     dataSet.generateThumbnail();
                     picshow.setImageBitmap(dataSet.getThumbnail());
                     finishButton.setClickable(true);
-                    finishButton.setBackgroundColor(0xff01aff4);
+//                    finishButton.setBackgroundColor(0xff01aff4);
                     picshow.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -101,6 +100,8 @@ public class JGMainActivity extends Activity implements Runnable, JGUploadCallBa
                             startActivity(intent);
                         }
                     });
+//                    picshow.setVisibility(View.VISIBLE);
+                    shotButton.setVisibility(View.GONE);
                     break;
                 case Activity.RESULT_CANCELED:
                     dataSet.setTimeStamp(null);
@@ -144,9 +145,9 @@ public class JGMainActivity extends Activity implements Runnable, JGUploadCallBa
         setContentView(R.layout.jg_activity_main);
 
         // Set up animation
-        animationSet = new AnimationSet(true);
-        animationSet.addAnimation(scaleAnimation());
-        animationSet.addAnimation(disappearAnimation());
+//        animationSet = new AnimationSet(true);
+//        animationSet.addAnimation(scaleAnimation());
+//        animationSet.addAnimation(disappearAnimation());
 
         // refresh dataSet
             CenterDatabase cd = new CenterDatabase(this, null);
@@ -172,13 +173,13 @@ public class JGMainActivity extends Activity implements Runnable, JGUploadCallBa
         initLocation();
         mLocationClient.start();
 
-        shotButton = (LinearLayout) findViewById(R.id.shot);
+        shotButton = (ImageView) findViewById(R.id.att_paizhao);
         picshow = (JGRoundImageView) findViewById(R.id.picshow);
 
         shotButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                shotButton.startAnimation(animationSet);
+//                shotButton.startAnimation(animationSet);
                 if (dataSet.getTimeStamp() != null) {
                     File pic = new File(dataSet.getPicPath());
                     if (pic.exists()) {
@@ -217,28 +218,27 @@ public class JGMainActivity extends Activity implements Runnable, JGUploadCallBa
             }
         });
 
-        editcustomer = (LinearLayout) findViewById(R.id.editcustomer);
+        editcustomer = (RelativeLayout) findViewById(R.id.editcustomer);
         editcustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editcustomer.startAnimation(animationSet);
+//                editcustomer.startAnimation(animationSet);
                 Intent intent = new Intent(JGMainActivity.this, JGCustomerPickerActivity.class);
                 startActivity(intent);
             }
         });
 
-        editpos = (LinearLayout) findViewById(R.id.editpos);
+        editpos = (RelativeLayout) findViewById(R.id.editpos);
         editpos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editpos.startAnimation(animationSet);
+//                editpos.startAnimation(animationSet);
                 intentToLocate();
             }
         });
 
         finishButton = (Button) findViewById(R.id.button6);
-        finishButton.setClickable(false);
-        finishButton.setBackgroundColor(0xffdddddd);
+//        finishButton.setBackgroundColor(0xffdddddd);
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -248,17 +248,17 @@ public class JGMainActivity extends Activity implements Runnable, JGUploadCallBa
                 }
                 uploadToServer();
                 //dataSet = new JGDataSet();
-                finishButton.setBackgroundColor(0xffdddddd);
+//                finishButton.setBackgroundColor(0xffdddddd);
                 finishButton.setClickable(false);
-                finishButton.setText("已签到");
+//                finishButton.setText("已签到");
             }
         });
 
-        cancelButton = (ImageView) findViewById(R.id.imageView);
+        cancelButton = (RelativeLayout) findViewById(R.id.back);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cancelButton.startAnimation(animationSet);
+//                cancelButton.startAnimation(animationSet);
                 showCancelDialog();
             }
         });
@@ -273,7 +273,7 @@ public class JGMainActivity extends Activity implements Runnable, JGUploadCallBa
                     startActivity(intent);
                 }
             });
-            finishButton.setVisibility(View.VISIBLE);
+//            finishButton.setVisibility(View.VISIBLE);
         }
 
         TextView addr = (TextView) findViewById(R.id.address);
@@ -385,7 +385,7 @@ public class JGMainActivity extends Activity implements Runnable, JGUploadCallBa
 
     private void showCancelDialog() {
         new AlertDialog.Builder(this).setTitle("提示")
-                .setMessage("是否取消此次考勤打卡？")
+                .setMessage("是否取消此次外勤签到？")
                 .setPositiveButton("否", null)
                 .setNegativeButton("是", new DialogInterface.OnClickListener() {
                     @Override

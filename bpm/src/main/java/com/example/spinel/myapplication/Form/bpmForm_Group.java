@@ -1,7 +1,10 @@
 package com.example.spinel.myapplication.Form;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -182,6 +185,7 @@ public class bpmForm_Group implements Comparable<bpmForm_Group>{
         //只读页面
         if(!edit){
             group = new bpmListViewForScrollView(activity);
+            group.setBackgroundColor(Color.parseColor("#ffffff"));
             if(isSummary){
                 for(int i=0; i<itemList.size(); i++){
                     if(!itemList.get(i).isSummary) {
@@ -189,6 +193,7 @@ public class bpmForm_Group implements Comparable<bpmForm_Group>{
                         i--;
                     }
                 }
+
             }
             adapter_read = new bpmForm_Adapter_Read(activity, itemList, isSummary);
             group.setAdapter(adapter_read);
@@ -209,13 +214,25 @@ public class bpmForm_Group implements Comparable<bpmForm_Group>{
                 button_sub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ((bpmFormActivity)activity).removeGroup(groupIndex);
+                        new AlertDialog.Builder(activity).setTitle("提示").setMessage("确定删除"+groupName+"?")
+                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        ((bpmFormActivity)activity).removeGroup(groupIndex);
+                                    }
+                                })
+                                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    }
+                                }).show();
                     }
                 });
             }
 
 
             group = new bpmListViewForScrollView(activity);
+            group.setBackgroundColor(Color.parseColor("#ffffff"));
             adapter = new bpmForm_Adapter_Write(((bpmFormActivity)activity), itemList, hideList, groupIndex);
             ((bpmListViewForScrollView)group).setAdapter(adapter);
 

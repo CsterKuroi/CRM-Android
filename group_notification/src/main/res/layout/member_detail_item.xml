@@ -1,76 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:dividerPadding="10dp"
-    android:orientation="horizontal">
+    android:background="@android:color/white"
+    android:padding="20dp">
 
     <ImageView
         android:id="@+id/bmjheader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="6dp"
-        android:src="@drawable/receicer"/>
-    <LinearLayout
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/timeline_item"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/dot_blue" />
+
+    <TextView
+        android:id="@+id/member_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/timeline_item"
+        android:text="时间"
+        android:textColor="#106bb9"
+        android:textSize="14sp" />
 
+    <TextView
+        android:id="@+id/member_name1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/member_time"
+        android:text="姓名"
+        android:textColor="#106bb9"
+        android:textSize="14sp" />
 
-
-        <TextView
-            android:id="@+id/member_name1"
-            android:text="姓名  ："
-            android:textColor="#000"
-
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:paddingLeft="6dp" />
-
-        <TextView
-            android:id="@+id/member_status"
-            android:text="通知状态："
-            android:textColor="#000"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:paddingLeft="6dp" />
-        <TextView
-            android:id="@+id/member_time"
-            android:textColor="#000"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:paddingLeft="6dp" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/member_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/member_name1"
+        android:text="状态"
+        android:textColor="#434343"
+        android:textSize="14sp" />
 
 
     <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical">-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical">-->
 
 
+    <!--<TextView-->
+    <!--android:id="@+id/bmjname"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:paddingLeft="3dp" />-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/bmjname"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:paddingLeft="3dp" />-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/bmjcreater"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:paddingLeft="3dp" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/bmjcreater"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:paddingLeft="3dp" />-->
 
     <!--</LinearLayout>-->
 
 
-</LinearLayout>
+</RelativeLayout>

@@ -135,6 +135,10 @@
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="adjustNothing" />
 
+        <activity
+            android:name=".ui.activity.ClipPictureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
     </application>
 
 </manifest>

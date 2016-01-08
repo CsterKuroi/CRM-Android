@@ -3,13 +3,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bpm_rounded_corners_bg" >
+    android:background="@drawable/bpm_popupwindow_bg"
+    android:clickable="false"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    android:paddingTop="5dp">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listView_BPMGroupList"
-        android:clickable="false" />
+        android:divider="#26ffffff"
+        android:dividerHeight="1dp" />
 
 
 

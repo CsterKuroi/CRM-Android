@@ -64,7 +64,7 @@ public class bpmRecorder {
             filename = bpmMainActivity.userId + "_" + bpmMainActivity.currentStepId + "_" + bpmMainActivity.currentProcessId + "_" + itemId;
             deleteFile(filename);
         }
-        else {
+        else if(!value.equals("-")){
             filename = value;
             if(existsFile(filename))
                 hasVoice = true;

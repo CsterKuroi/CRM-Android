@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -140,7 +140,7 @@ public class JGLocate2Activity extends Activity {
             }
         });
 
-        ImageView backButton = (ImageView) findViewById(R.id.backButton2);
+        RelativeLayout backButton = (RelativeLayout) findViewById(R.id.back);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

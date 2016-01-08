@@ -10,9 +10,9 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -152,7 +152,7 @@ public class JGCalendarActivity extends Activity implements OnClickListener, Cal
 		peopleListMonthAdapter = new JGPeopleListAdapter(getApplicationContext(), depListMonth);
 		peopleListmonth.setAdapter(peopleListMonthAdapter);
 
-		ImageView back = (ImageView) findViewById(R.id.imageButton3);
+		RelativeLayout back = (RelativeLayout) findViewById(R.id.back);
 		back.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

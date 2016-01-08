@@ -17,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.kuroi.chance.R;
@@ -48,7 +49,7 @@ public class ChanceAddActivity extends Activity implements ChanceUploadCallBack 
     private String picName="";
     private String userID;
 	
-	private ImageView iv11;
+	private RelativeLayout iv11;
     private ImageView iv12;
 
 
@@ -298,7 +299,7 @@ public class ChanceAddActivity extends Activity implements ChanceUploadCallBack 
         image = (ImageView)findViewById(R.id.image_view);
         discount=(EditText)findViewById(R.id.chance_discount);
 		
-		        iv11=(ImageView)findViewById(R.id.imageView11);
+		        iv11=(RelativeLayout)findViewById(R.id.back);
         iv12=(ImageView)findViewById(R.id.imageView12);
     }
     private Chance getContent(){//获取表单

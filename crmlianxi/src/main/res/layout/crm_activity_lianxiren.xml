@@ -106,7 +106,6 @@
             android:layout_height="wrap_content"
             android:text=""
             android:id="@+id/textView7"
-            android:layout_alignBottom="@+id/switch2"
             android:layout_alignRight="@+id/textView2"
             android:layout_alignEnd="@+id/textView2"
             android:layout_alignTop="@+id/tv_sex" />

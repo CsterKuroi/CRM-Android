@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.kuroi.contract.R;
@@ -62,7 +63,7 @@ public class ConDetailActivity extends Activity implements ConDeleteCallBack,Con
 
     private static final String ACTIVITY_TAG="LogDemo";
 
-    private ImageView iv11;
+    private RelativeLayout iv11;
     private ImageView iv12;
     private ImageView iv14;
 
@@ -226,7 +227,7 @@ public class ConDetailActivity extends Activity implements ConDeleteCallBack,Con
         image = (ImageView)findViewById(R.id.image_button);
         image2 = (ImageView)findViewById(R.id.imageView7);
         image3 = (ImageView)findViewById(R.id.imageView8);
-        iv11=(ImageView)findViewById(R.id.imageView11);
+        iv11=(RelativeLayout)findViewById(R.id.back);
         iv12=(ImageView)findViewById(R.id.imageView12);
         iv14=(ImageView)findViewById(R.id.imageView14);
 

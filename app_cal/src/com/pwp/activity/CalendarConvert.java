@@ -17,6 +17,7 @@ import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -30,7 +31,7 @@ public class CalendarConvert extends Activity implements OnTouchListener{
 	private BorderTextView convertDate = null;
 	private BorderTextView convertBT = null;
 	private TextView lunarDate = null;
-	private ImageButton back;
+	private RelativeLayout back;
 
 	private int year_c;
 	private int month_c;
@@ -48,7 +49,7 @@ public class CalendarConvert extends Activity implements OnTouchListener{
 		SysApplication.getInstance().addActivity(this);
 		setContentView(R.layout.convert);
 
-		back=(ImageButton)findViewById(R.id.ImageButton_back);
+		back=(RelativeLayout)findViewById(R.id.ImageButton_back);
 		back.setOnTouchListener(this);
 		convertDate = (BorderTextView) findViewById(R.id.convertDate);
 		convertBT = (BorderTextView) findViewById(R.id.convert);

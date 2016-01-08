@@ -24,6 +24,7 @@ import com.code.bmj.groupnotifycation.GroupNotificationMainActivity;
 import com.example.spinel.myapplication.bpmMainActivity;
 import com.example.yanhao.task729.R;
 import com.example.yanhao.task729.yh729_Constant;
+import com.pwp.activity.CalendarActivity;
 import com.ricky.database.CenterDatabase;
 
 import java.util.ArrayList;
@@ -108,13 +109,13 @@ public class yh729_mFragment extends Fragment {
     public void InitListView() {
         switch (tag) {
             case yh729_Constant.MY_REMIND:
-                mBean.add(new my_remindBean(R.drawable.ic_photo_workremind, yh729_Constant.WORK_REMIND, "", 0, yh729_Constant.WORK_REMIND, 0));
-                mBean.add(new my_remindBean(R.drawable.ic_photo_instructionremind, yh729_Constant.INSTRUCTION_REMIND, "", 0, yh729_Constant.INSTRUCTION_REMIND, 0));
-                mBean.add(new my_remindBean(R.drawable.ic_photo_diaryremind, yh729_Constant.DAIRY_REMIND, "", 0, yh729_Constant.DAIRY_REMIND, 0));
-                mBean.add(new my_remindBean(R.drawable.ic_photo_checkremind, yh729_Constant.CHECK_REMIND, "", 0, yh729_Constant.CHECK_REMIND, 0));
-                mBean.add(new my_remindBean(R.drawable.ic_photo_focus, yh729_Constant.FOCUS_REMIND, "", 0, yh729_Constant.FOCUS_REMIND, 0));
-                mBean.add(new my_remindBean(R.drawable.schedule_remind, yh729_Constant.SCHEDULE_REMIND, "", 0, yh729_Constant.SCHEDULE_REMIND, 0));
-                mBean.add(new my_remindBean(R.drawable.schedule_remind, yh729_Constant.GROUP_REMIND, "", 0, yh729_Constant.GROUP_REMIND, 0));
+//                mBean.add(new my_remindBean(R.drawable.ic_photo_workremind, yh729_Constant.WORK_REMIND, "", 0, yh729_Constant.WORK_REMIND, 0));
+//                mBean.add(new my_remindBean(R.drawable.ic_photo_instructionremind, yh729_Constant.INSTRUCTION_REMIND, "", 0, yh729_Constant.INSTRUCTION_REMIND, 0));
+//                mBean.add(new my_remindBean(R.drawable.ic_photo_diaryremind, yh729_Constant.DAIRY_REMIND, "", 0, yh729_Constant.DAIRY_REMIND, 0));
+                mBean.add(new my_remindBean(R.drawable.tixing_shenpi, yh729_Constant.CHECK_REMIND, "", 0, yh729_Constant.CHECK_REMIND, 0));
+//                mBean.add(new my_remindBean(R.drawable.ic_photo_focus, yh729_Constant.FOCUS_REMIND, "", 0, yh729_Constant.FOCUS_REMIND, 0));
+                mBean.add(new my_remindBean(R.drawable.tixing_richeng, yh729_Constant.SCHEDULE_REMIND, "", 0, yh729_Constant.SCHEDULE_REMIND, 0));
+                mBean.add(new my_remindBean(R.drawable.tixing_quntongzhi, yh729_Constant.GROUP_REMIND, "", 0, yh729_Constant.GROUP_REMIND, 0));
                 break;
             case yh729_Constant.WORK_REMIND:
                 mBean.add(new my_remindBean(R.drawable.needreply, yh729_Constant.NEEDREPLY, "", 0, yh729_Constant.NEEDREPLY, 0));
@@ -198,26 +199,26 @@ public class yh729_mFragment extends Fragment {
                     time = cur.getLong(cur.getColumnIndex("time"));
                     content = cur.getString(cur.getColumnIndex("scheduleContent"));
                     if(cur.getInt(cur.getColumnIndex("priority"))==5){
-                        mBean.get(5).setImportant(true);
+                        mBean.get(1).setImportant(true);
                     }
                     else
-                        mBean.get(5).setImportant(false);
-                    mBean.get(5).setMessageContent(content);
-                    mBean.get(5).setMessageTime(time);
+                        mBean.get(1).setImportant(false);
+                    mBean.get(1).setMessageContent(content);
+                    mBean.get(1).setMessageTime(time);
                 }
                 cur.close();
                 if(num==0){
                     cur = db.rawQuery("select * from yh_schedule order by CAST (time AS bigint) desc, CAST (priority AS int) desc", null);
-                    cur.moveToFirst();
                     if(cur.getCount()>0) {
+                        cur.moveToFirst();
                         time = cur.getLong(cur.getColumnIndex("time"));
                         content = cur.getString(cur.getColumnIndex("scheduleContent"));
-                        mBean.get(5).setMessageContent(content);
-                        mBean.get(5).setMessageTime(time);
+                        mBean.get(1).setMessageContent(content);
+                        mBean.get(1).setMessageTime(time);
                     }
                     cur.close();
                 }
-                mBean.get(5).setNum(num);
+                mBean.get(1).setNum(num);
                 if (!type.equals("all"))
                     break;
 
@@ -230,20 +231,20 @@ public class yh729_mFragment extends Fragment {
                     if(cur.getCount()>0) {
                         time = cur.getLong(cur.getColumnIndex("time"));
                         content = cur.getString(cur.getColumnIndex("content"));
-                        mBean.get(3).setMessageContent(content);
-                        mBean.get(3).setMessageTime(time);
+                        mBean.get(0).setMessageContent(content);
+                        mBean.get(0).setMessageTime(time);
                     }
                 }
-                mBean.get(3).setNum(num);
+                mBean.get(0).setNum(num);
                 cur.close();
                 if(num==0){
                     cur = db.rawQuery("select * from censor order by CAST (time AS bigint) desc", null);
-                    cur.moveToFirst();
                     if(cur.getCount()>0) {
+                        cur.moveToFirst();
                         time = cur.getLong(cur.getColumnIndex("time"));
                         content = cur.getString(cur.getColumnIndex("content"));
-                        mBean.get(3).setMessageContent(content);
-                        mBean.get(3).setMessageTime(time);
+                        mBean.get(0).setMessageContent(content);
+                        mBean.get(0).setMessageTime(time);
                     }
                     cur.close();
                 }
@@ -252,28 +253,28 @@ public class yh729_mFragment extends Fragment {
 
 
             case "group_notify":
-                cur = db.rawQuery("select * from group_notification where read = 'false' order by CAST (receive_time AS bigint) desc", null);
+                cur = db.rawQuery("select * from group_notification where read = 'false' and type='receive' order by CAST (receive_time AS bigint) desc", null);
                 num = cur.getCount();
                 if (num > 0) {
                     cur.moveToFirst();
                     time = cur.getLong(cur.getColumnIndex("receive_time"));
                     content = cur.getString(cur.getColumnIndex("creatorName"))+"发送了一条群通知："+cur.getString(cur.getColumnIndex("title"))+" "+cur.getString(cur.getColumnIndex("content"));
-                    mBean.get(6).setMessageContent(content);
-                    mBean.get(6).setMessageTime(time);
+                    mBean.get(2).setMessageContent(content);
+                    mBean.get(2).setMessageTime(time);
                 }
                 cur.close();
                 if(num==0){
-                    cur = db.rawQuery("select * from group_notification order by CAST (receive_time AS bigint) desc", null);
-                    cur.moveToFirst();
+                    cur = db.rawQuery("select * from group_notification where type='receive' order by CAST (receive_time AS bigint) desc", null);
                     if(cur.getCount()>0) {
+                        cur.moveToFirst();
                         time = cur.getLong(cur.getColumnIndex("receive_time"));
                         content = cur.getString(cur.getColumnIndex("creatorName")) + "发送了一条群通知：" + cur.getString(cur.getColumnIndex("title")) + " " + cur.getString(cur.getColumnIndex("content"));
-                        mBean.get(6).setMessageContent(content);
-                        mBean.get(6).setMessageTime(time);
+                        mBean.get(2).setMessageContent(content);
+                        mBean.get(2).setMessageTime(time);
                     }
                     cur.close();
                 }
-                mBean.get(6).setNum(num);
+                mBean.get(2).setNum(num);
                 if (!type.equals("all"))
                     break;
         }
@@ -332,13 +333,14 @@ public class yh729_mFragment extends Fragment {
                     parent.getChildAt(position - parent.getFirstVisiblePosition()).setBackgroundColor(0x000000);
 //                    refreashBean("schedule");
                 }
+                final String scheduleID=c.getString(c.getColumnIndex("scheduleID"));
                 c.close();
                 new AlertDialog.Builder(getActivity())
                         .setItems(new String[]{"查看详情", "定时提醒"}, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 if (which == 0) {
-
+                                    startActivity(new Intent(getActivity(), CalendarActivity.class).putExtra("scheduleID", scheduleID));
                                 } else if (which == 1) {
                                     Cursor c;
                                     c = db.rawQuery("SELECT * FROM yh_schedule WHERE _id='" + s_id1.getText() + "'", null);
@@ -476,7 +478,7 @@ public class yh729_mFragment extends Fragment {
         try {
             mtag = getTag();
             if (!first) {
-                Log.i("test", "first=false");
+                Log.i("test", "mfragment： first=false");
                 if(tag.equals(yh729_Constant.MY_REMIND))
                     refreashBean("all");
                 upDateListview();

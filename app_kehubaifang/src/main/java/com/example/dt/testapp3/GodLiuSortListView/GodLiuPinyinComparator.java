@@ -1,6 +1,6 @@
 package com.example.dt.testapp3.GodLiuSortListView;
 
-import com.example.dt.testapp3.GodLiuStructure;
+import com.example.dt.testapp3.Graphics.GodLiuStructure;
 
 import java.util.Comparator;
 

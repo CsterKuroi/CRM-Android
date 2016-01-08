@@ -16,6 +16,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.kuroi.contract.R;
@@ -49,7 +50,7 @@ public class ConAddActivity extends Activity implements ConUploadCallBack {
     private static final String ACTIVITY_TAG="LogDemo";
     private String userID;
 
-    private ImageView iv11;
+    private RelativeLayout iv11;
     private ImageView iv12;
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -292,7 +293,7 @@ public class ConAddActivity extends Activity implements ConUploadCallBack {
         cusSigner = (EditText)findViewById(R.id.contract_cusSigner);
         remark = (EditText)findViewById(R.id.contract_remark);
         image = (ImageView)findViewById(R.id.image_view);
-        iv11=(ImageView)findViewById(R.id.imageView11);
+        iv11=(RelativeLayout)findViewById(R.id.back);
         iv12=(ImageView)findViewById(R.id.imageView12);
     }
     private Contract getContent(){//获取表单

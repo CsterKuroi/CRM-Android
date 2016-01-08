@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class BMJHTStatics extends Activity {
     private String [] httarget=null;
     private String [] htcreater=null;
     private int[] header;
-    private ImageView ib3;
+    private RelativeLayout ib3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class BMJHTStatics extends Activity {
         htdate=b.getStringArray("htdate");
         httarget=b.getStringArray("httarget");
         htcreater=b.getStringArray("htcreater");
-        ib3=(ImageView) findViewById(R.id.imageView11);
+        ib3=(RelativeLayout) findViewById(R.id.back);
         ib3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

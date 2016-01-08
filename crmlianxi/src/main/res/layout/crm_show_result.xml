@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
 <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ebebeb"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
     <RelativeLayout
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_top_bar"
+        android:layout_height="45dp"
         android:background="#106bb9" >
-        <ImageView
+        <RelativeLayout
             android:id="@+id/iv_back"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:onClick="back"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:layout_gravity="center_vertical|left"
-            android:scaleType="centerInside"
-            android:src="@drawable/cal_back"/>
-
-        <TextView
-            android:id="@+id/shibie_add"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="确认"
-            android:textSize="18sp"
-            android:textColor="@color/white"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:background="#106bb9"/>
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/left_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="6dp"
+                android:scaleType="center"
+                android:src="@drawable/tt_top_back" />
+
+            <TextView
+                android:id="@+id/left_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_toRightOf="@id/left_btn"
+                android:gravity="center_vertical"
+                android:text="返回"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,87 +52,44 @@
             android:dropDownVerticalOffset="20dp"
             android:layout_marginStart="200dp" />
     </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/black0"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:color="#999999"
+        android:color="@color/white"
         android:clickable="true">
-
         </RelativeLayout>
 
 
     <RelativeLayout
-        android:id="@+id/white"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:color="#ffffff"
-        android:clickable="true">
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:background="@color/lightgrayspace">
         <TextView
+            android:layout_marginLeft="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="基本信息"/>
+            android:gravity="center_vertical"
+            android:textColor="#000000"
+            android:text="基本信息" />
     </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/re_name"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/btn_list_item_bg"
-        android:clickable="true">
-
-        <TextView
-            android:id="@+id/tv_temp_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:text="姓名"
-            android:textColor="#353535"
-            android:textSize="16sp" />
-
-
-        <EditText
-            android:id="@+id/tv_name"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="40dp"
-            android:textColor="@android:color/holo_red_dark"
-            android:singleLine="true"
-
-      />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:background="#dadada" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/tv_temp_name"
-            android:layout_toEndOf="@+id/tv_temp_name"
-            android:layout_toRightOf="@+id/tv_temp_name"
-            android:text="*"
-            android:textColor="#FF0000" />
-
-
-    </RelativeLayout>
-
     <RelativeLayout
         android:id="@+id/re_com"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/btn_list_item_bg"
-        android:clickable="true">
+        android:layout_height="48dp"
+        android:clickable="true"
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/tv_temp_com"
@@ -139,33 +97,68 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="15dp"
+            android:text="姓名"
+            android:textColor="#353535"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/tv_name"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_centerVertical="true"
+            android:gravity="left"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:selectAllOnFocus="true"
+            android:hint="必填项"
+            android:textSize="16sp"
+            android:background="@null"/>
+
+
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgrayline"/>
+
+    <RelativeLayout
+        android:id="@+id/re_com2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:clickable="true">
+
+        <TextView
+            android:id="@+id/tv_temp_com2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
             android:text="公司"
             android:textColor="#353535"
             android:textSize="16sp" />
 
         <EditText
             android:id="@+id/tv_com"
-            android:layout_width="220dp"
-            android:drawableLeft="@drawable/ic_lock"
-            android:drawablePadding="40dp"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="40dp"
-            android:textColor="@android:color/holo_green_dark"
+            android:layout_marginLeft="130dp"
+            android:gravity="left"
+            android:ellipsize="end"
             android:singleLine="true"
-            android:textSize="14sp" />
-
-      <!--  <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:background="#dadada" />-->
-
+            android:selectAllOnFocus="true"
+            android:hint="必填项"
+            android:textSize="16sp"
+            android:background="@null"/>
     </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgrayline"/>
 
     <RelativeLayout
         android:id="@+id/re_sex"
@@ -180,38 +173,26 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="15dp"
             android:text="性别"
             android:textColor="#353535"
             android:textSize="16sp" />
 
 
-        <View
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:background="#dadada" />
-
-        <TextView
-            android:id="@+id/textView12"
+        <RadioGroup
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/radioGroup"
+            android:contentDescription="性别"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/tv_sex"
-            android:layout_toEndOf="@+id/tv_sex"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/tv_sex"
-            android:text="*"
-            android:textColor="#FF0000" />
-
-        <RadioGroup android:layout_toLeftOf="@+id/textView7"
-            android:layout_toStartOf="@+id/textView7"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal" android:id="@+id/radioGroup" android:contentDescription="性别" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/radioMale" android:text="男" android:checked="true"></RadioButton>
-            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/radioFemale" android:text="女"></RadioButton>
+             android:layout_marginLeft="80dp">
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/radioMale" android:textColor="@color/black" android:text="男" android:checked="true"></RadioButton>
+            <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/radioFemale"  android:textColor="@color/black"  android:text="女"></RadioButton>
         </RadioGroup>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -221,6 +202,8 @@
             android:layout_alignRight="@+id/textView2"
             android:layout_alignEnd="@+id/textView2"
             android:layout_alignTop="@+id/tv_sex" />
+
+
     </RelativeLayout>
 
 
@@ -233,185 +216,169 @@
 
     </RelativeLayout>
     <RelativeLayout
-        android:id="@+id/white1"
+        android:id="@+id/white"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:color="#ffffff"
-        android:clickable="true">
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:background="@color/lightgrayspace">
         <TextView
+            android:layout_marginLeft="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="详细信息"/>
-
+            android:gravity="center_vertical"
+            android:textColor="#000000"
+            android:text="通讯信息"/>
     </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/re_email"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
 
-        android:background="@drawable/btn_list_item_bg"
-        android:clickable="true">
 
-        <TextView
-            android:id="@+id/tv_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:text="邮箱"
-            android:textColor="#353535"
-            android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/textemail"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="40dp"
-           android:inputType="textEmailAddress"
-            android:singleLine="true"
-            android:text=""
-            android:textColor="@android:color/holo_green_dark"
-            android:textSize="14sp" />
-
-      <!--  <View
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:background="#dadada" />-->
-    </RelativeLayout>
+            android:layout_height="48dp"
+            android:clickable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="邮箱"
+                android:textColor="#353535"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/textemail"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="130dp"
+                android:gravity="left"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                android:background="@null"/>
 
 
-    <RelativeLayout
-        android:id="@+id/re_fxid"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/btn_list_item_bg"
-        android:clickable="true">
 
+        </RelativeLayout>
         <TextView
-            android:id="@+id/tv_temp_fxid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:text="工作电话"
-            android:textColor="#353535"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/tv_fxid"
-            android:layout_width="220dp"
-            android:drawableLeft="@drawable/ic_lock"
-            android:drawablePadding="10dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="40dp"
-            android:singleLine="true"
-            android:textColor="@android:color/holo_green_dark"
-            android:textSize="14sp" />
-
-       <!-- <View
             android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:background="#dadada" />-->
+            android:layout_height="1dp"
+            android:background="@color/lightgrayline"/>
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/tv_temp_fxid"
-            android:layout_toEndOf="@+id/tv_temp_fxid"
-            android:layout_toRightOf="@+id/tv_temp_fxid"
-            android:text="*"
-            android:textColor="#FF0000" />
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/layou5"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/btn_list_item_bg"
-        android:clickable="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:text="移动电话"
-            android:textColor="#353535"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/yidongphone"
-            android:layout_width="220dp"
-            android:drawableLeft="@drawable/ic_lock"
-            android:drawablePadding="10dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="40dp"
-            android:singleLine="true"
-            android:textColor="@android:color/holo_green_dark"
-            android:textSize="14sp" />
-
-    </RelativeLayout>
-
-
-
-    <RelativeLayout
-        android:id="@+id/re_region"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-
-        android:background="@drawable/btn_list_item_bg"
-        android:clickable="true">
-
-        <TextView
-            android:id="@+id/tv_temp_region"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:text="地址"
-            android:textColor="#353535"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="40dp"
-
-            android:singleLine="true"
-            android:text=""
-            android:textColor="@android:color/holo_green_dark"
-            android:textSize="14sp" />
-
-        <View
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:background="#dadada" />
-    </RelativeLayout>
+            android:layout_height="48dp"
+            android:clickable="true">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="工作电话"
+                android:textColor="#353535"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/tv_fxid"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="130dp"
+                android:gravity="left"
+                android:ellipsize="end"
+                android:hint="必填项，仅输入数字"
+                android:singleLine="true"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                android:background="@null"/>
+
+
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgrayline"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:clickable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="移动电话"
+                android:textColor="#353535"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/yidongphone"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="130dp"
+                android:gravity="left"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                android:background="@null"/>
+
+
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgrayline"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:clickable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="地址"
+                android:textColor="#353535"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="130dp"
+                android:gravity="left"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                android:background="@null"/>
+
+
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgrayline"/>
 
     <RelativeLayout
         android:id="@+id/black2"
@@ -422,89 +389,81 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/re_reg"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
 
-        android:background="@drawable/btn_list_item_bg"
-        android:clickable="true">
-
-        <TextView
-            android:id="@+id/tv_temp_fox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:text="QQ"
-            android:textColor="#353535"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/fox"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="40dp"
-            android:inputType="number"
-            android:singleLine="true"
-            android:text=""
-            android:textColor="@android:color/holo_green_dark"
-            android:textSize="14sp" />
-
-     <!--   <View
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:background="#dadada" />-->
-    </RelativeLayout>
+            android:layout_height="48dp"
+            android:clickable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="QQ"
+                android:textColor="#353535"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/fox"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="130dp"
+                android:gravity="left"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                android:background="@null"/>
 
 
-    <RelativeLayout
-        android:id="@+id/re_fxis"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@drawable/btn_list_item_bg"
-        android:clickable="true">
 
+        </RelativeLayout>
         <TextView
-            android:id="@+id/tv_temp_fxis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:text="微信"
-            android:textColor="#353535"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/tv_fxis"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="40dp"
-
-            android:singleLine="true"
-            android:hint="例微信号"
-            android:textColor="@android:color/holo_green_dark"
-            android:textSize="14sp" />
-
-        <View
             android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:background="#dadada" />
+            android:layout_height="1dp"
+            android:background="@color/lightgrayline"/>
 
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:clickable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="微信"
+                android:textColor="#353535"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/tv_fxis"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="130dp"
+                android:gravity="left"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                android:background="@null"/>
+
+
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgrayline"/>
+
+
 
     <RelativeLayout
         android:id="@+id/black"
@@ -519,153 +478,161 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@drawable/btn_list_item_bg"
+        android:background="@color/lightgrayspace"
         android:clickable="true">
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="详细信息"
+            android:textColor="#353535"
+         />
         <Switch
             android:id="@+id/detailswitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="详细信息"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp" />
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/detail1"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@drawable/btn_list_item_bg"
-        android:clickable="true">
-
-        <TextView
-            android:id="@+id/tv_interest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:text="兴趣爱好"
-            android:textColor="#353535"
-            android:textSize="16sp" />
-        <EditText
-            android:id="@+id/interest"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-
-            android:singleLine="true"
-            android:hint="例如，篮球、乒乓球"
-            android:textColor="@android:color/holo_green_dark"
-
-            android:textSize="14sp" />
-   <!--     <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:background="#dadada" />-->
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/detail2"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@drawable/btn_list_item_bg"
-        android:clickable="true">
-
-        <TextView
-            android:id="@+id/chengzhang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:text="成长经历"
-            android:textColor="#353535"
-            android:textSize="16sp" />
-        <EditText
-            android:id="@+id/chengzhangs"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-
-            android:singleLine="true"
             android:text=""
-            android:textColor="@android:color/holo_green_dark"
-
-            android:textSize="14sp" />
-      <!--  <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:background="#dadada" />-->
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/detail3"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@drawable/btn_list_item_bg"
-        android:clickable="true">
-
-        <TextView
-            android:id="@+id/tv_pai"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:text="派系"
-            android:textColor="#353535"
-            android:textSize="16sp" />
-        <EditText
-            android:id="@+id/paixi"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-
-            android:singleLine="true"
-            android:text=""
-            android:textColor="#AAAAAA"
-            android:textSize="14sp" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:background="#dadada" />
+            android:layout_marginRight="16dp"
+        />
     </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/detail1"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:clickable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="兴趣爱好"
+                android:textColor="#353535"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/interest"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="130dp"
+                android:gravity="left"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                android:background="@null"/>
+
+
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgrayline"/>
+
+        <RelativeLayout
+            android:id="@+id/detail2"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:clickable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="成长经历"
+                android:textColor="#353535"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/chengzhangs"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="130dp"
+                android:gravity="left"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                android:background="@null"/>
+
+
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgrayline"/>
+        <RelativeLayout
+            android:id="@+id/detail3"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:clickable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="派系"
+                android:textColor="#353535"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/paixi"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="130dp"
+                android:gravity="left"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:selectAllOnFocus="true"
+                android:textSize="16sp"
+                android:background="@null"/>
+
+
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgrayline"/>
 
     <RelativeLayout
         android:id="@+id/white2"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:color="#ffffff"
+        android:layout_height="40dp"
+
+        android:background="@color/lightgrayspace"
         android:clickable="true">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="名片信息"/>
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="名片信息"
+            android:textColor="#353535"
+          />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/re_sfs"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:gravity="center"
         android:background="@drawable/btn_list_item_bg"
         android:clickable="true">
@@ -674,21 +641,33 @@
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:id="@+id/imageView1"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true" />
+            android:layout_centerInParent="true"/>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/re_button"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="70dp"
 
-        android:background="@drawable/btn_list_item_bg"
+        android:background="@color/grayvrm"
         android:clickable="true">
+        <TextView
+            android:id="@+id/shibie_add"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="确认"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#106bb9"/>
 
     </RelativeLayout>
 
-
-</LinearLayout>
+    </LinearLayout>
     </ScrollView>
+</LinearLayout>

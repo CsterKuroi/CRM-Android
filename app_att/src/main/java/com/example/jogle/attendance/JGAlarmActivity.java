@@ -9,8 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -24,7 +22,7 @@ public class JGAlarmActivity extends Activity {
     private RelativeLayout l18;
     private TextView t32;
     private TextView t36;
-    private ImageView ib;
+    private RelativeLayout ib;
     private String s;
     private String i1;
     private String i2;
@@ -42,7 +40,7 @@ public class JGAlarmActivity extends Activity {
         l18 = (RelativeLayout) findViewById(R.id.linearLayout18);
         t32 = (TextView) findViewById(R.id.textView32);
         t36 = (TextView) findViewById(R.id.textView36);
-        ib = (ImageView) findViewById(R.id.imageButton5);
+        ib = (RelativeLayout) findViewById(R.id.back);
         operation = new JGDBOperation(getApplicationContext());
         List list=operation.getremind();
         Log.e("xxx", "0000000000");
@@ -110,14 +108,14 @@ public class JGAlarmActivity extends Activity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 final ChoiceOnClickListener choiceListener =
                         new ChoiceOnClickListener();
-                builder.setSingleChoiceItems(R.array.con_type, 0, choiceListener);
+                builder.setSingleChoiceItems(R.array.att_type, 0, choiceListener);
                 DialogInterface.OnClickListener btnListener =
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int which) {
                                 int choiceWhich = choiceListener.getWhich();
                                 String typ =
-                                        getResources().getStringArray(R.array.con_type)[choiceWhich];
+                                        getResources().getStringArray(R.array.att_type)[choiceWhich];
                                 t32.setText(typ);
                                 s=aSwitch.isChecked()?"1":"0";
                                 wt=t32.getText().toString();
@@ -141,14 +139,14 @@ public class JGAlarmActivity extends Activity {
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
                 final ChoiceOnClickListener choiceListener2 =
                         new ChoiceOnClickListener();
-                builder2.setSingleChoiceItems(R.array.con_type, 0, choiceListener2);
+                builder2.setSingleChoiceItems(R.array.att_type, 0, choiceListener2);
                 DialogInterface.OnClickListener btnListener2 =
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int which) {
                                 int choiceWhich = choiceListener2.getWhich();
                                 String typ =
-                                        getResources().getStringArray(R.array.con_type)[choiceWhich];
+                                        getResources().getStringArray(R.array.att_type)[choiceWhich];
                                 t36.setText(typ);
                                 s=aSwitch.isChecked()?"1":"0";
                                 wt=t32.getText().toString();

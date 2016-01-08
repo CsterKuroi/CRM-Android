@@ -7,7 +7,7 @@ public class Weather {
 	public static String current_date_time;
 	public static String current_dayPictureUrl;
 	public static String current_nightPictureUrl;
-	public static String current_weather;
+	public static String current_weather="晴转多云";
 	public static String current_wind;
 	public static String current_temp;
 	public static String current_temprature;

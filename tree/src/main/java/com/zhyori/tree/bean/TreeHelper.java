@@ -191,7 +191,7 @@ public class TreeHelper
 			node.setIcon(-1);
 		}
 		if(node.isLeaf()&&node.getId()>9999)
-			node.setIcon(R.drawable.tt_default_user_portrait_corner_new);
+			node.setIcon(R.drawable.tt_default_user_portrait_corner_small);
 		else if(node.isLeaf())
 		{
 			node.setIcon(R.drawable.tree_ex);

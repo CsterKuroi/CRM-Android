@@ -15,7 +15,7 @@
             android:id="@+id/search_tree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#F0F0F0F0"
+            android:background="@drawable/sousuo_bg"
             android:visibility="gone" />
         <FrameLayout
             android:layout_width="fill_parent"
@@ -45,8 +45,8 @@
                 android:id="@+id/tree_list"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:divider="#aaa"
-                android:dividerHeight="1px"
+                android:divider="#eeeeee"
+                android:dividerHeight="0.5px"
                 android:visibility="gone" />
 
             <TextView

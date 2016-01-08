@@ -13,7 +13,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 22
         versionCode 5
-        versionName "2.0.0"
+        versionName "1.0.0"
         multiDexEnabled true
     }
 
@@ -53,16 +53,16 @@ dependencies {
     compile 'commons-io:commons-io:2.4'
     compile 'com.android.support:multidex:'
     compile project(':tree')
-    compile project(':app_cal')
     compile project(':app_att')
     compile project(':crm_chance')
     compile project(':crm_con')
-    compile project(':bpm')
     compile project(':circleprogressbarlib')
-    compile project(':app_study')
     compile project(':tixing')
     compile project(':crm_product')
     compile project(':app_stat')
     compile project(':app_kehubaifang')
+    compile project(':bpm')
+    compile project(':app_study')
+    compile project(':app_cal')
     compile project(':crmlianxi')
 }

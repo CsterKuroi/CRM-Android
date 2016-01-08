@@ -12,41 +12,41 @@
             android:name=".bpmMainActivity"
             android:parentActivityName=".bpmLoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeAppCompat" />
+            android:theme="@style/AppThemeBPM" />
         <activity
             android:name=".Form.bpmTraceProcessActivity"
             android:label="@string/title_activity_review_process"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeAppCompat" />
+            android:theme="@style/AppThemeBPM" />
         <activity
             android:name=".Form.bpmTraceTaskActivity"
             android:label="发起的任务"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeAppCompat" />
+            android:theme="@style/AppThemeBPM" />
         <activity
             android:name=".SortListView.bpmSortListMainActivity"
+            android:label="hahaha"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeAppCompat" />
+            android:theme="@style/AppThemeBPM" />
         <activity
             android:name=".bpmLoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeAppCompat">
-        </activity>
+            android:theme="@style/AppThemeBPM" />
         <activity
             android:name=".Form.bpmFormActivity"
             android:label="@string/title_activity_form"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeAppCompat" />
+            android:theme="@style/AppThemeBPM" />
         <activity
             android:name=".Form.bpmClientActivity"
             android:label="选择客户"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeAppCompat" />
+            android:theme="@style/AppThemeBPM" />
         <activity
             android:name=".Form.bpmInputActivity"
             android:label="@string/title_activity_input"
-            android:theme="@style/AppThemeAppCompat" />
+            android:theme="@style/AppThemeBPM" />
     </application>
 
 </manifest>

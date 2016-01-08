@@ -2,4 +2,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <color name = "weidu">#cc1e0c</color>
+    <color name="yidu">#cccc37</color>
+    <color name="yiqueren">#3fcc1d</color>
 </resources>

@@ -20,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -49,7 +50,7 @@ import com.pwp.constant.CalendarConstant;
 public class ScheduleAll extends Activity implements OnClickListener{
 
 	ListView listView;
-	ImageButton back;
+	RelativeLayout back;
 	TextView richeng,nothing;
 	String userid;
 	int width,height;
@@ -84,7 +85,7 @@ public class ScheduleAll extends Activity implements OnClickListener{
 		width = wm.getDefaultDisplay().getWidth();
 		height = wm.getDefaultDisplay().getHeight();
 
-		back=(ImageButton)findViewById(R.id.back);
+		back=(RelativeLayout)findViewById(R.id.back);
 		richeng=(TextView)findViewById(R.id.richeng);
 		back.setOnClickListener(this);
 		richeng.setOnClickListener(this);

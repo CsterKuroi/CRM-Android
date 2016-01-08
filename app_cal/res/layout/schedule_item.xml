@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="30dp"
     android:orientation="horizontal"
     android:background="#217ac1">
     <ImageView
@@ -26,10 +26,11 @@
         android:layout_weight="0.3"
         android:id="@+id/type"
         android:layout_gravity="center_vertical"
-        android:gravity="center_vertical|left"
+        android:gravity="center_vertical|right"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginLeft="4dp"/>
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="40dp"/>
 
 </LinearLayout>
