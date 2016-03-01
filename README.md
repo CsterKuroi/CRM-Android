@@ -15,7 +15,6 @@ Android
 ![5](https://github.com/CsterKuroi/android-trial/raw/master/pht/5.jpg "")
 ![6](https://github.com/CsterKuroi/android-trial/raw/master/pht/6.jpg "")
 ![7](https://github.com/CsterKuroi/android-trial/raw/master/pht/7.jpg "")
-
 ![9](https://github.com/CsterKuroi/android-trial/raw/master/pht/9.jpg "")
 ![10](https://github.com/CsterKuroi/android-trial/raw/master/pht/10.jpg "")
 ![11](https://github.com/CsterKuroi/android-trial/raw/master/pht/11.jpg "")
