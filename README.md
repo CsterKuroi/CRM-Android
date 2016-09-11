@@ -2,7 +2,6 @@
 Android
 
 ##Usages
-编译环境要求
 * Android-studio 
 * java 1.7
 * gradle 2.2.1
