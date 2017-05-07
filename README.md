@@ -1,12 +1,14 @@
-﻿#  Yunxiaoshou CRM
+# Yunxiaoshou CRM
 Android
 
-##Usages
+## Usages
+
 * Android-studio 
 * java 1.7
 * gradle 2.2.1
 
-##Screen shots
+##  Screenshots
+
 ![1](https://github.com/CsterKuroi/android-trial/raw/master/pht/1.jpg "")
 ![2](https://github.com/CsterKuroi/android-trial/raw/master/pht/2.jpg "")
 ![3](https://github.com/CsterKuroi/android-trial/raw/master/pht/3.jpg "")
